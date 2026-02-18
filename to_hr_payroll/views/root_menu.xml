@@ -1,0 +1,83 @@
+<odoo>
+	<!--Menu root-->
+	<menuitem id="menu_hr_payroll_root"
+		name="Payroll"
+		sequence="230" 
+		web_icon="to_hr_payroll,static/description/icon.png" />
+
+	<!--Payslip Menu-->
+	<menuitem id="menu_payslips_root"
+		name="Payslips" sequence="0"
+		groups="base.group_user"
+		parent="menu_hr_payroll_root" />
+
+	<!--Work Entry Menu-->
+	<menuitem id="menu_work_entry_root"
+		name="Work Entry" sequence="3"
+		groups="base.group_user"
+		parent="menu_hr_payroll_root" />
+
+	<menuitem id="hr_work_entry_base_menu"
+		name="Work Entries"
+		parent="menu_work_entry_root"
+		action="viin_hr_work_entry.viin_hr_work_entry_action"
+		sequence="10" />
+
+	<menuitem id="hr_work_entry_conflict_menu"
+		name="Conflict Work Entries"
+		parent="menu_work_entry_root"
+		action="viin_hr_work_entry.viin_hr_work_entry_conflict_action"
+		sequence="20" />
+
+	<!--Employee Menu-->
+	<menuitem id="menu_employees_root"
+		name="Employees"
+		parent="menu_hr_payroll_root"
+		sequence="5"
+		groups="to_hr_payroll.group_hr_payroll_user" />
+	
+	<menuitem id="menu_employees"
+		action="hr.open_view_employee_list_my"
+		sequence="5"
+		parent="menu_employees_root"
+		groups="to_hr_payroll.group_hr_payroll_user" />
+
+	<menuitem id="menu_hr_contracts"
+		action="hr_contract.action_hr_contract"
+		sequence="10"
+		parent="menu_employees_root"
+		groups="to_hr_payroll.group_hr_payroll_user" />
+
+	<!--Report Menu-->
+	<menuitem id="menu_hr_payroll_reports"
+		name="Reports"
+		parent="menu_hr_payroll_root"
+		sequence="99"
+		groups="base.group_user" />
+
+	<!--Configuration-->
+	<menuitem id="menu_hr_payroll_configuration"
+		name="Configuration"
+		parent="menu_hr_payroll_root"
+		sequence="100"
+		groups="to_hr_payroll.group_hr_payroll_admin" />
+
+	<menuitem id="menu_hr_payroll_configuration_work_entry"
+		name="Work Entry"
+		parent="menu_hr_payroll_configuration"
+		sequence="10"
+		groups="to_hr_payroll.group_hr_payroll_admin" />
+
+	<menuitem id="menu_hr_payroll_configuration_work_entry_type"
+		name="Work Entry Type"
+		parent="menu_hr_payroll_configuration_work_entry"
+		action="hr_work_entry.hr_work_entry_type_action"
+		sequence="10" />
+
+	<menuitem id="menu_hr_payroll_configuration_payroll_entry"
+		name="Payroll Entry"
+		parent="menu_hr_payroll_configuration"
+		sequence="20"
+		groups="to_hr_payroll.group_hr_payroll_admin" />
+
+</odoo>

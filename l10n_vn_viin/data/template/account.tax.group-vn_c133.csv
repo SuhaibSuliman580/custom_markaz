@@ -1,0 +1,8 @@
+"id",""sequence"","name","country_id","name@vi_VN","is_vat"
+"c133_tax_group_0","1","VAT 0%","base.vn","Thuế GTGT 0%",True
+"c133_tax_group_5","2","VAT 5%","base.vn","Thuế GTGT 5%",True
+"c133_tax_group_8","3","VAT 8%","base.vn","Thuế GTGT 8%",True
+"c133_tax_group_10","4","VAT 10%","base.vn","Thuế GTGT 10%",True
+"c133_tax_group_exemption","5","VAT Exemption","base.vn","Đối tượng không chịu thuế GTGT",True
+"c133_tax_group_import","6","VAT IMPORT","base.vn","Thuế nhập khẩu",False
+"c133_tax_group_export","7","VAT EXPORT","base.vn","Thuế xuất khẩu",False

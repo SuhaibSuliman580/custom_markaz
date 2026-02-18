@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- Salary Category -->
+	<record id="hr_salary_rule_category_form" model="ir.ui.view">
+		<field name="name">hr.salary.rule.category.form</field>
+		<field name="model">hr.salary.rule.category</field>
+		<field name="arch" type="xml">
+			<form string="Salary Categories">
+				<field name="company_id" invisible="1" />
+				<sheet>
+					<div class="oe_button_box" name="button_box">
+						<button name="action_view_salary_rules" type="object"
+							class="oe_stat_button"
+							help="List of the salary rules that directly belong to this category"
+							icon="fa-calculator">
+							<field name="salary_rules_count" widget="statinfo"
+								string="Salary Rules" />
+						</button>
+					</div>
+					<group col="4">
+						<field name="name" />
+						<field name="code" />
+						<field name="parent_id" />
+						<field name="paid_by_company" />
+						<field name="company_id" groups="base.group_multi_company"
+							options="{'no_create': True}" />
+					</group>
+					<group string="Notes">
+						<field name="note" nolabel="1" />
+					</group>
+				</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids" groups="base.group_user" />
+					<field name="activity_ids"/>
+					<field name="message_ids"/>
+				</div>
+			</form>
+		</field>
+	</record>
+
+	<record id="hr_salary_rule_category_tree" model="ir.ui.view">
+		<field name="name">hr.salary.rule.category.tree</field>
+		<field name="model">hr.salary.rule.category</field>
+		<field name="arch" type="xml">
+			<tree string="Salary Rule Categories" sample="1">
+				<field name="name" />
+				<field name="code" />
+				<field name="parent_id" />
+				<field name="paid_by_company" />
+				<field name="company_id" groups="base.group_multi_company" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="view_hr_salary_rule_category_filter"
+		model="ir.ui.view">
+		<field name="name">hr.salary.rule.category.select</field>
+		<field name="model">hr.salary.rule.category</field>
+		<field name="arch" type="xml">
+			<search string="Salary Rule Categories">
+				<field name="company_id" groups="base.group_multi_company" />
+				<field name="name" string="Salary Rule Categories"
+					filter_domain="['|',('name','ilike',self),('code','ilike',self)]" />
+
+				<searchpanel>
+					<field name="company_id" groups="base.group_multi_company"
+						icon="fa-building" />
+					<field name="parent_id" icon="fa-users" />
+				</searchpanel>
+			</search>
+		</field>
+	</record>
+
+	<record id="action_hr_salary_rule_category"
+		model="ir.actions.act_window">
+		<field name="name">Salary Rule Categories</field>
+		<field name="res_model">hr.salary.rule.category</field>
+		<field name="view_id" ref="hr_salary_rule_category_tree" />
+		<field name="search_view_id"
+			ref="view_hr_salary_rule_category_filter" />
+	</record>
+	<menuitem id="menu_hr_salary_rule_category"
+		action="action_hr_salary_rule_category"
+		parent="menu_hr_payroll_configuration_payroll_entry" sequence="5"
+		groups="base.group_no_one" />
+</odoo>

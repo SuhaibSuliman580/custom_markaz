@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Extend Partner Form View -->
+    <record id="view_partner_form_membership" model="ir.ui.view">
+        <field name="name">res.partner.form.membership</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[last()]" position="after">
+                <page string="Membership" invisible="not is_doctor">
+                    <group>
+                        <group string="Membership Status">
+                            <field name="membership_number"/>
+                            <field name="doctor_membership_state" widget="badge"/>
+                            <field name="membership_start_date"/>
+                            <field name="membership_end_date"/>
+                            <field name="active_membership_id"/>
+                        </group>
+                        <group string="Personal Info">
+                            <field name="arabic_name"/>
+                            <field name="national_id"/>
+                            <field name="birth_date"/>
+                            <field name="gender"/>
+                            <field name="nationality_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Medical Qualifications">
+                            <field name="medical_specialty_id"/>
+                            <field name="qualification"/>
+                            <field name="university"/>
+                            <field name="graduation_year"/>
+                        </group>
+                        <group string="Medical License">
+                            <field name="medical_license_no"/>
+                            <field name="license_issue_date"/>
+                            <field name="license_expiry_date"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Employment">
+                            <field name="workplace_name"/>
+                            <field name="workplace_type"/>
+                            <field name="years_of_experience"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Applications">
+                            <field name="membership_application_ids" readonly="1">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="state" widget="badge"/>
+                                    <field name="create_date"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Membership Periods">
+                            <field name="membership_period_ids" readonly="1">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="start_date"/>
+                                    <field name="end_date"/>
+                                    <field name="state" widget="badge"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='company_type']" position="after">
+                <field name="is_doctor"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_doctor_partners" model="ir.actions.act_window">
+        <field name="name">Doctors</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_doctor', '=', True)]</field>
+        <field name="context">{
+            'default_is_doctor': True,
+            'search_default_all_members': 1,
+            'default_free_member': True
+        }</field>
+    </record>
+
+</odoo>

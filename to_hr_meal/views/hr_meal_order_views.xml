@@ -1,0 +1,240 @@
+<odoo>
+
+	<record id="hr_meal_order_action_partners" model="ir.actions.act_window">
+		<field name="name">Clients</field>
+		<field name="res_model">res.partner</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{}</field>
+		<field name="domain">[]</field>
+	</record>
+
+	<record id="hr_meal_order_view_form" model="ir.ui.view">
+		<field name="name">hr.meal.order.form</field>
+		<field name="model">hr.meal.order</field>
+		<field name="arch" type="xml">
+			<form string="HR Meal Order">
+				<header>
+					<button name="action_confirm" string="Confirm" type="object"
+						invisible="state != 'draft'" class="btn-primary" />
+					<button name="action_approve" invisible="state != 'confirmed'"
+						string="Approve" class="btn-primary" type="object" />
+					<button name="action_draft" string="Set to Draft"
+						type="object" invisible="state != 'cancelled'" />
+					<button name="action_cancel" string="Cancel" type="object"
+						invisible="state not in ['confirmed', 'approved']" />
+					<button name="action_refuse" string="Refuse" type="object"
+						invisible="state != 'confirmed'" />
+					<field name="state" widget="statusbar"
+						statusbar_visible="draft,confirmed,approved,refused,cancelled" />
+				</header>
+				<sheet>
+					<div class="oe_button_box" name="button_box">
+						<button name="action_view_partners" type="object" class="oe_stat_button" icon="fa-users">
+							<field name="partners_count" widget="statinfo" string="Clients" />
+						</button>
+					</div>
+					<h1>
+						<field name="name" />
+					</h1>
+					<group>
+						<group>
+							<field name="meal_type_id"
+								readonly="state != 'draft'" />
+							<field name="scheduled_date"
+								readonly="state != 'draft'" />
+							<field name="scheduled_hour" widget="float_time"
+								readonly="state != 'draft'" />
+							<field name="load_employee"
+								readonly="state != 'draft'" />
+							<field name="company_id" groups="base.group_multi_company" />
+							<field name="company_id" invisible="1"/>
+							<field name="currency_id" invisible="1" />
+							<field name="department_id"
+								readonly="state != 'draft'"
+								invisible="load_employee == 'load_all'" />
+							<field name="applied_department_ids" widget="many2many_tags"
+								invisible="load_employee == 'load_all'" />
+						</group>
+						<group>
+							<field name="order_source"
+								readonly="state != 'draft'" />
+							<field name="kitchen_id"
+								readonly="state != 'draft'"
+								invisible="order_source == 'external'"
+								required="order_source == 'internal'" />
+							<field name="vendor_id"
+								readonly="state != 'draft'"
+								context="{'res_partner_search_mode': 'supplier'}"
+								invisible="order_source == 'internal'" />
+							<field name="ordered_by"
+								readonly="state != 'draft'"
+								invisible="state == 'draft'" />
+							<field name="date_ordered"
+								invisible="state == 'draft'" />
+							<field name="approved_by"
+								invisible="state in ['draft', 'confirmed', 'cancelled']" />
+							<field name="date_approved"
+								invisible="state in ['draft', 'confirmed', 'cancelled']" />
+						</group>
+					</group>
+					<notebook>
+						<page name="order_lines" string="Order Details">
+							<field name="order_line_ids"
+								context="{'default_meal_type_id': meal_type_id}" 
+								readonly="state != 'draft'" >
+								<tree name="order_lines" editable="bottom">
+									<field name="employee_id"
+										widget="many2one_avatar_employee"
+										readonly="state != 'draft'" />
+									<field name="department_id"
+										readonly="state != 'draft'"
+										optional="show" context="{'hierarchical_naming': False}" />
+									<field name="kitchen_id" column_invisible="1" />
+									<field name="partner_ids"
+										domain="[('is_company', '=', False)]"
+										widget="many2many_tags"
+										readonly="state != 'draft'" />
+									<field name="meal_type_id" column_invisible="1" />
+									<field name="quantity"
+										readonly="state != 'draft'" />
+									<field name="price"
+										readonly="state != 'draft'"
+										groups="to_hr_meal.hr_meal_group_admin" />
+									<field name="price" column_invisible="1" />
+									<field name="employee_price"
+										readonly="state != 'draft'" />
+									<field name="employee_amount" />
+									<field name="company_amount" />
+									<field name="total_price" groups="to_hr_meal.hr_meal_group_admin" />
+									<field name="description" optional="hide"
+										readonly="state != 'draft'" />
+									<field name="state" column_invisible="1" />
+									<field name="currency_id" column_invisible="1" />
+								</tree>
+							</field>
+							<group class="oe_subtotal_footer oe_right" colspan="2"
+								name="order_total">
+								<field name="order_lines_count" />
+								<field name="total_qty" />
+								<field name="total_employee_pay" />
+								<field name="total_company_pay" />
+								<field name="total_price" />
+							</group>
+							<field name="notes" class="oe_inline" placeholder="Something to note for the kitchen." />
+						</page>
+					</notebook>
+				</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids"/>
+					<field name="activity_ids"/>
+					<field name="message_ids"/>
+				</div>
+			</form>
+		</field>
+	</record>
+
+	<record id="hr_meal_draft_orders_view_search" model="ir.ui.view">
+		<field name="name">hr.meal.order.search</field>
+		<field name="model">hr.meal.order</field>
+		<field name="arch" type="xml">
+			<search string="HR Meal Types">
+				<field name="name" />
+				<field name="scheduled_date" />
+				<field name="ordered_by" />
+				<field name="approved_by" />
+				<field name="total_qty" />
+				<filter name="ftr_draft" string="Draft" domain="[('state','=','draft')]" />
+				<filter name="ftr_cancelled" string="Cancelled" domain="[('state','=','cancelled')]" />
+				<filter name="ftr_refused" string="Refused" domain="[('state','=','refused')]" />
+				<separator />
+				<filter name="ftr_internal" string="Meal Order Source: Internal"
+					domain="[('order_source','=','internal')]" />
+				<filter name="ftr_outside" string="Meal Order Source: External"
+					domain="[('order_source','=','external')]" />
+				<separator />
+			</search>
+		</field>
+	</record>
+
+	<record id="hr_meal_draft_orders_view_tree" model="ir.ui.view">
+		<field name="name">hr.meal.order.tree</field>
+		<field name="model">hr.meal.order</field>
+		<field name="type">tree</field>
+		<field name="arch" type="xml">
+			<tree string="HR Meal Types"
+				decoration-bf="message_needaction==True"
+				decoration-muted="state=='cancelled'"
+				decoration-success="state=='confirmed'" sample="1">
+				<field name="message_needaction" column_invisible="1" />
+				<field name="name" />
+				<field name="scheduled_date" />
+				<field name="scheduled_hour" widget="float_time" />
+				<field name="order_lines_count" />
+				<field name="total_qty" />
+				<field name="total_price" />
+				<field name="state" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="hr_meal_draft_orders_action" model="ir.actions.act_window">
+		<field name="name">HR Meal Orders</field>
+		<field name="res_model">hr.meal.order</field>
+		<field name="view_mode">tree,form</field>
+		<field name="search_view_id" ref="hr_meal_draft_orders_view_search" />
+		<field name="context">{}</field>
+		<field name="domain">[('state', 'not in', ['confirmed', 'approved'])]
+		</field>
+	</record>
+
+	<menuitem id="hr_meal_draft_orders_menu" name="Draft Orders"
+		parent="hr_meal_order_root_menu" sequence="1"
+		action="hr_meal_draft_orders_action" />
+
+	<record id="hr_meal_orders_search_view" model="ir.ui.view">
+		<field name="name">hr.meal.order.search</field>
+		<field name="model">hr.meal.order</field>
+		<field name="arch" type="xml">
+			<search string="HR Meal Types">
+				<field name="name" />
+				<field name="scheduled_date" />
+				<field name="ordered_by" />
+				<field name="approved_by" />
+				<field name="total_qty" />
+				<filter name="ftr_confirmed" string="Confirmed" domain="[('state','=','confirmed')]" />
+				<filter name="ftr_approved" string="Approved" domain="[('state','=','approved')]" />
+				<separator />
+				<filter name="ftr_internal" string="Meal Order Source: Internal"
+					domain="[('order_source','=','internal')]" />
+				<filter name="ftr_outside" string="Meal Order Source: External"
+					domain="[('order_source','=','external')]" />
+				<separator />
+			</search>
+		</field>
+	</record>
+
+	<record id="hr_meal_orders_action" model="ir.actions.act_window">
+		<field name="name">HR Meal Orders</field>
+		<field name="res_model">hr.meal.order</field>
+		<field name="view_mode">tree,form</field>
+		<field name="search_view_id" ref="hr_meal_orders_search_view" />
+		<field name="context">{}</field>
+		<field name="domain">[('state','in',['confirmed','approved'])]</field>
+	</record>
+
+	<record id="hr_meal_orders_detail_action" model="ir.actions.act_window">
+		<field name="name">Employee Orders Line</field>
+		<field name="res_model">hr.meal.order.line</field>
+		<field name="view_mode">tree,form,pivot,graph</field>
+		<field name="domain">[('state','in',['confirmed','approved'])]</field>
+	</record>
+
+	<menuitem id="hr_meal_orders_menu" name="Meal Orders"
+		parent="hr_meal_order_root_menu" sequence="2"
+		action="hr_meal_orders_action" />
+
+	<menuitem id="hr_meal_order_detail" name="Meal Order Details"
+		parent="hr_meal_order_root_menu" sequence="3" groups="base.group_user"
+		action="hr_meal_orders_detail_action" />
+
+</odoo>

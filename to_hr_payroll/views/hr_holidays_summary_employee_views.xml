@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<menuitem id="menu_hr_holidays_summary_employee"
+		action="hr_holidays.action_hr_holidays_summary_employee"
+		parent="hr_holidays.menu_hr_holidays_report" sequence="50" />
+	</data>
+</odoo>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view"
+			id="hr_payroll_contribution_register_form_view">
+			<field name="name">Payroll Contribution Register</field>
+			<field name="model">hr.payroll.contribution.register</field>
+			<field name="arch" type="xml">
+				<form string="Payroll Contribution Register">
+					<header>
+						<field name="company_id" invisible="1" />
+						<button name="action_draft" type="object"
+							string="Reset to draft" invisible="state != 'cancelled'"
+							groups="to_hr_payroll.group_hr_payroll_user" />
+						<button name="action_confirm" type="object"
+							string="Confirm" invisible="state != 'draft'" class="oe_highlight"
+							groups="to_hr_payroll.group_hr_payroll_user" />
+						<button name="action_change_base" type="object"
+							string="Change Computation Base" context="{'call_wizard': True}"
+							invisible="state not in ['confirmed', 'resumed']"
+							groups="to_hr_payroll.group_hr_payroll_user" />
+						<button name="action_change_rates" type="object"
+							string="Change Rates" context="{'call_wizard': True}"
+							invisible="state not in ['confirmed', 'resumed']"
+							groups="to_hr_payroll.group_hr_payroll_user" />
+						<button name="action_suspend" type="object"
+							string="Suspend" context="{'call_wizard': True}"
+							invisible="state not in ['confirmed', 'resumed']"
+							groups="to_hr_payroll.group_hr_payroll_user" />
+						<button name="action_resume"
+							context="{'call_wizard': True}" type="object" string="Resume"
+							invisible="state not in ['done', 'suspended']" class="oe_highlight"
+							groups="to_hr_payroll.group_hr_payroll_user" />
+						<button name="action_done" context="{'call_wizard': True}"
+							type="object" string="Close"
+							invisible="state not in ['confirmed', 'suspended', 'resumed']"
+							groups="to_hr_payroll.group_hr_payroll_user" />
+						<button name="action_cancel" type="object" string="Cancel"
+							invisible="state not in ['done', 'confirmed', 'confirmed', 'resumed']"
+							groups="to_hr_payroll.group_hr_payroll_user" />
+						<field name="state" widget="statusbar" />
+					</header>
+					<sheet>
+						<div class="oe_button_box" name="button_box">
+							<button name="action_view_payslips" class="oe_stat_button"
+								icon="fa-money" type="object">
+								<field name="payslips_count" widget="statinfo"
+									string="Payslip"
+									help="Show payslips that refers to this payroll contribution register" />
+							</button>
+						</div>
+						<group>
+							<group>
+								<field name="employee_id" readonly="state != 'draft'" />
+								<field name="contribution_base" readonly="state != 'draft'" />
+								<label for="employee_contrib_rate"
+									string="Employee Contribution Rate" />
+								<div class="o_row">
+									<field name="employee_contrib_rate" readonly="state != 'draft'" />
+									<span>%</span>
+								</div>
+								<label for="company_contrib_rate"
+									string="Company Contribution Rate" />
+								<div class="o_row">
+									<field name="company_contrib_rate" readonly="state != 'draft'" />
+									<span>%</span>
+								</div>
+								<field name="partner_id" />
+								<field name="currency_id" invisible="1" />
+							</group>
+							<group>
+								<field name="company_id" groups="base.group_multi_company"/>
+								<field name="type_id" readonly="state != 'draft'" />
+								<field name="registered_number" />
+								<field name="date_from" readonly="state != 'draft'" />
+								<field name="date_suspended"
+									invisible="not date_suspended" />
+								<field name="date_resumed"
+									invisible="not date_resumed" />
+								<field name="date_to"
+									invisible="not date_to" />
+								<field name="computation_block" readonly="state != 'draft'" />
+								<field name="computation_method"
+									readonly="state != 'draft'"
+									invisible="computation_block != 'month'"
+									required="computation_block == 'month'" />
+								<field name="days_in_months" readonly="state != 'draft'"
+									invisible="computation_method != 'half_up'" />
+								<label for="max_unpaid_days"
+									invisible="computation_block != 'month' or computation_method != 'max_unpaid_days'" />
+								<div class="o_row"
+									invisible="computation_block != 'month' or computation_method != 'max_unpaid_days'" >
+									<field name="max_unpaid_days" readonly="state != 'draft'" />
+									<span>day(s)</span>
+								</div>
+							</group>
+							<group>
+								<field name="current_history_id"
+									groups="base.group_no_one" />
+							</group>
+						</group>
+						<notebook>
+							<page string="Payroll Contribution Register Status Changes">
+								<field name="payroll_contribution_history_ids">
+									<tree>
+										<field name="state" />
+										<field name="date_from" />
+										<field name="date_to" />
+										<field name="contribution_base" />
+										<field name="employee_contrib_rate" />
+										<field name="company_contrib_rate" />
+									</tree>
+								</field>
+							</page>
+						</notebook>
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids"/>
+						<field name="activity_ids"/>
+						<field name="message_ids"/>
+					</div>
+				</form>
+			</field>
+		</record>
+
+		<record id="hr_payroll_contribution_register_view_search"
+			model="ir.ui.view">
+			<field name="name">hr.payroll.contribution.register.view.search
+			</field>
+			<field name="model">hr.payroll.contribution.register</field>
+			<field name="arch" type="xml">
+				<search string="Search Payroll Contribution Register">
+					<field name="employee_id" />
+					<field name="type_id" />
+					<field name="date_from" />
+					<field name="date_to" />
+					<field name="registered_number" />
+					<field name="state" />
+					<filter string="Suspended" name="suspended"
+						domain="[('state', '=', 'suspended')]" />
+					<filter string="Running" name="confirmed_resumed"
+						domain="[('state', 'in', ['confirmed','resumed'])]" />
+					<filter string="Closed" name="done"
+						domain="[('state', '=', 'done')]" />
+					<separator />
+					<filter string="Current Employee" name="current_employee"
+						domain="[('employee_id.active','=',True)]" />
+					<separator />
+					<filter string="Unread Messages" name="message_needaction"
+						domain="[('message_needaction','=',True)]" />
+					<group expand="0" string="Group By">
+						<filter name="employee" string="Employee" domain="[]"
+							context="{'group_by':'employee_id'}" />
+						<filter name="type" string="Payroll Contribution Type"
+							domain="[]" context="{'group_by':'type_id'}" />
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<record model="ir.ui.view"
+			id="hr_payroll_contribution_register_list_view">
+			<field name="name">Payroll Contribution Register</field>
+			<field name="model">hr.payroll.contribution.register</field>
+			<field name="arch" type="xml">
+				<tree sample="1">
+					<field name="registered_number" />
+					<field name="employee_id" />
+					<field name="type_id" />
+					<field name="date_from" />
+					<field name="contribution_base" />
+					<field name="employee_contrib_rate" />
+					<field name="company_contrib_rate" />
+					<field name="partner_id" />
+					<field name="state" />
+					<field name="currency_id" column_invisible="1" />
+					<field name="company_id" groups="base.group_multi_company"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- actions opening views on models -->
+
+
+		<record model="ir.actions.act_window"
+			id="to_hr_payroll_contribution_register_action">
+			<field name="name">Payroll Contribution Register</field>
+			<field name="res_model">hr.payroll.contribution.register</field>
+			<field name="view_mode">tree,form,pivot,graph</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click here to register a new payroll contribution
+					register for employee.
+				</p>
+				<p>A Payroll Contribution Register is a contribution amount of an
+					employee (and the company) to a third party (e.g. Insurance Service
+					Provider, Labor Union, etc) dynamically via employee payroll (with
+					amount defined by a salary rules)
+				</p>
+			</field>
+		</record>
+
+		<menuitem id="hr_payroll_contribution_menu_root"
+			name="Payroll Contribution"
+			parent="to_hr_payroll.menu_hr_payroll_root" sequence="90"
+			groups="to_hr_payroll.group_hr_payroll_user" />
+
+		<menuitem action="to_hr_payroll_contribution_register_action"
+			id="hr_menu_payroll_contribution_register"
+			name="Payroll Contribution Register"
+			parent="hr_payroll_contribution_menu_root" sequence="1"
+			groups="to_hr_payroll.group_hr_payroll_user" />
+
+	</data>
+</odoo>

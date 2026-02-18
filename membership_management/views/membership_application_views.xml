@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Form View -->
+    <record id="view_membership_application_form" model="ir.ui.view">
+        <field name="name">membership.application.form</field>
+        <field name="model">membership.application</field>
+        <field name="arch" type="xml">
+            <form string="Membership Application">
+                <header>
+                    <button name="action_approve" string="Approve"
+                            type="object" class="btn-primary"
+                            invisible="state not in ('draft', 'need_info')"
+                            groups="membership_management.group_membership_officer"/>
+                    <button name="action_reject" string="Reject"
+                            type="object" class="btn-danger"
+                            invisible="state not in ('draft', 'need_info')"
+                            groups="membership_management.group_membership_officer"/>
+                    <button name="action_request_info" string="Request Information"
+                            type="object" class="btn-warning"
+                            invisible="state != 'draft'"
+                            groups="membership_management.group_membership_officer"/>
+                    <button name="action_reset_to_draft" string="Back to Review"
+                            type="object"
+                            invisible="state != 'need_info'"
+                            groups="membership_management.group_membership_officer"/>
+                    <button name="action_activate_membership" string="Activate Membership"
+                            type="object" class="btn-success"
+                            invisible="state != 'approved' or membership_period_id"
+                            groups="membership_management.group_membership_officer"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,approved"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="create_date" string="Submitted On"/>
+                        </group>
+                        <group>
+                            <field name="invoice_id" invisible="not invoice_id"/>
+                            <field name="invoice_payment_state" invisible="not invoice_id"/>
+                            <field name="membership_period_id" invisible="not membership_period_id"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <!-- Doctor Personal Info Tab -->
+                        <page string="Personal Information" name="personal_info">
+                            <group>
+                                <group string="Identity">
+                                    <field name="doctor_arabic_name"/>
+                                    <field name="doctor_national_id"/>
+                                    <field name="doctor_birth_date"/>
+                                    <field name="doctor_gender"/>
+                                    <field name="doctor_nationality_id"/>
+                                </group>
+                                <group string="Contact">
+                                    <field name="doctor_email"/>
+                                    <field name="doctor_phone"/>
+                                    <field name="doctor_mobile"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <!-- Medical Qualifications Tab -->
+                        <page string="Medical Qualifications" name="qualifications">
+                            <group>
+                                <group string="Specialty &amp; Degree">
+                                    <field name="doctor_specialty_id"/>
+                                    <field name="doctor_qualification"/>
+                                    <field name="doctor_university"/>
+                                    <field name="doctor_graduation_year"/>
+                                </group>
+                                <group string="Medical License">
+                                    <field name="doctor_license_no"/>
+                                    <field name="doctor_license_issue"/>
+                                    <field name="doctor_license_expiry"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <!-- Employment Tab -->
+                        <page string="Employment" name="employment">
+                            <group>
+                                <group>
+                                    <field name="doctor_workplace"/>
+                                    <field name="doctor_workplace_type"/>
+                                    <field name="doctor_experience"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <!-- Notes -->
+                        <page string="Applicant Notes" name="notes">
+                            <field name="notes" placeholder="Applicant notes..."/>
+                        </page>
+
+                        <!-- Officer Notes -->
+                        <page string="Officer Notes" name="officer_notes"
+                              groups="membership_management.group_membership_officer">
+                            <field name="officer_notes" placeholder="Internal notes for the review team..."/>
+                        </page>
+
+                        <!-- Attachments / Documents -->
+                        <page string="Documents" name="documents">
+                            <field name="attachment_ids" widget="many2many_binary"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_membership_application_list" model="ir.ui.view">
+        <field name="name">membership.application.tree</field>
+        <field name="model">membership.application</field>
+        <field name="arch" type="xml">
+            <tree string="Membership Applications" decoration-info="state == 'draft'"
+                  decoration-warning="state == 'need_info'"
+                  decoration-success="state == 'approved'"
+                  decoration-danger="state == 'rejected'">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="doctor_specialty_id" optional="show"/>
+                <field name="doctor_license_no" optional="show"/>
+                <field name="doctor_workplace" optional="hide"/>
+                <field name="state" widget="badge"/>
+                <field name="invoice_payment_state" optional="show"/>
+                <field name="create_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_membership_application_search" model="ir.ui.view">
+        <field name="name">membership.application.search</field>
+        <field name="model">membership.application</field>
+        <field name="arch" type="xml">
+            <search string="Search Applications">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="doctor_specialty_id"/>
+                <field name="doctor_license_no"/>
+                <filter string="Under Review" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="Need Info" name="need_info" domain="[('state', '=', 'need_info')]"/>
+                <filter string="Approved" name="approved" domain="[('state', '=', 'approved')]"/>
+                <filter string="Rejected" name="rejected" domain="[('state', '=', 'rejected')]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
+                    <filter string="Doctor" name="group_partner" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Specialty" name="group_specialty" context="{'group_by': 'doctor_specialty_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_membership_application" model="ir.actions.act_window">
+        <field name="name">Membership Applications</field>
+        <field name="res_model">membership.application</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_membership_application_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No membership applications yet.
+            </p>
+        </field>
+    </record>
+
+</odoo>

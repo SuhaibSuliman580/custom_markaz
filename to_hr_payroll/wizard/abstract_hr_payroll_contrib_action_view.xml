@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view"
+			id="abstract_hr_payroll_contrib_action_form_view">
+			<field name="name">abstract.hr.payroll.contrib.act.form</field>
+			<field name="model">abstract.hr.payroll.contrib.act</field>
+			<field name="arch" type="xml">
+				<form string="Payroll Contribution Action">
+					<group>
+						<field name="date" />
+					</group>
+					<footer>
+						<button name="process" string="Process" type="object"
+							class="btn-primary" />
+						<button string="Cancel" class="btn-default"
+							special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+	</data>
+</odoo>

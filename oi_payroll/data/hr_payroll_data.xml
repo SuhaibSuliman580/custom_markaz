@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+		<record id="contrib_register_employees" model="hr.contribution.register">
+			<field name="name">Employees</field>
+			<field name="partner_id" eval="False" />
+		</record>
+
+		<record id="BASIC" model="hr.salary.rule.category">
+			<field name="name">Basic</field>
+			<field name="code">BASIC</field>
+		</record>
+
+		<record id="ALW" model="hr.salary.rule.category">
+			<field name="name">Allowance</field>
+			<field name="code">ALW</field>
+		</record>
+
+		<record id="GROSS" model="hr.salary.rule.category">
+			<field name="name">Gross</field>
+			<field name="code">GROSS</field>
+		</record>
+
+		<record id="DED" model="hr.salary.rule.category">
+			<field name="name">Deduction</field>
+			<field name="code">DED</field>
+		</record>
+
+		<record id="NET" model="hr.salary.rule.category">
+			<field name="name">Net</field>
+			<field name="code">NET</field>
+		</record>
+
+		<record id="COMP" model="hr.salary.rule.category">
+			<field name="name">Company Contribution</field>
+			<field name="code">COMP</field>
+		</record>
+
+		<record id="OTHER" model="hr.salary.rule.category">
+			<field name="name">Other</field>
+			<field name="code">OTHER</field>
+		</record>		
+
+		<record id="hr_rule_basic" model="hr.salary.rule">
+			<field name="name">Basic Salary</field>
+			<field name="sequence" eval="1" />
+			<field name="code">BASIC</field>
+			<field name="category_id" ref="oi_payroll.BASIC" />
+			<field name="condition_select">none</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute">result = contract.wage; result_rate = WR</field>
+		</record>
+
+		<record id="hr_rule_taxable" model="hr.salary.rule">
+			<field name="name">Gross</field>
+			<field name="sequence" eval="100" />
+			<field name="code">GROSS</field>
+			<field name="category_id" ref="oi_payroll.GROSS" />
+			<field name="condition_select">none</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute">result = categories.BASIC + categories.ALW</field>
+		</record>
+
+		<record id="hr_rule_net" model="hr.salary.rule">
+			<field name="name">Net Salary</field>
+			<field name="sequence" eval="200" />
+			<field name="code">NET</field>
+			<field name="category_id" ref="oi_payroll.NET" />
+			<field name="condition_select">none</field>
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute">result = categories.BASIC + categories.ALW + categories.DED</field>
+			<field name="register_id" ref="contrib_register_employees" />
+		</record>
+
+		<record id="rule_working_rate" model="hr.salary.rule" forcecreate="False">
+			<field name="name">Working Rate</field>
+			<field name="code">WR1</field>
+			<field name="sequence" eval="0" />
+			<field name="category_id" ref="OTHER" />
+			<field name="condition_select">none</field>
+			<field name="appears_on_payslip" eval="False" />
+			<field name="amount_select">code</field>
+			<field name="amount_python_compute">
+<![CDATA[
+unpaid = days_onleave('Unpaid')
+
+date_from = payslip.date_from
+date_to = payslip.date_to + relativedelta(day = 30)
+
+if contract.date_start > date_from:
+  unpaid += days_between(date_from, contract.date_start) - 1
+	
+if contract.date_end and contract.date_end < date_to:
+  unpaid += days_between(contract.date_end, date_to) - 1	
+
+total = days_between(date_from, date_to)
+
+if total < 30:
+	total = 30
+
+unpaid = min(unpaid, total)
+
+result = (total - unpaid) * 100 / total
+
+if 'hr.leave.paid.percent' in employee.env:
+	percent_date_from = max(payslip.date_from, contract.date_start)
+	percent_date_to =  min(payslip.date_to, contract.date_end) if contract.date_end else payslip.date_to
+	paid_percent = employee.env['hr.leave.paid.percent']._get_paid_percentage(employee, percent_date_from, percent_date_to)
+	result = result * paid_percent / 100
+
+WR = result
+
+]]>
+			</field>
+		</record>
+
+		<!-- Salary Structure -->
+
+		<record id="structure_base" model="hr.payroll.structure">
+			<field name="code">BASE</field>
+			<field name="name">Base for new structures</field>
+			<field eval="[(6, 0, [ref('hr_rule_basic'), ref('hr_rule_taxable'),ref('hr_rule_net'), ref('hr_rule_net'), ref('rule_working_rate')])]" name="rule_ids" />
+			<field name="company_id" ref="base.main_company" />
+		</record>
+
+		<!-- Decimal Precision -->
+
+		<record forcecreate="True" id="decimal_payroll" model="decimal.precision">
+			<field name="name">Payroll</field>
+			<field name="digits">2</field>
+		</record>
+		
+		<record forcecreate="True" id="decimal_payroll_amount" model="decimal.precision">
+			<field name="name">Payroll Amount</field>
+			<field name="digits">2</field>
+		</record>		
+
+		<record forcecreate="True" id="decimal_payroll_rate" model="decimal.precision">
+			<field name="name">Payroll Rate</field>
+			<field name="digits">4</field>
+		</record>
+
+		<record forcecreate="True" id="decimal_payroll_quantity" model="decimal.precision">
+			<field name="name">Payroll Quantity</field>
+			<field name="digits">4</field>
+		</record>
+
+	</data>
+</odoo>

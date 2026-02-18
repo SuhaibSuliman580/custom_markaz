@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Root Menu -->
+    <menuitem id="menu_membership_root"
+              name="Doctor Membership"
+              sequence="60"
+              web_icon="membership_management,static/description/icon.png"
+              groups="membership_management.group_membership_officer"/>
+
+    <!-- Applications -->
+    <menuitem id="menu_membership_applications"
+              name="Applications"
+              parent="menu_membership_root"
+              action="action_membership_application"
+              sequence="10"/>
+
+    <!-- Membership Periods -->
+    <menuitem id="menu_membership_periods"
+              name="Memberships"
+              parent="menu_membership_root"
+              action="action_membership_period"
+              sequence="20"/>
+    <menuitem id="menu_doctor_partners"
+          name="Doctor"
+          parent="menu_membership_root"
+          action="action_doctor_partners"
+          sequence="10"
+          groups="membership_management.group_membership_officer"/>
+
+
+    <!-- Configuration Menu -->
+    <menuitem id="menu_membership_config"
+              name="Configuration"
+              parent="menu_membership_root"
+              sequence="100"
+              groups="membership_management.group_membership_admin"/>
+    <menuitem id="menu_medical_specialty"
+              name="Medical Specialties"
+              parent="menu_membership_config"
+              action="action_medical_specialty"
+              sequence="10"/>
+
+</odoo>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="open_payroll_modules" model="ir.actions.act_window">
+		<field name="name">Payroll</field>
+		<field name="res_model">ir.module.module</field>
+		<field name="view_mode">kanban,tree,form</field>
+		<field name="context"
+			eval="{'search_default_category_id': ref('base.module_category_payroll_localization'), 'search_default_name': 'Payroll'}" />
+		<field name="search_view_id" ref="base.view_module_filter" />
+	</record>
+
+	<record id="res_config_settings_view_form" model="ir.ui.view">
+		<field name="name">res.config.settings.view.form.inherit.hr.payroll</field>
+		<field name="model">res.config.settings</field>
+		<field name="priority" eval="45" />
+		<field name="inherit_id" ref="base.res_config_settings_view_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//form" position="inside">
+				<app name="to_hr_payroll" string="Payroll" data-string="Payroll"
+					groups="to_hr_payroll.group_hr_payroll_admin">
+
+					<block name="payroll_container" title="Payroll">
+						<setting name="payroll_country_setting" string="Country Payroll"
+							help="Payroll rules that apply to your country">
+							<div class="content-group">
+								<div class="mt8">
+									<button name="%(open_payroll_modules)d"
+											icon="fa-arrow-right" type="action"
+											string="Choose a Payroll Localization" class="btn-link" />
+								</div>
+								<div class="mt8">
+									<button name="action_generate_payroll_rules"
+											icon="fa-arrow-right" type="object"
+											string="Generate Payroll Rules" class="btn-link"
+											confirm="This will generate default rules for payroll. Please make sure you have set a proper country for your company before performing this action. Proceed now?" />
+								</div>
+							</div>
+						</setting>
+
+						<setting name="payroll_cycle_setting"
+							string="Salary Cyclel"
+							help="Customize your salary cycle">
+							<field name="salary_cycle_id" required="1" />
+						</setting>
+
+						<setting name="basic_wage_rule_categ_setting"
+							string="Basic Wage Rule Category"
+							help="The salary rule category that represents employee's basic wage">
+							<field name="basic_wage_rule_categ_id" />
+						</setting>
+
+						<setting name="gross_salary_rule_categ_setting"
+							string="Basic Wage Rule Category"
+							help="The salary rule category that computes employee gross salary (before tax)">
+							<field name="gross_salary_rule_categ_id" />
+						</setting>
+
+						<setting name="net_salary_rule_categ_setting"
+							string="Net Income Rule Category"
+							help="The salary rule category that computes employee net income (after tax and deduction)">
+							<field name="net_income_salary_rule_categ_id" />
+						</setting>
+
+						<setting name="tax_base_rule_categ_setting"
+							string="Personal Income Tax Base Rule Category"
+							help="The salary rule category that represents the personal income tax base for personal income tax computation">
+							<field name="tax_base_rule_categ_id" />
+						</setting>
+
+						<setting id="viin_hr_payroll_administrative_region_setting"
+							help="Respect min./max. wage and contributions by administration regions.">
+							<field name="module_viin_hr_payroll_administrative_region" />
+							<div class="text-muted">Note: this will activate
+								the module 'Payroll By Administrative Regions' automatically.
+							</div>
+							<div class="text-muted">
+								(Technical name: <i>viin_hr_payroll_administrative_region</i>)
+							</div>
+						</setting>
+					</block>
+
+					<block name="payroll_automation_container" title="Automation">
+						<setting name="payslips_auto_generation_setting"
+							string="Payslips Automation"
+							help="Auto generate payslips periodically based on contracts settings">
+							<field name="payslips_auto_generation" />
+							<button name="action_sync_contract_payslips_auto_generation"
+								string="Update for All Contracts" type="object"
+								confirm="This action will synchronize (enable/disable) the Payslips Automation option to all the contracts that are in either draft or running state so that you will not have to do it manually for each and every contract of your company.">
+							</button>
+						</setting>
+						<setting name="payroll_automation_setup_setting"
+							string="Payslips Generation Schedule"
+							invisible="not payslips_auto_generation"
+							help="Auto generate payslips periodically based on contracts settings">
+							<div class="text-muted">Payslips will be generated on the
+								<field name="payslips_auto_generation_day"
+									required="not payslips_auto_generation"
+									class="w-25" />
+								day(s) off the company salary cycle.
+							</div>
+							<div class="text-muted">Generation mode:
+								<field name="payslips_auto_generation_mode"
+									required="payslips_auto_generation" />
+							</div>
+							<div class="text-muted">Generation language:
+								<field name="payslips_auto_generation_lang" />
+							</div>
+						</setting>
+					</block>
+
+					<block name="payroll_accounting_container" title="Accounting">
+						<setting name="payslips_auto_generation_setting"
+							string="Payroll Entries"
+							help="Post payroll slips in accounting">
+							<field name="module_to_hr_payroll_account" />
+							<div class="text-muted">Note: this will activate
+								the module 'Payroll Accounting' automatically.
+							</div>
+							<div class="text-muted">
+								(Technical name: <i>to_hr_payroll_account</i>)
+							</div>
+						</setting>
+					</block>
+				</app>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="action_hr_payroll_configuration"
+		model="ir.actions.act_window">
+		<field name="name">Settings</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">res.config.settings</field>
+		<field name="view_mode">form</field>
+		<field name="target">inline</field>
+		<field name="context">{'module' : 'to_hr_payroll'}</field>
+	</record>
+
+	<menuitem id="menu_hr_payroll_global_settings" name="Settings"
+		parent="menu_hr_payroll_configuration" sequence="0"
+		action="action_hr_payroll_configuration" groups="base.group_system" />
+</odoo>

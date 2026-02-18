@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record model="ir.actions.act_window"
+		id="act_hr_payroll_contribution_register">
+		<field name="name">HR Payroll Contribution Register</field>
+		<field name="res_model">hr.payroll.contribution.register</field>
+		<field name="view_mode">tree,form,pivot,graph</field>
+		<field name="context">{'search_default_employee_id':[active_id],'default_employee_id':
+			active_id}
+		</field>
+	</record>
+
+	<!-- Employee View -->
+	<record id="payroll_hr_employee_view_form" model="ir.ui.view">
+		<field name="name">payroll.hr.employee.view.form</field>
+		<field name="model">hr.employee</field>
+		<field name="inherit_id" ref="hr.view_employee_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//div[@name='button_box']" position="inside">
+				<button name="action_view_payslips" class="oe_stat_button"
+					icon="fa-money" type="object"
+					groups="to_hr_payroll.group_hr_payroll_user">
+					<field name="payslips_count" widget="statinfo"
+						string="Payslips" />
+				</button>
+				<button name="action_view_payroll_contribution_registers"
+					type="object" class="oe_stat_button" icon="fa-folder-open-o"
+					invisible="not payroll_contribution_reg_count"
+					groups="to_hr_payroll.group_hr_payroll_user">
+					<field name="payroll_contribution_reg_count"
+						string="Contribution Registers" widget="statinfo" />
+				</button>
+			</xpath>
+
+		</field>
+	</record>
+
+	<record id="view_employee_tree" model="ir.ui.view">
+		<field name="name">hr.employee.view.tree</field>
+		<field name="model">hr.employee</field>
+		<field name="inherit_id" ref="hr.view_employee_tree" />
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='coach_id']" position="after">
+				<field name="contract_currency_id" column_invisible="1" />
+				<field name="gross_salary" optional="hide" />
+			</xpath>
+		</field>
+	</record>
+
+</odoo>

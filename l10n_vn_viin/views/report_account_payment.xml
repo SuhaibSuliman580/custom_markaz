@@ -1,0 +1,14 @@
+<odoo>
+	<template id="report_account_payment">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="doc">
+				<t t-set="legal_name" t-value="'01-TT' if doc.move_id.in_out_payment == 'in' else '02-TT'"/>
+				<t t-set='lang' t-value='doc.env.user.lang' />
+				<t t-set="o" t-value="doc.move_id" />
+				<t t-if="o.journal_id.type in ('bank', 'cash')">
+					<t t-call="l10n_vn_viin.report_account_move_payment_receipt_document" t-lang="lang" />
+				</t>
+			</t>
+		</t>
+	</template>
+</odoo>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="personal_tax_rule_be_demo" model="personal.tax.rule">
+    	<field name="country_id" ref="base.be"/>
+    	<field name="personal_tax_policy">escalation</field>
+    	<field name="apply_tax_base_deduction" eval="True" />
+    	<field name="personal_tax_base_ded" eval="500" />
+    	<field name="dependent_tax_base_ded" eval="200" />
+    	<field name="progress_ids" eval="[
+    		(0, 0, {
+                'base': 0,
+                'rate': 5.0,
+                }),
+            (0, 0, {
+                'base': 200,
+                'rate': 10.0,
+                }),
+            (0, 0, {
+                'base': 300,
+                'rate': 15.0,
+                }),
+            (0, 0, {
+                'base': 400,
+                'rate': 20.0,
+                }),
+    	]" />
+    </record>
+</odoo>

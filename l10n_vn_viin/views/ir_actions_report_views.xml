@@ -1,0 +1,23 @@
+<odoo>
+	<record id="act_report_xml_view" model="ir.ui.view">
+		<field name="name">ir.actions.report.form</field>
+		<field name="model">ir.actions.report</field>
+		<field name="inherit_id" ref="base.act_report_xml_view" />
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='print_report_name']" position="after">
+				<field name="legal_name" />
+			</xpath>
+		</field>
+	</record>
+
+	<record id="act_report_xml_view_tree" model="ir.ui.view">
+		<field name="name">ir.actions.report.tree</field>
+		<field name="model">ir.actions.report</field>
+		<field name="inherit_id" ref="base.act_report_xml_view_tree" />
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='report_name']" position="after">
+				<field name="legal_name" />
+			</xpath>
+		</field>
+	</record>
+</odoo>

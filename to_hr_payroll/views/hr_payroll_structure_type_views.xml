@@ -1,0 +1,48 @@
+<odoo>
+	<record id="hr_payroll_structure_type_views_tree" model="ir.ui.view">
+		<field name="name">hr.payroll.structure.type.view.tree</field>
+		<field name="model">hr.payroll.structure.type</field>
+		<field name="arch" type="xml">
+			<tree string="Salary Structure Type" sample="1">
+				<field name="name"/>
+				<field name="property_regular_struct_id"/>
+				<field name="property_thirteen_month_struct_id"/>
+				<field name="default_resource_calendar_id"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="hr_payroll_structure_type_views_form" model="ir.ui.view">
+		<field name="name">hr.payroll.structure.type.view.form</field>
+		<field name="model">hr.payroll.structure.type</field>
+		<field name="arch" type="xml">
+			<form string="Salary Structure Type">
+				<sheet>
+					<group>
+						<field name="name"/>
+						<field name="property_regular_struct_id"/>
+						<field name="property_thirteen_month_struct_id"/>
+						<field name="default_resource_calendar_id"/>
+						<field name="struct_ids" invisible="1"/>
+					</group>
+				</sheet>
+				<div class="oe_chatter">
+	                <field name="message_follower_ids" groups="base.group_user"/>
+	                <field name="activity_ids"/>
+	                <field name="message_ids"/>
+                </div>
+			</form>
+		</field>
+	</record>
+
+	<record id="hr_payroll_structure_type_action" model="ir.actions.act_window">
+		<field name="name">Salary Structure Type</field>
+		<field name="res_model">hr.payroll.structure.type</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+	
+	<menuitem id="hr_payroll_structure_type_menu"
+		action="hr_payroll_structure_type_action"
+		parent="menu_hr_payroll_configuration_payroll_entry"
+		sequence="1" />
+</odoo>

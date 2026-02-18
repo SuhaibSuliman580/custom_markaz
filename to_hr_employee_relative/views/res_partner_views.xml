@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="view_res_partner_filter">
+			<field name="name">res.partner.select</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_res_partner_filter" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='user_id']" position="after">
+					<field name="employee_relative_ids"
+						filter_domain="[('employee_relative_ids','ilike',self)]"
+						groups="hr.group_hr_user" />
+				</xpath>
+				<xpath expr="//filter[@name='type_company']"
+					position="after">
+					<separator/>
+					<filter name="ftr_is_employee_relative"
+						help="Employee Relatives"
+						domain="[('employee_relative_ids','!=',False)]"
+						groups="hr.group_hr_user" />
+				</xpath>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_partner_form">
+			<field name="name">res.partner.form</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='user_ids']" position="after">
+					<field name="relative_employee_ids" widget="many2many_tags"
+						invisible="not relative_employee_ids"
+						groups="hr.group_hr_user" />
+				</xpath>
+
+			</field>
+		</record>
+	</data>
+</odoo>

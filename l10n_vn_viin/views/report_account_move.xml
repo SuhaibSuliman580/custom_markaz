@@ -1,0 +1,366 @@
+<odoo>
+	<template id="report_account_move_journal_entry">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-set='lang' t-value='o.env.user.lang'/>
+				<t t-call="l10n_vn_viin.report_account_move_journal_entry_document" t-lang='o.env.user.lang'/>
+			</t>
+		</t>
+	</template>
+
+	<template id="report_account_move_journal_entry_document">
+		<t t-call="l10n_vn_viin.accounting_external_layout_standard">
+			<div class="page">
+				<t t-set="check_currency_exchange" t-value="o.company_id.currency_id != o.currency_id" />
+				<div class="mb32 text-center">
+					<h3>
+						<span>JOURNAL ENTRY</span>
+					</h3>
+				</div>
+				<div class='row'>
+					<div class='col-8' t-if='o.name'>
+						No:
+						<span t-field="o.name" />
+					</div>
+					<div class='col-4' t-if='o.invoice_date'>
+						Date No:
+						<span t-field="o.invoice_date" />
+					</div>
+				</div>
+				<div class='row'>
+					<div class='col-8' t-if='o.partner_id'>
+						<span t-if="o.move_type in ['out_invoice', 'out_refund', 'out_receipt']">
+							Customer:
+							<span t-field="o.partner_id.commercial_partner_id.name" />
+						</span>
+						<span t-elif="o.move_type in ['in_invoice', 'in_refund', 'in_receipt']">
+							Vendor:
+							<span t-field="o.partner_id.commercial_partner_id.name" />
+						</span>
+					</div>
+					<div class='col-4' t-if='o.date'>
+						Account Date:
+						<span t-field="o.date" />
+					</div>
+				</div>
+				<div class='row'>
+					<div class="col-12" t-if="o.payment_reference">
+						Content:
+						<span t-field="o.payment_reference" />
+					</div>
+                    <div class="col-12" t-elif="o.ref">
+                        Content:
+                        <span t-field="o.ref" />
+                    </div>
+				</div>
+
+				<div class="text-end">
+					Currency:
+					<span t-field="o.company_id.currency_id" />
+				</div>
+				<table class="table table-bordered">
+					<thead class='bg-light'>
+						<t t-if="check_currency_exchange">
+							<tr>
+								<th rowspan="3" class="text-center align-middle" style="width: 10%">Account</th>
+								<th rowspan="3" class="text-center align-middle" style="width: 30%">Description</th>
+								<th colspan="4" class="text-center align-middle" >Amount</th>
+							</tr>
+							<tr>
+								<th rowspan="2" class="text-center align-middle" style="width: 15%">
+									<div>Foreign Currency</div>
+									<span>(<t t-esc="o.currency_id.name"/>)</span>
+								</th>
+								<th rowspan="2" class="text-center align-middle" style="width: 15%">
+									<div>Exchange rate</div>
+									<span>(<t t-esc="o.company_id.currency_id.name" /> / <t t-esc="o.currency_id.name" />)</span>
+								</th>
+								<t t-set="exchange_text" t-value="o.company_id.currency_id.name" />
+								<th colspan="2" class="text-center align-middle">
+									<div>Exchange</div>
+									<span>(<t t-esc="exchange_text"/>)</span>
+								</th>
+							</tr>
+							<tr>
+								<th class="text-center align-middle" style="width: 15%">Debit</th>
+								<th class="text-center align-middle" style="width: 15%">Credit</th>
+							</tr>
+						</t>
+						<t t-else="">
+							<tr>
+								<th class="text-center align-middle" style="width: 15%">Account</th>
+								<th class="text-center align-middle" style="width: 55%">Description</th>
+								<th class="text-center align-middle" style="width: 15%">Debit</th>
+								<th class="text-center align-middle" style="width: 15%">Credit</th>
+							</tr>
+						</t>					
+					</thead>
+					<tbody>
+						<t t-foreach="o.line_ids" t-as='line'>
+							<tr>
+								<td>
+									<span t-esc='line.account_id.code' />
+								</td>
+								<td>
+									<t t-if="line.name">
+										<span t-field='line.name' />
+									</t>
+									<t t-else="">
+										<span t-field='line.account_id.name' />
+									</t>
+								</td>
+								<t t-if="check_currency_exchange">
+									<td class="text-end">
+										<span t-esc='abs(line.amount_currency)' t-options='{"widget": "float", "precision": 2}' />
+
+									</td>
+									<td class="text-end">
+										<t t-if='line.amount_currency != 0.0'>
+											<t t-set='current_rate' t-value='abs(line.balance/line.amount_currency)'/>
+										</t>
+										<t t-else="">
+											<t t-set='current_rate' t-value='1.0'/>
+										</t>
+										<span t-esc='current_rate' t-options='{"widget": "float", "precision": 0}' />
+									</td>
+								</t>
+								<td class="text-end">
+									<span t-field='line.debit' t-options='{"widget": "float", "precision": 0}' />
+								</td>
+								<td class="text-end">
+									<span t-field='line.credit' t-options='{"widget": "float", "precision": 0}' />
+								</td>
+							</tr>
+						</t>
+						<tr t-if='o.amount_total_signed' class="text-end">
+							<t t-if="check_currency_exchange">
+								<td colspan="4" class="text-start">
+									<b>Total</b>
+								</td>
+							</t>
+							<t t-else="">
+								<td colspan="2" class="text-start">
+									<b>Total</b>
+								</td>
+							</t>
+							<td>
+								<b>
+									<span t-esc="abs(o.amount_total_signed)" t-options='{"widget": "float", "precision": 0}' />
+								</b>
+							</td>
+							<td>
+								<b>
+									<span t-esc="abs(o.amount_total_signed)" t-options='{"widget": "float", "precision": 0}' />
+								</b>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div t-if='o.amount_total_signed'>
+					<i>
+						In Words:
+						<t t-if="lang == 'vi_VN'">
+							<span t-esc="o.company_id.currency_id.amount_to_text(abs(o.amount_total_signed))" />
+							<t t-if="not o.company_id.currency_id.currency_unit_label">
+								[
+								<span class="fa fa-warning" style="color: red;" />
+								You have not specified currency unit (e.g. Dollars, Vietnam
+											Dong, etc) for the corresponding currency
+								<span t-esc="o.company_id.currency_id.name" />
+								!]
+							</t>
+							<t t-else="">
+								<span t-field="o.company_id.currency_id.currency_unit_label" />
+							</t>
+						</t>
+						<t t-else="">
+							<span t-esc="o.company_id.currency_id.amount_to_text(abs(o.amount_total_signed))" />
+						</t>
+					</i>
+				</div>
+				<div>
+					<t t-call="l10n_vn_viin.signature_block" />
+				</div>
+			</div>
+		</t>
+	</template>
+
+	<template id="report_account_move_payment_receipt">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-set="legal_name" t-value="'01-TT' if o.in_out_payment == 'in' else '02-TT'" />
+				<t t-set="lang" t-value="o.env.user.lang" />
+				<t t-call="l10n_vn_viin.report_account_move_payment_receipt_document" t-lang="lang" />
+			</t>
+		</t>
+	</template>
+
+	<template id="report_account_move_payment_receipt_document">
+		<t t-call="l10n_vn_viin.accounting_circular_external_layout_standard">
+			<div class="page">
+				<div class="text-center">
+					<h3>
+						<t t-if="o.journal_id.type == 'bank'">
+							<span t-if="o.in_out_payment == 'in'">CREDIT NOTE</span>
+							<span t-else="">DEBIT NOTE</span>
+						</t>
+						<t t-elif="o.journal_id.type == 'cash'">
+							<span t-if="o.in_out_payment == 'in'">PAYMENT RECEIPT</span>
+							<span t-else="">PAYMENT VOUCHER</span>
+						</t>
+					</h3>
+					<div class="small">
+						Date:
+						<span t-field="o.date" />
+					</div>
+				</div>
+				<div class="small">
+					<div class="row">
+						<div class="col-4 offset-8">
+							Log #:..............
+							<br />
+							Number:
+							<span t-if="o.name" t-field="o.name" />
+							<br />
+							<t t-value="o.line_ids.filtered(lambda l: l.debit > 0)" t-set="debit_lines" />
+							<t t-foreach="debit_lines.read_group([('id', 'in', debit_lines.ids)],['account_id', 'debit'],['account_id'])" t-as="debit_line">
+								Debit:
+								<span t-esc="o.line_ids.account_id.browse(debit_line['account_id'][0]).code" />
+								<span class="pull-right" t-esc="debit_line['debit']" t-options="{'widget': 'monetary', 'display_currency': o.company_id.currency_id}" />
+								<br />
+							</t>
+							<t t-value="o.line_ids.filtered(lambda l: l.credit > 0)" t-set="credit_lines" />
+							<t t-foreach="credit_lines.read_group([('id', 'in', credit_lines.ids)],['account_id', 'credit'],['account_id'])" t-as="credit_line">
+								Credit:
+								<span t-esc="o.line_ids.account_id.browse(credit_line['account_id'][0]).code" />
+								<span class="pull-right" t-esc="credit_line['credit']" t-options="{'widget': 'monetary', 'display_currency': o.company_id.currency_id}" />
+								<br />
+							</t>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<span t-if="o.in_out_payment == 'in'">Name of Payment Applicant:</span>
+							<span t-else="">Name of Payment Receiver:</span>
+							<t t-if="o.payment_id">
+								<span t-esc="o.payment_id.recipient_payer or o.payment_id.partner_id.name" />
+							</t>
+							<t t-elif="o.statement_line_id">
+								<span t-esc="o.statement_line_id.partner_id.name" />
+							</t>
+							<br />
+							<t t-if="o.payment_id" t-set='partner' t-value="o.payment_id.partner_id.commercial_partner_id" />
+							<t t-if="o.statement_line_id" t-set='partner' t-value="o.statement_line_id.partner_id.commercial_partner_id" />
+							Company:
+							<span t-if="partner.commercial_company_name" t-esc="partner.commercial_company_name" />
+							<br />
+							Address:
+							<span t-if="partner.street" t-esc="partner.street" />
+							<t t-if="partner.street2">
+								,
+								<span t-field="partner.street2" />
+							</t>
+							<t t-if="partner.city">
+								,
+								<span t-field="partner.city" />
+							</t>
+							<t t-if="partner.state_id.name">
+								,
+								<span t-field="partner.state_id" />
+							</t>
+							<t t-if="partner.country_id.name">
+								,
+								<span t-field="partner.country_id" />
+							</t>
+							<br />
+							<span t-if="o.in_out_payment == 'in'">Receipt Reason:</span>
+							<span t-if="o.in_out_payment == 'out'">Payment Reason:</span>
+							<span t-if="o.payment_id" t-field="o.payment_id.ref" />
+							<span t-else="" t-field="o.ref" />
+							<br />
+							Total Amount:
+							<strong>
+								<span t-esc="abs(o.amount_total_signed)" t-options="{'widget': 'monetary', 'display_currency': o.company_id.currency_id}"/>
+							</strong>
+							(In Words):
+							<t t-if="lang != 'vi_VN'">
+								<span t-esc="o.company_id.currency_id.amount_to_text(abs(o.amount_total_signed))" />
+							</t>
+							<t t-if="lang == 'vi_VN'">
+								<t t-if="not o.company_id.currency_id.currency_unit_label">
+									<span t-field="o.amount_total_words" />
+									<br/>
+									[
+									<span class="fa fa-warning" style="color: red;" />
+									You have not specified currency unit (e.g. Dollars, Vietnam
+											Dong, etc) for the corresponding currency
+									<span t-esc="o.company_id.currency_id.name" />
+									!]
+								</t>
+								<t t-else="">
+									<span t-out="'%s.' % o.amount_total_words" />
+								</t>
+							</t>
+							<br />
+							<t t-if="o.payment_id.no_of_origin">
+								Attached:
+								<span t-esc="o.payment_id.no_of_origin" />
+								source document(s).
+							</t>
+							<t t-else="">
+								Attached: ... source document(s).
+							</t>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<p class="pull-right">On........Month.......Year........</p>
+						</div>
+					</div>
+					<div class="row text-center">
+						<div class="col-2">
+							<strong>Director/CEO</strong>
+							<br />
+							(Sign, Full Name, Stamp)
+						</div>
+						<div class="col-2" style="margin-left:3.3%;">
+							<strong>Chief Accountant</strong>
+							<br />
+							(Sign, Full Name)
+						</div>
+						<div class="col-2" style="margin-left:3.3%;">
+							<strong>
+								<span t-if="o.in_out_payment == 'in'">Payment Applicant</span>
+								<span t-else="">Payment Receiver</span>
+							</strong>
+							<br />
+							(Sign, Full Name)
+						</div>
+						<div class="col-2" style="margin-left:3.3%;">
+							<strong>Prepared By</strong>
+							<br />
+							(Sign, Full Name)
+						</div>
+						<div class="col-2" style="margin-left:3.3%;">
+							<strong>Cashier</strong>
+							<br />
+							(Sign, Full Name)
+						</div>
+					</div>
+					<div class="row" style="margin-top:50px;">
+						<div class="col-12">
+							Received Amount (in words):
+									.......................................................................................................
+							<br />
+							+ Foreign Exchange Rate (or Gold Currency):
+									...........................................................................
+							<br />
+							+ Conversion Amount:
+									.................................................................................................................
+						</div>
+					</div>
+				</div>
+			</div>
+		</t>
+	</template>
+</odoo>

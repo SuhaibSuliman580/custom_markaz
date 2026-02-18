@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_payslip">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2>Pay Slip</h2>
+                    <p t-field="o.name"/>
+                    <!-- As normal employee may not have access rights to read some data in employee model,
+                    sudo is implemented here to avoid access error when the employee prints his own payslip
+                    -->
+                    <t t-set="employee" t-value="o.employee_id.sudo()" />
+                    <table name="tbl_contact" class="table table-sm table-bordered">
+                        <tr>
+                            <td><strong>Name</strong></td>
+                            <td><span t-field="o.employee_id"/></td>
+                            <td><strong>Job Position</strong></td>
+                            <td><span t-field="employee.job_id"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Address</strong></td>
+                            <td colspan="3">
+                                <t t-set="address_employee" t-value="employee.get_employee_address()" />
+                                <span t-esc="address_employee"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email</strong></td>
+                            <td><span t-field="employee.work_email"/></td>
+                            <td><strong>Identification No</strong></td>
+                            <td><span t-field="employee.identification_id"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reference</strong></td>
+                            <td><span t-field="o.number"/></td>
+                            <td><strong>Bank Account</strong></td>
+                            <td><span t-field="employee.bank_account_id"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Date From</strong></td>
+                            <td><span t-field="o.date_from"/></td>
+                            <td><strong>Date To</strong></td>
+                            <td><span t-field="o.date_to"/></td>
+                        </tr>
+                    </table>
+					
+                    <h3>Working Calendar Info</h3>
+                    <table name="tbl_work_calendar" class="table table-sm table-bordered">
+                    	<tr>
+                            <td><strong>Duty Working Hours</strong></td>
+                            <td class="text-end"><span t-field="o.duty_working_hours"/></td>
+                            <td/>
+                            <td><strong>Duty Working Days</strong></td>
+                            <td class="text-end"><span t-field="o.duty_working_days"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Actual Worked Hours</strong></td>
+                            <td class="text-end"><span t-field="o.worked_hours"/></td>
+                            <td/>
+                            <td><strong>Actual Worked Days</strong></td>
+                            <td class="text-end"><span t-field="o.worked_days"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Leave Hours</strong></td>
+                            <td class="text-end"><span t-field="o.leave_hours"/></td>
+                            <td/>
+                            <td><strong>Total Leave Days</strong></td>
+                            <td class="text-end"><span t-field="o.leave_days"/></td>
+                       </tr>
+                        <tr>
+                            <td><strong>Total Unpaid Leave Hours</strong></td>
+                            <td class="text-end"><span t-field="o.unpaid_leave_hours"/></td>
+                            <td/>
+                            <td><strong>Total Unpaid Leave Days</strong></td>
+                            <td class="text-end"><span t-field="o.unpaid_leave_days"/></td>
+                        </tr>
+                    </table>
+                    
+                    <h3>Salary Computation</h3>
+                    <table name="tbl_lines" class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th class="text-end">Quantity/rate</th>
+                                <th class="text-end">Amount</th>
+                                <th class="text-end">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip)" t-as="line">
+                                <td><span t-field="line.code"/></td>
+                                <td><span t-field="line.name"/></td>
+                                <td class="text-end"><span t-field="line.quantity"/></td>
+                                <td class="text-end"><span t-esc="line.amount"
+                                          t-options='{"widget": "monetary", "display_currency": o.currency_id}'/></td>
+                                <td class="text-end"><span t-esc="line.total"
+                                          t-options='{"widget": "monetary", "display_currency": o.currency_id}'/></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="text-end"><strong>Authorized signature</strong></p>
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+</odoo>

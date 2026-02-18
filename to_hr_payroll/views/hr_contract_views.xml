@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- Contract View -->
+	<record id="hr_contract_form_inherit" model="ir.ui.view">
+		<field name="name">hr.contract.view.form.inherit</field>
+		<field name="model">hr.contract</field>
+		<field name="inherit_id" ref="hr_contract.hr_contract_view_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//div[@name='button_box']" position="inside">
+				<button name="action_view_payslips" type="object"
+					groups="hr.group_hr_user" class="oe_stat_button" icon="fa-money">
+					<field name="payslips_count" widget="statinfo"
+						string="Payslips" />
+				</button>
+			</xpath>
+
+			<xpath expr="//field[@name='job_id']" position="before">
+				<field name="currency_id" invisible="1" />
+			</xpath>
+
+			<xpath expr="//field[@name='structure_type_id'][2]" position="after">
+				<field name="struct_id" required="1" />
+				<field name="thirteen_month_struct_id" />
+			</xpath>
+
+			<!--Tab: Salary Information-->
+			<xpath expr="//group[@name='salary_info']" position="after">
+					<separator name="monthly_advantages" string="Monthly Advantages" />
+					<field name="advantage_ids">
+						<tree editable="bottom">
+							<field name="company_id" column_invisible="1"/>
+							<field name="job_advantage_id" column_invisible="1" />
+							<field name="template_id"
+								domain="[('company_id','=',parent.company_id),('currency_id','=',currency_id)]" />
+							<field name="code" force_save="1" />
+							<field name="amount" string="Amount" />
+							<field name="amount_type"/>
+							<field name="based_on_time_off_type_id"/>
+							<field name="currency_id" column_invisible="1" />
+							<field name="included_in_payroll_contribution_register"
+								widget="boolean_toggle" />
+						</tree>
+					</field>
+						
+					<div name="grp_help" class="alert alert-info border-0 rounded-0" role="alert"
+						groups="base.group_no_one">
+						You can access these values of the Employee's Advantages on
+						Contract in salary rule's Python code as:
+						<code>result = advantages.CODE.field_name</code>
+						<br />
+						Where,
+						<br />
+						<ul>
+							<li>CODE: is the code of an advantage specified above.</li>
+							<li>
+								field_name: the name of a field of the model
+								<code>hr.contract.advantage</code>
+								.
+							</li>
+						</ul>
+					</div>
+			</xpath>
+			
+			<!--Tab: Salary Information-->
+			<xpath expr="//group[@name='salary']" position="inside">
+				<label for="gross_salary" />
+				<div class="o_row mw-50" name="gross_salary">
+					<field name="gross_salary" class="oe_inline o_hr_narrow_field" nolabel="1" />
+					<div class="mb-3" name="wage_period_label">/ month</div>
+				</div>
+			</xpath>
+
+			<!--Tab: General Information-->
+			<xpath expr="//page[@name='information']" position="before">
+				<page name="contract_general" string="General Information">
+					<group name="group_setting">
+						<group name="group_setting_1">
+							<field name="salary_computation_mode" />
+						</group>
+						<group name="group_setting_2">
+							<field name="payslips_auto_generation" />
+						</group>
+					</group>
+					<group name="group_account">
+						<group name="group_tax" string="Tax">
+							<field name="personal_tax_policy" />
+							<field name="personal_tax_rule_id" required="1" options="{'no_quick_create': True}" />
+						</group>
+						<group name="group_accounting" string="Accounting">
+						</group>
+					</group>
+				</page>
+			</xpath>
+
+			<!--Tab: Contribution Registers-->
+			<xpath expr="//page[@name='information']" position="after">
+				<page string="Contribution Registers" name="payroll_contrib">
+					<group>
+						<field name="payroll_contribution_type_ids"
+							widget="many2many_tags" />
+					</group>
+					<div>
+						<button string="Generate Payroll Contribution Registers"
+							class="btn btn-link" type="object"
+							invisible="not payroll_contribution_type_ids"
+							name="generate_payroll_contribution_registers"
+							help="This will generate payroll contribution registers (if not exists) for the types selected above." />
+					</div>
+					<div class="d-flex gap-2 justify-content-end">
+						<button string="View Registers"
+							class="btn btn-link" type="object" icon="fa-arrow-right"
+							name="action_view_registers"/>
+					</div>
+					<field name="payroll_contribution_register_ids" readonly="1" >
+						<tree no_open="1">
+							<field name="type_id" />
+							<field name="registered_number" />
+							<field name="contribution_base" />
+							<field name="state" />
+						</tree>
+					</field>
+				</page>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="hr_contract_view_tree" model="ir.ui.view">
+		<field name="name">hr.contract.view.tree.inherit</field>
+		<field name="model">hr.contract</field>
+		<field name="inherit_id" ref="hr_contract.hr_contract_view_tree" />
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='date_end']" position="after">
+				<field name="personal_tax_policy" column_invisible="1" />
+				<field name="gross_salary" optional="hide" sum="Total Gross Salary"/>
+				<field name="personal_tax_rule_id" optional="hide" />
+			</xpath>
+		</field>
+	</record>
+</odoo>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="payslip_personal_income_tax_analysis_view_tree" model="ir.ui.view">
+			<field name="name">Payslip Personal Income Tax Tree</field>
+			<field name="model">payslip.personal.income.tax.analysis</field>
+			<field name="arch" type="xml">
+				<tree string="Payslip Personal Income Tax Analysis" sample="1">
+					<field name="employee_id" />
+					<field name="personal_tax_policy" />
+					<field name="base" />
+					<field name="tax_amount" />
+					<field name="date" />
+					<field name="state" />
+					<field name="company_id" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view"
+			id="payslip_personal_income_tax_analysis_view_pivot">
+			<field name="name">Payslip Personal Income Tax Pivot</field>
+			<field name="model">payslip.personal.income.tax.analysis</field>
+			<field name="arch" type="xml">
+				<pivot string="Payslip Personal Income Tax Analysis" sample="1">
+					<field name="date" type="col" />
+					<field name="employee_id" type="row" />
+					<field name="tax_amount" type="measure" />
+				</pivot>
+			</field>
+		</record>
+
+		<record model="ir.ui.view"
+			id="payslip_personal_income_tax_analysis_view_graph">
+			<field name="name">Payslip Personal Income Tax Graph</field>
+			<field name="model">payslip.personal.income.tax.analysis</field>
+			<field name="arch" type="xml">
+				<graph string="Payslip Personal Income Tax Analysis"
+					type="bar" stacked="True" sample="1">
+					<field name="date" interval="month" type="row" />
+					<field name="employee_id" />
+					<field name="tax_amount" type="measure" />
+				</graph>
+			</field>
+		</record>
+
+		<record id="payslip_personal_income_tax_analysis_view_search"
+			model="ir.ui.view">
+			<field name="name">Payslip Personal Income Tax Search</field>
+			<field name="model">payslip.personal.income.tax.analysis</field>
+			<field name="arch" type="xml">
+				<search string="Payslip Personal Income Tax Filter">
+					<field name="employee_id" />
+					<field name="barcode" />
+					<separator />
+					<field name="slip_id" />
+					<separator />
+					<field name="company_id" groups="base.group_multi_company" />
+					<separator />
+					<filter name="ftr_draft" string="Draft"
+						domain="[('state', '=', 'draft')]" />
+					<filter name="ftr_verified" string="Verified"
+						domain="[('state', '=', 'verified')]" />
+					<separator />
+					<filter string="This Year" name="year"
+						domain="[('date','&gt;=',time.strftime('%%Y-01-01'))]" />
+					<filter string="Last Year" name="ftr_lastyear"
+						domain="[('date','&gt;=',(context_today()-relativedelta(years=1)).strftime('%Y-01-01')),('date','&lt;',time.strftime('%Y-01-01'))]" />
+					<separator />
+					<group expand="1" string="Group By">
+						<filter name="grp_company" string="Company"
+							context="{'group_by':'company_id'}"
+							groups="base.group_multi_company" />
+						<filter name="grp_employee" string="Employee"
+							context="{'group_by':'employee_id'}" />
+						<filter name="grp_badge_id" string="Badge ID"
+							context="{'group_by':'barcode'}" />
+						<filter name="grp_tate" string="State"
+							context="{'group_by':'state'}" />
+						<filter name="grp_slip" string="Payslip"
+							context="{'group_by':'slip_id'}" />
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<record id="action_payslip_personal_income_tax_analysis"
+			model="ir.actions.act_window">
+			<field name="name">Payslip Personal Income Tax Analysis</field>
+			<field name="res_model">payslip.personal.income.tax.analysis</field>
+			<field name="view_mode">graph,pivot</field>
+			<field name="domain">[]</field>
+			<field name="context">{'search_default_ftr_verified':1}</field>
+			<field name="help">This report performs analysis on your payroll
+				personal income tax.
+			</field>
+		</record>
+
+		<menuitem
+			action="action_payslip_personal_income_tax_analysis"
+			id="menu_payslip_personal_income_tax_analysis"
+			name="Personal Income Tax Analysis" parent="menu_hr_payroll_reports"
+			sequence="99" groups="base.group_user" />
+	</data>
+</odoo>

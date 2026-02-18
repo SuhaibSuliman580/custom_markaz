@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="view_payslip_lines_contribution_register" model="ir.ui.view">
+            <field name="name">payslip.lines.contribution.register</field>
+            <field name="model">payslip.lines.contribution.register</field>
+            <field name="arch" type="xml">
+            <form string="Contribution Register's Payslip Lines">
+                <div class="alert alert-info" role="alert">
+                    <p>Information will be extracted if the following cases:</p>
+                    <p><span class="pe-4"></span>1. There is already a salary rule set in the `Contribution Register` field in the list you selected</p>
+                    <p><span class="pe-4"></span>2. The payslip is in Done state, and there payslip lines related to the pay rule in section 1.</p>
+                    <p><span class="pe-4"></span>3. Satisfy the time period below</p>
+                    <br/>
+                    <p>If the above is not satisfied, it will be removed from the report.</p>
+                </div>
+                <group>
+                    <group>
+                        <field name="date_from"/>
+                    </group>
+                    <group>
+                        <field name="date_to"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="print_report" string="Print" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_payslip_lines_contribution_register" model="ir.actions.act_window">
+            <field name="name">PaySlip Lines By Contribution Register</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">payslip.lines.contribution.register</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="model_hr_contribution_register" />
+            <field name="binding_type">report</field>
+        </record>
+
+</odoo>

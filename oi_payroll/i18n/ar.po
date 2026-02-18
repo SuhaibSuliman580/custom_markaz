@@ -1,0 +1,1833 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* oi_payroll
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0-20230614\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-26 08:39+0000\n"
+"PO-Revision-Date: 2023-06-26 12:04+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: ar\n"
+"X-Generator: Poedit 2.4.3\n"
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/models/hr_payroll_structure.py:0
+#, python-format
+msgid "%s (copy)"
+msgstr "%s (نسخة)"
+
+#. module: oi_payroll
+#: model:ir.actions.report,print_report_name:oi_payroll.action_report_payslip
+msgid "'Payslip - %s' % (object.employee_id.name)"
+msgstr ""
+
+#. module: oi_payroll
+#: model:ir.actions.report,print_report_name:oi_payroll.payslip_details_report
+msgid "'Payslip Details - %s' % (object.employee_id.name)"
+msgstr ""
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip__state
+msgid ""
+"* When the payslip is created the status is 'Draft'\n"
+"                \n"
+"* If the payslip is under verification, the status is 'Waiting'.\n"
+"                \n"
+"* If the payslip is confirmed then status is set to 'Done'.\n"
+"                \n"
+"* When user cancel payslip the status is 'Rejected'."
+msgstr ""
+"* عند إنشاء إيصال مرتب يكون في الحالة 'مسودة'\n"
+"                \n"
+"* إذا كان الإيصال قيد التحقق ينتقل للحالة 'انتظار'.\n"
+"                \n"
+"* اذا تم تأكيد الإيصال ينتقل للحالة 'مكتمل'.\n"
+"                \n"
+"* عنمما يقوم المستخدم بإلغاء إيصال المرتب تكون حالته 'مرفوض'."
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_by_employees
+msgid ""
+"<span colspan=\"4\" nolabel=\"1\">This wizard will generate payslips for "
+"all selected employee(s) based on the dates and credit note specified on "
+"Payslips Run.</span>"
+msgstr ""
+"<span colspan=\"4\" nolabel=\"1\">سينشئ هذا المعالج إيصالات بمرتبات كافة "
+"الموظفين المختارين حسب التواريخ وإشعارات الخصم المحددة بفترة الإيصال.</span>"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslipdetails
+msgid "<strong>Address</strong>"
+msgstr "<strong>العنوان</strong>"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslipdetails
+msgid "<strong>Authorized signature</strong>"
+msgstr "<strong>توقيع معتمد</strong>"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslipdetails
+msgid "<strong>Bank Account</strong>"
+msgstr "حساب بنكي<strong/>"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_contributionregister
+msgid "<strong>Date From:</strong>"
+msgstr "<strong>التاريخ من:</strong>"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslipdetails
+msgid "<strong>Date From</strong>"
+msgstr "<strong>التاريخ من</strong>"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_contributionregister
+msgid "<strong>Date To:</strong>"
+msgstr "<strong>التاريخ إلى:</strong>"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslipdetails
+msgid "<strong>Date To</strong>"
+msgstr "<strong>التاريخ إلى</strong>"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslipdetails
+msgid "<strong>Designation</strong>"
+msgstr "<strong>التعيين</strong>"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslipdetails
+msgid "<strong>Email</strong>"
+msgstr "<strong>البريد الإلكتروني</strong>"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslipdetails
+msgid "<strong>Identification No</strong>"
+msgstr "<strong>رقم الهوية</strong>"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslipdetails
+msgid "<strong>Name</strong>"
+msgstr "<strong>الاسم</strong>"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslipdetails
+msgid "<strong>Reference</strong>"
+msgstr "<strong>رقم الإشارة</strong>"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_contributionregister
+msgid "<strong>Register Name:</strong>"
+msgstr "<strong>اسم السجل:</strong>"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_contributionregister
+msgid "<strong>Total</strong>"
+msgstr "<strong>الإجمالي</strong>"
+
+#. module: oi_payroll
+#: model_terms:ir.actions.act_window,help:oi_payroll.action_contribution_register_form
+msgid ""
+"A contribution register is a third party involved in the salary\n"
+"\t\t\t\tpayment of the employees. It can be the social security, the\n"
+"\t\t\t\tstate or anyone that\n"
+"\t\t\t\tcollect or inject money on payslips."
+msgstr ""
+"سجل الاشتراكات هو طرف ثالث يشارك في الراتب\n"
+"\t\t\t\tدفع الموظفين. يمكن ان يكون الضمان الاجتماعي ، و\n"
+"\t\t\t\tالدولة أو اي شخص ان\n"
+"\t\t\t\tجمع أو حقن المال علي كشوف الرواتب."
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Accounting"
+msgstr "المحاسبة"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Accounting Information"
+msgstr "معلومات محاسبية"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payroll_structure__active
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__active
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__active
+msgid "Active"
+msgstr "نشط"
+
+#. module: oi_payroll
+#: model_terms:ir.actions.act_window,help:oi_payroll.action_contribution_register_form
+msgid "Add a new contribution register"
+msgstr "إضافة سجل مساهمة جديد"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Add an internal note..."
+msgstr "إضافة ملاحظة داخلية..."
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_contract_advantage_template_view_form
+msgid "Advantage Name"
+msgstr "اسم الميزة"
+
+#. module: oi_payroll
+#: model:ir.actions.act_window,name:oi_payroll.act_children_salary_rules
+msgid "All Children Rules"
+msgstr "كافة القواعد التابعة"
+
+#. module: oi_payroll
+#: model:hr.salary.rule.category,name:oi_payroll.ALW
+msgid "Allowance"
+msgstr "بدل"
+
+#. module: oi_payroll
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_payslip_line__condition_select__none
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_salary_rule__condition_select__none
+msgid "Always True"
+msgstr "صحيح دائما"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_input__amount
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__amount
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_contributionregister
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslipdetails
+msgid "Amount"
+msgstr "المبلغ"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__amount_select
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__amount_select
+msgid "Amount Type"
+msgstr "نوع المبلغ"
+
+#. module: oi_payroll
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_contract__schedule_pay__annually
+msgid "Annually"
+msgstr "سنويا"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__appears_on_payslip
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__appears_on_payslip
+msgid "Appears on Payslip"
+msgstr "يظهر في إيصال المرتب"
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip_line__condition_python
+#: model:ir.model.fields,help:oi_payroll.field_hr_salary_rule__condition_python
+msgid ""
+"Applied this rule for calculation if condition is true. You can specify "
+"condition like basic > 1000."
+msgstr ""
+"تُطبق هذه القاعدة للحساب في حال تم تطبيق الشرط. يمكنك تحديد شرط مثل أن يكون "
+"المرتب الأساسي >1000."
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "Bank Name:"
+msgstr "أسم البنك:"
+
+#. module: oi_payroll
+#: model:hr.payroll.structure,name:oi_payroll.structure_base
+msgid "Base for new structures"
+msgstr "القاعدة للهياكل الجديدة"
+
+#. module: oi_payroll
+#: model:hr.salary.rule.category,name:oi_payroll.BASIC
+msgid "Basic"
+msgstr "أساسي"
+
+#. module: oi_payroll
+#: model:hr.salary.rule,name:oi_payroll.hr_rule_basic
+msgid "Basic Salary"
+msgstr "المرتب الأساسي"
+
+#. module: oi_payroll
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_contract__schedule_pay__bi-monthly
+msgid "Bi-monthly"
+msgstr "نصف شهريه"
+
+#. module: oi_payroll
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_contract__schedule_pay__bi-weekly
+msgid "Bi-weekly"
+msgstr "نصف أسبوعيه"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_line_form
+msgid "Calculations"
+msgstr "حسابات"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_payslip_lines_contribution_register
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Cancel Payslip"
+msgstr "إلغاء إيصال المرتب"
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/models/hr_payslip.py:0
+#, python-format
+msgid "Cannot cancel a payslip that is done."
+msgstr "لا يمكن إلغاء إيصال مرتب مكتمل."
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__category_id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__category_id
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_rule_filter
+msgid "Category"
+msgstr "فئة"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_salary_rule_form
+msgid "Child Rules"
+msgstr "القواعد التابعة"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__child_ids
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__child_ids
+msgid "Child Salary Rule"
+msgstr "قاعدة المرتب التابعة"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payroll_structure__children_ids
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule_category__children_ids
+msgid "Children"
+msgstr "الفروع"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_salary_rule_form
+msgid "Children Definition"
+msgstr "التعريفات التابعة"
+
+#. module: oi_payroll
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_payslip_run__state__close
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_payslip_run_form
+msgid "Close"
+msgstr "إغلاق"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contract_advantage_template__code
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_input__code
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__code
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line_description__code
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_worked_days__code
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_rule_input__code
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__code
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule_category__code
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_contributionregister
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslipdetails
+msgid "Code"
+msgstr "الكود"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_payroll_structure_view_kanban
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_salary_rule_view_kanban
+msgid "Code:"
+msgstr "الكود:"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_filter
+msgid "Companies"
+msgstr "الشركات"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contribution_register__company_id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payroll_structure__company_id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__company_id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__company_id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_run__company_id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__company_id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule_category__company_id
+msgid "Company"
+msgstr "الشركة"
+
+#. module: oi_payroll
+#: model:hr.salary.rule.category,name:oi_payroll.COMP
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_salary_rule_form
+msgid "Company Contribution"
+msgstr "مساهمة المؤسسة"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_salary_rule_form
+msgid "Computation"
+msgstr "احتساب"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Compute Sheet"
+msgstr "ورقة الحساب"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__condition_select
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__condition_select
+msgid "Condition Based on"
+msgstr "بناء على شرط"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_salary_rule_form
+msgid "Conditions"
+msgstr "الشروط"
+
+#. module: oi_payroll
+#: model:ir.ui.menu,name:oi_payroll.menu_hr_payroll_configuration
+msgid "Configuration"
+msgstr "إعداد"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Confirm"
+msgstr "تأكيد"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__contract_id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_input__contract_id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__contract_id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_worked_days__contract_id
+msgid "Contract"
+msgstr "العقد"
+
+#. module: oi_payroll
+#: model:ir.actions.act_window,name:oi_payroll.hr_contract_advantage_template_action
+#: model:ir.ui.menu,name:oi_payroll.hr_contract_advantage_template_menu_action
+msgid "Contract Advantage Templates"
+msgstr "قوالب مزايا العقود"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_contribution_register_form
+msgid "Contribution"
+msgstr "المساهمة"
+
+#. module: oi_payroll
+#: model:ir.model,name:oi_payroll.model_hr_contribution_register
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__register_id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__register_id
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_line_filter
+msgid "Contribution Register"
+msgstr "سجل المساهمة"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_payslip_lines_contribution_register
+msgid "Contribution Register's Payslip Lines"
+msgstr "بنود إيصال سجل المساهمة"
+
+#. module: oi_payroll
+#: model:ir.actions.act_window,name:oi_payroll.action_contribution_register_form
+#: model:ir.ui.menu,name:oi_payroll.menu_action_hr_contribution_register_form
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_contribution_register_filter
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_contribution_register_tree
+msgid "Contribution Registers"
+msgstr "سجلات المساهمة"
+
+#. module: oi_payroll
+#: model:hr.salary.rule,name:oi_payroll.hr_salary_rule_convanceallowance1
+msgid "Conveyance Allowance"
+msgstr "بدل النقل"
+
+#. module: oi_payroll
+#: model:hr.salary.rule,name:oi_payroll.hr_salary_rule_ca_gravie
+msgid "Conveyance Allowance For Gravie"
+msgstr "بدل النقل لجرافي"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contract_advantage_template__create_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contribution_register__create_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payroll_structure__create_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__create_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_employees__create_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_input__create_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__create_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line_description__create_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_run__create_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_worked_days__create_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_rule_input__create_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__create_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule_category__create_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_payslip_lines_contribution_register__create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contract_advantage_template__create_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contribution_register__create_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payroll_structure__create_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__create_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_employees__create_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_input__create_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__create_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line_description__create_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_run__create_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_worked_days__create_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_rule_input__create_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__create_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule_category__create_date
+#: model:ir.model.fields,field_description:oi_payroll.field_payslip_lines_contribution_register__create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__credit_note
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_run__credit_note
+msgid "Credit Note"
+msgstr "إشعار خصم"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__date_from
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_run__date_start
+#: model:ir.model.fields,field_description:oi_payroll.field_payslip_lines_contribution_register__date_from
+msgid "Date From"
+msgstr "التاريخ من"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__date_to
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_run__date_end
+#: model:ir.model.fields,field_description:oi_payroll.field_payslip_lines_contribution_register__date_to
+msgid "Date To"
+msgstr "التاريخ إلى"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "Date of Join:"
+msgstr "تاريخ الانضمام:"
+
+#. module: oi_payroll
+#: model:hr.salary.rule.category,name:oi_payroll.DED
+msgid "Deduction"
+msgstr "الاستقطاعات"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "Deductions"
+msgstr "الاستقطاعات"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contract_advantage_template__default_value
+msgid "Default value for this advantage"
+msgstr "القيمة الافتراضية لهذه الميزة"
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_contract__schedule_pay
+msgid "Defines the frequency of the wage payment."
+msgstr "يحدد وتيرة دفع الأجور."
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip__struct_id
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip_line__struct_id
+msgid ""
+"Defines the rules that have to be applied to this payslip, accordingly to "
+"the contract chosen. If you let empty the field contract, this field isn't "
+"mandatory anymore and thus the rules applied will be all the rules set on "
+"the structure of all contracts of the employee valid for the chosen period"
+msgstr ""
+"يحدد القواعد التي يجب تطبيقها على إيصال المرتب هذا، حسب العقد المختار. إذا "
+"تركت حقل العقد فارغًا، لن يكون هذا الحقل إلزاميًا، وبالتالي ستُطبق كافة "
+"القواعد المنصوص عليها في هيكل المرتب فى عقود الموظف الصالحة للفترة المختارة"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "Department:"
+msgstr "القسم"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contribution_register__note
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payroll_structure__note
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_input__name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__description
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line_description__description
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_worked_days__name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_rule_input__name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__note
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule_category__note
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_contribution_register_form
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_salary_rule_form
+msgid "Description"
+msgstr "الوصف"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Details By Salary Rule Category"
+msgstr "التفاصيل حسب فئة قواعد المرتب"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__details_by_salary_rule_category
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslipdetails
+msgid "Details by Salary Rule Category"
+msgstr "التفاصيل حسب فئة قواعد المرتب"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contract_advantage_template__display_name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contribution_register__display_name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payroll_structure__display_name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__display_name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_employees__display_name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_input__display_name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__display_name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line_description__display_name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_run__display_name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_worked_days__display_name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_rule_input__display_name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__display_name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule_category__display_name
+#: model:ir.model.fields,field_description:oi_payroll.field_payslip_lines_contribution_register__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: oi_payroll
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_payslip__state__done
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_payslip_run_filter
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_filter
+msgid "Done"
+msgstr "المنتهية"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_payslip_run_filter
+msgid "Done Payslip Batches"
+msgstr "دفعات المرتب المكتملة"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_filter
+msgid "Done Slip"
+msgstr "إيصال المرتب المنتهي"
+
+#. module: oi_payroll
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_payslip__state__draft
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_payslip_run__state__draft
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_payslip_run_filter
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_filter
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_payslip_run_filter
+msgid "Draft Payslip Batches"
+msgstr "دفعات المرتب المسودة"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_filter
+msgid "Draft Slip"
+msgstr "إيصال مرتب مسودة"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "Earnings"
+msgstr "الأرباح"
+
+#. module: oi_payroll
+#: model:ir.model,name:oi_payroll.model_hr_employee
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__employee_id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__employee_id
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_line_filter
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: oi_payroll
+#: model:ir.model,name:oi_payroll.model_hr_contract
+msgid "Employee Contract"
+msgstr "عقد الموظف"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_employee_grade_form
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payroll_structure_list_view
+msgid "Employee Function"
+msgstr "مهمات الموظف"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "Employee ID:"
+msgstr "رقم الموظف:"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "Employee Name:"
+msgstr "اسم الموظف:"
+
+#. module: oi_payroll
+#: model:ir.actions.act_window,name:oi_payroll.action_view_hr_payslip_form
+#: model:ir.ui.menu,name:oi_payroll.menu_department_tree
+msgid "Employee Payslips"
+msgstr "إيصالات مرتبات الموظف"
+
+#. module: oi_payroll
+#: model:ir.model,name:oi_payroll.model_hr_contract_advantage_template
+msgid "Employee's Advantage on Contract"
+msgstr "مزايا الموظف المسجلة بالعقد"
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_contract__resource_calendar_id
+msgid "Employee's working schedule."
+msgstr "جدول عمل الموظف."
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_employees__employee_ids
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_by_employees
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_filter
+msgid "Employees"
+msgstr "الموظفون"
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/models/hr_salary_rule_category.py:0
+#, python-format
+msgid "Error! You cannot create recursive hierarchy of Salary Rule Category."
+msgstr "خطأ! لا يمكنك إنشاء تدرج هرمي متكرر لفئة قواعد المرتب."
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/models/hr_salary_rule.py:0
+#, python-format
+msgid "Error! You cannot create recursive hierarchy of Salary Rules."
+msgstr "خطأ! لا يمكنك إنشاء تدرج هرمي متكرر لقواعد المرتب."
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip_line__register_id
+#: model:ir.model.fields,help:oi_payroll.field_hr_salary_rule__register_id
+msgid "Eventual third party involved in the salary payment of the employees."
+msgstr "طرف ثالث نهائي يشارك في دفع أجور الموظفين ."
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__exception_alerts
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_run__exception_alerts
+msgid "Exception Alerts"
+msgstr "تنبيهات الاستثناءات"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__exception_record_ids
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_run__exception_record_ids
+msgid "Exception Record"
+msgstr "سجل الاستثناءات"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__exception_record_count
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_run__exception_record_count
+msgid "Exception Record Count"
+msgstr "عدد سجلات الاستثناءات"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__exceptional
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__exceptional
+msgid "Exceptional"
+msgstr "استثنائي"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_run__exceptional_line_ids
+msgid "Exceptional Line"
+msgstr "البند الاستثنائي"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_payslip_run_form
+msgid "Exceptions"
+msgstr "الاستثناءات"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__amount_fix
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__amount_fix
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_payslip_line__amount_select__fix
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_salary_rule__amount_select__fix
+msgid "Fixed Amount"
+msgstr "مبلغ ثابت"
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip_line__amount_percentage
+#: model:ir.model.fields,help:oi_payroll.field_hr_salary_rule__amount_percentage
+msgid "For example, enter 50.0 to apply a percentage of 50%"
+msgstr "على سبيل المثال، ادخل 50.0 لتطبيق نسبة 50%"
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/report/report_contribution_register.py:0
+#, python-format
+msgid "Form content is missing, this report cannot be printed."
+msgstr "محتوى النموذج مفقود ، لا يمكن طباعة هذا التقرير."
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_salary_rule_form
+msgid "General"
+msgstr "عام"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_by_employees
+msgid "Generate"
+msgstr "إنشاء"
+
+#. module: oi_payroll
+#: model:ir.actions.act_window,name:oi_payroll.action_hr_payslip_by_employees
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_payslip_run_form
+msgid "Generate Payslips"
+msgstr "إنشاء إيصالات مرتبات"
+
+#. module: oi_payroll
+#: model:ir.model,name:oi_payroll.model_hr_payslip_employees
+msgid "Generate payslips for all selected employees"
+msgstr "إنشاء إيصالات مرتبات لكافة الموظفين المحددين"
+
+#. module: oi_payroll
+#: model:hr.salary.rule,name:oi_payroll.hr_salary_rule_sales_commission
+msgid "Get 1% of sales"
+msgstr "احصل على 1% من المبيعات"
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/models/hr_payslip.py:0
+#, python-format
+msgid "Global Leaves"
+msgstr "الإجازات العامة"
+
+#. module: oi_payroll
+#: model:hr.salary.rule,name:oi_payroll.hr_rule_taxable
+#: model:hr.salary.rule.category,name:oi_payroll.GROSS
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "Gross"
+msgstr "الإجمالي"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_filter
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_line_filter
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_rule_filter
+msgid "Group By"
+msgstr "تجميع حسب"
+
+#. module: oi_payroll
+#: model:ir.module.category,description:oi_payroll.module_category_hr_payroll
+msgid "Helps you manage your payrolls."
+msgstr "يساعدك على إدارة الرواتب الخاصة بك."
+
+#. module: oi_payroll
+#: model:hr.salary.rule,name:oi_payroll.hr_salary_rule_houserentallowance1
+msgid "House Rent Allowance"
+msgstr "بدل سكن"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "IBAN:"
+msgstr "رقم الحساب المصرفي الدولي (IBAN):"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contract_advantage_template__id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contribution_register__id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payroll_structure__id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_employees__id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_input__id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line_description__id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_run__id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_worked_days__id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_rule_input__id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule_category__id
+#: model:ir.model.fields,field_description:oi_payroll.field_payslip_lines_contribution_register__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip_run__credit_note
+msgid ""
+"If its checked, indicates that all payslips generated from here are refund "
+"payslips."
+msgstr ""
+"إذا كان محددًا، فهذا يشير إلى أن جميع إيصالات المرتبات المنشأة من هنا هي "
+"إيصالات مرتجعات."
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip_line__active
+#: model:ir.model.fields,help:oi_payroll.field_hr_salary_rule__active
+msgid ""
+"If the active field is set to false, it will allow you to hide the salary "
+"rule without removing it."
+msgstr ""
+"إذا تم تحويل قيمة الحقل نشط إلى خطأ، يمكنك إخفاء قاعدة المرتب دون إزالتها."
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip__credit_note
+msgid "Indicates this payslip has a refund of another"
+msgstr "تشير إلى أن لهذا الإيصال قيمة مسترجعة من إيصال آخر"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_salary_rule_form
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Input Data"
+msgstr "البيانات المدخلة"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__input_ids
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__input_ids
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_salary_rule_form
+msgid "Inputs"
+msgstr "المدخلات"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__note
+msgid "Internal Note"
+msgstr "ملاحظة داخلية"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_line_graph
+msgid "Invoices Analysis"
+msgstr "تحليل الفواتير"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_payslip_run_view_kanban
+msgid "Is a Blocking Reason?"
+msgstr "هل هو سبب للحظر؟"
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_salary_rule__quantity
+msgid ""
+"It is used in computation for percentage and fixed amount. For e.g. A rule "
+"for Meal Voucher having fixed amount of 1€ per worked day can have its "
+"quantity defined in expression like worked_days.WORK100.number_of_days."
+msgstr ""
+"تستخدم في احتساب الكميات الثابتة وذات النسبة المئوية. فمثلًا: يمكن تعريف "
+"قاعدة قسيمة وجبة الطعام ذات المبلغ الثابت بواحد يورو لكل يوم عمل بصيغة مثل: "
+"worked_days.WORK100.number_of_days."
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip_input__amount
+msgid ""
+"It is used in computation. For e.g. A rule for sales having 1% commission "
+"of basic salary for per product can defined in expression like result = "
+"inputs.SALEURO.amount * contract.wage*0.01."
+msgstr ""
+"تستخدم في الاحتساب. مثلًا: يمكن تعريف قاعدة مبيعات تنص على عمولة بقدر 1٪ من "
+"المرتب الأساسي لكل منتج بالتعبير: result = inputs.SALEURO.amount * contract."
+"wage*0.01."
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "Job Title:"
+msgstr "المسمى الوظيفي:"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contract_advantage_template____last_update
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contribution_register____last_update
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payroll_structure____last_update
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip____last_update
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_employees____last_update
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_input____last_update
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line____last_update
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line_description____last_update
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_run____last_update
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_worked_days____last_update
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_rule_input____last_update
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule____last_update
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule_category____last_update
+#: model:ir.model.fields,field_description:oi_payroll.field_payslip_lines_contribution_register____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contract_advantage_template__write_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contribution_register__write_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payroll_structure__write_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__write_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_employees__write_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_input__write_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__write_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line_description__write_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_run__write_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_worked_days__write_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_rule_input__write_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__write_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule_category__write_uid
+#: model:ir.model.fields,field_description:oi_payroll.field_payslip_lines_contribution_register__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contract_advantage_template__write_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contribution_register__write_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payroll_structure__write_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__write_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_employees__write_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_input__write_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__write_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line_description__write_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_run__write_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_worked_days__write_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_rule_input__write_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__write_date
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule_category__write_date
+#: model:ir.model.fields,field_description:oi_payroll.field_payslip_lines_contribution_register__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_salary_rule_category__parent_id
+msgid ""
+"Linking a salary category to its parent is used only for the reporting "
+"purpose."
+msgstr "يستخدم ربط فئة المرتب بفئته الأصل بغرض تقديم التقارير فقط."
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contract_advantage_template__lower_bound
+msgid "Lower Bound"
+msgstr "الحد الأدنى"
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_contract_advantage_template__lower_bound
+msgid "Lower bound authorized by the employer for this advantage"
+msgstr "الحد الأدنى المعتمد من الموظف لهذه الميزة"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__paid
+msgid "Made Payment Order ? "
+msgstr "أصدر أمر سداد؟ "
+
+#. module: oi_payroll
+#: model:res.groups,name:oi_payroll.group_hr_payroll_manager
+msgid "Manager"
+msgstr "المدير"
+
+#. module: oi_payroll
+#: model:hr.payroll.structure,name:oi_payroll.structure_001
+msgid "Marketing Executive"
+msgstr "المدير التفيذي للتسويق"
+
+#. module: oi_payroll
+#: model:hr.payroll.structure,name:oi_payroll.structure_002
+msgid "Marketing Executive for Gilles Gravie"
+msgstr "المدير التنفيذي للتسويق لـ جيليس جرافي"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__condition_range_max
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__condition_range_max
+msgid "Maximum Range"
+msgstr "الحد الأقصى"
+
+#. module: oi_payroll
+#: model:hr.salary.rule,name:oi_payroll.hr_salary_rule_meal_voucher
+msgid "Meal Voucher"
+msgstr "قسيمة وجبة"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__condition_range_min
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__condition_range_min
+msgid "Minimum Range"
+msgstr "الحد الأدنى"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Miscellaneous"
+msgstr "متنوعة"
+
+#. module: oi_payroll
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_contract__schedule_pay__monthly
+msgid "Monthly"
+msgstr "شهرياً"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contract_advantage_template__name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contribution_register__name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payroll_structure__name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_run__name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__name
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule_category__name
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_contributionregister
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslipdetails
+msgid "Name"
+msgstr "الاسم"
+
+#. module: oi_payroll
+#: model:hr.salary.rule.category,name:oi_payroll.NET
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "Net"
+msgstr "الصافي"
+
+#. module: oi_payroll
+#: model:hr.salary.rule,name:oi_payroll.hr_rule_net
+msgid "Net Salary"
+msgstr "صافي المرتب"
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/models/hr_payslip.py:0
+#, python-format
+msgid "Normal Working Days paid at 100%"
+msgstr "أيام العمل العادية المدفوعة بنسبة 100%"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__note
+msgid "Note"
+msgstr "الوصف"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_salary_rule_category_form
+msgid "Notes"
+msgstr "الملاحظات"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_worked_days__number_of_days
+msgid "Number of Days"
+msgstr "عدد الأيام"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_worked_days__number_of_hours
+msgid "Number of Hours"
+msgstr "عدد الساعات"
+
+#. module: oi_payroll
+#: model:res.groups,name:oi_payroll.group_hr_payroll_user
+msgid "Officer"
+msgstr "موظف"
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/models/hr_payslip.py:0
+#, python-format
+msgid "Only %s Can Reset Pay Slip"
+msgstr "يمكن إعادة ضبط كشوف الرواتب فقط من قبل %s"
+
+#. module: oi_payroll
+#: model:hr.salary.rule.category,name:oi_payroll.OTHER
+msgid "Other"
+msgstr "غير ذلك"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Other Inputs"
+msgstr "مدخلات أخرى"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payroll_structure__parent_id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule_category__parent_id
+msgid "Parent"
+msgstr "الأصل"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__parent_rule_id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__parent_rule_id
+msgid "Parent Salary Rule"
+msgstr "قاعدة المرتب الأصلية"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contribution_register__partner_id
+msgid "Partner"
+msgstr "الشريك"
+
+#. module: oi_payroll
+#: model:ir.model,name:oi_payroll.model_hr_payslip
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_input__payslip_id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__slip_id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line_description__payslip_id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_worked_days__payslip_id
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslipdetails
+msgid "Pay Slip"
+msgstr "إيصال المرتب"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_filter
+msgid "PaySlip Batch"
+msgstr "دفعات إيصال المرتب"
+
+#. module: oi_payroll
+#: model:ir.actions.report,name:oi_payroll.payslip_details_report
+msgid "PaySlip Details"
+msgstr "تفاصيل إيصال المرتب"
+
+#. module: oi_payroll
+#: model:ir.actions.act_window,name:oi_payroll.action_payslip_lines_contribution_register
+msgid "PaySlip Lines"
+msgstr "بنود إيصال المرتب"
+
+#. module: oi_payroll
+#: model:ir.actions.report,name:oi_payroll.action_contribution_register
+msgid "PaySlip Lines By Conribution Register"
+msgstr "بنود إيصال المرتب حسب سجل المساهمة"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_contributionregister
+msgid "PaySlip Lines by Contribution Register"
+msgstr "بنود إيصال المرتب حسب سجل المساهمة"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_contributionregister
+msgid "PaySlip Name"
+msgstr "اسم إيصال المرتب"
+
+#. module: oi_payroll
+#: model:ir.module.category,name:oi_payroll.module_category_hr_payroll
+#: model:ir.ui.menu,name:oi_payroll.menu_hr_payroll_root
+msgid "Payroll"
+msgstr "الأجور"
+
+#. module: oi_payroll
+#: model:ir.model,name:oi_payroll.model_report_oi_payroll_report_contributionregister
+msgid "Payroll Contribution Register Report"
+msgstr "تقرير سجل المساهمة في الأجور"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payroll_structure_filter
+msgid "Payroll Structures"
+msgstr "هياكل المرتبات"
+
+#. module: oi_payroll
+#: model:ir.actions.report,name:oi_payroll.action_report_payslip
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Payslip"
+msgstr "إيصال المرتب"
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/models/hr_payslip.py:0
+#, python-format
+msgid "Payslip 'Date From' must be earlier 'Date To'."
+msgstr "يجب أن يسبق 'تاريخ البداية' في إيصال المرتب 'تاريخ النهاية'."
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_line_pivot
+msgid "Payslip Analysis"
+msgstr "تحليل كشوف المرتبات"
+
+#. module: oi_payroll
+#: model:ir.model,name:oi_payroll.model_hr_payslip_run
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__payslip_run_id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__payslip_run_id
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_payslip_run_filter
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_line_filter
+msgid "Payslip Batches"
+msgstr "دفعات إيصال المرتب"
+
+#. module: oi_payroll
+#: model:ir.actions.act_window,name:oi_payroll.act_payslip_lines
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__payslip_count
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Payslip Computation Details"
+msgstr "تفاصيل احتساب إيصال المرتب"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_employee__payslip_count
+msgid "Payslip Count"
+msgstr "عدد إيصالات المرتبات"
+
+#. module: oi_payroll
+#: model:ir.model,name:oi_payroll.model_report_oi_payroll_report_payslipdetails
+msgid "Payslip Details Report"
+msgstr "تقرير تفاصيل إيصال المرتب"
+
+#. module: oi_payroll
+#: model:ir.model,name:oi_payroll.model_hr_payslip_input
+msgid "Payslip Input"
+msgstr "مدخلات إيصال المرتب"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__input_line_ids
+msgid "Payslip Inputs"
+msgstr "مدخلات إيصال المرتب"
+
+#. module: oi_payroll
+#: model:ir.model,name:oi_payroll.model_hr_payslip_line
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_line_form
+msgid "Payslip Line"
+msgstr "بند إيصال المرتب"
+
+#. module: oi_payroll
+#: model:ir.actions.act_window,name:oi_payroll.act_contribution_reg_payslip_lines
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__line_ids
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_line_filter
+msgid "Payslip Lines"
+msgstr "بنود إيصال المرتب"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslipdetails
+msgid "Payslip Lines by Contribution Register"
+msgstr "بنود إيصال المرتب حسب سجل المساهمة"
+
+#. module: oi_payroll
+#: model:ir.model,name:oi_payroll.model_payslip_lines_contribution_register
+msgid "Payslip Lines by Contribution Registers"
+msgstr "بنود إيصال المرتب حسب سجل المساهمة"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__name
+msgid "Payslip Name"
+msgstr "اسم إيصال المرتب"
+
+#. module: oi_payroll
+#: model:ir.model,name:oi_payroll.model_hr_payslip_worked_days
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__worked_days_line_ids
+msgid "Payslip Worked Days"
+msgstr "أيام العمل في إيصال المرتب"
+
+#. module: oi_payroll
+#: model:ir.actions.act_window,name:oi_payroll.act_hr_employee_payslip_list
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_employee__slip_ids
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_run__slip_ids
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_payslip_run_form
+#: model_terms:ir.ui.view,arch_db:oi_payroll.payroll_hr_employee_view_form
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_filter
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_tree
+msgid "Payslips"
+msgstr "إيصالات المرتبات"
+
+#. module: oi_payroll
+#: model:ir.actions.act_window,name:oi_payroll.action_hr_payslip_run_tree
+#: model:ir.ui.menu,name:oi_payroll.menu_hr_payslip_run
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_payslip_run_form
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_payslip_run_tree
+msgid "Payslips Batches"
+msgstr "دفعات إيصالات المرتبات"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_by_employees
+msgid "Payslips by Employees"
+msgstr "إيصالات المرتبات حسب الموظفين"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__amount_percentage
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__amount_percentage
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_payslip_line__amount_select__percentage
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_salary_rule__amount_select__percentage
+msgid "Percentage (%)"
+msgstr "النسبة المئوية (%)"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__amount_percentage_base
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__amount_percentage_base
+msgid "Percentage based on"
+msgstr "النسبة المئوية بناء على"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_payslip_run_form
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Period"
+msgstr "الفترة"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_payslip_lines_contribution_register
+msgid "Print"
+msgstr "طباعة"
+
+#. module: oi_payroll
+#: model:hr.salary.rule,name:oi_payroll.hr_salary_rule_professionaltax1
+msgid "Professional Tax"
+msgstr "الضريبة المهنية"
+
+#. module: oi_payroll
+#: model:hr.salary.rule,name:oi_payroll.hr_salary_rule_providentfund1
+msgid "Provident Fund"
+msgstr "صندوق الإدخار"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__amount_python_compute
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__amount_python_compute
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_payslip_line__amount_select__code
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_salary_rule__amount_select__code
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_salary_rule_form
+msgid "Python Code"
+msgstr "كود بايثون"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__condition_python
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__condition_python
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_salary_rule_form
+msgid "Python Condition"
+msgstr "شرط بايثون"
+
+#. module: oi_payroll
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_payslip_line__condition_select__python
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_salary_rule__condition_select__python
+msgid "Python Expression"
+msgstr "كود بايثون"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__quantity
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__quantity
+msgid "Quantity"
+msgstr "الكمية"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_contributionregister
+msgid "Quantity/Rate"
+msgstr "الكمية/النسبة"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslipdetails
+msgid "Quantity/rate"
+msgstr "الكمية/النسبة"
+
+#. module: oi_payroll
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_contract__schedule_pay__quarterly
+msgid "Quarterly"
+msgstr "ربع سنوي"
+
+#. module: oi_payroll
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_payslip_line__condition_select__range
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_salary_rule__condition_select__range
+msgid "Range"
+msgstr "نطاق"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__condition_range
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__condition_range
+msgid "Range Based on"
+msgstr "المدى مبني على"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__rate
+msgid "Rate (%)"
+msgstr "المعدل (%)"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payroll_structure__code
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__number
+msgid "Reference"
+msgstr "رقم الإشارة"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Refund"
+msgstr "المرتجع"
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/models/hr_payslip.py:0
+#, python-format
+msgid "Refund: "
+msgstr "المرتجع: "
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contribution_register__register_line_ids
+msgid "Register Line"
+msgstr "بند السجل"
+
+#. module: oi_payroll
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_payslip__state__cancel
+msgid "Rejected"
+msgstr "مرفوض"
+
+#. module: oi_payroll
+#: model:ir.actions.act_window,name:oi_payroll.action_hr_payslip_line_report
+#: model:ir.ui.menu,name:oi_payroll.menu_hr_payslip_line_report
+msgid "Reports"
+msgstr "التقارير"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Reset To Draft"
+msgstr "إعادة التعيين لحالة المسودة"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Reset To Draft?"
+msgstr "إعادة التعيين إلى حالة المسودة؟"
+
+#. module: oi_payroll
+#: model:hr.employee,name:oi_payroll.hr_employee_payroll
+msgid "Roger Scott"
+msgstr "روجر سكوت"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__salary_rule_id
+msgid "Rule"
+msgstr "قاعدة"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_salary_rule_category_form
+msgid "Salary Categories"
+msgstr "فئات المرتب"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Salary Computation"
+msgstr "احتساب المرتب"
+
+#. module: oi_payroll
+#: model:ir.model,name:oi_payroll.model_hr_salary_rule
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_line_filter
+msgid "Salary Rule"
+msgstr "قاعدة المرتب"
+
+#. module: oi_payroll
+#: model:ir.actions.act_window,name:oi_payroll.action_hr_salary_rule_category
+#: model:ir.ui.menu,name:oi_payroll.menu_hr_salary_rule_category
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_salary_rule_category_tree
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_salary_rule_category_filter
+msgid "Salary Rule Categories"
+msgstr "فئات قواعد المرتب"
+
+#. module: oi_payroll
+#: model:ir.model,name:oi_payroll.model_hr_salary_rule_category
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslipdetails
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_line_filter
+msgid "Salary Rule Category"
+msgstr "فئة قواعد المرتب"
+
+#. module: oi_payroll
+#: model:ir.model,name:oi_payroll.model_hr_rule_input
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_rule_input__input_id
+msgid "Salary Rule Input"
+msgstr "مدخلات قاعدة المرتب"
+
+#. module: oi_payroll
+#: model:ir.actions.act_window,name:oi_payroll.action_salary_rule_form
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payroll_structure__rule_ids
+#: model:ir.ui.menu,name:oi_payroll.menu_action_hr_salary_rule_form
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_salary_rule_form
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_salary_rule_list
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_salary_rule_tree
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_employee_grade_form
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_rule_filter
+msgid "Salary Rules"
+msgstr "قواعد المرتبات"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "Salary Slip"
+msgstr "سند الرتب"
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/models/hr_payslip.py:0
+#, python-format
+msgid "Salary Slip of %s for %s"
+msgstr "قسيمة مرتب %s لـ%s"
+
+#. module: oi_payroll
+#: model:ir.model,name:oi_payroll.model_hr_payroll_structure
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contract__struct_id
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payroll_structure_tree
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_line_tree
+msgid "Salary Structure"
+msgstr "هيكل المرتب"
+
+#. module: oi_payroll
+#: model:ir.actions.act_window,name:oi_payroll.action_view_hr_payroll_structure_list_form
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__struct_ids
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__struct_ids
+#: model:ir.ui.menu,name:oi_payroll.menu_hr_payroll_structure_view
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_salary_rule_form
+msgid "Salary Structures"
+msgstr "هياكل المرتبات"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contract__schedule_pay
+msgid "Scheduled Pay"
+msgstr "الدفع المجدول"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_payslip_run_filter
+msgid "Search Payslip Batches"
+msgstr "البحث في دفعات إيصال المرتب"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_line_filter
+msgid "Search Payslip Lines"
+msgstr "البحث في بنود إيصال المرتب"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_filter
+msgid "Search Payslips"
+msgstr "البحث في إيصالات المرتبات"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_rule_filter
+msgid "Search Salary Rule"
+msgstr "البحث في قواعد المرتب"
+
+#. module: oi_payroll
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_contract__schedule_pay__semi-annually
+msgid "Semi-annually"
+msgstr "نصف سنوى"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_input__sequence
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__sequence
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_worked_days__sequence
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_salary_rule__sequence
+msgid "Sequence"
+msgstr "المسلسل"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.hr_payslip_run_form
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Set to Draft"
+msgstr "تعيين كمسودة"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_filter
+msgid "States"
+msgstr "الحالات"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__state
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_run__state
+msgid "Status"
+msgstr "الحالة"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip__struct_id
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__struct_id
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_line_filter
+msgid "Structure"
+msgstr "الهيكل"
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip_line__code
+#: model:ir.model.fields,help:oi_payroll.field_hr_salary_rule__code
+msgid ""
+"The code of salary rules can be used as reference in computation of other "
+"rules. In that case, it is case sensitive."
+msgstr ""
+"يمكن استخدام كود قواعد المرتب كمرجع في حساب قواعد أخرى. في هذه الحالة، يكون "
+"الكود مميزًا حسب حالة الحرف."
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip_input__code
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip_worked_days__code
+#: model:ir.model.fields,help:oi_payroll.field_hr_rule_input__code
+msgid "The code that can be used in the salary rules"
+msgstr "الرمز الذي يمكن استخدامه في قواعد المرتب"
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip_line__amount_select
+#: model:ir.model.fields,help:oi_payroll.field_hr_salary_rule__amount_select
+msgid "The computation method for the rule amount."
+msgstr "طريقة حساب لكمية القاعدة."
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip_input__contract_id
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip_worked_days__contract_id
+msgid "The contract for which applied this input"
+msgstr "العقد الذى تطبق عليه هذه المدخلات"
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip_line__condition_range_max
+#: model:ir.model.fields,help:oi_payroll.field_hr_salary_rule__condition_range_max
+msgid "The maximum amount, applied for this rule."
+msgstr "الحد الأقصى للكمية الذي تُطبق عليها هذه القاعدة."
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip_line__condition_range_min
+#: model:ir.model.fields,help:oi_payroll.field_hr_salary_rule__condition_range_min
+msgid "The minimum amount, applied for this rule."
+msgstr "الحد الأدنى المطلوب للكمية لتطبيق لهذه القاعدة."
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip_line__condition_range
+#: model:ir.model.fields,help:oi_payroll.field_hr_salary_rule__condition_range
+msgid ""
+"This will be used to compute the % fields values; in general it is on "
+"basic, but you can also use categories code fields in lowercase as a "
+"variable names (hra, ma, lta, etc.) and the variable basic."
+msgstr ""
+"سيستخدم هذا في احتساب قيم حقول %s؛ وبشكل عام فهي تنطبق على أساس الأجر لكن "
+"بإمكانك أن تستخدم كود الفئة مكتوباً بحروف صغيرة كأسماء للمتغيرات (مثل: hra, "
+"ma, lta وغيرها) بالإضافة لمتغير الأجر الأساسي."
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_payslip_line__total
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_contributionregister
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslipdetails
+msgid "Total"
+msgstr "الإجمالي"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Total Working Days"
+msgstr "إجمالي أيام العمل"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contract_advantage_template__upper_bound
+msgid "Upper Bound"
+msgstr "الحد الأقصى"
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_contract_advantage_template__upper_bound
+msgid "Upper bound authorized by the employer for this advantage"
+msgstr "الحد الأقصى المعتمد من الموظف لهذه الميزة"
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip_line__sequence
+#: model:ir.model.fields,help:oi_payroll.field_hr_salary_rule__sequence
+msgid "Use to arrange calculation sequence"
+msgstr "تستخدم لترتيب متتابعة الحساب"
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip_line__appears_on_payslip
+#: model:ir.model.fields,help:oi_payroll.field_hr_salary_rule__appears_on_payslip
+msgid "Used to display the salary rule on payslip."
+msgstr "تستخدم لعرض قاعدة المرتب على إيصال المرتب."
+
+#. module: oi_payroll
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_payslip__state__verify
+msgid "Waiting"
+msgstr "في الانتظار"
+
+#. module: oi_payroll
+#: model:ir.model.fields.selection,name:oi_payroll.selection__hr_contract__schedule_pay__weekly
+msgid "Weekly"
+msgstr "أسبوعيًا"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Worked Day"
+msgstr "يوم العمل"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Worked Days"
+msgstr "أيام العمل"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.view_hr_payslip_form
+msgid "Worked Days & Inputs"
+msgstr "أيام العمل والمدخلات"
+
+#. module: oi_payroll
+#: model:hr.salary.rule,name:oi_payroll.rule_working_rate
+msgid "Working Rate"
+msgstr "معدل العمل"
+
+#. module: oi_payroll
+#: model:ir.model.fields,field_description:oi_payroll.field_hr_contract__resource_calendar_id
+msgid "Working Schedule"
+msgstr "جدول العمل"
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/models/hr_salary_rule.py:0
+#, python-format
+msgid "Wrong percentage base or quantity defined for salary rule %s (%s)."
+msgstr "كمية أو قيمة النسبة المئوية المحددة لقاعدة المرتب %s (%s) خطأ."
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/models/hr_salary_rule.py:0
+#, python-format
+msgid "Wrong python code defined for salary rule %s (%s)."
+msgstr "كود بايثون المحدد لقاعدة المرتب %s (%s) خطأ."
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/models/hr_salary_rule.py:0
+#, python-format
+msgid "Wrong python condition defined for salary rule %s (%s)."
+msgstr "شرط بايثون المحدد لقاعدة المرتب %s (%s) خطأ."
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/models/hr_salary_rule.py:0
+#, python-format
+msgid "Wrong quantity defined for salary rule %s (%s)."
+msgstr "الكمية المحددة لقاعدة المرتب %s (%s) خطأ."
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/models/hr_salary_rule.py:0
+#, python-format
+msgid "Wrong range condition defined for salary rule %s (%s)."
+msgstr "مدى تطبيق الشرط المحدد لقاعدة المرتب %s (%s) خطأ."
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/models/hr_payroll_structure.py:0
+#, python-format
+msgid "You cannot create a recursive salary structure."
+msgstr "لا يمكنك إنشاء تدرج هرمي متكرر لهيكلة الرواتب"
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/models/hr_payslip.py:0
+#, python-format
+msgid "You cannot delete a payslip which is not draft or cancelled!"
+msgstr "لا يمكنك حذف إيصال مرتب ما لم يكن في حالة المسودة أو ملغيًا!"
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/wizard/hr_payroll_payslips_by_employees.py:0
+#, python-format
+msgid "You must select employee(s) to generate payslip(s)."
+msgstr "جب عليك اختيار الموظف(ين) لإنشاء كشوف الرواتب"
+
+#. module: oi_payroll
+#. odoo-python
+#: code:addons/oi_payroll/models/hr_payslip_line.py:0
+#, python-format
+msgid "You must set a contract to create a payslip line."
+msgstr "يجب عليك تعيين عقد لإنشاء بند الكشف."
+
+#. module: oi_payroll
+#: model:ir.model,name:oi_payroll.model_hr_payslip_line_description
+msgid "hr.payslip.line.description"
+msgstr "وصف سطر كشف الرواتب في إدارة الموارد البشرية"
+
+#. module: oi_payroll
+#: model:ir.model.fields,help:oi_payroll.field_hr_payslip_line__amount_percentage_base
+#: model:ir.model.fields,help:oi_payroll.field_hr_salary_rule__amount_percentage_base
+msgid "result will be affected to a variable"
+msgstr "النتيجة سوف تتأثر بمتغير"
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "اسم البنك:"
+msgstr ""
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "اسم الموظف:"
+msgstr ""
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "الأجور"
+msgstr ""
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "الإجمالي"
+msgstr ""
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "الحسميات"
+msgstr ""
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "الصافي"
+msgstr ""
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "القسم:"
+msgstr ""
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "المسمى الوظيفي:"
+msgstr ""
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "تاريخ الالتحاق"
+msgstr ""
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "رقم الحساب:"
+msgstr ""
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "رقم الهوية"
+msgstr ""
+
+#. module: oi_payroll
+#: model_terms:ir.ui.view,arch_db:oi_payroll.report_payslip
+msgid "قسيمة راتب"
+msgstr ""

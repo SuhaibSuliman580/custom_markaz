@@ -1,0 +1,1062 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* to_hr_meal
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-07 10:34+0000\n"
+"PO-Revision-Date: 2024-05-07 10:34+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__message_needaction
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:res.groups,name:to_hr_meal.hr_meal_group_admin
+msgid "Administrator"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields.selection,name:to_hr_meal.selection__hr_meal_order__load_employee__load_all
+msgid "All Employees"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__total_price
+msgid "Amount"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__applied_department_ids
+msgid "Applied Departments"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_view_form
+msgid "Approve"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__approved_by
+msgid "Approve By"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_analysis_view_search
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_orders_search_view
+msgid "Approved"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_analysis__approved_by
+msgid "Approved By"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__date_approved
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_analysis__date_approved
+msgid "Approved Date"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_employee__meal_ids
+msgid "Approved Meal Order Lines"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_analysis_view_search
+msgid "Approved Orders"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields.selection,name:to_hr_meal.selection__hr_meal_order__state__approved
+#: model:ir.model.fields.selection,name:to_hr_meal.selection__hr_meal_order_analysis__state__approved
+msgid "Approved by Kitchen"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__message_attachment_count
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model,name:to_hr_meal.model_hr_employee_base
+msgid "Basic Employee"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_view_form
+msgid "Cancel"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields.selection,name:to_hr_meal.selection__hr_meal_order__state__cancelled
+#: model:ir.model.fields.selection,name:to_hr_meal.selection__hr_meal_order_analysis__state__cancelled
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_draft_orders_view_search
+msgid "Cancelled"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields.selection,name:to_hr_meal.selection__hr_meal_order__load_employee__clear_all
+msgid "Clear All"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.actions.act_window,name:to_hr_meal.hr_meal_order_action_partners
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__partner_ids
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__partner_ids
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_view_form
+msgid "Clients"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__partners_count
+msgid "Clients Count"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model,name:to_hr_meal.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__company_id
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__company_id
+msgid "Company"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__company_amount
+msgid "Company Amount"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__total_company_pay
+msgid "Company Total Pay"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model,name:to_hr_meal.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.ui.menu,name:to_hr_meal.hr_meal_config_menu
+msgid "Configuration"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_view_form
+msgid "Confirm"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields.selection,name:to_hr_meal.selection__hr_meal_order__state__confirmed
+#: model:ir.model.fields.selection,name:to_hr_meal.selection__hr_meal_order_analysis__state__confirmed
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_analysis_view_search
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_orders_search_view
+msgid "Confirmed"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_analysis_view_search
+msgid "Confirmed Orders"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_kitchen__create_uid
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__create_uid
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__create_uid
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_kitchen__create_date
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__create_date
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__create_date
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__currency_id
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__currency_id
+#: model:ir.model.fields,field_description:to_hr_meal.field_res_config_settings__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__department_id
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_analysis__department_id
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__department_id
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_analysis_view_search
+msgid "Department"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__description
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__description
+msgid "Description"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:hr.meal.type,name:to_hr_meal.hr_meal_type_dinner_workers
+msgid "Dinner for Workers"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_kitchen__display_name
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__display_name
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_analysis__display_name
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__display_name
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields.selection,name:to_hr_meal.selection__hr_meal_order__state__draft
+#: model:ir.model.fields.selection,name:to_hr_meal.selection__hr_meal_order_analysis__state__draft
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_draft_orders_view_search
+msgid "Draft"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.ui.menu,name:to_hr_meal.hr_meal_draft_orders_menu
+msgid "Draft Orders"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model,name:to_hr_meal.model_hr_employee
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_analysis__employee_id
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__employee_id
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_analysis_view_search
+msgid "Employee"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__employee_amount
+msgid "Employee Amount"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.actions.act_window,name:to_hr_meal.hr_employee_action_meal_order_line
+msgid "Employee Meals"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.actions.act_window,name:to_hr_meal.hr_meal_orders_detail_action
+msgid "Employee Orders Line"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__employee_price
+#: model:ir.model.fields,field_description:to_hr_meal.field_res_company__meal_emp_price
+#: model:ir.model.fields,field_description:to_hr_meal.field_res_config_settings__meal_emp_price
+msgid "Employee Price"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__total_employee_pay
+msgid "Employee Total Pay"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_analysis_view_search
+msgid "Extended Filters..."
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields.selection,name:to_hr_meal.selection__hr_meal_order__order_source__external
+msgid "External"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__message_follower_ids
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__message_partner_ids
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_order__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.actions.act_window,help:to_hr_meal.meal_orders_analysis_action
+msgid ""
+"From this view, have an analysis of your different\n"
+"\t\t\tmeal orders over employees and departments."
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_analysis_view_search
+msgid "Group By"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.actions.act_window,name:to_hr_meal.hr_kitchen_action
+#: model:ir.model,name:to_hr_meal.model_hr_kitchen
+msgid "HR Kitchen"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.ui.menu,name:to_hr_meal.hr_meal_root_menu
+msgid "HR Meal"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model,name:to_hr_meal.model_hr_meal_order
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_view_form
+msgid "HR Meal Order"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model,name:to_hr_meal.model_hr_meal_order_line
+msgid "HR Meal Order Line"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_line_view_graph
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_line_view_pivot
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_line_view_tree
+msgid "HR Meal Order Lines"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_line_view_search
+msgid "HR Meal Order Lines Search"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.actions.act_window,name:to_hr_meal.hr_meal_draft_orders_action
+#: model:ir.actions.act_window,name:to_hr_meal.hr_meal_orders_action
+msgid "HR Meal Orders"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model,name:to_hr_meal.model_hr_meal_type
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_type_view_form
+msgid "HR Meal Type"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.actions.act_window,name:to_hr_meal.hr_meal_type_action
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_kitchen_view_tree
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_draft_orders_view_search
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_draft_orders_view_tree
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_orders_search_view
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_type_view_tree
+msgid "HR Meal Types"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__has_message
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.res_config_settings_view_form
+msgid "Hr Meal"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_kitchen__id
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__id
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_analysis__id
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__id
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__id
+msgid "ID"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_order__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_order__message_needaction
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_type__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_order__message_has_error
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_order__message_has_sms_error
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_type__message_has_error
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_type__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_res_config_settings__set_meal_employee_price
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.res_config_settings_view_form
+msgid ""
+"If enabled, the employee meal price set below will be used to calculate the "
+"meal price."
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields.selection,name:to_hr_meal.selection__hr_meal_order__order_source__internal
+msgid "Internal"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__message_is_follower
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_analysis__kitchen_id
+#: model:ir.ui.menu,name:to_hr_meal.hr_kitchen_menu
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_kitchen_view_form
+msgid "Kitchen"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__kitchen_id
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__kitchen_id
+msgid "Kitchen to Order"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_kitchen__write_uid
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__write_uid
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__write_uid
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_kitchen__write_date
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__write_date
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__write_date
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:hr.meal.type,name:to_hr_meal.hr_meal_type_lunch_for_everyone
+msgid "Lunch for Everyone"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:hr.meal.type,name:to_hr_meal.hr_meal_type_lunch_office
+msgid "Lunch for Office"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:hr.meal.type,name:to_hr_meal.hr_meal_type_lunch_workers
+msgid "Lunch for Workers"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:hr.kitchen,name:to_hr_meal.hr_kitchen_main_kitchen
+msgid "Main Kitchen"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_employee__order_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_employee_base__order_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_employee_public__order_meal
+msgid "Marked if this employee eat at the company"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__load_employee
+msgid "Mass Load/Clear"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_analysis__meal_date
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__meal_date
+msgid "Meal Date"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_analysis_view_search
+msgid "Meal Date by Month"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_analysis_view_search
+msgid "Meal Month"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_analysis__order_id
+msgid "Meal Order"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.ui.menu,name:to_hr_meal.hr_meal_order_detail
+msgid "Meal Order Details"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__meal_order_id
+msgid "Meal Order Ref."
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__order_source
+msgid "Meal Order Source"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_draft_orders_view_search
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_orders_search_view
+msgid "Meal Order Source: External"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_draft_orders_view_search
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_orders_search_view
+msgid "Meal Order Source: Internal"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.ui.menu,name:to_hr_meal.hr_meal_order_root_menu
+#: model:ir.ui.menu,name:to_hr_meal.hr_meal_orders_menu
+msgid "Meal Orders"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.actions.act_window,name:to_hr_meal.meal_orders_analysis_action
+#: model:ir.model,name:to_hr_meal.model_hr_meal_order_analysis
+#: model:ir.ui.menu,name:to_hr_meal.meal_orders_analysis_menu
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_analysis_view_graph
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_analysis_view_pivot
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_analysis_view_search
+msgid "Meal Orders Analysis"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_analysis_view_search
+msgid "Meal Orders in This year"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.res_config_settings_view_form
+msgid "Meal Price"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__meal_type_id
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_analysis__meal_type_id
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__meal_type_id
+#: model:ir.ui.menu,name:to_hr_meal.hr_meal_type_menu
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_analysis_view_search
+msgid "Meal Type"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_employee__meal_ids
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.view_employee_form
+msgid "Meals"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_employee__meals_count
+msgid "Meals Count"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__message_has_error
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__message_ids
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: to_hr_meal
+#. odoo-python
+#: code:addons/to_hr_meal/models/hr_meal_order.py:0
+#, python-format
+msgid "New"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:hr.meal.type,name:to_hr_meal.hr_meal_type_night_meal
+msgid "Nigh Meal"
+msgstr ""
+
+#. module: to_hr_meal
+#. odoo-python
+#: code:addons/to_hr_meal/models/hr_meal_order.py:0
+#, python-format
+msgid ""
+"No kitchen found! It seems you have deleted the default kitchen. Please "
+"create at least one to continue"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__notes
+msgid "Notes"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__message_needaction_counter
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__order_lines_count
+msgid "Number of Lines"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__message_has_error_counter
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_order__message_needaction_counter
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_type__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_order__message_has_error_counter
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_type__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: to_hr_meal
+#. odoo-python
+#: code:addons/to_hr_meal/models/hr_meal_order.py:0
+#, python-format
+msgid "Only users with Manager Access Right can approve meal orders"
+msgstr ""
+
+#. module: to_hr_meal
+#. odoo-python
+#: code:addons/to_hr_meal/models/hr_meal_order.py:0
+#, python-format
+msgid "Only users with Manager Access Right can cancel approved meal orders"
+msgstr ""
+
+#. module: to_hr_meal
+#. odoo-python
+#: code:addons/to_hr_meal/models/hr_meal_order.py:0
+#, python-format
+msgid "Only users with Manager Access Right can refuse meal orders"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__date_ordered
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_analysis__date_ordered
+msgid "Order Date"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_view_form
+msgid "Order Details"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__order_line_ids
+msgid "Order Lines"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_employee__order_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_employee_base__order_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_employee_public__order_meal
+msgid "Order Meal"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__ordered_by
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_analysis__ordered_by
+msgid "Ordered By"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_analysis__quantity
+msgid "Ordered Quantity"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_analysis__price
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__price
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__price
+msgid "Price"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__quantity
+msgid "Quantity"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_view_form
+msgid "Refuse"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_draft_orders_view_search
+msgid "Refused"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields.selection,name:to_hr_meal.selection__hr_meal_order__state__refused
+#: model:ir.model.fields.selection,name:to_hr_meal.selection__hr_meal_order_analysis__state__refused
+msgid "Refused by Kitchen"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.ui.menu,name:to_hr_meal.hr_meal_report_menu
+msgid "Reports"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_kitchen__responsible_id
+msgid "Responsible"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__message_has_sms_error
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__scheduled_date
+msgid "Scheduled Date"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__scheduled_hour
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__scheduled_hour
+msgid "Scheduled Hour"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_order__department_id
+msgid "Select a department for auto employees load"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_res_company__set_meal_employee_price
+#: model:ir.model.fields,field_description:to_hr_meal.field_res_config_settings__set_meal_employee_price
+msgid "Set Employee Price"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_view_form
+msgid "Set to Draft"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.actions.act_window,name:to_hr_meal.hr_meal_action_settings
+#: model:ir.ui.menu,name:to_hr_meal.menu_to_hr_meal_settings
+msgid "Settings"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_view_form
+msgid "Something to note for the kitchen."
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__state
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_analysis__state
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_line__state
+msgid "Status"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_order__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.constraint,message:to_hr_meal.constraint_hr_meal_order_scheduled_hour_check_positive
+msgid "The Scheduled Hour must be equal to or greater than zero!"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.constraint,message:to_hr_meal.constraint_hr_meal_order_scheduled_hour_check_less_than_24
+msgid "The Scheduled Hour must be less than than 24!"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_order_line__partner_ids
+msgid "The clients who enjoy the meal with this employee"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_order__scheduled_date
+msgid "The date scheduled for the meal"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_res_config_settings__meal_emp_price
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.res_config_settings_view_form
+msgid ""
+"The employee meal price unit to be paid will be the minimum amount set on "
+"the meal type and this amount."
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.constraint,message:to_hr_meal.constraint_hr_meal_type_name_unique
+msgid "The meal type's title must be unique"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_kitchen__responsible_id
+msgid ""
+"The partner who manages this kitchen and will get notified when a meal order is confirmed.\n"
+"The partner can also approve confirmed orders."
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_order__scheduled_hour
+msgid "The time scheduled for the meal"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_order__approved_by
+msgid ""
+"The user who approved the meal order. It is usually the kitchen manager."
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_order__ordered_by
+msgid "The user who place the meal order"
+msgstr ""
+
+#. module: to_hr_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_meal.hr_meal_order_analysis_view_search
+msgid "This Year"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_order__applied_department_ids
+msgid "This field helps to show applied departments for a meal order"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_kitchen__name
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__name
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_type__name
+msgid "Title"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__total_price
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order_analysis__total_price
+msgid "Total Price"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__total_qty
+msgid "Total Quantity"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_order__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: to_hr_meal
+#: model:res.groups,name:to_hr_meal.hr_meal_group_user
+msgid "User"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:res.groups,comment:to_hr_meal.hr_meal_group_admin
+msgid ""
+"Users belong to this group can approve/rejects meal\n"
+"\t\t\t\torders. They have total control on this application\n"
+"\t\t\t"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:res.groups,comment:to_hr_meal.hr_meal_group_user
+msgid ""
+"Users belong to this group can create and confirm\n"
+"\t\t\t\tmeal orders\n"
+"\t\t\t"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,help:to_hr_meal.field_hr_meal_order__load_employee
+msgid "Utility fields to allow massive load/clear of employees"
+msgstr ""
+
+#. module: to_hr_meal
+#: model:ir.model.fields,field_description:to_hr_meal.field_hr_meal_order__vendor_id
+msgid "Vendor"
+msgstr ""
+
+#. module: to_hr_meal
+#. odoo-python
+#: code:addons/to_hr_meal/models/hr_meal_order.py:0
+#: code:addons/to_hr_meal/models/hr_meal_order.py:0
+#, python-format
+msgid "Warning"
+msgstr ""
+
+#. module: to_hr_meal
+#. odoo-python
+#: code:addons/to_hr_meal/models/hr_meal_order.py:0
+#, python-format
+msgid "You can only Confirm an order in draft state"
+msgstr ""
+
+#. module: to_hr_meal
+#. odoo-python
+#: code:addons/to_hr_meal/models/hr_meal_order.py:0
+#, python-format
+msgid "You can only approve an order that is in confirmed state"
+msgstr ""
+
+#. module: to_hr_meal
+#. odoo-python
+#: code:addons/to_hr_meal/models/hr_meal_order.py:0
+#, python-format
+msgid ""
+"You can only cancel an order that is in either confirmed or approved state"
+msgstr ""
+
+#. module: to_hr_meal
+#. odoo-python
+#: code:addons/to_hr_meal/models/hr_meal_order.py:0
+#, python-format
+msgid "You can only refuse an order that is in confirmed state"
+msgstr ""
+
+#. module: to_hr_meal
+#. odoo-python
+#: code:addons/to_hr_meal/models/hr_meal_order.py:0
+#, python-format
+msgid "You can only set an order to draft state while it is cancelled."
+msgstr ""
+
+#. module: to_hr_meal
+#. odoo-python
+#: code:addons/to_hr_meal/models/hr_meal_order.py:0
+#, python-format
+msgid "You cannot confirm an order without any order line"
+msgstr ""
+
+#. module: to_hr_meal
+#. odoo-python
+#: code:addons/to_hr_meal/models/hr_meal_order_line.py:0
+#, python-format
+msgid ""
+"You cannot register more than one meal for the same employee '%s' at the "
+"same time. '%s' was registered by the order %s."
+msgstr ""
+
+#. module: to_hr_meal
+#. odoo-python
+#: code:addons/to_hr_meal/models/hr_meal_order.py:0
+#, python-format
+msgid ""
+"You may not be able to delete the meal order '%s' which is not in Draft "
+"state. You may need to set it to Draft first"
+msgstr ""
+
+#. module: to_hr_meal
+#. odoo-python
+#: code:addons/to_hr_meal/models/hr_meal_order_line.py:0
+#, python-format
+msgid ""
+"You may not be able to delete the meal order line which is not in Draft "
+"state. You may need to set it to Draft the meal order first"
+msgstr ""
+
+#. module: to_hr_meal
+#. odoo-python
+#: code:addons/to_hr_meal/models/hr_meal_order.py:0
+#: code:addons/to_hr_meal/models/hr_meal_order.py:0
+#, python-format
+msgid "You must select a meal type first."
+msgstr ""

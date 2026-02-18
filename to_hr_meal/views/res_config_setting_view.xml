@@ -1,0 +1,47 @@
+<odoo>
+	<record id="res_config_settings_view_form" model="ir.ui.view">
+		<field name="name">res.config.settings.view.form.inherit.hr.meal</field>
+		<field name="model">res.config.settings</field>
+		<field name="inherit_id" ref="base.res_config_settings_view_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//form" position="inside">
+				<app name="to_hr_meal" data-string="Hr-Meal" string="Hr Meal" >
+					<block title="Meal Price"
+						name="meal_price_setting_container">
+						<setting id="to_hr_meal_setting" >
+							<field name="set_meal_employee_price" />
+							<div class="text-muted">
+								If enabled, the employee meal price set below will be used to calculate the meal price.
+							</div>
+							<div class="content-group" invisible="not set_meal_employee_price">
+								<div class="mt16">
+									<label for="meal_emp_price" class="o_light_label mr8" />
+									<field name="meal_emp_price" class="oe_inline" />
+									<div class="text-muted">
+										The employee meal price unit to be paid will be the minimum amount set on the meal type and this amount.
+									</div>
+								</div>
+							</div>
+						</setting>
+					</block>
+				</app>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="hr_meal_action_settings" model="ir.actions.act_window">
+		<field name="name">Settings</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">res.config.settings</field>
+		<field name="view_mode">form</field>
+		<field name="target">inline</field>
+		<field name="context">{'module': 'to_hr_meal', 'bin_size': False}
+		</field>
+	</record>
+
+	<menuitem id="menu_to_hr_meal_settings" name="Settings"
+		parent="hr_meal_config_menu"
+		action="hr_meal_action_settings"
+		groups="base.group_system"
+		sequence="1" />
+</odoo>

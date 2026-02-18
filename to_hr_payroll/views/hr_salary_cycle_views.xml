@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="hr_salary_cycle_view_tree" model="ir.ui.view">
+		<field name="name">hr.salary.cycle.view.tree</field>
+		<field name="model">hr.salary.cycle</field>
+		<field name="arch" type="xml">
+			<tree sample="1">
+				<field name="name" />
+				<field name="start_day_offset" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="hr_salary_cycle_view_form" model="ir.ui.view">
+		<field name="name">hr.salary.cycle.view.form</field>
+		<field name="model">hr.salary.cycle</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<group>
+							<field name="name" />
+							<field name="start_day_offset" />
+						</group>
+					</group>
+					<div name="start_day_offset_info" class="alert alert-info border-0 rounded-0" role="alert">
+						Number of days that deviates from the start date of the standard cycle (e.g. first of month, year, etc).
+						<br/>
+						For example:
+						<br/>
+						<span class="pe-4"></span><strong>* Start Day Offset = 0</strong>: The cycle is not shifted, the cycle start date is the first day of the month, and the end date is the last day of the month.
+						<br/>
+						<span class="pe-4"></span><span class="pe-4"></span>Ex: Start Day Offset = 0 => the cycle is 2024/03/01 -> 2024/03/31
+						<br/>
+						<span class="pe-4"></span><strong>* Start Day Offset != 0</strong>: The cycle is shifted, The cycle start date will be increased by the number of days set in the 'Start Day Offset' field.
+						<br/>
+						<span class="pe-4"></span><span class="pe-4"></span>Ex: Start Day Offset = 2 => the cycle is 2024/03/03 -> 2024/04/02
+						<br/>
+						<span class="pe-4"></span><span class="pe-4"></span>Ex: Start Day Offset = 5 => the cycle is 2024/03/06 -> 2024/04/05
+						<br/>
+						<span class="pe-4"></span><span class="pe-4"></span>...
+					</div>
+				</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids" groups="base.group_user" />
+					<field name="message_ids"/>
+				</div>
+			</form>
+		</field>
+	</record>
+
+	<record id="hr_salary_cycle_action"
+		model="ir.actions.act_window">
+		<field name="name">Salary Period</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">hr.salary.cycle</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<menuitem id="hr_salary_cycle_menu"
+		action="hr_salary_cycle_action" name="Salary Cycle"
+		parent="menu_hr_payroll_configuration_payroll_entry" sequence="26" />
+
+</odoo>

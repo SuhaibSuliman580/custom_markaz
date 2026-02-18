@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="view_hr_job_form">
+			<field name="name">hr.job.inherit.form</field>
+			<field name="model">hr.job</field>
+			<field name="inherit_id" ref="hr.view_hr_job_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//notebook" position="inside">
+						<page name="payroll" string="Payroll"
+							groups="to_hr_payroll.group_hr_payroll_user">
+							<group name="general" colspan="2">
+								<label for="wage" />
+								<div class="o_row" name="wage">
+									<field name="wage" nolabel="1" />
+									<span>/ month</span>
+								</div>
+								<field name="currency_id" invisible="1" />
+							</group>
+							<separator name="advantages" string="Monthly Advantages" />
+							<field name="advantage_ids">
+								<tree editable="bottom">
+									<field name="template_id" />
+									<field name="code" />
+									<field name="amount" string="Amount" />
+									<field name="amount_type"/>
+									<field name="based_on_time_off_type_id"/>
+									<field name="currency_id" column_invisible="1" />
+									<field name="company_id" column_invisible="1" />
+								</tree>
+							</field>
+							<separator />
+							<button string="Apply to contracts"
+								class="btn btn-link" type="object"
+								name="update_contract_advantages"
+								help="This will update all the contracts related to this job position with advantages of this job position."
+								confirm="All the advantages of the related contracts that are not specified in this job position will be lost. Are you sure to proceed?"
+								groups="to_hr_payroll.group_hr_payroll_user"
+								invisible="not advantage_ids" />
+						</page>
+				</xpath>
+			</field>
+		</record>
+
+		<menuitem
+			parent="to_hr_payroll.menu_hr_payroll_configuration_work_entry"
+			id="menu_hr_job_position" action="hr.action_hr_job"
+			name="Job Positions" sequence="30" />
+
+	</data>
+</odoo>

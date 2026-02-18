@@ -1,0 +1,210 @@
+@if $predefined_list_view_boolean == "False"{
+    @if $predefined_list_view_style == 'style_1'{ 
+        .o_list_view{ 
+            .o_onboarding_container{
+                .o_onboarding_main{
+                    background:#fff;border-radius: 11px;box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);padding: 1.1rem;margin: 0.8rem;
+                    .o_onboarding_steps{
+                        .o_onboarding_step{
+                            .o_onboarding_step_content{
+                                .o_onboarding_step_content_info{
+                                    a{
+                                        
+                                    h5{
+                                        font-weight: 600;color:$primaryColor;font-size: 14px;
+                                    } 
+                                    }
+                                    p{
+                                    color: #6f7e92;font-weight: 500;padding-top: 5px;
+                                    }
+                                }
+                                .o_onboarding_step_action {
+                                    padding: 7px 15px;background-color:  $primaryColor ;border-color:  $primaryColor!important ;font-weight: 600;font-family: $body_google_font_family;color: #fff;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .o_content{
+                border-radius: 11px;box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);margin: 0.8rem;background: #fff;
+                .o_list_renderer{
+                    .o_list_table{
+                        --table-bg:trasparent!important;border-spacing: 0px 0px!important;
+                        .ui-sortable{
+                            --table-hover-bg: unset !important;
+                            .o_data_row{
+                                border-bottom: 1px solid #e8e8f7;
+                                .btn-info{
+                                   padding: 7px 15px !important;font-weight: 600;margin-right: 5px !important;box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+                                }
+                                .o_field_widget{
+                                    input{
+                                        color: #ffffff;
+                                    }
+                                }
+                            }
+                        } 
+                        thead{
+                            background-color: #fff;
+                            tr{
+                                &:hover{
+                                    background-color:transparent;
+                                }
+                            }
+                        
+                        }
+                        th{
+                            padding: 1rem 0.75rem;color: #111c43;
+                            
+
+                        }
+                        tr{
+                            border-bottom: 1px solid #e8e8f7;--table-bg:trasparent!important;--table-hover-bg:trasparent!important;
+                            
+                            td{
+                                color: #475569;font-weight: 500;border-bottom: 0px; padding: 1rem 0.75rem!important;
+                                span{
+                                    color: #475569;font-weight: 500;
+                                }
+                              .bg-view{
+                                background-color:transparent!important;
+                              }  
+                                
+                            }
+                            &:hover{
+                                background-color:$list_view_hover_bg_color;
+                                td{
+                                    color: #fff;
+                                }
+                                .o_field_widget{
+                                    span{
+                                        color: #fff;
+                                    }
+                                }
+                                
+                                .Total{
+                                    color: #475569;
+                                }
+                                
+                                label{
+                                    // &::before{
+                                    //     border-color: #fff!important;
+                                    // }
+                                    &::after{
+                                        border-color: #fff!important;
+                                    }
+                                }
+                                .btn-link{
+                                    color: #fff;
+                                }
+                                .text-warning{
+                                    color: #fff!important;
+                                }
+                                .o_group_name{
+                                    color: #fff!important;
+                                }
+                                .o_list_footer{
+                                    .o_list_number{
+                                        color: #475569;
+                                    }
+                                }
+                               
+                                
+                            }
+                        }
+                        .o_data_row_selected{
+                            --table-bg:trasparent!important;--table-hover-bg:trasparent!important;
+                            &:hover{
+                                background-color:$list_view_hover_bg_color;
+                                td{
+                                    color: #fff;
+                                }
+                                label{
+                                    &::before{
+                                        border-bottom-color: #fff!important;
+                                        border-right-color: #fff!important;
+                                    }
+                                    &::after{
+                                        border-color: #fff!important;
+                                    }
+                                } 
+                                
+                            } 
+                        }
+                        
+                    }
+                }
+            }
+        }
+
+    }
+    
+}
+@if $predefined_list_view_boolean == "False"{
+	@if $list_view_border == 'bordered'{
+        .o_list_table_ungrouped{
+            tbody{
+                td{
+                    border-right:1px solid #a09e9e;
+                }
+            } 
+            th{
+                border-right:1px solid #a09e9e;
+            }
+        }
+	}
+	@if $list_view_border == 'without_border'{
+	    .o_list_view{
+            .o_list_table{
+                th{border-left: 0px !important;}
+            } 
+        } 
+	}
+	.o_list_table_ungrouped{
+        tbody{
+            tr{
+                &:nth-of-type(odd){
+                    background-color:$list_view_odd_row_color!important;
+                }
+                &:nth-of-type(even){
+                    background:$list_view_even_row_color!important;
+                }
+            }
+        }
+    }  
+    @if $list_view_is_hover_row == "True"{
+        .o_list_table{
+            tbody{
+                tr{
+                    &:hover{
+                        background:$list_view_hover_bg_color!important;
+                    }
+                }
+            }
+        }
+    }
+    @if $list_view_is_hover_row != "True"{
+        table.o_list_table{
+            --table-hover-bg: unset !important;
+            tbody{
+                tr{
+                    &:nth-of-type(odd){
+                        &:hover{
+                            --table-hover-bg: unset !important;--table-accent-bg: unset !important;background-color:$list_view_odd_row_color!important;
+                        }
+                    }
+                    &:nth-of-type(even){
+                        &:hover{
+                            -table-hover-bg: unset !important;--table-accent-bg: unset !important;background-color:$list_view_even_row_color!important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+

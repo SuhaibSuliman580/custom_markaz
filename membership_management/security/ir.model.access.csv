@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_membership_application_admin,membership.application.admin,model_membership_application,group_membership_admin,1,1,1,1
+access_membership_application_officer,membership.application.officer,model_membership_application,group_membership_officer,1,1,1,0
+access_membership_application_portal,membership.application.portal,model_membership_application,base.group_portal,1,1,1,0
+access_membership_period_admin,membership.period.admin,model_membership_period,group_membership_admin,1,1,1,1
+access_membership_period_officer,membership.period.officer,model_membership_period,group_membership_officer,1,0,0,0
+access_membership_period_portal,membership.period.portal,model_membership_period,base.group_portal,1,0,0,0
+access_medical_specialty_admin,medical.specialty.admin,model_medical_specialty,group_membership_admin,1,1,1,1
+access_medical_specialty_officer,medical.specialty.officer,model_medical_specialty,group_membership_officer,1,1,1,0
+access_medical_specialty_portal,medical.specialty.portal,model_medical_specialty,base.group_portal,1,0,0,0

@@ -1,0 +1,16 @@
+<odoo>
+	<!-- Contract View -->
+	<record id="hr_contract_form_inherit" model="ir.ui.view">
+		<field name="name">hr.contract.view.form.inherit</field>
+		<field name="model">hr.contract</field>
+		<field name="inherit_id"
+			ref="to_hr_payroll.hr_contract_form_inherit" />
+		<field name="arch" type="xml">
+			<xpath expr="//div[@name='gross_salary']" position="after">
+				<field name="set_pay_per_meal" />
+				<field name="pay_per_meal" invisible="not set_pay_per_meal" />
+			</xpath>
+		</field>
+	</record>
+
+</odoo>

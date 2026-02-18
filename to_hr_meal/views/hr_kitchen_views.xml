@@ -1,0 +1,42 @@
+<odoo>
+
+	<record id="hr_kitchen_view_form" model="ir.ui.view">
+		<field name="name">hr.kitchen.form</field>
+		<field name="model">hr.kitchen</field>
+		<field name="arch" type="xml">
+			<form string="Kitchen">
+				<sheet>
+					<h1>
+						<field name="name" />
+					</h1>
+					<group>
+						<field name="responsible_id" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="hr_kitchen_view_tree" model="ir.ui.view">
+		<field name="name">hr.kitchen.tree</field>
+		<field name="model">hr.kitchen</field>
+		<field name="type">tree</field>
+		<field name="arch" type="xml">
+			<tree string="HR Meal Types" sample="1">
+				<field name="name" />
+				<field name="responsible_id" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="hr_kitchen_action" model="ir.actions.act_window">
+		<field name="name">HR Kitchen</field>
+		<field name="res_model">hr.kitchen</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{}</field>
+	</record>
+
+	<menuitem id="hr_kitchen_menu" name="Kitchen"
+		parent="hr_meal_config_menu" sequence="10" action="hr_kitchen_action" />
+
+</odoo>

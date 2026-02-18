@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+		<record id="act_hr_payroll_contribution_reg_all"
+			model="ir.actions.act_window">
+			<field name="res_model">hr.payroll.contribution.register</field>
+			<field name="name">Total Payroll Contribution Registers</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{'search_default_type_id': [active_id],
+				'default_type_id': active_id, 'search_default_confirmed_resumed':1,
+				'search_default_done':1, 'search_default_suspended':1}
+			</field>
+		</record>
+
+		<record id="act_hr_payroll_contribution_reg_current"
+			model="ir.actions.act_window">
+			<field name="res_model">hr.payroll.contribution.register</field>
+			<field name="name">Current Payroll Contribution Registers</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{'search_default_type_id': [active_id],
+				'default_type_id': active_id, 'search_default_confirmed_resumed':1}
+			</field>
+		</record>
+
+		<record model="ir.ui.view"
+			id="hr_payroll_contribution_type_form_view">
+			<field name="name">Payroll Contribution Type</field>
+			<field name="model">hr.payroll.contribution.type</field>
+			<field name="arch" type="xml">
+				<form>
+					<header>
+						<field name="company_id" invisible="1" />
+						<button name="action_mass_change_rates" type="object"
+							string="Mass Change Rates"
+							confirm="This will change contribution rates for all the existing and current contribution registers
+							of this type whose state is either Confirmed or Resumed only.
+							Please note that this action will not change the rates of this type. You have to do it manually.
+							Are you sure to proceed?"
+							groups="to_hr_payroll.group_hr_payroll_user" />
+					</header>
+					<sheet>
+						<div class="oe_button_box" name="button_box"
+							groups="to_hr_payroll.group_hr_payroll_user">
+							<button name="action_view_all_registers" type="object"
+								class="oe_stat_button" icon="fa-bars">
+								<field name="total_payroll_contribution_reg_count"
+									widget="statinfo" string="Registers"
+									help="Show all payroll contribution registers no matter their state is." />
+							</button>
+							<button name="action_view_current_registers" type="object"
+								class="oe_stat_button" icon="fa-clock-o">
+								<field name="current_payroll_contribution_reg_count"
+									widget="statinfo" string="Current"
+									help="Show payroll contribution registers that are in confirmed or resumed state." />
+							</button>
+						</div>
+						<div class="oe_title">
+							<label for="name" class="oe_edit_only" />
+							<h1>
+								<field name="name" placeholder="e.g. Social Insurance" />
+							</h1>
+							<label for="code" class="oe_edit_only" />
+							<h2>
+								<field name="code"
+									placeholder="Unique Code, accessible in salary rules" />
+							</h2>
+						</div>
+						<group>
+							<group>
+								<field name="employee_contrib_reg_id" />
+								<field name="employee_contrib_rate" />
+							</group>
+							<group>
+								<field name="company_contrib_reg_id"
+									readonly="not employee_contrib_reg_id" />
+								<field name="company_contrib_rate"
+									invisible="not company_contrib_reg_id" />
+							</group>
+							<group>
+								<field name="computation_block" />
+								<field name="computation_method"
+									invisible="computation_block != 'month'" />
+								<field name="days_in_months"
+									invisible="computation_method != 'half_up'" />
+								<label for="max_unpaid_days"
+									invisible="computation_block != 'month' or computation_method != 'max_unpaid_days'" />
+								<div class="o_row"
+									invisible="computation_block != 'month' or computation_method != 'max_unpaid_days'">
+									<field name="max_unpaid_days"/>
+									<span>day(s)</span>
+								</div>
+								<field name="partner_id" />
+								<field name="company_id" groups="base.group_multi_company"/>
+							</group>
+						</group>
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids"/>
+						<field name="activity_ids"/>
+						<field name="message_ids"/>
+					</div>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view"
+			id="hr_payroll_contribution_type_list_view">
+			<field name="name">Payroll Contribution Type</field>
+			<field name="model">hr.payroll.contribution.type</field>
+			<field name="arch" type="xml">
+				<tree sample="1">
+					<field name="name" />
+					<field name="employee_contrib_reg_id" />
+					<field name="employee_contrib_rate" />
+					<field name="company_contrib_reg_id" />
+					<field name="company_contrib_rate" />
+					<field name="partner_id" />
+					<field name="company_id" groups="base.group_multi_company"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- actions opening views on models -->
+		<record model="ir.actions.act_window"
+			id="to_hr_payroll_contribution_type_action">
+			<field name="name">Payroll Contribution Type</field>
+			<field name="res_model">hr.payroll.contribution.type</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click here to create a new Payroll Contribution type.
+				</p>
+			</field>
+		</record>
+
+		<menuitem action="to_hr_payroll_contribution_type_action"
+			id="hr_menu_payroll_contribution_type"
+			name="Payroll Contribution Type"
+			parent="hr_payroll_contribution_menu_root" sequence="9"
+			groups="to_hr_payroll.group_hr_payroll_user" />
+
+	</data>
+</odoo>

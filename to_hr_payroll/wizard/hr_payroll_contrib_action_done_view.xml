@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view"
+			id="hr_payroll_contrib_action_done_form_view">
+			<field name="name">hr.payroll.contrib.action.done.form</field>
+			<field name="model">hr.payroll.contrib.action.done</field>
+			<field name="inherit_id"
+				ref="abstract_hr_payroll_contrib_action_form_view" />
+			<field name="mode">primary</field>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='date']" position="before">
+					<field name="payroll_contribution_reg_ids" invisible="1" />
+				</xpath>
+				<xpath expr="//field[@name='date']" position="attributes">
+					<attribute name="string">Date Done</attribute>
+				</xpath>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window"
+			id="hr_payroll_contrib_action_done_action">
+			<field name="name">Close Contribution Registers</field>
+			<field name="res_model">hr.payroll.contrib.action.done</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="binding_model_id"
+				ref="to_hr_payroll.model_hr_payroll_contribution_register" />
+			<field name="binding_type">action</field>
+			<field name="context">{'default_payroll_contribution_reg_ids': active_ids}</field>
+		</record>
+
+	</data>
+</odoo>

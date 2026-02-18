@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_kitchen_user,hr_kitchen_user,model_hr_kitchen,hr_meal_group_user,1,0,0,0
+access_hr_kitchen_manager,hr_kitchen_manager,model_hr_kitchen,hr_meal_group_admin,1,1,1,1
+access_hr_meal_type_user,hr_meal_type_user,model_hr_meal_type,hr_meal_group_user,1,0,0,0
+access_hr_meal_type_manager,hr_meal_type_manager,model_hr_meal_type,hr_meal_group_admin,1,1,1,1
+access_hr_meal_order_line_user,hr_meal_order_line_user,model_hr_meal_order_line,hr_meal_group_user,1,1,1,1
+access_hr_meal_order_user,hr_meal_order_user,model_hr_meal_order,hr_meal_group_user,1,1,1,1
+access_hr_meal_order_analysis_user,hr_meal_order_analysis_user,model_hr_meal_order_analysis,hr_meal_group_user,1,0,0,0
+access_hr_meal_order_line_employee,hr_meal_order_line_employee,model_hr_meal_order_line,base.group_user,1,0,0,0

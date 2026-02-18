@@ -1,0 +1,4 @@
+#. module: base
+#: model:ir.module.category,description:base.module_category_human_resources_payroll
+msgid "Helps you manage your payrolls."
+msgstr "Giúp bạn quản lý Bảng lương."

@@ -1,0 +1,8 @@
+"id","sequence","name","country_id","name@vi_VN"
+"tax_group_0","1","","",""
+"tax_group_5","2","","",""
+"tax_group_8","3","VAT 8%","base.vn","Thuế GTGT 8%"
+"tax_group_10","4","","",""
+"tax_group_exemption","5","","",""
+"tax_group_import","6","VAT IMPORT","base.vn","Thuế nhập khẩu"
+"tax_group_export","7","VAT EXPORT","base.vn","Thuế xuất khẩu"

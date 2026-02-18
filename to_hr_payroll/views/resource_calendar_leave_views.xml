@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="resource.action_resource_calendar_leave_tree" model="ir.actions.act_window">
+        <field name="context">{'check_payroll': True}</field>
+    </record>
+</odoo>

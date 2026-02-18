@@ -1,0 +1,17 @@
+<odoo>
+
+	<menuitem id="hr_meal_root_menu" name="HR Meal" sequence="235"
+		web_icon="to_hr_meal,static/description/icon.png" />
+
+	<menuitem id="hr_meal_order_root_menu" name="Meal Orders"
+		parent="hr_meal_root_menu" sequence="10" />
+
+	<menuitem id="hr_meal_report_menu" name="Reports"
+		parent="hr_meal_root_menu" sequence="50"
+		groups="hr_meal_group_admin" />
+
+	<menuitem id="hr_meal_config_menu" name="Configuration"
+		parent="hr_meal_root_menu" sequence="100"
+		groups="hr_meal_group_admin" />
+
+</odoo>

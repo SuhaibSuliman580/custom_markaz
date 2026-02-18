@@ -1,0 +1,85 @@
+<odoo>
+	<template id="signature_block">
+		<div class="row">
+			<div class="col-12 text-end" style="padding-right:40px;">
+					On........Month.......Year........
+				</div>
+		</div>
+		<div class="row pb-5" style="page-break-inside:avoid;">
+			<div class="col-4">
+				<p class="text-center">
+					<strong>
+							Prepared By
+						</strong>
+					<br />
+					(Signature, Full Name)
+				</p>
+			</div>
+			<div class="col-4">
+				<p class="text-center">
+					<strong>
+							Chief Accountant
+						</strong>
+					<br />
+					(Signature, Full Name)
+				</p>
+			</div>
+			<div class="col-4">
+				<p class="text-center">
+					<strong>
+							Director/CEO
+						</strong>
+					<br />
+					(Signature, Full Name, Job Title)
+				</p>
+			</div>
+		</div>
+	</template>
+
+	<template id="signature_block_delivery">
+		<div class="row">
+			<div class="col-12 text-end" style="padding-right:40px;">
+					On........Month.......Year........
+				</div>
+		</div>
+		<div class="row pb-5" style="page-break-inside:avoid;">
+			<div class="col-3">
+				<p class="text-center">
+					<strong>
+							Prepared by
+						</strong>
+					<br />
+					(Signature, Full Name)
+				</p>
+			</div>
+			<div class="col-3">
+				<p class="text-center">
+					<strong>
+							Receiver
+						</strong>
+					<br />
+					(Signature, Full Name)
+				</p>
+			</div>
+			<div class="col-3">
+				<p class="text-center">
+					<strong>
+							Deliverer
+						</strong>
+					<br />
+					(Signature, Full Name)
+				</p>
+			</div>
+			<div class="col-3">
+				<p class="text-center">
+					<strong>
+							Store Manager
+						</strong>
+					<br />
+					(Signature, Full Name)
+				</p>
+			</div>
+		</div>
+	</template>
+
+</odoo>

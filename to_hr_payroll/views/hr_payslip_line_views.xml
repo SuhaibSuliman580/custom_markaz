@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- Payslip Line -->
+	<record id="view_hr_payslip_line_tree" model="ir.ui.view">
+		<field name="name">hr.payslip.line.tree</field>
+		<field name="model">hr.payslip.line</field>
+		<field name="arch" type="xml">
+			<tree string="Payslip Lines" create="false" edit="false" delete="false"
+				decoration-info="total == 0" decoration-danger="total &lt; 0" sample="1">
+				<field name="category_id" />
+				<field name="employee_id" column_invisible="1" />
+				<field name="sequence" />
+				<field name="name" />
+				<field name="code" />
+				<field name="quantity" />
+				<field name="rate" />
+				<field name="amount" />
+				<field name="total" />
+				<field name="register_id" column_invisible="1" />
+				<field name="currency_id" column_invisible="1" />
+				<field name="company_id" column_invisible="1" />
+			</tree>
+		</field>
+	</record>
+	<record id="view_hr_payslip_line_form" model="ir.ui.view">
+		<field name="name">hr.payslip.line.form</field>
+		<field name="model">hr.payslip.line</field>
+		<field name="arch" type="xml">
+			<form string="Payslip Line" create="false" edit="false" delete="false">
+				<group>
+					<group>
+						<field name="name" />
+						<field name="code" />
+						<field name="slip_id" />
+						<field name="employee_id" />
+						<field name="category_id" />
+						<field name="sequence" />
+						<field name="company_id" invisible="1" />
+						<field name="currency_id" invisible="1" />
+					</group>
+					<field name="note" />
+				</group>
+			</form>
+		</field>
+	</record>
+
+	<record model="ir.ui.view"
+			id="hr_payslip_line_view_pivot">
+			<field name="name">Payslip Line Analysis</field>
+			<field name="model">hr.payslip.line</field>
+			<field name="arch" type="xml">
+				<pivot string="Payslip Line Analysis" sample="1">
+					<field name="date_from" type="col" />
+					<field name="salary_rule_id" type="row" />
+					<field name="total" type="measure" />
+				</pivot>
+			</field>
+		</record>
+
+		<record model="ir.ui.view"
+			id="hr_payslip_line_view_graph">
+			<field name="name">Payslip Line Analysis</field>
+			<field name="model">hr.payslip.line</field>
+			<field name="arch" type="xml">
+				<graph string="Payslip Line Analysis" sample="1">
+					<field name="salary_rule_id" type="row" />
+					<field name="total" type="measure" />
+				</graph>
+			</field>
+		</record>
+
+	<record id="view_hr_payslip_line_filter" model="ir.ui.view">
+		<field name="name">hr.payslip.line.select</field>
+		<field name="model">hr.payslip.line</field>
+		<field name="arch" type="xml">
+			<search string="Search Payslip Lines">
+				<field name="name" string="Payslip Lines"
+					filter_domain="['|',('name','ilike',self),('code','ilike',self)]" />
+				<field name="slip_id" />
+				<separator />
+				<field name="register_id" />
+				<field name="register_category_id" />
+				<filter name="ftr_no_misc_categ" string="Without Category Code 'TAXBASE' and 'MISC' and 'GROSS' and 'NET'"
+						domain="[('category_id.code', 'not in', ['TAXBASE','MISC','GROSS','NET'])]" />
+				<separator />
+				<field name="company_id" invisible="1" />
+				<group col="8" colspan="4" expand="0" string="Group By">
+					<filter string="Salary Rule Category" name="category_id"
+						context="{'group_by':'category_id'}" />
+					<filter string="Contribution Register" name="register_id"
+						context="{'group_by':'register_id'}" />
+					<filter string="Contribution Register Category" name="register_category_id"
+						context="{'group_by':'register_category_id'}" />
+					<filter string="Employees" name="employee_id"
+						context="{'group_by':'employee_id'}" />
+				</group>
+			</search>
+		</field>
+	</record>
+
+	<record id="action_windows_hr_payslip_line"
+		model="ir.actions.act_window">
+		<field name="res_model">hr.payslip.line</field>
+		<field name="name">Payslip Lines</field>
+		<field name="view_mode">pivot,graph,tree,form</field>
+		<field name="domain">[]</field>
+		<field name="context">{'search_default_ftr_no_misc_categ':1}</field>
+		<field name="view_id" ref="to_hr_payroll.hr_payslip_line_view_pivot" />
+		<field name="search_view_id" ref="to_hr_payroll.view_hr_payslip_line_filter" />
+	</record>
+</odoo>

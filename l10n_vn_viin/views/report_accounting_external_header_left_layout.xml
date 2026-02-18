@@ -1,0 +1,40 @@
+<odoo>
+	<template id="accounting_external_header_left_layout">
+		<div class="col-7">
+			<div class="row">
+				<div class="col-4">
+					<img t-if="company.logo"
+						t-att-src="image_data_uri(company.logo)" class="float-start img-fluid" alt="Logo"
+						style="max-height: 90px;"/>
+					<br />
+					<span t-if="company.report_header" class="text-muted"
+						t-field="company.report_header" />
+				</div>
+				<div class="col-8">
+					<strong>Company:</strong>
+					<span t-esc="company.name" />
+					<br />
+					<strong>Address:</strong>
+					<t t-if="company.street">
+						<span t-esc="company.street" />,
+					</t>
+					<t t-if="company.street2">
+						<span t-esc="company.street2" />,
+					</t>
+					<t t-if="company.city">
+						<span t-esc="company.city" />,
+					</t>
+					<t t-if="not company.city or company.state_id">
+						<span t-field="company.state_id" />,
+					</t>
+					<span t-field="company.country_id.name" />
+					<br/>			
+					<t t-if="company.state_id.code">
+						<strong>Zip code:</strong>
+						<span t-esc="company.state_id.code" />		
+					</t>	
+				</div>
+			</div>
+		</div>
+	</template>
+</odoo>

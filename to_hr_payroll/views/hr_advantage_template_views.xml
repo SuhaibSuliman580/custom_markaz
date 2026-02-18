@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="hr_advantage_template_view_form" model="ir.ui.view">
+		<field name="name">hr.advantage.template.form</field>
+		<field name="model">hr.advantage.template</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button name="action_update_contract_advantage" string="Update Contract Advantages" type="object" groups="hr.group_hr_manager"/>
+				</header>
+				<sheet>
+					<div class="oe_title">
+						<h1>
+							<field name="name" placeholder="Advantage Name" />
+						</h1>
+					</div>
+					<group>
+						<group>
+							<field name="code" />
+							<field name="amount_type"/>
+							<field name="based_on_time_off_type_id"/>
+							<field name="company_id" groups="base.group_multi_company"
+								options="{'no_create': True}" />
+							<field name="currency_id"
+								groups="base.group_multi_currency" options="{'no_create': True}" />
+						</group>
+						<group>
+							<field name="amount" string="Monthly Amount"
+								invisible="amount_type != 'monthly_base'" />
+							<field name="amount" string="Amount Per Hour"
+								invisible="amount_type != 'timeoff_hour_base'" />
+							<field name="lower_bound" />
+							<field name="upper_bound" />
+							<field name="included_in_payroll_contribution_register"
+								widget="boolean_toggle" />
+						</group>
+					</group>
+					<notebook>
+						<page name="jobs" string="Job Positions">
+							<separator string="" />
+							<group>
+								<field name="job_advantage_ids" context="{'default_amount': amount}">
+									<tree editable="bottom">
+										<field name="template_id" column_invisible="1" />
+										<field name="job_id" />
+										<field name="code" />
+										<field name="amount" />
+										<field name="amount_type"/>
+										<field name="based_on_time_off_type_id"/>
+										<field name="currency_id" column_invisible="1" />
+										<field name="company_id" column_invisible="1" />
+									</tree>
+							</field>
+							</group>
+						</page>
+					</notebook>
+				</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids" groups="base.group_user" />
+					<field name="activity_ids"/>
+					<field name="message_ids"/>
+				</div>
+			</form>
+		</field>
+	</record>
+
+	<record id="hr_advantage_template_view_tree" model="ir.ui.view">
+		<field name="name">hr.advantage.template.tree</field>
+		<field name="model">hr.advantage.template</field>
+		<field name="arch" type="xml">
+			<tree sample="1">
+				<field name="name" />
+				<field name="code" />
+				<field name="lower_bound" />
+				<field name="upper_bound" />
+				<!-- pylint: disable=duplicate-xml-fields -->
+				<field name="amount" string="Monthly Amount"
+					invisible="amount_type != 'monthly_base'" />
+				<field name="amount" string="Amount Per Hour"
+					invisible="amount_type != 'timeoff_hour_base'" />
+				<field name="amount_type"/>
+				<field name="based_on_time_off_type_id"/>
+				<field name="company_id" groups="base.group_multi_company" />
+				<field name="currency_id" groups="base.group_multi_currency" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="hr_advantage_template_action"
+		model="ir.actions.act_window">
+		<field name="name">HR Advantage Templates</field>
+		<field name="res_model">hr.advantage.template</field>
+	</record>
+
+	<menuitem id="hr_advantage_template_menu_action"
+		action="hr_advantage_template_action"
+		parent="menu_hr_payroll_configuration_payroll_entry" sequence="16" />
+
+	<record id="action_server_update_job_position_advantages"
+		model="ir.actions.server">
+		<field name="name">Update Job Position's Advantages</field>
+		<field name="type">ir.actions.server</field>
+		<field name="model_id" ref="model_hr_advantage_template" />
+		<field name="binding_model_id" ref="model_hr_advantage_template" />
+		<field name="state">code</field>
+		<field name="code">records._update_job_position_advantages()</field>
+	</record>
+
+	<record id="action_server_generate_job_position_advantages"
+		model="ir.actions.server">
+		<field name="name">Genrate Job Position's Advantages</field>
+		<field name="type">ir.actions.server</field>
+		<field name="model_id" ref="model_hr_advantage_template" />
+		<field name="binding_model_id" ref="model_hr_advantage_template" />
+		<field name="state">code</field>
+		<field name="code">records._generate_job_position_advantages()</field>
+	</record>
+</odoo>

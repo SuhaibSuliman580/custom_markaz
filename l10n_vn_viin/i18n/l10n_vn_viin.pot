@@ -1,0 +1,1423 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_vn_viin
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-07 08:34+0000\n"
+"PO-Revision-Date: 2024-09-07 08:34+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_vn_viin
+#. odoo-python
+#: code:addons/l10n_vn_viin/models/account_account_tag.py:0
+#, python-format
+msgid "%s - %s"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "(In Words):"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_circular_desc_layout_c133
+msgid ""
+"(Released Under the Circular No. 133/2016/TT-BTC\n"
+"\t\t\t<br/>\n"
+"\t\t\tDated 26/8/2016 by the Ministry of Finance)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_circular_desc_layout_c200
+msgid ""
+"(Released Under the Circular No. 200/2014/TT-BTC\n"
+"\t\t\t<br/>\n"
+"\t\t\tDated 22/12/2014 by the Ministry of Finance)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "<b>Total</b>"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"<br/>\n"
+"\t\t\t\t\t\t\t\t\t[\n"
+"\t\t\t\t\t\t\t\t\t<span class=\"fa fa-warning\" style=\"color: red;\"/>\n"
+"\t\t\t\t\t\t\t\t\tYou have not specified currency unit (e.g. Dollars, Vietnam\n"
+"\t\t\t\t\t\t\t\t\t\t\tDong, etc) for the corresponding currency"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"<br/>\n"
+"\t\t\t\t\t\t\t(Sign, Full Name)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"<br/>\n"
+"\t\t\t\t\t\t\tAddress:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"<br/>\n"
+"\t\t\t\t\t\t\tTotal Amount:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_external_header_left_layout
+msgid ""
+"<br/>\n"
+"\t\t\t\t\t<strong>Address:</strong>"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "<span>JOURNAL ENTRY</span>"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_circular_external_layout_standard
+msgid "<span>Template </span>"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.signature_block
+msgid ""
+"<strong>\n"
+"\t\t\t\t\t\t\tChief Accountant\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Signature, Full Name)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.signature_block_delivery
+msgid ""
+"<strong>\n"
+"\t\t\t\t\t\t\tDeliverer\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Signature, Full Name)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.signature_block
+msgid ""
+"<strong>\n"
+"\t\t\t\t\t\t\tDirector/CEO\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Signature, Full Name, Job Title)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.signature_block
+msgid ""
+"<strong>\n"
+"\t\t\t\t\t\t\tPrepared By\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Signature, Full Name)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.signature_block_delivery
+msgid ""
+"<strong>\n"
+"\t\t\t\t\t\t\tPrepared by\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Signature, Full Name)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.signature_block_delivery
+msgid ""
+"<strong>\n"
+"\t\t\t\t\t\t\tReceiver\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Signature, Full Name)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.signature_block_delivery
+msgid ""
+"<strong>\n"
+"\t\t\t\t\t\t\tStore Manager\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Signature, Full Name)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"<strong>Cashier</strong>\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t(Sign, Full Name)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"<strong>Chief Accountant</strong>\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t(Sign, Full Name)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_external_header_left_layout
+msgid "<strong>Company:</strong>"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"<strong>Director/CEO</strong>\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t(Sign, Full Name, Stamp)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"<strong>Prepared By</strong>\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t(Sign, Full Name)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_external_header_left_layout
+msgid "<strong>Zip code:</strong>"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_account_account
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Account"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_account_chart_template
+msgid "Account Chart Template"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Account Date:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_report_l10n_vn_viin_report_account_payment
+msgid "Account Payment Report"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_account_account_tag
+msgid "Account Tag"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_335
+msgid "Accured Expenses"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_141
+msgid "Advances"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_229
+msgid "Allowance for impairment of assets"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2291
+msgid "Allowances for decline in value of trading securities"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2293
+msgid "Allowances for doubtful debts"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2292
+msgid "Allowances for impairment of investments in other entities"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2294
+msgid "Allowances for inventories"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2143
+msgid "Amortisation of intangible assets"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Amount"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Attached:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Attached: ... source document(s)."
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_34313
+msgid "Bond premiums"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1212
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1282
+msgid "Bonds"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_353
+msgid "Bonus and welfare fund"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3411
+msgid "Borrowing loans"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_341
+msgid "Borrowings and finance lease liabilities"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2111
+msgid "Buildings and structures"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_642_c133
+msgid "Business administration expenses (c133)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "CREDIT NOTE"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_441
+msgid "Capital expenditure funds"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_4112
+msgid "Capital surplus"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_112
+msgid "Cash in banks"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_113
+msgid "Cash in transit"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_111
+msgid "Cash on hand"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,field_description:l10n_vn_viin.field_res_company__circular_code
+msgid "Circular Code"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,field_description:l10n_vn_viin.field_account_account_tag__code
+msgid "Code"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Company:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_241
+msgid "Construction in progress"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Content:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_4111
+msgid "Contributed capital"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_4113
+msgid "Conversion options on convertible bonds"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3432
+msgid "Convertible bonds"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3334
+msgid "Corporate income tax"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_623
+msgid "Costs of construction machinery"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_632
+msgid "Costs of goods sold"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Credit"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Credit:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_res_currency
+msgid "Currency"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,field_description:l10n_vn_viin.field_res_currency__currency_unit_label
+msgid "Currency Unit"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Currency:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_8211
+msgid "Current tax expense"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Customer:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "DEBIT NOTE"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Date No:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Date:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Debit"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Debit:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_133
+msgid "Deductible VAT"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_243
+msgid "Deferred tax assets"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_8212
+msgid "Deferred tax expense (benefit)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_347
+msgid "Deferred tax liabilities"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_344
+msgid "Deposits received"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3386_c133
+msgid "Deposits received (c133)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2142
+msgid "Deprecation of finance lease fixed assets"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_214
+msgid "Deprecation of fixed assets"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2147
+msgid "Deprecation of of investment properties"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2141
+msgid "Deprecation of tangible fixed assets"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Description"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_412
+msgid "Differences upon asset revaluation"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_622
+msgid "Direct labour costs"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_621
+msgid "Direct raw material costs"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_mail_template
+msgid "Email Templates"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_external_footer_layout
+msgid "Email:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_417
+msgid "Enterprise reorganization assistance fund "
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3338
+msgid "Environment protection tax and other taxes"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1534
+msgid "Equipment and spare parts for replacement"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_418_c133
+msgid "Equity funds (c133)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Exchange"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Exchange rate"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_413
+msgid "Exchange rate differences"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_627
+msgid "Factory overheads"
+msgstr ""
+
+#. module: l10n_vn_viin
+#. odoo-python
+#: code:addons/l10n_vn_viin/models/account_account.py:0
+#, python-format
+msgid ""
+"Fill account tags only for accounts in the company that use the Vietnam COA."
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_212
+msgid "Finance lease fixed assets"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2112_c133
+msgid "Finance lease fixed assets (c133)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3412
+msgid "Finance lease liabilities"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_635
+msgid "Financial expenses"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_515
+msgid "Financial income"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_155
+msgid "Finished goods"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_211_c133
+msgid "Fixed assets (c133)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2411
+msgid "Fixed assets prior to commissioning"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.view_account_payment_form
+msgid "Receipt Printing"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Foreign Currency"
+msgstr ""
+
+#. module: l10n_vn_viin
+#. odoo-python
+#: code:addons/l10n_vn_viin/models/report_l10n_vn_common.py:0
+#, python-format
+msgid "Form content is missing, this report cannot be printed."
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_642
+msgid "General administration expenses"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_6422_c133
+msgid "General administration expenses (c133)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_158
+msgid "Goods in bonded warehouse"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_151
+msgid "Goods in transit"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_171
+msgid "Government bonds purchased for resale"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_128
+msgid "Held to maturity investments"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields.selection,name:l10n_vn_viin.selection__account_move__in_out_payment__in
+msgid "In"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "In Words:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_911
+msgid "Income Summary"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_821
+msgid "Income tax expense (benefit)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_213
+msgid "Intangible fixed assets"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2113_c133
+msgid "Intangible fixed assets (c133)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_336
+msgid "Intra-company payables"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3363
+msgid "Intra-company payables for borrowing costs eligible to be capitalized"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3362
+msgid "Intra-company payables for foreign exchange differences"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3361
+msgid "Intra-company payables for operating capital received"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_136
+msgid "Intra-company receivables"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1363
+msgid ""
+"Intra-company receivables on borrowing costs eligible to be capitalized"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1362
+msgid "Intra-company receivables on foreign exchange defferences"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_414
+msgid "Investment and development fund"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_217
+msgid "Investment properties"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2281
+msgid "Investments in equity of other entities"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_228_c133
+msgid "Investments in equity of other entities (c133)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_222
+msgid "Investments in joint ventures and associates"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2281_c133
+msgid "Investments in joint ventures and associates (c133)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_221
+msgid "Investments in subsidiaries"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_343
+msgid "Issued bonds"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_account_journal
+msgid "Journal"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.actions.report,name:l10n_vn_viin.act_report_account_move_journal_entry
+#: model:ir.model,name:l10n_vn_viin.model_account_move
+msgid "Journal Entry"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_report_l10n_vn_viin_report_account_move_journal_entry
+msgid "Journal Entry Report"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,field_description:l10n_vn_viin.field_ir_actions_report__legal_name
+msgid "Legal Name"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1283
+msgid "Lending Loans"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"Log #:..............\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\tNumber:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_external_header_left_layout
+msgid "Logo"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_156
+msgid "Merchandise inventories"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_244
+msgid "Mortgage, collaterals and deposits"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1386_c133
+msgid "Mortgage, collaterals and deposits (c133)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Name of Payment Applicant:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Name of Payment Receiver:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,field_description:l10n_vn_viin.field_account_payment__no_of_origin
+msgid "No. of Origin"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "No:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_161
+msgid "Non-business expenditure out of funds received from the State"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_461
+msgid "Non-business funds"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_466
+msgid "Non-business funds used for fixed asset acquisitions"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,help:l10n_vn_viin.field_account_payment__no_of_origin
+msgid ""
+"Number of the origin documents (e.g. Purchase Voucher number, Invoice "
+"Number, etc), to be displayed on the PDF printed version of this document."
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.signature_block
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.signature_block_delivery
+msgid "On........Month.......Year........"
+msgstr ""
+
+#. module: l10n_vn_viin
+#. odoo-python
+#: code:addons/l10n_vn_viin/reports/account_move_report_payment_receipt.py:0
+#, python-format
+msgid "Only payments could be printed."
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3431
+msgid "Ordinary bonds"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_41111
+msgid "Ordinary shares with voting rights"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_811
+msgid "Other Expenses"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_711
+msgid "Other Income"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_4118
+msgid "Other capital"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_418
+msgid "Other equity funds"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1288
+msgid "Other held to maturity investments"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3368
+msgid "Other intra-company payables"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1368
+msgid "Other intra-company receivables"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_228
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2288
+msgid "Other investments"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_338
+msgid "Other payables"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_138
+msgid "Other receivables"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1388
+msgid "Others"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields.selection,name:l10n_vn_viin.selection__account_move__in_out_payment__out
+msgid "Out"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_157
+msgid "Outward goods on consignment"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_411
+msgid "Owner’s invested equity"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "PAYMENT RECEIPT"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "PAYMENT VOUCHER"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_external_footer_layout
+msgid ""
+"Page:\n"
+"\t\t\t\t<span class=\"page\"/>\n"
+"\t\t\t\t/\n"
+"\t\t\t\t<span class=\"topage\"/>"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_34311
+msgid "Par value of bonds"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3385
+msgid "Payables on equitization"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_334
+msgid "Paybles to employees"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.view_account_payment_form
+msgid "Payer"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Payment Applicant"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,field_description:l10n_vn_viin.field_account_bank_statement_line__in_out_payment
+#: model:ir.model.fields,field_description:l10n_vn_viin.field_account_move__in_out_payment
+#: model:ir.model.fields,field_description:l10n_vn_viin.field_account_payment__in_out_payment
+msgid "Payment In/Out"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Payment Reason:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.actions.report,name:l10n_vn_viin.account_move_action_payment_receipt
+#: model:ir.actions.report,name:l10n_vn_viin.act_report_account_payment
+msgid "Payment Receipt (Template 01-TT/02-TT)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_report_l10n_vn_viin_report_account_move_payment_receipt
+msgid "Payment Receipt Report"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Payment Receiver"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_account_payment
+msgid "Payments"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_external_footer_layout
+msgid "Phone:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_41112
+msgid "Preference shares"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_242
+msgid "Prepaid expenses"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.actions.report,name:l10n_vn_viin.report_accounting_external_preview_action
+msgid "Preview Standard Vietnam Accounting External Report"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.actions.report,name:l10n_vn_viin.report_accounting_circular_external_preview_action
+msgid "Preview Standard Vietnam Circular Accounting External Report"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_357
+msgid "Price stabilization fund"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_631
+msgid "Production costs"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_337
+msgid "Progress billings for construction contracts"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_352
+msgid "Provisions payable"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_611
+msgid "Purchases (used for periodic inventory systems)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_152
+msgid "Raw materials"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Receipt Reason:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1385
+msgid "Receivables from equitization"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"Received Amount (in words):\n"
+"\t\t\t\t\t\t\t\t\t.......................................................................................................\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t+ Foreign Exchange Rate (or Gold Currency):\n"
+"\t\t\t\t\t\t\t\t\t...........................................................................\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t+ Conversion Amount:\n"
+"\t\t\t\t\t\t\t\t\t................................................................................................................."
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.view_account_payment_form
+msgid "Recipient"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,field_description:l10n_vn_viin.field_account_payment__recipient_payer
+msgid "Recipient / Payer"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_ir_actions_report
+msgid "Report Action"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_521
+msgid "Revenue deductions"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_5117
+msgid "Revenue from investment properties"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_511
+msgid "Revenues"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_356
+msgid "Science and technology development fund"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_641
+msgid "Selling expenses"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_6421_c133
+msgid "Selling expenses (c133)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1211
+msgid "Shares"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1381
+msgid "Shortage of assets awaiting resolution"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_external_footer_layout
+msgid "TIN:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_211
+msgid "Tangible fixed assets"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2111_c133
+msgid "Tangible fixed assets (c133)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_account_tax_group
+msgid "Tax Group"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_333
+msgid "Taxes and other payables to State Budget"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1281
+msgid "Term deposits"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,help:l10n_vn_viin.field_ir_actions_report__legal_name
+msgid ""
+"The legal name of the report. For instance, 'Template S12-DN' is the legal "
+"name of the stock card according the Ministry of Finanace of Vietnam"
+msgstr ""
+
+#. module: l10n_vn_viin
+#. odoo-python
+#: code:addons/l10n_vn_viin/models/report_l10n_vn_common.py:0
+#, python-format
+msgid "The method '_get_lines' has NOT been implemented."
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,help:l10n_vn_viin.field_account_payment__recipient_payer
+msgid ""
+"The name of the person who pay/receive the payment. If empty, the "
+"corresponding partner name will be used instead."
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,help:l10n_vn_viin.field_account_account_tag__code
+msgid "The unique code of the tag"
+msgstr ""
+
+#. module: l10n_vn_viin
+#. odoo-python
+#: code:addons/l10n_vn_viin/reports/account_move_report_payment_receipt.py:0
+#, python-format
+msgid ""
+"There are a few Journal Entries not in state Posted. You can post it and try"
+" again."
+msgstr ""
+
+#. module: l10n_vn_viin
+#. odoo-python
+#: code:addons/l10n_vn_viin/reports/account_payment_report.py:0
+#, python-format
+msgid ""
+"There are a few Payments not in state Validated or Reconciled. You can post "
+"it and try again."
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_circular_page_desc_layout_c133
+msgid ""
+"This is a sample of a Vietnamese Accounting External Report\n"
+"\t\taccording to templates released under the Circular 133 by the\n"
+"\t\tMinistry of Finance."
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_circular_page_desc_layout_c200
+msgid ""
+"This is a sample of a Vietnamese Accounting External Report\n"
+"\t\taccording to templates released under the Circular 200 by the\n"
+"\t\tMinistry of Finance."
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.preview_accounting_external_report_standard
+msgid "This is a sample of a Vietnamese Accounting External Report."
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,help:l10n_vn_viin.field_account_bank_statement_line__in_out_payment
+#: model:ir.model.fields,help:l10n_vn_viin.field_account_move__in_out_payment
+#: model:ir.model.fields,help:l10n_vn_viin.field_account_payment__in_out_payment
+msgid ""
+"This is technical field, use to specify this move is payment in or payment "
+"out."
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_153
+msgid "Tools and supplies"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_331
+msgid "Trade payables"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_131
+msgid "Trade receivables"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_121
+msgid "Trading Securities"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_419
+msgid "Treasury shares"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_4212
+msgid "Undistributed profit (loss) after tax for the current year"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_421
+msgid "Undistributed profit after tax"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_4211
+msgid "Undistributed profit after tax brought forward"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3387
+msgid "Unearned revenue"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.report.line,name:l10n_vn_viin.account_tax_report_line_05_02_01_vn
+msgid "Untaxed Purchase of Goods and Services taxed 8%"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.report.line,name:l10n_vn_viin.account_tax_report_line_05_02_02_vn
+msgid "Untaxed sales of goods and services taxed 8%"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.report.line,name:l10n_vn_viin.account_tax_report_line_04_01_01_vn
+msgid "VAT on purchase of goods and services 8%"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.report.line,name:l10n_vn_viin.account_tax_report_line_04_01_02_vn
+msgid "VAT on sales of goods and services 8%"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3331
+msgid "Value Added Tax (VAT)"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Vendor:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.ui.menu,name:l10n_vn_viin.account_reports_vn_menu
+msgid "Vietnam Accounting Reports"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_report_l10n_vn_common
+msgid "Vietnam Common Report"
+msgstr ""
+
+#. module: l10n_vn_viin
+#. odoo-python
+#: code:addons/l10n_vn_viin/models/res_company.py:0
+#, python-format
+msgid "Vietnam Dong"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_external_footer_layout
+msgid "Web:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_154
+msgid "Work in progress"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1361
+msgid "Working capital provided to sub-units"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid ""
+"[\n"
+"\t\t\t\t\t\t\t\t<span class=\"fa fa-warning\" style=\"color: red;\"/>\n"
+"\t\t\t\t\t\t\t\tYou have not specified currency unit (e.g. Dollars, Vietnam\n"
+"\t\t\t\t\t\t\t\t\t\t\tDong, etc) for the corresponding currency"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "source document(s)."
+msgstr ""

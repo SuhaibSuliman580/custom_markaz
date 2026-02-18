@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="ir_default_form_view" model="ir.ui.view">
+        <field name="name">ir.default.view.form.inherit</field>
+        <field name="model">ir.default</field>
+        <field name="inherit_id" ref="base.ir_default_form_view"/>
+        <field name="arch" type="xml">
+            <group name="field_value">
+                <field name="condition" />
+            </group>
+        </field>
+    </record>
+
+</odoo>

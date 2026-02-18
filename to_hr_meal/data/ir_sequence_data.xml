@@ -1,0 +1,12 @@
+<odoo noupdate="1">
+
+	<!-- Sequences for hr.meal.order -->
+	<record id="ir_sequence_hr_meal_order" model="ir.sequence">
+		<field name="name">HR Meal Order</field>
+		<field name="code">hr.meal.order</field>
+		<field name="prefix">HRMO</field>
+		<field name="padding">5</field>
+		<field name="company_id" eval="False" />
+	</record>
+
+</odoo>

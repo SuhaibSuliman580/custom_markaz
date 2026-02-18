@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+	<menuitem id="menu_hr_payslip_run_type" action="act_hr_payslip_run_type" parent="oi_payroll.menu_hr_payroll_configuration" />
+	
+</odoo>

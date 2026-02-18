@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<menuitem id="account_reports_vn_menu" name="Vietnam Accounting Reports" parent="account.menu_finance_reports" sequence="3" groups="account.group_account_readonly"/>
+
+</odoo>

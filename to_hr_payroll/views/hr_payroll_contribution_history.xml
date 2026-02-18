@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view"
+			id="hr_payroll_contribution_history_form_view">
+			<field name="name">Payroll Contribution History</field>
+			<field name="model">hr.payroll.contribution.history</field>
+			<field name="arch" type="xml">
+				<form string="Payroll Contribution History"
+					create="false">
+					<header>
+						<button name="action_edit_date_start"
+							type="object" string="Update Date Start"
+							context="{'call_wizard': True}"
+							groups="to_hr_payroll.group_hr_payroll_admin"/>
+						<button name="action_edit_date_end"
+							type="object" string="Update Date End"
+							context="{'call_wizard': True}"
+							groups="to_hr_payroll.group_hr_payroll_admin"/>
+						<field name="state" widget="statusbar" />
+					</header>
+					<sheet>
+						<group>
+							<group>
+								<field name="employee_id" />
+								<field name="employee_contrib_reg_id" />
+								<field name="type_id" />
+								<field name="contribution_base" />
+								<field name="date_from" />
+								<field name="date_to" />
+								<field name="currency_id" invisible="1" />
+							</group>
+							<group name="grp_contribution">
+								<label for="employee_contrib_rate"
+									string="Employee Contribution Rate" />
+								<div class="o_row">
+									<field name="employee_contrib_rate" />
+									<span>%</span>
+								</div>
+								<label for="company_contrib_rate"
+									string="Company Contribution Rate" />
+								<div class="o_row">
+									<field name="company_contrib_rate" />
+									<span>%</span>
+								</div>
+							</group>
+						</group>
+					</sheet>
+					<div class="oe_chatter">
+						<field name="message_follower_ids"/>
+						<field name="message_ids"/>
+					</div>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view"
+			id="hr_payroll_contribution_history_list_view">
+			<field name="name">Payroll Contribution History</field>
+			<field name="model">hr.payroll.contribution.history</field>
+			<field name="arch" type="xml">
+				<tree string="Payroll Contribution History"
+					create="false" sample="1">
+					<field name="employee_id" />
+					<field name="employee_contrib_reg_id" />
+					<field name="type_id" />
+					<field name="contribution_base" />
+					<field name="date_from" />
+					<field name="date_to" />
+					<field name="state" />
+					<field name="company_id" groups="base.group_multi_company"/>
+				</tree>
+			</field>
+		</record>
+
+		<record
+			id="hr_payroll_contribution_history_search_view"
+			model="ir.ui.view">
+			<field name="name">hr.payroll.contribution.history.search
+			</field>
+			<field name="model">hr.payroll.contribution.history</field>
+			<field name="arch" type="xml">
+				<search string="Search Payroll Contribution History">
+					<field name="employee_id" />
+					<field name="employee_contrib_reg_id" />
+					<field name="date_from" />
+					<field name="date_to" />
+					<filter string="Suspended" name="ftr_suspended"
+						domain="[('state', '=', 'suspended')]" />
+					<filter string="Running" name="ftr_confirmed_resumed"
+						domain="[('state', 'in', ['confirmed','resumed'])]" />
+					<filter string="Closed" name="done"
+						domain="[('state', '=', 'done')]" />
+					<separator />
+					<filter string="Current Employee"
+						name="ftr_current_employee"
+						domain="[('employee_id.active','=',True)]" />
+					<separator />
+					<filter string="Unread Messages" name="message_needaction"
+						domain="[('message_needaction','=',True)]" />
+					<group expand="0" string="Group By">
+						<filter name="grp_employee" string="Employee" domain="[]"
+							context="{'group_by':'employee_id'}" />
+						<filter name="grp_type" string="Payroll Contribution Type"
+							domain="[]" context="{'group_by':'type_id'}" />
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window"
+			id="to_hr_payroll_contribution_history_action">
+			<field name="name">Payroll Contribution History</field>
+			<field name="res_model">hr.payroll.contribution.history</field>
+			<field name="view_mode">tree,form,pivot,graph</field>
+		</record>
+
+		<menuitem
+			action="to_hr_payroll_contribution_history_action"
+			id="hr_menu_payroll_contribution_register_history"
+			name="Payroll Contribution History"
+			parent="menu_hr_payroll_reports" sequence="10"
+			groups="base.group_user" />
+
+	</data>
+</odoo>

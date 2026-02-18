@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================ -->
+    <!-- Portal Home Entry                                             -->
+    <!-- ============================================================ -->
+    <template id="portal_my_home_membership" name="Portal My Home: Membership"
+              customize_show="True" inherit_id="portal.portal_my_home" priority="40">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Membership</t>
+                <t t-set="url" t-value="'/my/membership'"/>
+                <t t-set="text">View your membership status and applications</t>
+                <t t-set="placeholder_count" t-value="'membership_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- ============================================================ -->
+    <!-- Membership Dashboard                                          -->
+    <!-- ============================================================ -->
+    <template id="portal_my_membership" name="My Membership">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Membership</t>
+            </t>
+
+            <div class="container mt-4 mb-5">
+
+                <!-- ── Status Card ── -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <t t-if="partner.doctor_membership_state == 'active'">
+                            <div class="card border-success">
+                                <div class="card-body p-4">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-1 text-center">
+                                            <i class="fa fa-check-circle fa-3x text-success"/>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <h4 class="text-success mb-1">Active Membership</h4>
+                                            <div class="row mt-2">
+                                                <div class="col-sm-4">
+                                                    <small class="text-muted">Membership No.</small><br/>
+                                                    <strong><t t-esc="partner.membership_number"/></strong>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <small class="text-muted">Start Date</small><br/>
+                                                    <strong><t t-esc="partner.membership_start_date"/></strong>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <small class="text-muted">End Date</small><br/>
+                                                    <strong><t t-esc="partner.membership_end_date"/></strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 text-end mt-3 mt-md-0">
+                                            <a href="/my/membership/card" class="btn btn-success">
+                                                <i class="fa fa-download me-1"/> Download Card
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-elif="partner.doctor_membership_state == 'expired'">
+                            <div class="card border-danger">
+                                <div class="card-body p-4 text-center">
+                                    <i class="fa fa-exclamation-triangle fa-2x text-danger mb-2"/>
+                                    <h4 class="text-danger">Membership Expired</h4>
+                                    <p class="text-muted">Your membership has expired. Please contact us to renew.</p>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <div class="card border-secondary">
+                                <div class="card-body p-4 text-center">
+                                    <i class="fa fa-id-card-o fa-2x text-muted mb-2"/>
+                                    <h4 class="text-muted">No Active Membership</h4>
+                                    <p class="text-muted mb-3">Submit an application to get started.</p>
+                                    <a href="/my/membership/application/new" class="btn btn-primary">
+                                        <i class="fa fa-plus me-1"/> Apply Now
+                                    </a>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+
+                <!-- ── Applications Table ── -->
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="fa fa-list-alt me-2"/>My Applications</h5>
+                        <a href="/my/membership/application/new" class="btn btn-sm btn-primary">
+                            <i class="fa fa-plus me-1"/> New Application
+                        </a>
+                    </div>
+                    <t t-if="applications">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Submitted</th>
+                                        <th>Specialty</th>
+                                        <th>Status</th>
+                                        <th>Invoice</th>
+                                        <th/>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="applications" t-as="app">
+                                        <tr>
+                                            <td>
+                                                <a t-attf-href="/my/membership/application/#{app.id}" class="fw-bold">
+                                                    <t t-esc="app.name"/>
+                                                </a>
+                                            </td>
+                                            <td><t t-esc="app.create_date" t-options="{'widget': 'date'}"/></td>
+                                            <td>
+                                                <t t-if="app.partner_id.medical_specialty_id">
+                                                    <t t-esc="app.partner_id.medical_specialty_id.name"/>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <span t-attf-class="badge rounded-pill #{
+                                                    'bg-info' if app.state == 'draft' else
+                                                    'bg-warning text-dark' if app.state == 'need_info' else
+                                                    'bg-success' if app.state == 'approved' else
+                                                    'bg-danger'
+                                                }">
+                                                    <t t-esc="dict(app._fields['state'].selection).get(app.state)"/>
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <t t-if="app.invoice_id">
+                                                    <a t-attf-href="/my/invoices/#{app.invoice_id.id}" class="text-primary">
+                                                        <i class="fa fa-file-text-o me-1"/>View
+                                                    </a>
+                                                </t>
+                                                <t t-else="">
+                                                    <span class="text-muted">—</span>
+                                                </t>
+                                            </td>
+                                            <td class="text-end">
+                                                <a t-attf-href="/my/membership/application/#{app.id}"
+                                                   class="btn btn-sm btn-outline-primary">
+                                                    Details
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <div class="card-body text-center py-5">
+                            <i class="fa fa-inbox fa-3x text-muted mb-3"/>
+                            <p class="text-muted">No applications submitted yet.</p>
+                        </div>
+                    </t>
+                </div>
+
+            </div>
+        </t>
+    </template>
+
+    <!-- ============================================================ -->
+    <!-- Application Detail                                            -->
+    <!-- ============================================================ -->
+    <template id="portal_membership_application_detail" name="Application Detail">
+        <t t-call="portal.portal_layout">
+            <div class="container mt-4 mb-5">
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3 class="mb-0">Application <t t-esc="application.name"/></h3>
+                    <span t-attf-class="badge rounded-pill fs-6 #{
+                        'bg-info' if application.state == 'draft' else
+                        'bg-warning text-dark' if application.state == 'need_info' else
+                        'bg-success' if application.state == 'approved' else
+                        'bg-danger'
+                    }">
+                        <t t-esc="dict(application._fields['state'].selection).get(application.state)"/>
+                    </span>
+                </div>
+
+                <!-- Info Request Alert -->
+                <t t-if="application.officer_notes and application.state == 'need_info'">
+                    <div class="alert alert-warning border-warning">
+                        <div class="d-flex align-items-start">
+                            <i class="fa fa-exclamation-triangle fa-lg me-3 mt-1"/>
+                            <div>
+                                <strong>Information Requested by Officer:</strong>
+                                <p class="mb-0 mt-1"><t t-esc="application.officer_notes"/></p>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+
+                <!-- Summary Row -->
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <div class="card-header"><h6 class="mb-0">Application Info</h6></div>
+                            <div class="card-body">
+                                <table class="table table-borderless table-sm mb-0">
+                                    <tr><td class="text-muted w-50">Submitted</td><td><t t-esc="application.create_date" t-options="{'widget': 'date'}"/></td></tr>
+                                    <tr><td class="text-muted">Doctor</td><td><t t-esc="application.partner_id.name"/></td></tr>
+                                    <tr><td class="text-muted">Specialty</td><td><t t-if="application.partner_id.medical_specialty_id"><t t-esc="application.partner_id.medical_specialty_id.name"/></t></td></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100">
+                            <div class="card-header"><h6 class="mb-0">Invoice</h6></div>
+                            <div class="card-body">
+                                <t t-if="application.invoice_id">
+                                    <table class="table table-borderless table-sm mb-0">
+                                        <tr><td class="text-muted w-50">Invoice</td><td><a t-attf-href="/my/invoices/#{application.invoice_id.id}"><t t-esc="application.invoice_id.name"/></a></td></tr>
+                                        <tr><td class="text-muted">Payment</td><td><t t-esc="application.invoice_payment_state"/></td></tr>
+                                    </table>
+                                </t>
+                                <t t-else="">
+                                    <p class="text-muted mb-0">No invoice generated yet.</p>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Response form for need_info -->
+                <t t-if="application.state == 'need_info'">
+                    <div class="card mb-4 border-warning">
+                        <div class="card-header bg-warning bg-opacity-10">
+                            <h6 class="mb-0"><i class="fa fa-reply me-2"/>Submit Your Response</h6>
+                        </div>
+                        <div class="card-body">
+                            <form t-attf-action="/my/membership/application/#{application.id}/respond"
+                                  method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <div class="mb-3">
+                                    <label for="notes" class="form-label">Your Response</label>
+                                    <textarea name="notes" class="form-control" rows="4"
+                                              placeholder="Provide the requested information..." required="required"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="attachment" class="form-label">Attach Document (optional)</label>
+                                    <input type="file" name="attachment" class="form-control"/>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-paper-plane me-1"/> Submit Response
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </t>
+
+                <!-- Notes -->
+                <t t-if="application.notes">
+                    <div class="card mb-4">
+                        <div class="card-header"><h6 class="mb-0"><i class="fa fa-comment me-2"/>Notes</h6></div>
+                        <div class="card-body">
+                            <pre class="mb-0" style="white-space: pre-wrap; font-family: inherit;"><t t-esc="application.notes"/></pre>
+                        </div>
+                    </div>
+                </t>
+
+                <a href="/my/membership" class="btn btn-secondary">
+                    <i class="fa fa-arrow-left me-1"/> Back to Membership
+                </a>
+            </div>
+        </t>
+    </template>
+
+    <!-- ============================================================ -->
+    <!-- New Application Form (Professional / Full)                    -->
+    <!-- ============================================================ -->
+    <template id="portal_membership_application_new" name="New Application">
+        <t t-call="portal.portal_layout">
+            <div class="container mt-4 mb-5">
+
+                <div class="text-center mb-4">
+                    <h3>Membership Application</h3>
+                    <p class="text-muted">Please fill in all required fields marked with <span class="text-danger">*</span></p>
+                </div>
+
+                <form action="/my/membership/application/submit" method="post"
+                      enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                    <!-- ─── Section 1: Personal Information ─── -->
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header bg-primary bg-opacity-10 border-primary">
+                            <h5 class="mb-0 text-primary"><i class="fa fa-user me-2"/>Personal Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Full Name (English) <span class="text-danger">*</span></label>
+                                    <input type="text" name="full_name" class="form-control"
+                                           t-att-value="partner.name" required="required"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">الاسم الكامل (عربي)</label>
+                                    <input type="text" name="arabic_name" class="form-control" dir="rtl"
+                                           t-att-value="partner.arabic_name or ''"/>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">National ID / Iqama <span class="text-danger">*</span></label>
+                                    <input type="text" name="national_id" class="form-control"
+                                           t-att-value="partner.national_id or ''" required="required"/>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Date of Birth <span class="text-danger">*</span></label>
+                                    <input type="date" name="birth_date" class="form-control"
+                                           t-att-value="partner.birth_date or ''" required="required"/>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Gender <span class="text-danger">*</span></label>
+                                    <select name="gender" class="form-select" required="required">
+                                        <option value="">-- Select --</option>
+                                        <option value="male" t-att-selected="partner.gender == 'male' or None">Male</option>
+                                        <option value="female" t-att-selected="partner.gender == 'female' or None">Female</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Nationality <span class="text-danger">*</span></label>
+                                    <select name="nationality_id" class="form-select" required="required">
+                                        <option value="">-- Select --</option>
+                                        <t t-foreach="countries" t-as="country">
+                                            <option t-att-value="country.id"
+                                                    t-att-selected="partner.nationality_id.id == country.id or None">
+                                                <t t-esc="country.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Email <span class="text-danger">*</span></label>
+                                    <input type="email" name="email" class="form-control"
+                                           t-att-value="partner.email or ''" required="required"/>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Mobile Number <span class="text-danger">*</span></label>
+                                    <input type="tel" name="phone" class="form-control"
+                                           t-att-value="partner.phone or partner.mobile or ''" required="required"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ─── Section 2: Medical Qualifications ─── -->
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header bg-primary bg-opacity-10 border-primary">
+                            <h5 class="mb-0 text-primary"><i class="fa fa-stethoscope me-2"/>Medical Qualifications</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Medical Specialty <span class="text-danger">*</span></label>
+                                    <select name="medical_specialty" class="form-select" required="required">
+                                        <option value="">-- Select Specialty --</option>
+                                       <t t-foreach="specialties" t-as="spec">
+                                            <option t-att-value="spec.id"
+                                                    t-att-selected="partner.medical_specialty_id.id == spec.id or None">
+                                                <t t-esc="spec.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Highest Qualification <span class="text-danger">*</span></label>
+                                    <select name="qualification" class="form-select" required="required">
+                                        <option value="">-- Select --</option>
+                                        <t t-foreach="qualifications" t-as="qual">
+                                            <option t-att-value="qual[0]"
+                                                    t-att-selected="partner.qualification == qual[0] or None">
+                                                <t t-esc="qual[1]"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">University / Institution <span class="text-danger">*</span></label>
+                                    <input type="text" name="university" class="form-control"
+                                           t-att-value="partner.university or ''" required="required"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Graduation Year <span class="text-danger">*</span></label>
+                                    <input type="text" name="graduation_year" class="form-control"
+                                           placeholder="e.g. 2015"
+                                           t-att-value="partner.graduation_year or ''" required="required"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ─── Section 3: Medical License ─── -->
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header bg-primary bg-opacity-10 border-primary">
+                            <h5 class="mb-0 text-primary"><i class="fa fa-id-card me-2"/>Medical License</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">License Number <span class="text-danger">*</span></label>
+                                    <input type="text" name="medical_license_no" class="form-control"
+                                           t-att-value="partner.medical_license_no or ''" required="required"/>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Issue Date <span class="text-danger">*</span></label>
+                                    <input type="date" name="license_issue_date" class="form-control"
+                                           t-att-value="partner.license_issue_date or ''" required="required"/>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Expiry Date <span class="text-danger">*</span></label>
+                                    <input type="date" name="license_expiry_date" class="form-control"
+                                           t-att-value="partner.license_expiry_date or ''" required="required"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ─── Section 4: Current Employment ─── -->
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header bg-primary bg-opacity-10 border-primary">
+                            <h5 class="mb-0 text-primary"><i class="fa fa-hospital-o me-2"/>Current Employment</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Workplace Name <span class="text-danger">*</span></label>
+                                    <input type="text" name="workplace_name" class="form-control"
+                                           t-att-value="partner.workplace_name or ''" required="required"/>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Workplace Type <span class="text-danger">*</span></label>
+                                    <select name="workplace_type" class="form-select" required="required">
+                                        <option value="">-- Select --</option>
+                                        <t t-foreach="workplace_types" t-as="wt">
+                                            <option t-att-value="wt[0]"
+                                                    t-att-selected="partner.workplace_type == wt[0] or None">
+                                                <t t-esc="wt[1]"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Years of Experience <span class="text-danger">*</span></label>
+                                    <input type="number" name="years_of_experience" class="form-control"
+                                           min="0" max="60"
+                                           t-att-value="partner.years_of_experience or ''" required="required"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ─── Section 5: Required Documents ─── -->
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header bg-primary bg-opacity-10 border-primary">
+                            <h5 class="mb-0 text-primary"><i class="fa fa-paperclip me-2"/>Required Documents</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-info mb-3 d-flex align-items-center">
+                                <i class="fa fa-info-circle fa-lg me-2"/>
+                                <span>Please upload clear copies of the following documents (PDF or Images).</span>
+                            </div>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">National ID / Iqama Copy <span class="text-danger">*</span></label>
+                                    <input type="file" name="doc_national_id" class="form-control"
+                                           accept=".pdf,.jpg,.jpeg,.png" required="required"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Medical License Copy <span class="text-danger">*</span></label>
+                                    <input type="file" name="doc_license" class="form-control"
+                                           accept=".pdf,.jpg,.jpeg,.png" required="required"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Degree Certificate <span class="text-danger">*</span></label>
+                                    <input type="file" name="doc_degree" class="form-control"
+                                           accept=".pdf,.jpg,.jpeg,.png" required="required"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Personal Photo</label>
+                                    <input type="file" name="doc_photo" class="form-control"
+                                           accept=".jpg,.jpeg,.png"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Other Documents (optional)</label>
+                                    <input type="file" name="doc_other" class="form-control" multiple="multiple"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ─── Section 6: Additional Notes ─── -->
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header bg-primary bg-opacity-10 border-primary">
+                            <h5 class="mb-0 text-primary"><i class="fa fa-comment-o me-2"/>Additional Notes</h5>
+                        </div>
+                        <div class="card-body">
+                            <textarea name="notes" class="form-control" rows="3"
+                                      placeholder="Any additional information you would like to provide..."/>
+                        </div>
+                    </div>
+
+                    <!-- ─── Terms ─── -->
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <div class="form-check">
+                                <input type="checkbox" name="terms_accepted" class="form-check-input"
+                                       id="terms_accepted" required="required"/>
+                                <label class="form-check-label" for="terms_accepted">
+                                    I confirm that all information provided is accurate and I agree to the
+                                    membership terms and conditions. <span class="text-danger">*</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ─── Buttons ─── -->
+                    <div class="d-flex gap-3 mb-4">
+                        <button type="submit" class="btn btn-primary btn-lg px-5">
+                            <i class="fa fa-paper-plane me-2"/> Submit Application
+                        </button>
+                        <a href="/my/membership" class="btn btn-outline-secondary btn-lg px-4">Cancel</a>
+                    </div>
+
+                </form>
+            </div>
+        </t>
+    </template>
+
+</odoo>

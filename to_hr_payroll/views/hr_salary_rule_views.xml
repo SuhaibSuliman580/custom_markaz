@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="hr_salary_rule_list" model="ir.ui.view">
+		<field name="name">hr.salary.rule.list</field>
+		<field name="model">hr.salary.rule</field>
+		<field name="arch" type="xml">
+			<tree string="Salary Rules" sample="1">
+				<field name="name" />
+				<field name="code" />
+				<field name="category_id" />
+				<field name="struct_id" />
+				<field name="sequence" />
+				<field name="register_id" />
+				<field name="input_salary" />
+				<field name="company_id" groups="base.group_multi_company" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="hr_salary_rule_view_kanban" model="ir.ui.view">
+		<field name="name">hr.salary.rule.kanban</field>
+		<field name="model">hr.salary.rule</field>
+		<field name="arch" type="xml">
+			<kanban class="o_kanban_mobile">
+				<templates>
+					<t t-name="kanban-box">
+						<div t-attf-class="oe_kanban_content oe_kanban_global_click">
+							<div class="row">
+								<div class="col-8">
+									<strong>
+										<field name="name" />
+									</strong>
+								</div>
+								<div class="col-4">
+									<span class="float-end">
+										<field name="category_id" />
+									</span>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									<span>
+										Code:
+										<field name="code" />
+									</span>
+								</div>
+							</div>
+						</div>
+					</t>
+				</templates>
+			</kanban>
+		</field>
+	</record>
+
+	<record id="hr_salary_rule_form" model="ir.ui.view">
+		<field name="name">hr.salary.rule.form</field>
+		<field name="model">hr.salary.rule</field>
+		<field name="arch" type="xml">
+			<form string="Salary Rules">
+				<field name="company_id" invisible="1" />
+				<header>
+					<button string="Reset" name="action_reset"
+						groups="to_hr_payroll.group_hr_payroll_admin" type="object"
+						help="This action will reset the salary rule to its default installation value."
+						confirm="This action will reset the salary rule to its default installation value. All your customization will be lost as soon as the action is executed. Are you sure to proceed?" />
+				</header>
+				<sheet>
+					<div class="oe_button_box" name="button_box" />
+					<field name="active" invisible="1" />
+					<widget name="web_ribbon" title="Archived"
+						bg_color="bg-danger"
+						invisible="active" />
+					<div class="oe_title">
+						<label for="name" class="oe_edit_only" />
+						<h1>
+							<field name="name" />
+						</h1>
+						<label for="code" class="oe_edit_only" />
+						<h2>
+							<field name="code" />
+						</h2>
+					</div>
+					<group>
+						<group col="4">
+							<field name="struct_id" />
+							<field name="category_id" invisible="not struct_id" />
+							<field name="sequence" />
+						</group>
+						<group col="4">
+							<field name="input_salary" />
+							<field name="appears_on_payslip" />
+							<field name="company_id" options="{'no_create': True}"
+								groups="base.group_multi_company" />
+						</group>
+					</group>
+					<notebook colspan="6">
+						<page string="General" name="general">
+							<separator colspan="4" string="Conditions" />
+							<group>
+								<group name="conditions">
+									<field name="condition_select" />
+									<field name="condition_range"
+										invisible="condition_select != 'range'"
+										required="condition_select == 'range'" />
+									<field name="condition_range_min"
+										invisible="condition_select != 'range'"
+										required="condition_select == 'range'" />
+									<field name="condition_range_max"
+										invisible="condition_select != 'range'"
+										required="condition_select == 'range'" />
+								</group>
+								<group name="condition_python" colspan="4">
+									<field name="condition_python"
+										widget="ace" options="{'mode': 'python'}"
+										invisible="condition_select != 'python'"
+										required="condition_select == 'python'" />
+								</group>
+							</group>
+
+							<separator colspan="4" string="Computation" />
+							<group>
+								<group name="computation">
+									<field name="amount_select" />
+									<field name="amount_percentage_base"
+										invisible="amount_select != 'percentage'"
+										required="amount_select == 'percentage'" />
+									<field name="quantity"
+										invisible="amount_select == 'code'"
+										required="amount_select != 'code'" />
+									<field name="amount_fix"
+										invisible="amount_select != 'fix'"
+										required="amount_select == 'fix'" />
+									<field name="amount_percentage"
+										invisible="amount_select != 'percentage'"
+										required="amount_select == 'percentage'" />
+								</group>
+								<group name="amount_python_compute" colspan="4">
+									<field name="amount_python_compute"
+										widget="ace" options="{'mode': 'python'}"
+										invisible="amount_select != 'code'"
+										required="amount_select == 'code'" />
+								</group>
+							</group>
+
+							<separator colspan="4" string="Company Contribution" />
+							<group name="register_id" >
+								<field name="register_id" />
+							</group>
+						</page>
+						<page string="Description">
+							<field name="note" />
+						</page>
+					</notebook>
+				</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids" groups="base.group_user" />
+					<field name="activity_ids"/>
+					<field name="message_ids"/>
+				</div>
+			</form>
+		</field>
+	</record>
+
+	<record id="view_hr_rule_filter" model="ir.ui.view">
+		<field name="name">hr.salary.rule.select</field>
+		<field name="model">hr.salary.rule</field>
+		<field name="arch" type="xml">
+			<search string="Search Salary Rule">
+				<!--Left panel-->
+				<searchpanel class="payroll_salary_rule_root">
+					<field name="company_id" groups="base.group_multi_company"
+						icon="fa-building" />
+					<field name="struct_id" icon="fa-money" />
+				</searchpanel>
+				<!--Search-->
+				<field name="name" string="Salary Rules"
+					filter_domain="['|',('name','ilike',self),('code','ilike',self)]" />
+				<field name="code" />
+				<field name="category_id" />
+				<!--Filter-->
+				<filter name="ftr_input_salary" string="Regular Salary Rule"
+					domain="[('input_salary','=',False)]" />
+				<filter name="ftr_input_salary" string="Input Salary Rule"
+					domain="[('input_salary','=',True)]" />
+				<!--Group-->
+				<group col="8" colspan="4" expand="0" string="Group By">
+					<filter string="Category" name="head"
+						context="{'group_by':'category_id'}" />
+					<filter string="Structure" name="grp_struct"
+						context="{'group_by':'struct_id'}" />
+				</group>
+			</search>
+		</field>
+	</record>
+
+	<record id="action_salary_rule_form"
+		model="ir.actions.act_window">
+		<field name="name">Salary Rules</field>
+		<field name="res_model">hr.salary.rule</field>
+		<field name="view_mode">tree,kanban,form</field>
+		<field name="domain">[]</field>
+		<field name="context">{'search_default_grp_struct':1}</field>
+		<field name="search_view_id" ref="view_hr_rule_filter" />
+	</record>
+
+	<menuitem id="menu_action_hr_salary_rule_form"
+		action="action_salary_rule_form"
+		parent="menu_hr_payroll_configuration_payroll_entry" sequence="6" />
+
+</odoo>

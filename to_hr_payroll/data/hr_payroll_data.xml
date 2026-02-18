@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+		<!-- Decimal Precision -->
+		<record forcecreate="True" id="decimal_payroll"
+			model="decimal.precision">
+			<field name="name">Payroll</field>
+			<field name="digits">2</field>
+		</record>
+
+		<record forcecreate="True" id="decimal_payroll_rate"
+			model="decimal.precision">
+			<field name="name">Payroll Rate</field>
+			<field name="digits">4</field>
+		</record>
+
+		<record forcecreate="True" id="hr_salary_cycle_default"
+			model="hr.salary.cycle">
+			<field name="name">Default (no offset)</field>
+			<field name="start_day_offset" eval="0" />
+		</record>
+	</data>
+</odoo>

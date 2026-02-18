@@ -1,0 +1,1526 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_vn_viin
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-07 08:35+0000\n"
+"PO-Revision-Date: 2024-09-07 08:35+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_vn_viin
+#. odoo-python
+#: code:addons/l10n_vn_viin/models/account_account_tag.py:0
+#, python-format
+msgid "%s - %s"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "(In Words):"
+msgstr "(Bằng chữ):"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_circular_desc_layout_c133
+msgid ""
+"(Released Under the Circular No. 133/2016/TT-BTC\n"
+"\t\t\t<br/>\n"
+"\t\t\tDated 26/8/2016 by the Ministry of Finance)"
+msgstr ""
+"(Phát hành theo thông tư số 133/2016/TT-BTC\n"
+"\t\t\t<br/>\n"
+"\t\t\tNgày 26/8/2016 bộ Tài chính)"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_circular_desc_layout_c200
+msgid ""
+"(Released Under the Circular No. 200/2014/TT-BTC\n"
+"\t\t\t<br/>\n"
+"\t\t\tDated 22/12/2014 by the Ministry of Finance)"
+msgstr ""
+"(Phát hành theo thông tư số 200/2014/TT-BTC\n"
+"\t\t\t<br/>\n"
+"\t\t\tNgày 22/12/2014 bộ Tài chính)"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "<b>Total</b>"
+msgstr "<b>Tổng cộng</b>"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"<br/>\n"
+"\t\t\t\t\t\t\t\t\t[\n"
+"\t\t\t\t\t\t\t\t\t<span class=\"fa fa-warning\" style=\"color: red;\"/>\n"
+"\t\t\t\t\t\t\t\t\tYou have not specified currency unit (e.g. Dollars, Vietnam\n"
+"\t\t\t\t\t\t\t\t\t\t\tDong, etc) for the corresponding currency"
+msgstr ""
+"[\n"
+"\t\t\t\t\t\t\t\t\t<span class=\"fa fa-warning\" style=\"color: red;\"/>\n"
+"\t\t\t\t\t\t\t\t\tBạn chưa thiết lập Đơn vị Tiền tệ (ví dụ: Đô-la, Việt Nam\n"
+"\t\t\t\t\t\t\t\t\t\t\tĐồng, v.v) cho tiền tệ tương ứng"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"<br/>\n"
+"\t\t\t\t\t\t\t(Sign, Full Name)"
+msgstr ""
+"<br/>\n"
+"\t\t\t\t\t\t\t(Ký, Ghi rõ họ tên)"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"<br/>\n"
+"\t\t\t\t\t\t\tAddress:"
+msgstr ""
+"<br/>\n"
+"\t\t\t\t\t\t\tĐịa chỉ:"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"<br/>\n"
+"\t\t\t\t\t\t\tTotal Amount:"
+msgstr ""
+"<br/>\n"
+"\t\t\t\t\t\t\tSố tiền:"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_external_header_left_layout
+msgid ""
+"<br/>\n"
+"\t\t\t\t\t<strong>Address:</strong>"
+msgstr ""
+"<br/>\n"
+"\t\t\t\t\t<strong>Địa chỉ:</strong>"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "<span>JOURNAL ENTRY</span>"
+msgstr "<span>PHIẾU KẾ TOÁN</span>"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_circular_external_layout_standard
+msgid "<span>Template </span>"
+msgstr "<span>Mẫu </span>"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.signature_block
+msgid ""
+"<strong>\n"
+"\t\t\t\t\t\t\tChief Accountant\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Signature, Full Name)"
+msgstr ""
+"<strong>\n"
+"\t\t\t\t\t\t\tKế toán Trưởng\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Chữ ký, Họ và Tên)"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.signature_block_delivery
+msgid ""
+"<strong>\n"
+"\t\t\t\t\t\t\tDeliverer\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Signature, Full Name)"
+msgstr ""
+"<strong>\n"
+"\t\t\t\t\t\t\tNgười giao\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Ký, Họ tên)"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.signature_block
+msgid ""
+"<strong>\n"
+"\t\t\t\t\t\t\tDirector/CEO\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Signature, Full Name, Job Title)"
+msgstr ""
+"<strong>\n"
+"\t\t\t\t\t\t\tGiám đốc/TGĐ\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Chữ ký, Họ và Tên, Dấu chức danh)"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.signature_block
+msgid ""
+"<strong>\n"
+"\t\t\t\t\t\t\tPrepared By\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Signature, Full Name)"
+msgstr ""
+"<strong>\n"
+"\t\t\t\t\t\t\tNgười lập phiếu\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Chữ ký, Họ và Tên)"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.signature_block_delivery
+msgid ""
+"<strong>\n"
+"\t\t\t\t\t\t\tPrepared by\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Signature, Full Name)"
+msgstr ""
+"<strong>\n"
+"\t\t\t\t\t\t\tNgười lập biểu\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Ký, Họ tên)"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.signature_block_delivery
+msgid ""
+"<strong>\n"
+"\t\t\t\t\t\t\tReceiver\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Signature, Full Name)"
+msgstr ""
+"<strong>\n"
+"\t\t\t\t\t\t\tNgười nhận\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Ký, Họ tên)"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.signature_block_delivery
+msgid ""
+"<strong>\n"
+"\t\t\t\t\t\t\tStore Manager\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Signature, Full Name)"
+msgstr ""
+"<strong>\n"
+"\t\t\t\t\t\t\tThủ kho\n"
+"\t\t\t\t\t\t</strong>\n"
+"\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t(Ký, Họ tên)"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"<strong>Cashier</strong>\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t(Sign, Full Name)"
+msgstr ""
+"<strong>Thủ Quỹ</strong>\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t(Ký, Ghi rõ họ tên)"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"<strong>Chief Accountant</strong>\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t(Sign, Full Name)"
+msgstr ""
+"<strong>Kế toán trưởng</strong>\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t(Ký, Ghi rõ họ tên)"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_external_header_left_layout
+msgid "<strong>Company:</strong>"
+msgstr "<strong>Công ty:</strong>"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"<strong>Director/CEO</strong>\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t(Sign, Full Name, Stamp)"
+msgstr ""
+"<strong>Giám đốc/TGĐ</strong>\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t(Ký, Họ tên, Đóng dấu)"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"<strong>Prepared By</strong>\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t(Sign, Full Name)"
+msgstr ""
+"<strong>Người lập phiếu</strong>\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t(Ký, Ghi rõ họ tên)"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_external_header_left_layout
+msgid "<strong>Zip code:</strong>"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_account_account
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Account"
+msgstr "Tài khoản"
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_account_chart_template
+msgid "Account Chart Template"
+msgstr "Mẫu Hệ thống Tài khoản"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Account Date:"
+msgstr "Ngày kế toán:"
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_report_l10n_vn_viin_report_account_payment
+msgid "Account Payment Report"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_account_account_tag
+msgid "Account Tag"
+msgstr "Thẻ tài khoản"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_335
+msgid "Accured Expenses"
+msgstr "Chi phí phải trả"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_141
+msgid "Advances"
+msgstr "Tạm ứng"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_229
+msgid "Allowance for impairment of assets"
+msgstr "Dự phòng tổn thất tài sản"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2291
+msgid "Allowances for decline in value of trading securities"
+msgstr "Dự phòng giảm giá chứng khoán kinh doanh"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2293
+msgid "Allowances for doubtful debts"
+msgstr "Dự phòng phải thu khó đòi"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2292
+msgid "Allowances for impairment of investments in other entities"
+msgstr "Dự phòng tổn thất đầu tư vào đơn vị khác"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2294
+msgid "Allowances for inventories"
+msgstr "Dự phòng giảm giá hàng tồn kho"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2143
+msgid "Amortisation of intangible assets"
+msgstr "Hao mòn TSCĐ vô hình"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Amount"
+msgstr "Số tiền"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Attached:"
+msgstr "Kèm theo:"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Attached: ... source document(s)."
+msgstr "Kèm theo: ... chứng từ gốc."
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_34313
+msgid "Bond premiums"
+msgstr "Phụ trội trái phiếu"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1212
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1282
+msgid "Bonds"
+msgstr "Trái phiếu"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_353
+msgid "Bonus and welfare fund"
+msgstr "Quỹ khen thưởng phúc lợi"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3411
+msgid "Borrowing loans"
+msgstr "Các khoản đi vay"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_341
+msgid "Borrowings and finance lease liabilities"
+msgstr "Vay và nợ thuê tài chính"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2111
+msgid "Buildings and structures"
+msgstr "Nhà cửa, vật kiến trúc"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_642_c133
+msgid "Business administration expenses (c133)"
+msgstr "Chi phí quản lý kinh doanh (c133)"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "CREDIT NOTE"
+msgstr "GIẤY BÁO CÓ"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_441
+msgid "Capital expenditure funds"
+msgstr "Nguồn vốn đầu tư xây dựng cơ bản"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_4112
+msgid "Capital surplus"
+msgstr "Thặng dư vốn cổ phần"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_112
+msgid "Cash in banks"
+msgstr "Tiền gửi ngân hàng"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_113
+msgid "Cash in transit"
+msgstr "Tiền đang chuyển"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_111
+msgid "Cash on hand"
+msgstr "Tiền mặt"
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,field_description:l10n_vn_viin.field_res_company__circular_code
+msgid "Circular Code"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,field_description:l10n_vn_viin.field_account_account_tag__code
+msgid "Code"
+msgstr "Mã"
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_res_company
+msgid "Companies"
+msgstr "Công ty"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Company:"
+msgstr "Công ty:"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_241
+msgid "Construction in progress"
+msgstr "Xây dựng cơ bản dở dang"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Content:"
+msgstr "Nội dung:"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_4111
+msgid "Contributed capital"
+msgstr "Vốn góp của chủ sở hữu"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_4113
+msgid "Conversion options on convertible bonds"
+msgstr "Quyền chọn chuyển đổi trái phiếu"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3432
+msgid "Convertible bonds"
+msgstr "Trái phiếu chuyển đổi"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3334
+msgid "Corporate income tax"
+msgstr "Thuế thu nhập doanh nghiệp"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_623
+msgid "Costs of construction machinery"
+msgstr "Chi phí sử dụng máy thi công"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_632
+msgid "Costs of goods sold"
+msgstr "Giá vốn hàng bán"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Credit"
+msgstr "Có"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Credit:"
+msgstr "Có"
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_res_currency
+msgid "Currency"
+msgstr "Tiền tệ"
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,field_description:l10n_vn_viin.field_res_currency__currency_unit_label
+msgid "Currency Unit"
+msgstr "Đơn vị tiền tệ"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Currency:"
+msgstr "Tiền tệ:"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_8211
+msgid "Current tax expense"
+msgstr "Chi phí thuế TNDN hiện hành"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Customer:"
+msgstr "Tên khách hàng:"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "DEBIT NOTE"
+msgstr "GIẤY BÁO NỢ"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Date No:"
+msgstr "Ngày hóa đơn:"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Date:"
+msgstr "Ngày:"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Debit"
+msgstr "Nợ"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Debit:"
+msgstr "Nợ"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_133
+msgid "Deductible VAT"
+msgstr "Thuế GTGT được khấu trừ"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_243
+msgid "Deferred tax assets"
+msgstr "Tài sản thuế thu nhập hoãn lại"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_8212
+msgid "Deferred tax expense (benefit)"
+msgstr "Chi phí thuế TNDN hoãn lại (lợi nhuận)"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_347
+msgid "Deferred tax liabilities"
+msgstr "Thuế thu nhập hoãn lại phải trả"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_344
+msgid "Deposits received"
+msgstr "Nhận ký quỹ, ký cược"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3386_c133
+msgid "Deposits received (c133)"
+msgstr "Nhận ký quỹ, ký cược (c133)"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2142
+msgid "Deprecation of finance lease fixed assets"
+msgstr "Hao mòn TSCĐ thuê tài chính"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_214
+msgid "Deprecation of fixed assets"
+msgstr "Hao mòn tài sản cố định"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2147
+msgid "Deprecation of of investment properties"
+msgstr "Hao mòn bất động sản đầu tư"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2141
+msgid "Deprecation of tangible fixed assets"
+msgstr "Hao mòn TSCĐ vô hình"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Description"
+msgstr "Nội dung"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_412
+msgid "Differences upon asset revaluation"
+msgstr "Chênh lệch đánh giá lại tài sản"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_622
+msgid "Direct labour costs"
+msgstr "Chi phí nhân công trực tiếp"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_621
+msgid "Direct raw material costs"
+msgstr "Chi phí nguyên vật liệu trực tiếp"
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_mail_template
+msgid "Email Templates"
+msgstr "Mẫu Email"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_external_footer_layout
+msgid "Email:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_417
+msgid "Enterprise reorganization assistance fund "
+msgstr "Quỹ hỗ trợ sắp xếp doanh nghiệp"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3338
+msgid "Environment protection tax and other taxes"
+msgstr "Thuế bảo vệ môi trường và các thuế khác"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1534
+msgid "Equipment and spare parts for replacement"
+msgstr "Thiết bị, phụ tùng thay thế"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_418_c133
+msgid "Equity funds (c133)"
+msgstr "Các quỹ thuôc vốn chủ sở hữu (c133)"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Exchange"
+msgstr "Quy đổi"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Exchange rate"
+msgstr "Tỷ giá"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_413
+msgid "Exchange rate differences"
+msgstr "Chênh lệch tỷ giá hối đoái"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_627
+msgid "Factory overheads"
+msgstr "Chi phí sản xuất chung"
+
+#. module: l10n_vn_viin
+#. odoo-python
+#: code:addons/l10n_vn_viin/models/account_account.py:0
+#, python-format
+msgid ""
+"Fill account tags only for accounts in the company that use the Vietnam COA."
+msgstr ""
+"Chỉ điền thẻ tài khoản cho các tài khoản trong công ty sử dụng COA Việt Nam."
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_212
+msgid "Finance lease fixed assets"
+msgstr "Tài sản cố định thuê tài chính"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2112_c133
+msgid "Finance lease fixed assets (c133)"
+msgstr "Tài sản cố định thuê tài chính (c133)"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3412
+msgid "Finance lease liabilities"
+msgstr "Nợ thuê tài chính"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_635
+msgid "Financial expenses"
+msgstr "Chi phí tài chính"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_515
+msgid "Financial income"
+msgstr "Doanh thu hoạt động tài chính"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_155
+msgid "Finished goods"
+msgstr "Thành phẩm"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_211_c133
+msgid "Fixed assets (c133)"
+msgstr "Tài sản cố định (c133)"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2411
+msgid "Fixed assets prior to commissioning"
+msgstr "Mua sắm TSCĐ"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.view_account_payment_form
+msgid "Receipt Printing"
+msgstr "In phiếu thu/chi"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Foreign Currency"
+msgstr "Ngoại tệ"
+
+#. module: l10n_vn_viin
+#. odoo-python
+#: code:addons/l10n_vn_viin/models/report_l10n_vn_common.py:0
+#, python-format
+msgid "Form content is missing, this report cannot be printed."
+msgstr "Nội dung trong mẫu đang thiếu, báo cáo này không thể in được."
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_642
+msgid "General administration expenses"
+msgstr "Chi phí quản lý doanh nghiệp"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_6422_c133
+msgid "General administration expenses (c133)"
+msgstr "Chi phí quản lý doanh nghiệp (c133)"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_158
+msgid "Goods in bonded warehouse"
+msgstr "Hàng hóa kho bảo thuế"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_151
+msgid "Goods in transit"
+msgstr "Hàng mua đang đi đường"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_171
+msgid "Government bonds purchased for resale"
+msgstr "Giao dịch mua bán lại trái phiếu chính phủ"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_128
+msgid "Held to maturity investments"
+msgstr "Đầu tư nắm giữ đến ngày đáo hạn"
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields.selection,name:l10n_vn_viin.selection__account_move__in_out_payment__in
+msgid "In"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "In Words:"
+msgstr "Bằng chữ:"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_911
+msgid "Income Summary"
+msgstr "Xác định kết quả kinh doanh"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_821
+msgid "Income tax expense (benefit)"
+msgstr "Chi phí thuế thu nhập doanh nghiệp"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_213
+msgid "Intangible fixed assets"
+msgstr "Tài sản cố định vô hình"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2113_c133
+msgid "Intangible fixed assets (c133)"
+msgstr "Tài sản cố định vô hình (c133)"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_336
+msgid "Intra-company payables"
+msgstr "Phải trả nội bộ"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3363
+msgid "Intra-company payables for borrowing costs eligible to be capitalized"
+msgstr "Phải trả nội bộ về chi phí đi vay đủ điều kiện được vốn hóa"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3362
+msgid "Intra-company payables for foreign exchange differences"
+msgstr "Phải trả nội bộ về chênh lệch tỷ giá"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3361
+msgid "Intra-company payables for operating capital received"
+msgstr "Phải trả nội bộ về vốn kinh doanh"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_136
+msgid "Intra-company receivables"
+msgstr "Phải thu nội bộ"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1363
+msgid ""
+"Intra-company receivables on borrowing costs eligible to be capitalized"
+msgstr "Phải thu nội bộ về chi phí đi vay đủ điều kiện được vốn hóa"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1362
+msgid "Intra-company receivables on foreign exchange defferences"
+msgstr "Phải thu nội bộ về chênh lệch tỷ giá"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_414
+msgid "Investment and development fund"
+msgstr "Quỹ đầu tư phát triển"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_217
+msgid "Investment properties"
+msgstr "Bất động sản đầu tư"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2281
+msgid "Investments in equity of other entities"
+msgstr "Đầu tư góp vốn vào đơn vị khác"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_228_c133
+msgid "Investments in equity of other entities (c133)"
+msgstr "Đầu tư góp vốn vào đơn vị khác (c133)"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_222
+msgid "Investments in joint ventures and associates"
+msgstr "Đầu tư vào công ty liên doanh, liên kết"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2281_c133
+msgid "Investments in joint ventures and associates (c133)"
+msgstr "Đầu tư vào công ty liên doanh, liên kết (c133)"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_221
+msgid "Investments in subsidiaries"
+msgstr "Đầu tư vào công ty con"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_343
+msgid "Issued bonds"
+msgstr "Trái phiếu phát hành"
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_account_journal
+msgid "Journal"
+msgstr "Sổ nhật ký"
+
+#. module: l10n_vn_viin
+#: model:ir.actions.report,name:l10n_vn_viin.act_report_account_move_journal_entry
+#: model:ir.model,name:l10n_vn_viin.model_account_move
+msgid "Journal Entry"
+msgstr "Phiếu kế toán"
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_report_l10n_vn_viin_report_account_move_journal_entry
+msgid "Journal Entry Report"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,field_description:l10n_vn_viin.field_ir_actions_report__legal_name
+msgid "Legal Name"
+msgstr "Tên pháp lý"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1283
+msgid "Lending Loans"
+msgstr "Cho vay"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"Log #:..............\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\tNumber:"
+msgstr ""
+"Quyển Số:..............\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\tSố:"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_external_header_left_layout
+msgid "Logo"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_156
+msgid "Merchandise inventories"
+msgstr "Hàng hóa"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_244
+msgid "Mortgage, collaterals and deposits"
+msgstr "Cầm cố, thế chấp, ký quỹ, ký cược"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1386_c133
+msgid "Mortgage, collaterals and deposits (c133)"
+msgstr "Cầm cố, thế chấp, ký quỹ, ký cược (c133)"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Name of Payment Applicant:"
+msgstr "Họ và tên người nộp tiền:"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Name of Payment Receiver:"
+msgstr "Họ và tên người nhận tiền:"
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,field_description:l10n_vn_viin.field_account_payment__no_of_origin
+msgid "No. of Origin"
+msgstr "Số chứng từ gốc"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "No:"
+msgstr "Số chứng từ:"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_161
+msgid "Non-business expenditure out of funds received from the State"
+msgstr "Chi sự nghiệp"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_461
+msgid "Non-business funds"
+msgstr "Nguồn kinh phí sự nghiệp"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_466
+msgid "Non-business funds used for fixed asset acquisitions"
+msgstr "Nguồn kinh phí đã hình thành TSCĐ"
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,help:l10n_vn_viin.field_account_payment__no_of_origin
+msgid ""
+"Number of the origin documents (e.g. Purchase Voucher number, Invoice "
+"Number, etc), to be displayed on the PDF printed version of this document."
+msgstr ""
+"Số tài liệu nguồn (vd: số phiếu mua hàng, số hoá đơn, v.v.), để hiển thị "
+"trên bản in PDF của tài liệu này."
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.signature_block
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.signature_block_delivery
+msgid "On........Month.......Year........"
+msgstr "Ngày........Tháng.......Năm........"
+
+#. module: l10n_vn_viin
+#. odoo-python
+#: code:addons/l10n_vn_viin/reports/account_move_report_payment_receipt.py:0
+#, python-format
+msgid "Only payments could be printed."
+msgstr "Chỉ các thanh toán mới có thể in được."
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3431
+msgid "Ordinary bonds"
+msgstr "Trái phiếu thường"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_41111
+msgid "Ordinary shares with voting rights"
+msgstr "Cổ phiếu phổ thông có quyền biểu quyết"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_811
+msgid "Other Expenses"
+msgstr "Chi phí khác"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_711
+msgid "Other Income"
+msgstr "Thu nhập khác"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_4118
+msgid "Other capital"
+msgstr "Vốn khác"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_418
+msgid "Other equity funds"
+msgstr "Các quỹ khác thuôc vốn chủ sở hữu"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1288
+msgid "Other held to maturity investments"
+msgstr "Các khoản đầu tư khác nắm giữ đến ngày đáo hạn"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3368
+msgid "Other intra-company payables"
+msgstr "Phải trả nội bộ khác"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1368
+msgid "Other intra-company receivables"
+msgstr "Phải thu nội bộ khác"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_228
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2288
+msgid "Other investments"
+msgstr "Đầu tư khác"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_338
+msgid "Other payables"
+msgstr "Phải trả, phải nộp khác"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_138
+msgid "Other receivables"
+msgstr "Phải thu khác"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1388
+msgid "Others"
+msgstr "Phải thu khác"
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields.selection,name:l10n_vn_viin.selection__account_move__in_out_payment__out
+msgid "Out"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_157
+msgid "Outward goods on consignment"
+msgstr "Hàng gửi đi bán"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_411
+msgid "Owner’s invested equity"
+msgstr "Vốn đầu tư của chủ sở hữu"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "PAYMENT RECEIPT"
+msgstr "PHIẾU THU"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "PAYMENT VOUCHER"
+msgstr "PHIẾU CHI"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_external_footer_layout
+msgid ""
+"Page:\n"
+"\t\t\t\t<span class=\"page\"/>\n"
+"\t\t\t\t/\n"
+"\t\t\t\t<span class=\"topage\"/>"
+msgstr ""
+"Trang:\n"
+"\t\t\t\t<span class=\"page\"/>\n"
+"\t\t\t\t/\n"
+"\t\t\t\t<span class=\"topage\"/>"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_34311
+msgid "Par value of bonds"
+msgstr "Mệnh giá trái phiếu"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3385
+msgid "Payables on equitization"
+msgstr "Phải trả về cổ phần hóa"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_334
+msgid "Paybles to employees"
+msgstr "Phải trả người lao động"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.view_account_payment_form
+msgid "Payer"
+msgstr "Người nộp"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Payment Applicant"
+msgstr "Người nộp tiền"
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,field_description:l10n_vn_viin.field_account_bank_statement_line__in_out_payment
+#: model:ir.model.fields,field_description:l10n_vn_viin.field_account_move__in_out_payment
+#: model:ir.model.fields,field_description:l10n_vn_viin.field_account_payment__in_out_payment
+msgid "Payment In/Out"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Payment Reason:"
+msgstr "Lý do chi:"
+
+#. module: l10n_vn_viin
+#: model:ir.actions.report,name:l10n_vn_viin.account_move_action_payment_receipt
+#: model:ir.actions.report,name:l10n_vn_viin.act_report_account_payment
+msgid "Payment Receipt (Template 01-TT/02-TT)"
+msgstr "Phiếu thu/chi (Mẫu 01-TT/02-TT)"
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_report_l10n_vn_viin_report_account_move_payment_receipt
+msgid "Payment Receipt Report"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Payment Receiver"
+msgstr "Người nhận tiền"
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_account_payment
+msgid "Payments"
+msgstr "Thanh toán"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_external_footer_layout
+msgid "Phone:"
+msgstr "Điện thoại cố định"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_41112
+msgid "Preference shares"
+msgstr "Cổ phiếu ưu đãi"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_242
+msgid "Prepaid expenses"
+msgstr "Chi phí trả trước"
+
+#. module: l10n_vn_viin
+#: model:ir.actions.report,name:l10n_vn_viin.report_accounting_external_preview_action
+msgid "Preview Standard Vietnam Accounting External Report"
+msgstr "Xem trước mẫu báo cáo kế toán Việt Nam tiêu chuẩn"
+
+#. module: l10n_vn_viin
+#: model:ir.actions.report,name:l10n_vn_viin.report_accounting_circular_external_preview_action
+msgid "Preview Standard Vietnam Circular Accounting External Report"
+msgstr "Xem trước mẫu báo cáo thông tư kế toán Việt Nam tiêu chuẩn"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_357
+msgid "Price stabilization fund"
+msgstr "Quỹ bình ổn giá"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_631
+msgid "Production costs"
+msgstr "Giá thành sản xuất"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_337
+msgid "Progress billings for construction contracts"
+msgstr "Thanh toán theo tiến độ kế hoạch hợp đồng xây dựng"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_352
+msgid "Provisions payable"
+msgstr "Dự phòng phải trả"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_611
+msgid "Purchases (used for periodic inventory systems)"
+msgstr "Mua hàng (áp dụng cho phương pháp kiểm kê định kỳ)"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_152
+msgid "Raw materials"
+msgstr "Nguyên liệu, vật liệu"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "Receipt Reason:"
+msgstr "Lý do thu:"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1385
+msgid "Receivables from equitization"
+msgstr "Phải thu về cổ phần hóa"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid ""
+"Received Amount (in words):\n"
+"\t\t\t\t\t\t\t\t\t.......................................................................................................\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t+ Foreign Exchange Rate (or Gold Currency):\n"
+"\t\t\t\t\t\t\t\t\t...........................................................................\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t+ Conversion Amount:\n"
+"\t\t\t\t\t\t\t\t\t................................................................................................................."
+msgstr ""
+"Đã nhận đủ số tiền (bằng chữ):\n"
+"\t\t\t\t\t\t\t\t\t.......................................................................................................\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t+ Tỷ giá Ngoại tệ (hoặc Vàng):\n"
+"\t\t\t\t\t\t\t\t\t...........................................................................\n"
+"\t\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t\t+ Số tiền Quy đổi:\n"
+"\t\t\t\t\t\t\t\t\t................................................................................................................."
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.view_account_payment_form
+msgid "Recipient"
+msgstr "Người nhận"
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,field_description:l10n_vn_viin.field_account_payment__recipient_payer
+msgid "Recipient / Payer"
+msgstr "Người nộp / nhận"
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_ir_actions_report
+msgid "Report Action"
+msgstr "Hành động Báo cáo"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_521
+msgid "Revenue deductions"
+msgstr "Các khoản giảm trừ doanh thu"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_5117
+msgid "Revenue from investment properties"
+msgstr "Doanh thu kinh doanh bất động sản đầu tư"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_511
+msgid "Revenues"
+msgstr "Doanh thu bán hàng và cung cấp dịch vụ"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_356
+msgid "Science and technology development fund"
+msgstr "Quỹ phát triển khoa học và công nghệ"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_641
+msgid "Selling expenses"
+msgstr "Chi phí bán hàng"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_6421_c133
+msgid "Selling expenses (c133)"
+msgstr "Chi phí bán hàng (c133)"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1211
+msgid "Shares"
+msgstr "Cổ phiếu"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1381
+msgid "Shortage of assets awaiting resolution"
+msgstr "Tài sản thiếu chờ xử lý"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_external_footer_layout
+msgid "TIN:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_211
+msgid "Tangible fixed assets"
+msgstr "Tài sản cố định hữu hình"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_2111_c133
+msgid "Tangible fixed assets (c133)"
+msgstr "Tài sản cố định hữu hình (c133)"
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_account_tax_group
+msgid "Tax Group"
+msgstr "Nhóm thuế"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_333
+msgid "Taxes and other payables to State Budget"
+msgstr "Thuế và các khoản phải nộp cho nhà nước"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1281
+msgid "Term deposits"
+msgstr "Tiền gửi có kỳ hạn"
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,help:l10n_vn_viin.field_ir_actions_report__legal_name
+msgid ""
+"The legal name of the report. For instance, 'Template S12-DN' is the legal "
+"name of the stock card according the Ministry of Finanace of Vietnam"
+msgstr ""
+"Tên luật định của báo cáo. Ví dụ, 'Mẫu S12-DN' là tên luật định của mẫu thẻ "
+"kho ban hành bởi Bộ Tài chính Việt Nam"
+
+#. module: l10n_vn_viin
+#. odoo-python
+#: code:addons/l10n_vn_viin/models/report_l10n_vn_common.py:0
+#, python-format
+msgid "The method '_get_lines' has NOT been implemented."
+msgstr "Phương thức '_get_lines' chưa được triển khai."
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,help:l10n_vn_viin.field_account_payment__recipient_payer
+msgid ""
+"The name of the person who pay/receive the payment. If empty, the "
+"corresponding partner name will be used instead."
+msgstr ""
+"Tên của người nộp/nhận tiền. Nếu để trống, tên của đối tác tương ứng sẽ được"
+" sử dụng thay thế"
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,help:l10n_vn_viin.field_account_account_tag__code
+msgid "The unique code of the tag"
+msgstr "Mã duy nhất của thẻ"
+
+#. module: l10n_vn_viin
+#. odoo-python
+#: code:addons/l10n_vn_viin/reports/account_move_report_payment_receipt.py:0
+#, python-format
+msgid ""
+"There are a few Journal Entries not in state Posted. You can post it and try"
+" again."
+msgstr ""
+"Có một số bút toán của bạn không ở trạng thái Đã vào sổ. Bạn có thể vào sổ "
+"và thử lại."
+
+#. module: l10n_vn_viin
+#. odoo-python
+#: code:addons/l10n_vn_viin/reports/account_payment_report.py:0
+#, python-format
+msgid ""
+"There are a few Payments not in state Validated or Reconciled. You can post "
+"it and try again."
+msgstr ""
+"Có một số thanh toán của bạn không ở trạng thái Đã xác nhận hoặc Đã được đối"
+" soát.Bạn có thể xác nhận thanh toán và thử lại."
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_circular_page_desc_layout_c133
+msgid ""
+"This is a sample of a Vietnamese Accounting External Report\n"
+"\t\taccording to templates released under the Circular 133 by the\n"
+"\t\tMinistry of Finance."
+msgstr ""
+"Đây là mẫu báo cáo tiêu chuẩn cho các báo cáo kế toán Việt Nam\n"
+"\t\ttheo mẫu ban hành theo Thông tư 133 của\n"
+"\t\tBộ Tài chính."
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_circular_page_desc_layout_c200
+msgid ""
+"This is a sample of a Vietnamese Accounting External Report\n"
+"\t\taccording to templates released under the Circular 200 by the\n"
+"\t\tMinistry of Finance."
+msgstr ""
+"Đây là mẫu báo cáo tiêu chuẩn cho các báo cáo kế toán Việt Nam\n"
+"\t\ttheo mẫu ban hành theo Thông tư 200 của\n"
+"\t\tBộ Tài chính."
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.preview_accounting_external_report_standard
+msgid "This is a sample of a Vietnamese Accounting External Report."
+msgstr "Đây là mẫu báo cáo tiêu chuẩn cho các báo cáo kế toán Việt Nam."
+
+#. module: l10n_vn_viin
+#: model:ir.model.fields,help:l10n_vn_viin.field_account_bank_statement_line__in_out_payment
+#: model:ir.model.fields,help:l10n_vn_viin.field_account_move__in_out_payment
+#: model:ir.model.fields,help:l10n_vn_viin.field_account_payment__in_out_payment
+msgid ""
+"This is technical field, use to specify this move is payment in or payment "
+"out."
+msgstr ""
+"Đây là trường kỹ thuật, dùng để xác định xem bút toán này là của thanh toán "
+"thu hay chi."
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_153
+msgid "Tools and supplies"
+msgstr "Công cụ, dụng cụ"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_331
+msgid "Trade payables"
+msgstr "Phải trả cho người bán"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_131
+msgid "Trade receivables"
+msgstr "Phải thu khách hàng"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_121
+msgid "Trading Securities"
+msgstr "Chứng khoán kinh doanh"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_419
+msgid "Treasury shares"
+msgstr "Cổ phiếu quỹ"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_4212
+msgid "Undistributed profit (loss) after tax for the current year"
+msgstr "Lợi nhuận sau thuế chưa phân phối năm nay"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_421
+msgid "Undistributed profit after tax"
+msgstr "Lợi nhuận sau thuế"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_4211
+msgid "Undistributed profit after tax brought forward"
+msgstr "Lợi nhuận sau thuế chưa phân phối năm trước"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3387
+msgid "Unearned revenue"
+msgstr "Doanh thu chưa thực hiện"
+
+#. module: l10n_vn_viin
+#: model:account.report.line,name:l10n_vn_viin.account_tax_report_line_05_02_01_vn
+msgid "Untaxed Purchase of Goods and Services taxed 8%"
+msgstr "Giá trị HHDV Mua vào chịu thuế 8%"
+
+#. module: l10n_vn_viin
+#: model:account.report.line,name:l10n_vn_viin.account_tax_report_line_05_02_02_vn
+msgid "Untaxed sales of goods and services taxed 8%"
+msgstr "Giá trị HHDV Bán ra chịu thuế 8%"
+
+#. module: l10n_vn_viin
+#: model:account.report.line,name:l10n_vn_viin.account_tax_report_line_04_01_01_vn
+msgid "VAT on purchase of goods and services 8%"
+msgstr "Thuế GTGT HHDV mua vào chịu thuế 8%"
+
+#. module: l10n_vn_viin
+#: model:account.report.line,name:l10n_vn_viin.account_tax_report_line_04_01_02_vn
+msgid "VAT on sales of goods and services 8%"
+msgstr "Thuế GTGT HHDV bán ra chịu thuế 8%"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_3331
+msgid "Value Added Tax (VAT)"
+msgstr "Thuế GTGT phải nộp"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid "Vendor:"
+msgstr "Tên đối tác:"
+
+#. module: l10n_vn_viin
+#: model:ir.ui.menu,name:l10n_vn_viin.account_reports_vn_menu
+msgid "Vietnam Accounting Reports"
+msgstr "Báo cáo kế toán Việt Nam"
+
+#. module: l10n_vn_viin
+#: model:ir.model,name:l10n_vn_viin.model_report_l10n_vn_common
+msgid "Vietnam Common Report"
+msgstr "Các chức năng chung cho báo cáo Việt Nam"
+
+#. module: l10n_vn_viin
+#. odoo-python
+#: code:addons/l10n_vn_viin/models/res_company.py:0
+#, python-format
+msgid "Vietnam Dong"
+msgstr "Việt Nam đồng"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.accounting_external_footer_layout
+msgid "Web:"
+msgstr ""
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_154
+msgid "Work in progress"
+msgstr "Chi phí sản xuất, kinh doanh dở dang"
+
+#. module: l10n_vn_viin
+#: model:account.account.tag,name:l10n_vn_viin.account_account_tag_1361
+msgid "Working capital provided to sub-units"
+msgstr "Vốn kinh doanh ở các đơn vị trực thuộc"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_journal_entry_document
+msgid ""
+"[\n"
+"\t\t\t\t\t\t\t\t<span class=\"fa fa-warning\" style=\"color: red;\"/>\n"
+"\t\t\t\t\t\t\t\tYou have not specified currency unit (e.g. Dollars, Vietnam\n"
+"\t\t\t\t\t\t\t\t\t\t\tDong, etc) for the corresponding currency"
+msgstr ""
+"[\n"
+"\t\t\t\t\t\t\t\t<span class=\"fa fa-warning\" style=\"color: red;\"/>\n"
+"\t\t\t\t\t\t\t\tBạn chưa thiết lập đơn vị tiền tệ (ví dụ: Đô-la, Việt Nam\n"
+"\t\t\t\t\t\t\t\t\t\t\tĐồng, v.v.) cho tiền tệ tương ứng"
+
+#. module: l10n_vn_viin
+#: model_terms:ir.ui.view,arch_db:l10n_vn_viin.report_account_move_payment_receipt_document
+msgid "source document(s)."
+msgstr "chứng từ gốc"

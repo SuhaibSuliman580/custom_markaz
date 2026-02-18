@@ -1,0 +1,240 @@
+id,code,name,account_type,tag_ids,reconcile,name@vi_VN
+chart111,111,Cash on hand,asset_cash,l10n_vn_viin.account_account_tag_111,False,"Tiền mặt"
+chart1112,1112,Foreign currency,asset_cash,l10n_vn_viin.account_account_tag_111,False,"Ngoại tệ"
+chart1113,1113,Monetary Gold,asset_cash,l10n_vn_viin.account_account_tag_111,False,"Vàng tiền tệ"
+chart112,112,Cash in banks,asset_cash,l10n_vn_viin.account_account_tag_112,False,"Tiền gửi Ngân hàng"
+chart1121,1121,,,l10n_vn_viin.account_account_tag_112,,
+chart1122,1122,,,l10n_vn_viin.account_account_tag_112,,
+chart1123,1123,,,l10n_vn_viin.account_account_tag_112,,
+chart113,113,Cash in transit,asset_cash,l10n_vn_viin.account_account_tag_113,True,"Tiền đang chuyển"
+chart1132,1132,Foreign currency,asset_cash,l10n_vn_viin.account_account_tag_113,True,"Ngoại tệ"
+chart121,121,Trading Securities,asset_current,l10n_vn_viin.account_account_tag_121,False,"Chứng khoán kinh doanh"
+chart1211,1211,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_121,l10n_vn_viin.account_account_tag_1211",,
+chart1212,1212,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_121,l10n_vn_viin.account_account_tag_1212",,
+chart1218,1218,,asset_current,"account.account_tag_operating,l10n_vn_viin.account_account_tag_121",,
+chart128,128,Held to maturity investments,asset_current,l10n_vn_viin.account_account_tag_128,True,"Đầu tư nắm giữ đến ngày đáo hạn"
+chart1281,1281,,,"l10n_vn_viin.account_account_tag_128,l10n_vn_viin.account_account_tag_1281",True,
+chart1282,1282,,,"l10n_vn_viin.account_account_tag_128,l10n_vn_viin.account_account_tag_1282",True,
+chart1283,1283,,,"l10n_vn_viin.account_account_tag_128,l10n_vn_viin.account_account_tag_1283",True,
+chart1288,1288,,,"l10n_vn_viin.account_account_tag_128,l10n_vn_viin.account_account_tag_1288",True,
+chart131,131,,,l10n_vn_viin.account_account_tag_131,True,
+chart132,132,,,,True,
+chart133,133,Deductible VAT,asset_current,l10n_vn_viin.account_account_tag_133,True,"Thuế GTGT được khấu trừ"
+chart1331,1331,,,l10n_vn_viin.account_account_tag_133,True,
+chart1332,1332,,,l10n_vn_viin.account_account_tag_133,True,
+chart136,136,Intra-company receivables,asset_receivable,l10n_vn_viin.account_account_tag_136,True,"Phải thu nội bộ"
+chart1361,1361,,,"l10n_vn_viin.account_account_tag_136,l10n_vn_viin.account_account_tag_1361",,
+chart1362,1362,,,"l10n_vn_viin.account_account_tag_136,l10n_vn_viin.account_account_tag_1362",,
+chart1363,1363,,,"l10n_vn_viin.account_account_tag_136,l10n_vn_viin.account_account_tag_1363",,
+chart1368,1368,,,"l10n_vn_viin.account_account_tag_136,l10n_vn_viin.account_account_tag_1368",,
+chart138,138,Other receivables,asset_receivable,l10n_vn_viin.account_account_tag_138,True,"Phải thu khác"
+chart1381,1381,,asset_current,"account.account_tag_operating,l10n_vn_viin.account_account_tag_138,l10n_vn_viin.account_account_tag_1381",,
+chart1385,1385,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_138,l10n_vn_viin.account_account_tag_1385",,
+chart1388,1388,Others,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_138,l10n_vn_viin.account_account_tag_1388",,
+chart141,141,,,l10n_vn_viin.account_account_tag_141,,
+chart151,151,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_151",,
+chart152,152,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_152",,
+chart153,153,Tools and supplies,asset_current,l10n_vn_viin.account_account_tag_153,False,"Công cụ, dụng cụ"
+chart1531,1531,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_153",,
+chart1532,1532,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_153",,
+chart1533,1533,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_153",,
+chart1534,1534,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_153,l10n_vn_viin.account_account_tag_1534",,
+chart154,154,Work in progress,asset_current,"account.account_tag_operating,l10n_vn_viin.account_account_tag_154",,"Chi phí sản xuất, kinh doanh dở dang"
+chart1541,1541,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_154",,
+chart1542,1542,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_154",,
+chart1543,1543,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_154",,
+chart1544,1544,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_154",,
+chart155,155,Finished goods,asset_current,"account.account_tag_operating,l10n_vn_viin.account_account_tag_155",False,"Thành phẩm"
+chart1551,1551,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_155",,
+chart1557,1557,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_155",,
+chart156,156,Merchandise inventories,asset_current,l10n_vn_viin.account_account_tag_156,False,"Hàng hóa"
+chart1561,1561,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_156",,
+chart1562,1562,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_156",,
+chart1567,1567,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_156",,
+chart157,157,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_157",,
+chart158,158,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_158",,
+chart161,161,Non-business expenditure out of funds received from the State,asset_current,l10n_vn_viin.account_account_tag_161,False,"Chi sự nghiệp"
+chart1611,1611,,,l10n_vn_viin.account_account_tag_161,,
+chart1612,1612,,,l10n_vn_viin.account_account_tag_161,,
+chart171,171,,,l10n_vn_viin.account_account_tag_171,,
+chart211,211,Tangible fixed assets,asset_fixed,l10n_vn_viin.account_account_tag_211,False,"Tài sản cố định hữu hình"
+chart2111,2111,,asset_fixed,"l10n_vn_viin.account_account_tag_211,l10n_vn_viin.account_account_tag_2111",,
+chart2112,2112,,asset_fixed,l10n_vn_viin.account_account_tag_211,,
+chart2113,2113,,asset_fixed,l10n_vn_viin.account_account_tag_211,,
+chart2114,2114,,asset_fixed,l10n_vn_viin.account_account_tag_211,,
+chart2115,2115,,asset_fixed,l10n_vn_viin.account_account_tag_211,,
+chart2118,2118,,asset_fixed,l10n_vn_viin.account_account_tag_211,,
+chart212,212,Finance lease fixed assets,asset_fixed,l10n_vn_viin.account_account_tag_212,False,"Tài sản cố định thuê tài chính"
+chart2121,2121,,asset_fixed,l10n_vn_viin.account_account_tag_212,,
+chart2122,2122,,asset_fixed,l10n_vn_viin.account_account_tag_212,,
+chart213,213,Intangible fixed assets,asset_fixed,l10n_vn_viin.account_account_tag_213,False,"Tài sản cố định vô hình"
+chart2131,2131,,asset_fixed,l10n_vn_viin.account_account_tag_213,,
+chart2132,2132,,asset_fixed,l10n_vn_viin.account_account_tag_213,,
+chart2133,2133,,asset_fixed,l10n_vn_viin.account_account_tag_213,,
+chart2134,2134,,asset_fixed,l10n_vn_viin.account_account_tag_213,,
+chart2135,2135,,asset_fixed,l10n_vn_viin.account_account_tag_213,,
+chart2136,2136,,asset_fixed,l10n_vn_viin.account_account_tag_213,,
+chart2138,2138,,asset_fixed,l10n_vn_viin.account_account_tag_213,,
+chart214,214,Deprecation of fixed assets,asset_non_current,l10n_vn_viin.account_account_tag_214,False,"Hao mòn tài sản cố định"
+chart2141,2141,,asset_non_current,"l10n_vn_viin.account_account_tag_214,l10n_vn_viin.account_account_tag_2141",,
+chart2142,2142,,asset_non_current,l10n_vn_viin.account_account_tag_214,,
+chart2143,2143,,asset_non_current,"l10n_vn_viin.account_account_tag_214,l10n_vn_viin.account_account_tag_2143",,
+chart2147,2147,,asset_non_current,"l10n_vn_viin.account_account_tag_214,l10n_vn_viin.account_account_tag_2147",,
+chart217,217,,asset_fixed,l10n_vn_viin.account_account_tag_217,,
+chart221,221,,,"account.account_tag_investing,l10n_vn_viin.account_account_tag_221",,
+chart222,222,,,"account.account_tag_investing,l10n_vn_viin.account_account_tag_222",,
+chart228,228,Other investments,asset_non_current,l10n_vn_viin.account_account_tag_228,False,"Đầu tư khác"
+chart2281,2281,,,"account.account_tag_investing,l10n_vn_viin.account_account_tag_228,l10n_vn_viin.account_account_tag_2281",,
+chart2288,2288,Other investments,asset_non_current,"account.account_tag_investing,l10n_vn_viin.account_account_tag_228,l10n_vn_viin.account_account_tag_2288",,"Đầu tư khác"
+chart229,229,Allowance for impairment of assets (credit balance),asset_non_current,l10n_vn_viin.account_account_tag_229,False,"Dự phòng tổn thất tài sản"
+chart2291,2291,,,"l10n_vn_viin.account_account_tag_229,l10n_vn_viin.account_account_tag_2291",,
+chart2292,2292,,,"l10n_vn_viin.account_account_tag_229,l10n_vn_viin.account_account_tag_2292",,
+chart2293,2293,,,"l10n_vn_viin.account_account_tag_229,l10n_vn_viin.account_account_tag_2293",,
+chart2294,2294,,,"l10n_vn_viin.account_account_tag_229,l10n_vn_viin.account_account_tag_2294",,
+chart241,241,Construction in progress,asset_non_current,l10n_vn_viin.account_account_tag_241,False,"Xây dựng cơ bản dở dang"
+chart2411,2411,,,"l10n_vn_viin.account_account_tag_241,l10n_vn_viin.account_account_tag_2411",,
+chart2412,2412,,,"l10n_vn_viin.account_account_tag_241",,
+chart2413,2413,,,l10n_vn_viin.account_account_tag_241,,
+chart242,242,,,l10n_vn_viin.account_account_tag_242,,
+chart243,243,,,l10n_vn_viin.account_account_tag_243,,
+chart244,244,,,l10n_vn_viin.account_account_tag_244,,
+chart331,331,,,l10n_vn_viin.account_account_tag_331,,
+chart333,333,Taxes and other payables to State Budget,liability_current,"l10n_vn_viin.account_account_tag_333",True,"Thuế và các khoản phải nộp Nhà nước"
+chart3331,3331,Value Added Tax (VAT),liability_current,"l10n_vn_viin.account_account_tag_333,l10n_vn_viin.account_account_tag_3331",True,"Thuế giá trị gia tăng phải nộp"
+chart33311,33311,,,"l10n_vn_viin.account_account_tag_333,l10n_vn_viin.account_account_tag_3331",True,
+chart33312,33312,,,"l10n_vn_viin.account_account_tag_333,l10n_vn_viin.account_account_tag_3331",True,
+chart3332,3332,,,l10n_vn_viin.account_account_tag_333,True,
+chart3333,3333,,,l10n_vn_viin.account_account_tag_333,True,
+chart3334,3334,,,"l10n_vn_viin.account_account_tag_333,l10n_vn_viin.account_account_tag_3334",True,
+chart3335,3335,,,l10n_vn_viin.account_account_tag_333,True,
+chart3336,3336,,,l10n_vn_viin.account_account_tag_333,True,
+chart3337,3337,,,l10n_vn_viin.account_account_tag_333,True,
+chart3338,3338,Environment protection tax and other taxes,liability_current,"l10n_vn_viin.account_account_tag_333,l10n_vn_viin.account_account_tag_3338",True,"Thuế bảo vệ môi trường và các loại thuế khác"
+chart33381,33381,,,"l10n_vn_viin.account_account_tag_333,l10n_vn_viin.account_account_tag_3338",True,
+chart33382,33382,,,"l10n_vn_viin.account_account_tag_333,l10n_vn_viin.account_account_tag_3338",True,
+chart3339,3339,,,l10n_vn_viin.account_account_tag_333,True,
+chart334,334,Paybles to employees,liability_payable,l10n_vn_viin.account_account_tag_334,True,"Phải trả người lao động"
+chart3341,3341,,,l10n_vn_viin.account_account_tag_334,,
+chart3342,3342,Payables to others,liability_payable,l10n_vn_viin.account_account_tag_334,True,"Phải trả khác"
+chart3348,3348,,,l10n_vn_viin.account_account_tag_334,,
+chart335,335,,,l10n_vn_viin.account_account_tag_335,,
+chart336,336,Intra-company payables,liability_payable,l10n_vn_viin.account_account_tag_336,True,"Phải trả nội bộ"
+chart3361,3361,,,"l10n_vn_viin.account_account_tag_336,l10n_vn_viin.account_account_tag_3361",,
+chart3362,3362,,,"l10n_vn_viin.account_account_tag_336,l10n_vn_viin.account_account_tag_3362",,
+chart3363,3363,,,"l10n_vn_viin.account_account_tag_336,l10n_vn_viin.account_account_tag_3363",,
+chart3368,3368,,,"l10n_vn_viin.account_account_tag_336,l10n_vn_viin.account_account_tag_3368",,
+chart337,337,,,l10n_vn_viin.account_account_tag_337,,
+chart338,338,Other payables,liability_payable,l10n_vn_viin.account_account_tag_338,True,"Phải trả, phả nộp khác"
+chart3381,3381,,liability_current,"account.account_tag_operating,l10n_vn_viin.account_account_tag_338",,
+chart3382,3382,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_338",,
+chart3383,3383,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_338",,
+chart3384,3384,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_338",,
+chart3385,3385,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_338,l10n_vn_viin.account_account_tag_3385",,
+chart3386,3386,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_338",,
+chart3387,3387,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_338,l10n_vn_viin.account_account_tag_3387",,
+chart3388,3388,,,"account.account_tag_operating,l10n_vn_viin.account_account_tag_338",,
+chart341,341,Borrowings and finance lease liabilities,liability_current,l10n_vn_viin.account_account_tag_341,True,"Vay và nợ thuê tài chính"
+chart3411,3411,,,"l10n_vn_viin.account_account_tag_341,l10n_vn_viin.account_account_tag_3411",True,
+chart3412,3412,,,"l10n_vn_viin.account_account_tag_341,l10n_vn_viin.account_account_tag_3412",True,
+chart343,343,Issued bonds,liability_current,l10n_vn_viin.account_account_tag_343,False,"Trái phiếu phát hành"
+chart3431,3431,,,"l10n_vn_viin.account_account_tag_343,l10n_vn_viin.account_account_tag_3431",,
+chart34311,34311,,,"l10n_vn_viin.account_account_tag_343,l10n_vn_viin.account_account_tag_3431,l10n_vn_viin.account_account_tag_34311",,
+chart34312,34312,,,"l10n_vn_viin.account_account_tag_343,l10n_vn_viin.account_account_tag_3431",,
+chart34313,34313,,,"l10n_vn_viin.account_account_tag_343,l10n_vn_viin.account_account_tag_3431,l10n_vn_viin.account_account_tag_34313",,
+chart3432,3432,,,"l10n_vn_viin.account_account_tag_343,l10n_vn_viin.account_account_tag_3432",,
+chart344,344,,,l10n_vn_viin.account_account_tag_344,,
+chart347,347,,,l10n_vn_viin.account_account_tag_347,,
+chart352,352,Provisions payable,liability_current,l10n_vn_viin.account_account_tag_352,False,"Dự phòng phải trả"
+chart3521,3521,,,l10n_vn_viin.account_account_tag_352,,
+chart3522,3522,,,l10n_vn_viin.account_account_tag_352,,
+chart3523,3523,,,l10n_vn_viin.account_account_tag_352,,
+chart3524,3524,,,l10n_vn_viin.account_account_tag_352,,
+chart353,353,Bonus and welfare fund,liability_current,l10n_vn_viin.account_account_tag_353,False,"Quỹ khen thưởng phúc lợi"
+chart3531,3531,,,l10n_vn_viin.account_account_tag_353,,
+chart3532,3532,,,l10n_vn_viin.account_account_tag_353,,
+chart3533,3533,,,l10n_vn_viin.account_account_tag_353,,
+chart3534,3534,,,l10n_vn_viin.account_account_tag_353,,
+chart356,356,Science and technology development fund,liability_current,l10n_vn_viin.account_account_tag_356,False,"Quỹ phát triển khoa học và công nghệ"
+chart3561,3561,,,l10n_vn_viin.account_account_tag_356,,
+chart3562,3562,,,l10n_vn_viin.account_account_tag_356,,
+chart357,357,,,l10n_vn_viin.account_account_tag_357,,
+chart411,411,Owner’s invested equity,equity,l10n_vn_viin.account_account_tag_411,False,"Vốn đầu tư của chủ sở hữu"
+chart4111,4111,Contributed capital,equity,"l10n_vn_viin.account_account_tag_411,l10n_vn_viin.account_account_tag_4111",,"Vốn góp của chủ sở hữu"
+chart41111,41111,,,"l10n_vn_viin.account_account_tag_411,l10n_vn_viin.account_account_tag_4111,l10n_vn_viin.account_account_tag_41111",,
+chart41112,41112,,,"l10n_vn_viin.account_account_tag_411,l10n_vn_viin.account_account_tag_4111,l10n_vn_viin.account_account_tag_41112",,
+chart4112,4112,,,"l10n_vn_viin.account_account_tag_411,l10n_vn_viin.account_account_tag_4112",,
+chart4113,4113,,,"l10n_vn_viin.account_account_tag_411,l10n_vn_viin.account_account_tag_4113",,
+chart4118,4118,,,"l10n_vn_viin.account_account_tag_411,l10n_vn_viin.account_account_tag_4118",,
+chart412,412,,,l10n_vn_viin.account_account_tag_412,,
+chart413,413,Exchange rate differences,equity,l10n_vn_viin.account_account_tag_413,False,"Chênh lệch tỷ giá hối đoái"
+chart4131,4131,,,l10n_vn_viin.account_account_tag_413,,
+chart4132,4132,,,l10n_vn_viin.account_account_tag_413,,
+chart414,414,,,l10n_vn_viin.account_account_tag_414,,
+chart417,417,,,l10n_vn_viin.account_account_tag_417,,
+chart418,418,,,l10n_vn_viin.account_account_tag_418,,
+chart419,419,,,l10n_vn_viin.account_account_tag_419,,
+chart421,421,Undistributed profit after tax,equity,l10n_vn_viin.account_account_tag_421,False,"Lợi nhuận sau thuế chưa phân phối"
+chart4211,4211,,,"l10n_vn_viin.account_account_tag_421,l10n_vn_viin.account_account_tag_4211",,
+chart4212,4212,,,"l10n_vn_viin.account_account_tag_421,l10n_vn_viin.account_account_tag_4212",,
+chart441,441,,,l10n_vn_viin.account_account_tag_441,,
+chart461,461,Non-business funds,equity,l10n_vn_viin.account_account_tag_461,False,"Nguồn kinh phí sự nghiệp"
+chart4611,4611,,,l10n_vn_viin.account_account_tag_461,,
+chart4612,4612,,,l10n_vn_viin.account_account_tag_461,,
+chart466,466,,,l10n_vn_viin.account_account_tag_466,,
+chart511,511,Revenues,income,l10n_vn_viin.account_account_tag_511,False,"Doanh thu bán hàng và cung cấp dịch vụ"
+chart5111,5111,,,l10n_vn_viin.account_account_tag_511,,
+chart5112,5112,,,l10n_vn_viin.account_account_tag_511,,
+chart5113,5113,,,l10n_vn_viin.account_account_tag_511,,
+chart5114,5114,,,l10n_vn_viin.account_account_tag_511,,
+chart5117,5117,,,"l10n_vn_viin.account_account_tag_511,l10n_vn_viin.account_account_tag_5117",,
+chart5118,5118,,,l10n_vn_viin.account_account_tag_511,,
+chart515,515,,income_financial,"account.account_tag_financing,l10n_vn_viin.account_account_tag_515",,
+chart521,521,Revenue deductions,income_deduction,l10n_vn_viin.account_account_tag_521,False,"Các khoản giảm trừ doanh thu"
+chart5211,5211,,income_deduction,l10n_vn_viin.account_account_tag_521,,
+chart5212,5212,,income_deduction,l10n_vn_viin.account_account_tag_521,,
+chart5213,5213,,income_deduction,l10n_vn_viin.account_account_tag_521,,
+chart611,611,Purchases (used for periodic inventory systems),expense_direct_cost,l10n_vn_viin.account_account_tag_611,False,"Mua hàng"
+chart6111,6111,,expense_direct_cost,l10n_vn_viin.account_account_tag_611,,
+chart6112,6112,Purchases of goods,expense_direct_cost,l10n_vn_viin.account_account_tag_611,,"Mua hàng hóa"
+chart621,621,,expense_direct_cost,l10n_vn_viin.account_account_tag_621,,
+chart622,622,,expense_direct_cost,l10n_vn_viin.account_account_tag_622,,
+chart623,623,Costs of construction machinery,expense,l10n_vn_viin.account_account_tag_623,False,"Chi phí sử dụng máy thi công"
+chart6231,6231,,,l10n_vn_viin.account_account_tag_623,,
+chart6232,6232,,,l10n_vn_viin.account_account_tag_623,,
+chart6233,6233,,,l10n_vn_viin.account_account_tag_623,,
+chart6234,6234,,,l10n_vn_viin.account_account_tag_623,,
+chart6237,6237,,,l10n_vn_viin.account_account_tag_623,,
+chart6238,6238,,,l10n_vn_viin.account_account_tag_623,,
+chart627,627,Factory overheads,expense_direct_cost,l10n_vn_viin.account_account_tag_627,False,"Chi phí sản xuất chung"
+chart6271,6271,,expense_direct_cost,l10n_vn_viin.account_account_tag_627,,
+chart6272,6272,,expense_direct_cost,l10n_vn_viin.account_account_tag_627,,
+chart6273,6273,,expense_direct_cost,l10n_vn_viin.account_account_tag_627,,
+chart6274,6274,,expense_direct_cost,l10n_vn_viin.account_account_tag_627,,
+chart6277,6277,,expense_direct_cost,l10n_vn_viin.account_account_tag_627,,
+chart6278,6278,,expense_direct_cost,l10n_vn_viin.account_account_tag_627,,
+chart631,631,,,l10n_vn_viin.account_account_tag_631,,
+chart632,632,,,l10n_vn_viin.account_account_tag_632,,
+chart635,635,,,"account.account_tag_financing,l10n_vn_viin.account_account_tag_635",,
+chart641,641,Selling expenses,expense,l10n_vn_viin.account_account_tag_641,False,"Chi phí bán hàng"
+chart6411,6411,,,l10n_vn_viin.account_account_tag_641,,
+chart6412,6412,,,l10n_vn_viin.account_account_tag_641,,
+chart6413,6413,,,l10n_vn_viin.account_account_tag_641,,
+chart6414,6414,,,l10n_vn_viin.account_account_tag_641,,
+chart6415,6415,,,l10n_vn_viin.account_account_tag_641,,
+chart6417,6417,,,l10n_vn_viin.account_account_tag_641,,
+chart6418,6418,,,l10n_vn_viin.account_account_tag_641,,
+chart642,642,General administration expenses,expense,l10n_vn_viin.account_account_tag_642,False,"Chi phí quản lý doanh nghiệp"
+chart6421,6421,,,l10n_vn_viin.account_account_tag_642,,
+chart6422,6422,,,l10n_vn_viin.account_account_tag_642,,
+chart6423,6423,,,l10n_vn_viin.account_account_tag_642,,
+chart6424,6424,,,l10n_vn_viin.account_account_tag_642,,
+chart6425,6425,,,l10n_vn_viin.account_account_tag_642,,
+chart6426,6426,,,l10n_vn_viin.account_account_tag_642,,
+chart6427,6427,,,l10n_vn_viin.account_account_tag_642,,
+chart6428,6428,,,l10n_vn_viin.account_account_tag_642,,
+chart711,711,,,l10n_vn_viin.account_account_tag_711,,
+chart811,811,,,l10n_vn_viin.account_account_tag_811,,
+chart821,821,Income tax expense (benefit),expense,l10n_vn_viin.account_account_tag_821,False,"Chi phí thuế thu nhập doanh nghiệp"
+chart8211,8211,,,"l10n_vn_viin.account_account_tag_821,l10n_vn_viin.account_account_tag_8211",,
+chart8212,8212,,,"l10n_vn_viin.account_account_tag_821,l10n_vn_viin.account_account_tag_8212",,
+chart911,911,,,l10n_vn_viin.account_account_tag_911,,

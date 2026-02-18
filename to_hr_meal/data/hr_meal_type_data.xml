@@ -1,0 +1,21 @@
+<odoo noupdate="1">
+	<record id="hr_meal_type_lunch_for_everyone" model="hr.meal.type">
+		<field name="name">Lunch for Everyone</field>
+	</record>
+
+	<record id="hr_meal_type_lunch_workers" model="hr.meal.type">
+		<field name="name">Lunch for Workers</field>
+	</record>
+
+	<record id="hr_meal_type_lunch_office" model="hr.meal.type">
+		<field name="name">Lunch for Office</field>
+	</record>
+
+	<record id="hr_meal_type_dinner_workers" model="hr.meal.type">
+		<field name="name">Dinner for Workers</field>
+	</record>
+
+	<record id="hr_meal_type_night_meal" model="hr.meal.type">
+		<field name="name">Nigh Meal</field>
+	</record>
+</odoo>

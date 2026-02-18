@@ -1,0 +1,47 @@
+<odoo>
+	<record id="hr_contract_type_views_tree" model="ir.ui.view">
+		<field name="name">hr.contract.type.view.tree</field>
+		<field name="model">hr.contract.type</field>
+		<field name="inherit_id" ref="hr.hr_contract_type_view_tree"/>
+		<field name="arch" type="xml">
+			<xpath expr="//tree" position="attributes">
+				<attribute name="sample">1</attribute>
+			</xpath>
+			<xpath expr="//tree" positon="inside">
+				<field name="salary_computation_mode"/>
+				<field name="personal_tax_policy"/>
+				<field name="country_id"/>
+				<field name="personal_tax_rule_id"/>
+			</xpath>
+		</field>
+	</record>
+
+	<record id="hr_contract_type_views_from" model="ir.ui.view">
+		<field name="name">hr.contract.type.view.form</field>
+		<field name="model">hr.contract.type</field>
+		<field name="arch" type="xml">
+			<form string="Contract Type">
+				<sheet>
+					<group>
+						<field name="name"/>
+						<field name="salary_computation_mode"/>
+						<field name="personal_tax_policy"/>
+						<field name="country_id"/>
+						<field name="personal_tax_rule_id"/>
+					</group>
+				</sheet>
+				<div class="oe_chatter">
+	                <field name="message_follower_ids" groups="base.group_user"/>
+	                <field name="activity_ids"/>
+	                <field name="message_ids"/>
+                </div>
+			</form>
+		</field>
+	</record>
+
+	<menuitem id="hr_contract_type_menu"
+		name="Contract Type"
+		action="hr.hr_contract_type_action"
+		parent="menu_hr_payroll_configuration_work_entry"
+		sequence="20" />
+</odoo>

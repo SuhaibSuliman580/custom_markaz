@@ -1,0 +1,113 @@
+<odoo>
+
+    <record id="hr_meal_order_line_view_search"
+        model="ir.ui.view">
+        <field name="name">hr.meal.order.line.search</field>
+        <field name="model">hr.meal.order.line</field>
+        <field name="arch" type="xml">
+            <search string="HR Meal Order Lines Search">
+                <field name="meal_order_id"
+                    groups="to_hr_meal.hr_meal_group_user" />
+                <field name="employee_id" />
+                <field name="quantity" />
+                <field name="state" />
+            </search>
+        </field>
+    </record>
+
+    <record id="hr_meal_order_line_view_tree" model="ir.ui.view">
+        <field name="name">hr.meal.order.line.tree</field>
+        <field name="model">hr.meal.order.line</field>
+        <field name="arch" type="xml">
+            <tree string="HR Meal Order Lines" create="false" sample="1">
+                <field name="meal_order_id" />
+                <field name="meal_date" />
+                <field name="meal_type_id" />
+                <field name="employee_id" widget="many2one_avatar_employee"/>
+                <field name="partner_ids" widget="many2many_tags_avatar"
+                    optional="hide" />
+                <field name="quantity" />
+                <field name="price" />
+                <field name="employee_price" />
+                <field name="employee_amount" />
+                <field name="company_amount" />
+                <field name="total_price" />
+                <field name="state" />
+                <field name="currency_id" column_invisible="1" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_meal_order_line_view_form" model="ir.ui.view">
+        <field name="name">hr.meal.order.line.form</field>
+        <field name="model">hr.meal.order.line</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form >
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="state" invisible="1" />
+                            <field name="meal_order_id"/>
+                            <field name="employee_id"
+                                readonly="state != 'draft'" />
+                            <field name="department_id" />
+                        </group>
+                        <group>
+                            <field name="meal_date"/>
+                            <field name="kitchen_id"/>
+                            <field name="company_id" groups="base.group_multi_company" />
+                            <field name="currency_id" groups="base.group_multi_currency" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="partner_ids" widget="many2many_tags"
+                            readonly="state != 'draft'" />
+                    </group>
+                    <group>
+                        <group>
+                            <field name="meal_type_id"/>
+                            <field name="price"/>
+                            <field name="quantity"/>
+                        </group>
+                        <group>
+                            <field name="total_price"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_meal_order_line_view_pivot" model="ir.ui.view">
+        <field name="name">hr.meal.order.line.pivot</field>
+        <field name="model">hr.meal.order.line</field>
+        <field name="type">pivot</field>
+        <field name="arch" type="xml">
+            <pivot string="HR Meal Order Lines" sample="1">
+                <field name="meal_date" type="col" />
+                <field name="meal_type_id" type="row" />
+                <field name="quantity" type="measure" />
+                <field name="price" type="measure" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="hr_meal_order_line_view_graph" model="ir.ui.view">
+        <field name="name">hr.meal.order.line.graph</field>
+        <field name="model">hr.meal.order.line</field>
+        <field name="type">graph</field>
+        <field name="arch" type="xml">
+            <graph string="HR Meal Order Lines" sample="1">
+                <field name="meal_type_id" type="row" />
+                <field name="meal_date" type="col" />
+                <field name="employee_id" />
+                <field name="quantity" />
+            </graph>
+        </field>
+    </record>
+
+</odoo>

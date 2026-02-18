@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="hr_payslip_run_form" model="ir.ui.view">
+		<field name="name">hr.payslip.run.form</field>
+		<field name="model">hr.payslip.run</field>
+		<field name="inherit_id" ref="oi_payroll.hr_payslip_run_form" />
+		<field name="arch" type="xml">
+			<field name="credit_note" position="before">
+				<field name="type_id" />
+			</field>
+		</field>
+	</record>
+
+</odoo>

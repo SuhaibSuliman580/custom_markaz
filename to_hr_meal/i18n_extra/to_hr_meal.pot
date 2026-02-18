@@ -1,0 +1,9 @@
+#. module: base
+#: model:ir.module.category,name:base.module_category_human_resources_meal
+msgid "HR Meal"
+msgstr ""
+
+#. module: base
+#: model:ir.module.category,description:base.module_category_human_resources_meal
+msgid "Helps you handle meals for your employees."
+msgstr ""

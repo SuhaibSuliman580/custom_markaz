@@ -1,0 +1,232 @@
+---Classes in module ---
+
+FILE: l10n_vn_viin/__init__.py
+
+def post_init_hook(cr, registry):
+
+FILE: l10n_vn_viin/reports/account_payment_report.py
+
+class ReportAccountPayment(models.AbstractModel):
+    _name = 'report.l10n_vn_viin.report_account_payment'
+
+    _description = 'Account Payment Report'
+
+    @api.model
+    def _get_report_values(self, docids, data=None):
+
+FILE: l10n_vn_viin/reports/account_move_report_payment_receipt.py
+---- Không thay đổi
+
+class ReportPaymentReceipt(models.AbstractModel):
+    _name = 'report.l10n_vn_viin.report_account_move_payment_receipt'
+
+    _inherit = 'report.l10n_vn_viin.report_account_move_journal_entry'
+
+    _description = 'Payment Receipt Report'
+
+    @api.model
+    def _get_report_values(self, docids, data=None):
+
+FILE: l10n_vn_viin/reports/account_move_report_journal_entry.py
+---- Không thay đổi
+
+class ReportJournalEntry(models.AbstractModel):
+    _name = 'report.l10n_vn_viin.report_account_move_journal_entry'
+
+    _description = 'Journal Entry Report'
+
+    @api.model
+    def _get_report_values(self, docids, data=None):
+
+FILE: l10n_vn_viin/reports/__init__.py
+---- Không thay đổi
+
+FILE: l10n_vn_viin/models/account_move.py
+---- Không thay đổi
+
+class AccountMove(models.Model):
+    _name = 'account.move'
+
+    _inherit = ['account.move', 'to.vietnamese.number2words']
+
+
+    total_in_word = fields.Char(string='In words', compute='_compute_total_in_word')
+    in_out_payment = fields.Selection(string='Payment In/Out', selection=[('in', 'In'), ('out', 'Out')], compute='_compute_in_out_payment',
+        help="This is technical field, use to specify this move is payment in or payment out.")
+    def _compute_total_in_word(self):
+    def _compute_in_out_payment(self):
+
+FILE: l10n_vn_viin/models/account_account_tag.py
+---- Không thay đổi module
+
+class AccountAccountTag(models.Model):
+    _inherit = 'account.account.tag'
+
+
+    code = fields.Char(string='Code', size=20, help="The unique code of the tag")
+    def name_get(self):
+    @api.model
+    def name_search(self, name, args=None, operator='ilike', limit=100):
+
+FILE: l10n_vn_viin/models/account_chart_template.py
+---- Thay đổi: Odoo loại bỏ hàm `_prepare_transfer_account_for_direct_creation`
+---- Hàm _load odoo thay đổi tham số truyền vào
+
+class AccountChartTemplate(models.Model):
+    _inherit = 'account.chart.template'
+
+
+    circular_code = fields.Char(string='Circular Code')
+    def _prepare_transfer_account_for_direct_creation(self, name, company):
+    @api.model
+    def _get_installed_vietnam_coa_templates(self):
+    def _prepare_company_account_to_load(self):
+    def _load_company_accounts(self, account_ref, company):
+    def _prepare_company_property_account_to_load(self):
+    def generate_properties(self, acc_template_ref, company):
+    def _load(self, sale_tax_rate, purchase_tax_rate, company):
+
+FILE: l10n_vn_viin/models/account_journal.py
+---- Không thay đổi
+
+class AccountJournal(models.Model):
+    _inherit = 'account.journal'
+
+
+    @api.model
+    def _prepare_liquidity_account_vals(self, company, code, vals):
+
+FILE: l10n_vn_viin/models/account_analytic_tag.py
+---- Loại bỏ module
+
+
+class AccountAnalyticTag(models.Model):
+    _inherit = 'account.analytic.tag'
+
+
+    name = fields.Char(translate=True)
+
+FILE: l10n_vn_viin/models/ir_actions_report.py
+---- Hàm _get_rendering_context Odoo thay đổi tham số truyền vào
+
+class IrActionsReport(models.Model):
+    _inherit = 'ir.actions.report'
+
+
+    legal_name = fields.Char(string='Legal Name', translate=True, help="The legal name of the report. For instance,"
+                             " 'Template S12-DN' is the legal name of the stock card according the Ministry of Finanace of Vietnam")
+    def report_action(self, docids, data=None, config=True):
+    @api.model
+    def _get_rendering_context(self, docids, data):
+
+FILE: l10n_vn_viin/models/res_company.py
+---- Thay đổi: Sửa tài khoản `1131` Tiền đang chuyển - VNĐ. Từ `account_type` tài sản ngắn hạn thành Tiền
+
+class ResCompany(models.Model):
+    _inherit = 'res.company'
+
+
+    def _disable_anglo_saxon_for_vn_coa(self):
+    def _filter_vietnam_coa(self):
+        """
+        Filter the companies having Vietnam CoA (TT200 / TT133) in self
+        """
+
+    @api.model
+    def _fix_vietnam_coa(self):
+        """
+        This method is safe for calling multiple times.
+        It may take long time for the first run, depending on how large the number of affected journal items is.
+        The second time and on may cost a few seconds only.
+        """
+
+    def _prepare_account_for_company_map_code(self):
+    def _prepare_property_account_map_code(self):
+    @api.model
+    def _fill_default_accounts_for_company(self):
+        """
+        Method use only post init hook
+        """
+
+    @api.model
+    def _generate_property_accounts(self):
+        """
+        Method use only post init hook
+        """
+
+
+FILE: l10n_vn_viin/models/account_tax_group.py
+---- Không thay đổi
+
+class AccountTaxGroup(models.Model):
+    _inherit = 'account.tax.group'
+
+
+    def _set_tax_group_is_vat_vietnam(self):
+
+FILE: l10n_vn_viin/models/res_currency.py
+---- Không thay đổi
+
+class Currency(models.Model):
+    _inherit = 'res.currency'
+
+
+    currency_unit_label = fields.Char(translate=True)
+
+FILE: l10n_vn_viin/models/__init__.py
+---- Loại bỏ module `account_analytic_tag`
+
+
+FILE: l10n_vn_viin/models/report_l10n_vn_common.py
+---- Đổi tên class thành ReportL10nVnCommon cho đúng quy chuẩn đặt tên
+
+class ReportL10n_vnCommon(models.AbstractModel):
+    _name = 'report.l10n_vn.common'
+
+    _description = 'Vietnam Common Report'
+
+    @api.model
+    def _get_lines(self, data):
+    @api.model
+    def formatLang(self, value, digits=None, grouping=True, monetary=False, dp=False, currency_obj=False):
+    @api.model
+    def format_date(self, date, pattern=False):
+    @api.model
+    def format_tz(self, dt, tz=False, format=False):
+    @api.model
+    def format_datetime(self, dt, tz=False, format=False):
+    @api.model
+    def _get_report_values(self, docids, data=None):
+
+FILE: l10n_vn_viin/models/account_account.py
+---- Không thay đổi
+
+class AccountAccount(models.Model):
+    _inherit = 'account.account'
+
+
+    @api.model_create_multi
+    def create(self, vals_list):
+    def _fill_account_tag_for_vn_coa(self):
+        """
+        Fill account tag for the account if not specified.
+        """
+
+
+FILE: l10n_vn_viin/models/account_payment.py
+---- Không thay đổi: Sửa tên hàm từ compute='_get_recipient_payer' thành compute='_compute_recipient_payer'
+
+class AccountPayment(models.Model):
+    _inherit = 'account.payment'
+
+
+    no_of_origin = fields.Char(string='No. of Origin', size=256,
+                                  help="Number of the origin documents (e.g. Purchase Voucher number, Invoice Number, etc), to be displayed on the PDF printed version of this document.")
+    recipient_payer = fields.Char(string='Recipient / Payer', size=256, compute='_get_recipient_payer', readonly=False, store=True,
+                                  help='The name of the person who pay/receive the payment. If empty, the corresponding partner name will be used instead.')
+    @api.depends('partner_id')
+    def _get_recipient_payer(self):
+
+FILE: l10n_vn_viin/migrations/15.0.0.1.1/post-migration.py
+
+def migrate(cr, version):

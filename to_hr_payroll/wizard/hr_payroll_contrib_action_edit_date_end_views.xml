@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+		<record id="hr_payroll_contrib_action_edit_date_end_form_view" model="ir.ui.view">
+			<field name="name">hr.payroll.contrib.action.edit.date.end.form</field>
+			<field name="model">hr.payroll.contrib.action.edit.date.end</field>
+			<field name="arch" type="xml">
+				<form string="Payroll Contribution History">
+				<group>
+					<field name="date_end"/>
+					<field name="payroll_contribution_history_id" invisible="1"/>
+				</group>
+					<footer>
+						<button name="action_confirm" string="Confirm" type="object" class="oe_highlight"/>
+						<button string="Cancel" class="btn-default"
+							special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="hr_payroll_contrib_action_edit_date_end_action" model="ir.actions.act_window">
+			<field name="name">History Contribution Registers</field>
+			<field name="res_model">hr.payroll.contrib.action.edit.date.end</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="hr_payroll_contrib_action_edit_date_end_form_view"/>
+			<field name="target">new</field>
+			<field name="context">{'default_payroll_contribution_history_id': active_id}</field>
+		</record>
+
+</odoo>

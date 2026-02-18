@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view"
+			id="to_hr_payroll_analysis_pivot_view">
+			<field name="name">Payroll Analysis Pivot</field>
+			<field name="model">hr.payroll.analysis</field>
+			<field name="arch" type="xml">
+				<pivot string="Payroll Analysis" sample="1">
+					<field name="date_to" type="col" />
+					<field name="department_id" type="row" />
+					<field name="company_cost" type="measure" />
+					<field name="amount" type="measure" />
+				</pivot>
+			</field>
+		</record>
+		<record model="ir.ui.view"
+			id="to_hr_payroll_analysis_graph_view">
+			<field name="name">Payroll Analysis Graph</field>
+			<field name="model">hr.payroll.analysis</field>
+			<field name="arch" type="xml">
+				<graph string="Payroll Analysis" stacked="True" sample="1">
+					<field name="date_to" interval="month" type="row"/>
+					<field name="department_id" type="col"/>
+					<field name="company_cost" type="measure"/>
+				</graph>
+			</field>
+		</record>
+		<record model="ir.ui.view"
+			id="to_hr_payroll_analysis_tree_view">
+			<field name="name">Payroll Analysis Tree</field>
+			<field name="model">hr.payroll.analysis</field>
+			<field name="arch" type="xml">
+				<tree string="Payroll Analysis" sample="1">
+					<field name="employee_id" />
+					<field name="barcode" />
+					<field name="amount" />
+					<field name="salary_rule_id" />
+					<field name="category_id" />
+					<field name="department_id" />
+					<field name="job_id" />
+					<field name="slip_id" />
+					<field name="register_id" />
+					<field name="state" />
+					<field name="company_id" groups="base.group_multi_company" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="view_hr_payroll_analyis_search" model="ir.ui.view">
+			<field name="name">Payroll Analysis Search</field>
+			<field name="model">hr.payroll.analysis</field>
+			<field name="arch" type="xml">
+				<search string="Payroll Analysis">
+					<field name="job_id" />
+					<field name="department_id" />
+					<field name="employee_id" />
+					<field name="barcode" />
+					<separator />
+					<field name="salary_rule_id" />
+					<field name="contribution_register_category_id" />
+					<separator />
+					<field name="date_confirmed" />
+					<field name="date_from" />
+					<field name="date_to" />
+					<separator />
+					<filter name="rule_appears_on_payslip_true"
+						string="Rules Appear on Pay Slip"
+						domain="[('rule_appears_on_payslip', '=', True)]" />
+					<filter name="rule_appears_on_payslip_false"
+						string="Rules Not Appear on Pay Slip"
+						domain="[('rule_appears_on_payslip', '=', False)]" />
+					<separator />
+					<filter name="no_misc_categ" string="Without Category Code 'TAXBASE' and 'MISC' and 'GROSS' and 'NET'"
+						domain="[('category_id.code', 'not in', ('TAXBASE','MISC','GROSS','NET'))]" />
+					<separator />
+					<filter string="This Year" name="year"
+						domain="[('date_from','&gt;=',time.strftime('%%Y-01-01'))]" />
+					<filter string="Last Year" name="ftr_last_year"
+						domain="[
+							('date_from','&gt;=',(context_today()-relativedelta(years=1)).strftime('%Y-01-01')),
+							('date_to','&lt;=',(context_today()-relativedelta(years=1)).strftime('%Y-12-31'))
+							]" />
+					<filter string="This Month" name="month"
+						domain="[('date_from','&gt;=',time.strftime('%Y-%m-01'))]" />
+					<filter string="Last Month" name="ftr_last_month"
+						domain="[
+							('date_from','&gt;=', (context_today()-relativedelta(months=1, day=1)).strftime('%Y-%m-%d')),
+							('date_to','&lt;=',(context_today()-relativedelta(day=1, days=1)).strftime('%Y-%m-%d'))
+							]" />
+					<separator />
+					<filter name="state_draft" string="Draft"
+						domain="[('state', '=', 'draft')]" />
+					<filter name="state_verify" string="Waiting"
+						domain="[('state', '=', 'verify')]" />
+					<filter name="state_done" string="Done"
+						domain="[('state', '=', 'done')]" />
+					<separator />
+					<filter name="ftr_13month" string="13rd-Month Pay Only"
+						domain="[('thirteen_month_pay', '=', True)]" />
+					<filter name="ftr_no_13month" string="Without 13rd-Month Pay"
+						domain="[('thirteen_month_pay', '=', False)]" />
+					<separator />
+					<filter name="ftr_with_contrib_reg"
+						string="With Contribution Register"
+						domain="[('register_id', '!=', False)]" />
+					<separator />
+					<group expand="0" string="Extended Filters">
+						<field name="state" />
+						<field name="employee_id" />
+						<field name="barcode" />
+						<field name="department_id" />
+						<field name="job_id" />
+						<field name="company_id" groups="base.group_multi_company" />
+						<field name="date_confirmed" />
+						<field name="date_from" />
+						<field name="date_to" />
+						<field name="date_create" />
+					</group>
+					<group expand="1" string="Group By">
+						<filter name="group_company_id" string="Company"
+							context="{'group_by':'company_id'}"
+							groups="base.group_multi_company" />
+						<filter name="ftr_employee" string="Employee"
+							context="{'group_by':'employee_id'}" />
+						<filter name="ftr_employee_barcode" string="Badge ID"
+							context="{'group_by':'barcode'}" />
+						<filter name="group_job" string="Job"
+							context="{'group_by':'job_id'}" />
+						<filter name="group_department_id" string="Department"
+							context="{'group_by':'department_id'}" />
+						<filter name="group_state" string="State"
+							context="{'group_by':'state'}" />
+						<filter name="group_salary_rule_id" string="Salary Rule"
+							context="{'group_by':'salary_rule_id'}" />
+						<filter name="group_salary_categ" string="Category"
+							context="{'group_by':'category_id'}" />
+						<filter name="group_register_id"
+							string="Contribution Register"
+							context="{'group_by':'register_id'}" />
+						<filter name="grp_contrib_categ" string="Contribution Category"
+							context="{'group_by':'contribution_register_category_id'}" />
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<!-- hr related job position menu action -->
+		<record model="ir.actions.act_window"
+			id="action_hr_payroll_analysis">
+			<field name="name">Payroll Analysis</field>
+			<field name="res_model">hr.payroll.analysis</field>
+			<field name="view_mode">pivot,graph</field>
+			<field name="context">{'search_default_state_verify':1,'search_default_state_done':1,'search_default_no_misc_categ':1,'search_default_year':1}</field>
+			<field name="view_id" ref="to_hr_payroll_analysis_pivot_view" />
+		</record>
+
+		<menuitem action="action_hr_payroll_analysis"
+			id="hr_menu_hr_payslip_line_analysis" name="Payroll Analysis"
+			parent="menu_hr_payroll_reports" sequence="1"
+			groups="to_hr_payroll.group_hr_payroll_team_leader" />
+	</data>
+</odoo>

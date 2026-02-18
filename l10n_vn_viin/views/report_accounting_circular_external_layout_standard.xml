@@ -1,0 +1,86 @@
+<odoo>
+	<!-- Public api: layout to t-call from reports -->
+	<template id="accounting_circular_external_layout_standard">
+		<!-- Multicompany -->
+		<t t-if="not o and doc">
+			<t t-set="o" t-value="doc" />
+		</t>
+
+		<t t-if="o and 'company_id' in o">
+			<t t-set="company" t-value="o.company_id.sudo()" />
+		</t>
+		<t t-if="not o or not 'company_id' in o">
+			<t t-set="company" t-value="res_company" />
+		</t>
+
+		<div class="header">
+			<div class="row small">
+				<t t-call="l10n_vn_viin.accounting_external_header_left_layout">
+					<t t-out="0" />
+				</t>
+				<div class="col-5 text-center">
+					<strong>
+						<span>Template </span>
+						<span t-esc="legal_name" />
+					</strong>
+					<br />
+					<t t-if="company.circular_code == 'c200'">
+						<t t-call="l10n_vn_viin.accounting_circular_desc_layout_c200"></t>
+					</t>
+					<t t-if="company.circular_code == 'c133'">
+						<t t-call="l10n_vn_viin.accounting_circular_desc_layout_c133"></t>
+					</t>
+				</div>
+			</div>
+		</div>
+
+		<div class="article o_report_layout_standard">
+			<t t-out="0" />
+		</div>
+
+		<div class="footer">
+			<t t-call="l10n_vn_viin.accounting_external_footer_layout">
+				<t t-out="0" />
+			</t>
+		</div>
+	</template>
+
+	<!-- Customize the company form view by adding paperformat field as well
+		as demo reports -->
+	<!-- Demo reports definition -->
+	<template id="preview_accounting_circular_external_report_standard">
+		<t t-call="web.html_container">
+			<!-- Multicompany -->
+			<t t-if="not o and doc">
+				<t t-set="o" t-value="doc" />
+			</t>
+
+			<t t-if="o and 'company_id' in o">
+				<t t-set="company" t-value="o.company_id.sudo()" />
+			</t>
+			<t t-if="not o or not 'company_id' in o">
+				<t t-set="company" t-value="res_company" />
+			</t>
+			<t t-call="l10n_vn_viin.accounting_circular_external_layout_standard">
+				<div class="page">
+					<t t-if="company.circular_code == 'c200'">
+						<t t-call="l10n_vn_viin.accounting_circular_page_desc_layout_c200"></t>
+					</t>
+					<t t-if="company.circular_code == 'c133'">
+						<t t-call="l10n_vn_viin.accounting_circular_page_desc_layout_c133"></t>
+					</t>
+				</div>
+			</t>
+		</t>
+	</template>
+
+	<record id="report_accounting_circular_external_preview_action" model="ir.actions.report">
+		<field name="name">Preview Standard Vietnam Circular Accounting External Report</field>
+		<field name="model">res.company</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">l10n_vn_viin.preview_accounting_circular_external_report_standard</field>
+		<field name="report_file">l10n_vn_viin.preview_accounting_circular_external_report_standard</field>
+		<field name="binding_model_id" ref="model_res_company" />
+		<field name="binding_type">report</field>
+	</record>
+</odoo>

@@ -1,0 +1,83 @@
+<odoo>
+
+	<record id="hr_meal_order_analysis_view_pivot" model="ir.ui.view">
+		<field name="name">hr.meal.order.analysis.pivot</field>
+		<field name="model">hr.meal.order.analysis</field>
+		<field name="arch" type="xml">
+			<pivot string="Meal Orders Analysis" sample="1">
+				<field name="meal_type_id" type="row" />
+				<field name="meal_date" type="col" />
+				<field name="quantity" type="measure" />
+			</pivot>
+		</field>
+	</record>
+
+	<record id="hr_meal_order_analysis_view_graph" model="ir.ui.view">
+		<field name="name">hr.meal.order.analysis.graph</field>
+		<field name="model">hr.meal.order.analysis</field>
+		<field name="arch" type="xml">
+			<graph string="Meal Orders Analysis" type="bar" sample="1">
+				<field name="meal_type_id" type="row" />
+				<field name="quantity" type="measure" />
+				<field name="price" type="measure" />
+				<field name="total_price" type="measure" />
+			</graph>
+		</field>
+	</record>
+
+	<!-- Custom reports (aka filters) -->
+	<record id="hr_meal_order_analysis_view_search" model="ir.ui.view">
+		<field name="name">hr.meal.order.analysis.search</field>
+		<field name="model">hr.meal.order.analysis</field>
+		<field name="arch" type="xml">
+			<search string="Meal Orders Analysis">
+				<field name="employee_id" />
+				<field name="department_id" />
+				<field name="meal_type_id" />
+				<field name="order_id" />
+				<filter string="This Year" name="ftr_thisyear"
+					domain="['|', ('meal_date', '=', False), '&amp;',('meal_date','&lt;=', time.strftime('%%Y-12-31')),('meal_date','&gt;=',time.strftime('%%Y-01-01'))]"
+					help="Meal Orders in This year" />
+				<separator />
+				<filter name="ftr_confirmed" string="Confirmed"
+					domain="[('state','=','confirmed')]" help="Confirmed Orders" />
+				<filter name="ftr_approved" string="Approved"
+					domain="[('state','=','approved')]" help="Approved Orders" />
+				<separator />
+				<group expand="0" string="Extended Filters...">
+					<field name="employee_id" />
+					<field name="department_id" />
+					<field name="meal_type_id" />
+				</group>
+				<group expand="1" string="Group By">
+					<filter string="Employee" name="grp_employee"
+						context="{'group_by':'employee_id'}" />
+					<filter string="Department" name="grp_department"
+						context="{'group_by':'department_id'}" />
+					<filter string="Meal Type"
+						context="{'group_by':'meal_type_id'}" name="grp_usertype" />
+					<separator />
+					<filter name="grp_meal_month" string="Meal Month"
+						context="{'group_by':'meal_date:month'}" help="Meal Date by Month" />
+				</group>
+			</search>
+		</field>
+	</record>
+
+	<!-- actions opening views on models -->
+	<record id="meal_orders_analysis_action" model="ir.actions.act_window">
+		<field name="name">Meal Orders Analysis</field>
+		<field name="res_model">hr.meal.order.analysis</field>
+		<field name="view_mode">pivot,graph</field>
+		<field name="help">From this view, have an analysis of your different
+			meal orders over employees and departments.
+		</field>
+	</record>
+
+	<!-- menu item actions -->
+	<menuitem id="meal_orders_analysis_menu"
+		name="Meal Orders Analysis" parent="hr_meal_report_menu"
+		action="meal_orders_analysis_action" sequence="5"
+		groups="hr_meal_group_admin" />
+
+</odoo>

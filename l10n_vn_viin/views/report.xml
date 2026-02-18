@@ -1,0 +1,34 @@
+<odoo>
+	<record id="act_report_account_move_journal_entry" model="ir.actions.report">
+		<field name="name">Journal Entry</field>
+		<field name="model">account.move</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">l10n_vn_viin.report_account_move_journal_entry</field>
+		<field name="report_file">l10n_vn_viin.report_account_move_journal_entry</field>
+		<field name="binding_model_id" ref="model_account_move" />
+		<field name="binding_type">report</field>
+		<field name="paperformat_id" ref="l10n_vn_viin.report_paperformat_template_paperformat_portrait" />
+	</record>
+
+	<record id="act_report_account_payment" model="ir.actions.report">
+		<field name="name">Payment Receipt (Template 01-TT/02-TT)</field>
+		<field name="model">account.payment</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">l10n_vn_viin.report_account_payment</field>
+		<field name="report_file">l10n_vn_viin.report_account_payment</field>
+		<field name="binding_model_id" ref="model_account_payment" />
+		<field name="binding_type">report</field>
+		<field name="paperformat_id" ref="l10n_vn_viin.report_paperformat_template_paperformat_portrait" />
+	</record>
+
+	<record id="account_move_action_payment_receipt" model="ir.actions.report">
+		<field name="name">Payment Receipt (Template 01-TT/02-TT)</field>
+		<field name="model">account.move</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">l10n_vn_viin.report_account_move_payment_receipt</field>
+		<field name="report_file">l10n_vn_viin.report_account_move_payment_receipt</field>
+		<field name="binding_model_id" ref="model_account_move" />
+		<field name="binding_type">report</field>
+		<field name="paperformat_id" ref="l10n_vn_viin.report_paperformat_template_paperformat_portrait" />
+	</record>
+</odoo>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view"
+			id="hr_contrib_type_category_form_view">
+			<field name="name">HR Contribution Category Form</field>
+			<field name="model">hr.contribution.category</field>
+			<field name="arch" type="xml">
+				<form>
+					<sheet>
+						<group>
+							<group>
+								<field name="name" />
+								<field name="color" widget="color_picker" />
+							</group>
+							<group>
+								<field name="partner_required" />
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view"
+			id="payslip_lines_with_contribution_reg_type_pivot">
+			<field name="name">hr.payslip.line.pivot</field>
+			<field name="model">hr.payslip.line</field>
+			<field name="arch" type="xml">
+				<pivot string="Contribution Register Category Analysis" sample="1">
+					<field name="register_id" type="row" />
+					<field name="salary_rule_id" type="row" />
+					<field name="total" type="measure" />
+				</pivot>
+			</field>
+		</record>
+		<record model="ir.ui.view"
+			id="payslip_lines_with_contribution_reg_type_graph">
+			<field name="name">hr.payslip.line.graph</field>
+			<field name="model">hr.payslip.line</field>
+			<field name="arch" type="xml">
+				<graph string="Contribution Register Category Analysis" sample="1">
+					<field name="total" type="measure" />
+					<field name="date_from" type="col" />
+					<field name="register_id" type="row" />
+				</graph>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window"
+			id="act_payslip_lines_with_contribution_reg_type">
+			<field name="name">HR Payslip Lines</field>
+			<field name="res_model">hr.payslip.line</field>
+			<field name="view_mode">pivot,graph,tree,form</field>
+			<field name="view_id"
+				ref="payslip_lines_with_contribution_reg_type_pivot" />
+			<field name="context">{'search_default_register_category_id': [active_id], 'default_register_category_id': active_id}</field>
+		</record>
+
+		<record model="ir.ui.view"
+			id="view_hr_contribution_category_kanban">
+			<field name="name">hr.contribution.category.kanban</field>
+			<field name="model">hr.contribution.category</field>
+			<field name="arch" type="xml">
+				<kanban
+					class="oe_background_grey o_kanban_dashboard o_hr_kanban">
+					<field name="name" />
+					<field name="color" />
+					<templates>
+						<t t-name="kanban-box">
+							<div t-attf-class="#{kanban_color(record.color.raw_value)}">
+								<div class="o_kanban_card_header">
+									<div class="o_kanban_card_header_title">
+										<div class="o_primary">
+											<field name="name" />
+										</div>
+									</div>
+									<div class="o_kanban_manage_button_section">
+										<a class="o_kanban_manage_toggle_button" href="#">
+											<i class="fa fa-ellipsis-v" aria-label="Selection"
+												role="img" title="Selection" />
+										</a>
+									</div>
+								</div>
+								<div class="container o_kanban_card_content">
+									<div class="row">
+										<div class="col-6 o_kanban_primary_left">
+											<button class="btn btn-primary"
+												name="%(act_payslip_lines_with_contribution_reg_type)d"
+												type="action">Report</button>
+										</div>
+										<div class="col-6 o_kanban_primary_right">
+										</div>
+
+									</div>
+								</div>
+								<div
+									class="container o_kanban_card_manage_pane dropdown-menu"
+									role="menu">
+									<div t-if="widget.editable"
+										class="o_kanban_card_manage_settings row">
+										<div class="col-8">
+											<ul class="oe_kanban_colorpicker" data-field="color" />
+										</div>
+										<div class="col-4 text-end"
+											groups="to_hr_payroll.group_hr_payroll_admin">
+											<a type="edit">Settings</a>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</t>
+					</templates>
+				</kanban>
+			</field>
+		</record>
+
+		<record model="ir.ui.view"
+			id="hr_contrib_type_category_list_view">
+			<field name="name">HR Contribution Category</field>
+			<field name="model">hr.contribution.category</field>
+			<field name="arch" type="xml">
+				<tree sample="1">
+					<field name="name" />
+					<field name="color" />
+				</tree>
+			</field>
+		</record>
+
+		<!-- actions opening views on models -->
+		<record model="ir.actions.act_window"
+			id="to_hr_contrib_type_category_action">
+			<field name="name">HR Contribution Category</field>
+			<field name="res_model">hr.contribution.category</field>
+			<field name="view_mode">kanban,tree,form</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					Click here to create a new Payroll Contribution Register
+					Category.
+				</p>
+			</field>
+		</record>
+
+		<menuitem action="to_hr_contrib_type_category_action"
+			id="hr_menu_contrib_type_category"
+			name="Contribution Register Category"
+			parent="to_hr_payroll.menu_hr_payroll_configuration_payroll_entry" sequence="11"
+			groups="to_hr_payroll.group_hr_payroll_user" />
+
+	</data>
+</odoo>

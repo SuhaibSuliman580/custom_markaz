@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="report_payslipbatch_document">
+		<t t-call="web.external_layout">
+			<div class="page">
+				<h2>Pay Slip Batch</h2>
+				<h3>
+					<span t-field="o.name" />
+				</h3>
+				<p>
+					From:
+					<span t-field="o.date_start" />
+					To:
+					<span t-field="o.date_end" />
+				</p>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th rowspan="2" class="text-end">#</th>
+							<th rowspan="2">Employee Name</th>
+							<th rowspan="2">Identification No</th>
+							<th class="text-center" colspan="2">Bank Account</th>
+							<th class="text-end" rowspan="2">Amount</th>
+						</tr>
+						<tr>
+							<th class="text-center">Number</th>
+							<th class="text-center">Bank Name</th>
+						</tr>
+					</thead>
+					<tbody>
+						<t t-set="number" t-value="0" />
+						<tr t-foreach="o.slip_ids" t-as="slip">
+							<t t-set="number" t-value="number+1" />
+							<td class="text-end">
+								<span t-esc="number"/>
+							</td>
+							<td>
+								<span class="text-nowrap" t-field="slip.employee_id" />
+							</td>
+							<td name="identification_id">
+								<span t-field="slip.employee_id.identification_id" />
+							</td>
+							<td class="text-end">
+								<span t-field="slip.employee_id.bank_account_id" />
+							</td>
+							<td>
+								<span t-field="slip.employee_id.bank_account_id.bank_id" />
+							</td>
+							<td class="text-end">
+								<span t-field="slip.net_salary" />
+							</td>
+						</tr>
+						<tr>
+							<td class="text-end" colspan="5">
+								<strong>Total:</strong>
+							</td>
+							<td class="text-end">
+								<strong><span t-field="o.total_net_amount" /></strong>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<p class="text-end">
+					<strong>Authorized signature</strong>
+				</p>
+			</div>
+		</t>
+	</template>
+
+	<template id="report_payslipbatch">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="o">
+				<t t-call="to_hr_payroll.report_payslipbatch_document" t-lang="user.lang" />
+			</t>
+		</t>
+	</template>
+</odoo>

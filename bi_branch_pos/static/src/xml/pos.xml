@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+	<t t-name="bi_branch_pos.ReceiptHeader" t-inherit="point_of_sale.ReceiptHeader" t-inherit-mode="extension" owl="1">
+		<xpath expr="//div[hasclass('cashier')]" position="after">
+			<div class="branch">Branch: <t t-esc="env.services.pos.pos_session.branch_id[1]" /></div>
+		</xpath>
+	</t>
+</templates>

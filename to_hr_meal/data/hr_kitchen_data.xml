@@ -1,0 +1,7 @@
+<odoo noupdate="1">
+
+	<record id="hr_kitchen_main_kitchen" model="hr.kitchen">
+		<field name="name">Main Kitchen</field>
+	</record>
+
+</odoo>

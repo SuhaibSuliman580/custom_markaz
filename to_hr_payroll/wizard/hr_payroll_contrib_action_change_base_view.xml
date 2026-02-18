@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view"
+			id="hr_payroll_contrib_action_change_base_form_view">
+			<field name="name">hr.payroll.contrib.action.change.base.form</field>
+			<field name="model">hr.payroll.contrib.action.change.base</field>
+			<field name="inherit_id"
+				ref="abstract_hr_payroll_contrib_action_form_view" />
+			<field name="mode">primary</field>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='date']" position="before">
+					<field name="payroll_contribution_reg_ids" invisible="1" />
+				</xpath>
+				<xpath expr="//field[@name='date']" position="attributes">
+					<attribute name="string">Date</attribute>
+				</xpath>
+				<xpath expr="//field[@name='date']" position="after">
+					<field name="currency_id" invisible="1" />
+					<field name="contribution_base" />
+				</xpath>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window"
+			id="hr_payroll_contrib_action_change_base_action">
+			<field name="name">Change Computation Base</field>
+			<field name="res_model">hr.payroll.contrib.action.change.base</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="binding_model_id"
+				ref="to_hr_payroll.model_hr_payroll_contribution_register" />
+			<field name="binding_type">action</field>
+			<field name="context">{'default_payroll_contribution_reg_ids': active_ids}</field>
+		</record>
+
+	</data>
+</odoo>

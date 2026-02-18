@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="view_employee_form">
+			<field name="name">hr.employee.form</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.view_employee_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='children']" position="after">
+					<field name="other_dependant" />
+					<field name="total_dependant" />
+				</xpath>
+				<xpath expr="//page[@name='personal_information']"
+					position="inside">
+					<separator string="Relatives" />
+					<field name="relative_ids" nolabel="1" groups="hr.group_hr_user">
+							<tree name="relatives" editable="bottom">
+								<field name="contact_id"
+									context="{'show_address': 1, 'default_customer':False, 'default_supplier':False}"
+									options="{&quot;always_reload&quot;: True, &quot;highlight_first_line&quot;: True}" />
+								<field name="type" />
+								<field name="relative_email" />
+								<field name="relative_phone" />
+								<field name="relative_mobile" />
+								<field name="relative_vat" />
+								<field name="is_dependant"/>
+						</tree>
+					</field>
+				</xpath>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_employee_filter">
+			<field name="name">hr.employee.search</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr.view_employee_filter" />
+			<field name="arch" type="xml">
+				<xpath expr="//filter[@name='inactive']" position="after">
+					<separator />
+					<filter string="Has Relative" name="ftr_has_relative"
+						domain="[('relative_ids','!=',False)]" />
+					<filter string="No Relative" name="ftr_no_relative"
+						domain="[('relative_ids','=',False)]" />
+					<separator />
+					<filter name="ftr_no_dependant" string="No Dependent"
+						domain="[('total_dependant','=',0)]" />
+					<filter name="ftr_has_dependant" string="Has Dependent"
+						domain="[('total_dependant','&gt;',0)]" />
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

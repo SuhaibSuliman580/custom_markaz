@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="email_template_membership_expiry_reminder" model="mail.template">
+            <field name="name">Membership: Expiry Reminder</field>
+            <field name="model_id" ref="model_membership_period"/>
+            <field name="subject">Membership Expiring Soon - {{ object.name }}</field>
+            <field name="email_from">{{ (object.partner_id.company_id.email or user.email) }}</field>
+            <field name="email_to">{{ object.partner_id.email }}</field>
+            <field name="body_html"><![CDATA[
+<div style="margin: 0px; padding: 0px;">
+    <p>Dear <t t-out="object.partner_id.name"/>,</p>
+    <p>
+        This is a reminder that your membership
+        <strong><t t-out="object.name"/></strong>
+        is expiring on <strong><t t-out="object.end_date"/></strong>.
+    </p>
+    <p>
+        Please renew your membership to continue enjoying the benefits.
+        You can renew through your portal at <a href="/my/membership">/my/membership</a>.
+    </p>
+    <p>Thank you,<br/>Membership Management Team</p>
+</div>
+            ]]></field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

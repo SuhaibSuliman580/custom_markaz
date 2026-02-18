@@ -1,0 +1,137 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* to_hr_payroll_meal
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-09 05:01+0000\n"
+"PO-Revision-Date: 2024-04-09 05:01+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: to_hr_payroll_meal
+#: model:ir.model,name:to_hr_payroll_meal.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: to_hr_payroll_meal
+#: model:ir.model,name:to_hr_payroll_meal.model_hr_contract
+msgid "Employee Contract"
+msgstr ""
+
+#. module: to_hr_payroll_meal
+#: model:ir.model,name:to_hr_payroll_meal.model_hr_meal_order
+msgid "HR Meal Order"
+msgstr ""
+
+#. module: to_hr_payroll_meal
+#. odoo-python
+#: code:addons/to_hr_payroll_meal/models/res_company.py:0
+#: code:addons/to_hr_payroll_meal/models/res_company.py:0
+#: code:addons/to_hr_payroll_meal/models/res_company.py:0
+#: model:hr.contribution.category,name:to_hr_payroll_meal.hr_contribution_category_deduction
+#, python-format
+msgid "HR Meal Order Deduction"
+msgstr ""
+
+#. module: to_hr_payroll_meal
+#. odoo-python
+#: code:addons/to_hr_payroll_meal/models/res_company.py:0
+#, python-format
+msgid "HR Meal Order Deduction Amount"
+msgstr ""
+
+#. module: to_hr_payroll_meal
+#: model:ir.model,name:to_hr_payroll_meal.model_hr_meal_order_line
+#: model:ir.model.fields,field_description:to_hr_payroll_meal.field_hr_payslip__meal_order_line_ids
+msgid "HR Meal Order Line"
+msgstr ""
+
+#. module: to_hr_payroll_meal
+#: model:ir.model.fields,help:to_hr_payroll_meal.field_hr_contract__set_pay_per_meal
+msgid ""
+"If enabled, the employee meal price set below will be used to calculate the "
+"meal price"
+msgstr ""
+
+#. module: to_hr_payroll_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_payroll_meal.view_hr_payslip_form
+msgid "Meal Order"
+msgstr ""
+
+#. module: to_hr_payroll_meal
+#: model:ir.model.fields,field_description:to_hr_payroll_meal.field_hr_payslip__meals_count
+msgid "Meals Count"
+msgstr ""
+
+#. module: to_hr_payroll_meal
+#: model:ir.model.fields,field_description:to_hr_payroll_meal.field_hr_contract__pay_per_meal
+msgid "Pay Per Meal"
+msgstr ""
+
+#. module: to_hr_payroll_meal
+#: model:ir.model,name:to_hr_payroll_meal.model_hr_payslip
+#: model:ir.model.fields,field_description:to_hr_payroll_meal.field_hr_meal_order_line__hr_payslip_id
+msgid "Pay Slip"
+msgstr ""
+
+#. module: to_hr_payroll_meal
+#: model:ir.model.fields,field_description:to_hr_payroll_meal.field_hr_contract__set_pay_per_meal
+msgid "Set Meal Price"
+msgstr ""
+
+#. module: to_hr_payroll_meal
+#: model:ir.model.fields,help:to_hr_payroll_meal.field_hr_contract__pay_per_meal
+msgid ""
+"The amount that the employee has to pay when place meal orders and will be "
+"deducted from the payslips of this employee according to the number of "
+"ordered meals accordingly."
+msgstr ""
+
+#. module: to_hr_payroll_meal
+#: model_terms:ir.ui.view,arch_db:to_hr_payroll_meal.view_hr_payslip_form
+msgid "Total"
+msgstr ""
+
+#. module: to_hr_payroll_meal
+#. odoo-python
+#: code:addons/to_hr_payroll_meal/models/hr_meal_order_line.py:0
+#, python-format
+msgid ""
+"You cannot book employee meals '%s' for the period %s - %s while the status "
+"of the corresponding payslip '%s' is neither Draft nor Cancelled. Please ask"
+" your Payroll Manager to set up a Draft or Canceled payslip first."
+msgstr ""
+
+#. module: to_hr_payroll_meal
+#. odoo-python
+#: code:addons/to_hr_payroll_meal/models/hr_meal_order.py:0
+#, python-format
+msgid ""
+"You may not be able to refuse the order '%s' while it is referred by the payslips '%s'\n"
+"Please cancel the payslips first."
+msgstr ""
+
+#. module: to_hr_payroll_meal
+#. odoo-python
+#: code:addons/to_hr_payroll_meal/models/hr_meal_order.py:0
+#, python-format
+msgid ""
+"You must not cancel the order %s while it is referred by the following HR payslips: %s\n"
+"Please delete the payslips first."
+msgstr ""
+
+#. module: to_hr_payroll_meal
+#. odoo-python
+#: code:addons/to_hr_payroll_meal/models/hr_meal_order_line.py:0
+#, python-format
+msgid ""
+"You must not delete a meal order line while it refers to a HR Payslip. "
+"Please cancel the payslip %s first."
+msgstr ""

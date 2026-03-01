@@ -7,7 +7,18 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//page[last()]" position="after">
+
+            <xpath expr="//field[@name='function']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='website']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='title']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//page[1]" position="before">
                 <page string="Membership" invisible="not is_doctor">
                     <group>
                         <group string="Membership Status">
@@ -16,6 +27,13 @@
                             <field name="membership_start_date"/>
                             <field name="membership_end_date"/>
                             <field name="active_membership_id"/>
+
+                            <!-- Added -->
+                            <field name="membership_join_date"/>
+                            <field name="membership_rejoin_date"/>
+                            <field name="membership_rejoin_decision"/>
+                            <field name="deletion_number"/>
+                            <field name="branch_return_date"/>
                         </group>
                         <group string="Personal Info">
                             <field name="arabic_name"/>
@@ -23,6 +41,14 @@
                             <field name="birth_date"/>
                             <field name="gender"/>
                             <field name="nationality_id"/>
+
+                            <!-- Added -->
+                            <field name="father_name"/>
+                            <field name="mother_name"/>
+                            <field name="social_status"/>
+                            <field name="wives_count"/>
+                            <field name="children_count"/>
+                            <field name="registry_place_number"/>
                         </group>
                     </group>
                     <group>
@@ -31,11 +57,31 @@
                             <field name="qualification"/>
                             <field name="university"/>
                             <field name="graduation_year"/>
+
+                            <!-- Added -->
+                            <field name="specialty_classification"/>
+                            <field name="specialization_certificate_number"/>
+                            <field name="certificate_issue_place"/>
+                            <field name="certificate_modify_date"/>
+                            <field name="certificate_modify_number"/>
+                            <field name="specialization_authority_1"/>
+                            <field name="specialization_authority_2"/>
+                            <field name="specialization_authority_3"/>
+                            <field name="practice_location"/>
                         </group>
                         <group string="Medical License">
                             <field name="medical_license_no"/>
                             <field name="license_issue_date"/>
                             <field name="license_expiry_date"/>
+
+                            <!-- Added -->
+                            <field name="license_type"/>
+                            <field name="ministry_registration_number"/>
+                            <field name="permanent_license_date_1"/>
+                            <field name="permanent_license_date_2"/>
+                            <field name="temporary_license_date_1"/>
+                            <field name="temporary_license_date_2"/>
+                            <field name="temporary_license_date_3"/>
                         </group>
                     </group>
                     <group>
@@ -43,6 +89,23 @@
                             <field name="workplace_name"/>
                             <field name="workplace_type"/>
                             <field name="years_of_experience"/>
+
+                            <!-- Added -->
+                            <field name="is_employee"/>
+                            <field name="fund_status"/>
+                            <field name="transfer_from_entity"/>
+                            <field name="transfer_from_date"/>
+                            <field name="transfer_to_entity"/>
+                            <field name="transfer_to_date"/>
+                            <field name="outside_country"/>
+                            <field name="bank_account_number"/>
+                            <field name="bank_name"/>
+                            <field name="social_security_registered"/>
+                            <field name="retirement_date"/>
+                            <field name="retirement_decision_number"/>
+                            <field name="retirement_salary"/>
+                            <field name="death_date"/>
+                            <field name="death_decision_number"/>
                         </group>
                     </group>
                     <notebook>
@@ -83,7 +146,8 @@
             'default_is_doctor': True,
             'search_default_all_members': 1,
             'default_free_member': True
-        }</field>
+            }
+        </field>
     </record>
 
 </odoo>

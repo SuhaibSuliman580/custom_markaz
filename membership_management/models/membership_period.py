@@ -1,8 +1,7 @@
 import base64
 import io
-
 from dateutil.relativedelta import relativedelta
-
+from odoo.exceptions import UserError
 from odoo import api, fields, models, _
 
 
@@ -22,11 +21,52 @@ class MembershipPeriod(models.Model):
         ('active', 'Active'),
         ('expired', 'Expired'),
     ], string='Status', default='active', required=True, tracking=True)
+
+    period_type = fields.Selection([
+        ('initial', 'Initial'),
+        ('renewal', 'Renewal'),
+    ], string='Period Type', default='initial', required=True, tracking=True)
     invoice_id = fields.Many2one('account.move', string='Invoice', readonly=True)
     application_id = fields.Many2one(
         'membership.application', string='Application', readonly=True,
     )
     qr_code = fields.Binary(string='QR Code', readonly=True, attachment=True)
+    product_id = fields.Many2one(
+        'product.product', string='Membership Product', required=False,
+        domain="[('type','=','service')]",
+        help="The product used for invoicing this membership period."
+    )
+
+    @api.model
+    def _get_initial_product(self):
+        """Return the configured initial product, falling back to module demo product."""
+        icp = self.env['ir.config_parameter'].sudo()
+        pid = icp.get_param('membership_management.initial_product_id')
+        if pid and str(pid).isdigit():
+            product = self.env['product.product'].browse(int(pid)).exists()
+            if product:
+                return product
+        return self.env.ref('membership_management.membership_product', raise_if_not_found=False)
+
+    @api.model
+    def default_get(self, fields_list):
+        res = super().default_get(fields_list)
+        # If period is created manually and is initial, prefill the initial product.
+        if 'period_type' in fields_list and res.get('period_type', 'initial') == 'initial':
+            if 'product_id' in fields_list and not res.get('product_id'):
+                product = self._get_initial_product()
+                if product:
+                    res['product_id'] = product.id
+        return res
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('period_type', 'initial') == 'initial' and not vals.get('product_id'):
+                product = self._get_initial_product()
+                if product:
+                    vals['product_id'] = product.id
+        return super().create(vals_list)
 
     def _generate_qr_code(self):
         """Generate QR code containing membership number and partner ID."""
@@ -82,29 +122,15 @@ class MembershipPeriod(models.Model):
         return True
 
     def action_create_renewal_invoice(self):
-        """Create a renewal invoice for this membership period."""
+        """Open the renewal wizard so the employee selects one of the allowed renewal products."""
         self.ensure_one()
-        product = self.env.ref('membership_management.membership_product')
-        invoice_vals = {
-            'move_type': 'out_invoice',
-            'partner_id': self.partner_id.id,
-            'invoice_line_ids': [(0, 0, {
-                'product_id': product.id,
-                'name': _('Membership Renewal - %s') % self.name,
-                'quantity': 1,
-                'price_unit': product.list_price,
-            })],
-        }
-        invoice = self.env['account.move'].sudo().create(invoice_vals)
-
-        # Link the invoice — will be processed on payment via account_move override
-        self.write({'invoice_id': invoice.id})
-
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Renewal Invoice'),
-            'res_model': 'account.move',
-            'res_id': invoice.id,
+            'name': _('Create Renewal Invoice'),
+            'res_model': 'membership.renewal.wizard',
             'view_mode': 'form',
-            'target': 'current',
+            'target': 'new',
+            'context': {
+                'default_period_id': self.id,
+            }
         }

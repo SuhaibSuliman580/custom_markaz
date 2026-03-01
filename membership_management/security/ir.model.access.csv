@@ -8,3 +8,5 @@ access_membership_period_portal,membership.period.portal,model_membership_period
 access_medical_specialty_admin,medical.specialty.admin,model_medical_specialty,group_membership_admin,1,1,1,1
 access_medical_specialty_officer,medical.specialty.officer,model_medical_specialty,group_membership_officer,1,1,1,0
 access_medical_specialty_portal,medical.specialty.portal,model_medical_specialty,base.group_portal,1,0,0,0
+access_membership_renewal_wizard_officer,membership.renewal.wizard.officer,model_membership_renewal_wizard,group_membership_officer,1,1,1,0
+access_membership_renewal_wizard_admin,membership.renewal.wizard.admin,model_membership_renewal_wizard,group_membership_admin,1,1,1,1

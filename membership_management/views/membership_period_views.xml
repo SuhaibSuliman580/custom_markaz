@@ -26,10 +26,15 @@
                             <field name="application_id"/>
                         </group>
                         <group>
+                            <field name="period_type"/>
                             <field name="start_date"/>
                             <field name="end_date"/>
                             <field name="invoice_id"/>
                         </group>
+                    </group>
+                    <group string="Billing" groups="membership_management.group_membership_officer">
+                        <field name="product_id" options="{'no_create': True}"
+                               modifiers='{"invisible": [["period_type", "=", "initial"]], "required": [["period_type", "=", "renewal"]]}'/>
                     </group>
                     <group string="QR Code">
                         <field name="qr_code" widget="image" class="oe_avatar"/>
@@ -52,6 +57,7 @@
                   decoration-danger="state == 'expired'">
                 <field name="name"/>
                 <field name="partner_id"/>
+                <field name="period_type"/>
                 <field name="start_date"/>
                 <field name="end_date"/>
                 <field name="state" widget="badge"/>

@@ -42,22 +42,32 @@
                                             <h4 class="text-success mb-1">Active Membership</h4>
                                             <div class="row mt-2">
                                                 <div class="col-sm-4">
-                                                    <small class="text-muted">Membership No.</small><br/>
-                                                    <strong><t t-esc="partner.membership_number"/></strong>
+                                                    <small class="text-muted">Membership No.</small>
+                                                    <br/>
+                                                    <strong>
+                                                        <t t-esc="partner.membership_number"/>
+                                                    </strong>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <small class="text-muted">Start Date</small><br/>
-                                                    <strong><t t-esc="partner.membership_start_date"/></strong>
+                                                    <small class="text-muted">Start Date</small>
+                                                    <br/>
+                                                    <strong>
+                                                        <t t-esc="partner.membership_start_date"/>
+                                                    </strong>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <small class="text-muted">End Date</small><br/>
-                                                    <strong><t t-esc="partner.membership_end_date"/></strong>
+                                                    <small class="text-muted">End Date</small>
+                                                    <br/>
+                                                    <strong>
+                                                        <t t-esc="partner.membership_end_date"/>
+                                                    </strong>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4 text-end mt-3 mt-md-0">
                                             <a href="/my/membership/card" class="btn btn-success">
-                                                <i class="fa fa-download me-1"/> Download Card
+                                                <i class="fa fa-download me-1"/>
+                                                Download Card
                                             </a>
                                         </div>
                                     </div>
@@ -80,7 +90,8 @@
                                     <h4 class="text-muted">No Active Membership</h4>
                                     <p class="text-muted mb-3">Submit an application to get started.</p>
                                     <a href="/my/membership/application/new" class="btn btn-primary">
-                                        <i class="fa fa-plus me-1"/> Apply Now
+                                        <i class="fa fa-plus me-1"/>
+                                        Apply Now
                                     </a>
                                 </div>
                             </div>
@@ -91,9 +102,11 @@
                 <!-- ── Applications Table ── -->
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0"><i class="fa fa-list-alt me-2"/>My Applications</h5>
+                        <h5 class="mb-0"><i class="fa fa-list-alt me-2"/>My Applications
+                        </h5>
                         <a href="/my/membership/application/new" class="btn btn-sm btn-primary">
-                            <i class="fa fa-plus me-1"/> New Application
+                            <i class="fa fa-plus me-1"/>
+                            New Application
                         </a>
                     </div>
                     <t t-if="applications">
@@ -117,7 +130,9 @@
                                                     <t t-esc="app.name"/>
                                                 </a>
                                             </td>
-                                            <td><t t-esc="app.create_date" t-options="{'widget': 'date'}"/></td>
+                                            <td>
+                                                <t t-esc="app.create_date" t-options="{'widget': 'date'}"/>
+                                            </td>
                                             <td>
                                                 <t t-if="app.partner_id.medical_specialty_id">
                                                     <t t-esc="app.partner_id.medical_specialty_id.name"/>
@@ -135,7 +150,8 @@
                                             </td>
                                             <td>
                                                 <t t-if="app.invoice_id">
-                                                    <a t-attf-href="/my/invoices/#{app.invoice_id.id}" class="text-primary">
+                                                    <a t-attf-href="/my/invoices/#{app.invoice_id.id}"
+                                                       class="text-primary">
                                                         <i class="fa fa-file-text-o me-1"/>View
                                                     </a>
                                                 </t>
@@ -175,7 +191,9 @@
             <div class="container mt-4 mb-5">
 
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h3 class="mb-0">Application <t t-esc="application.name"/></h3>
+                    <h3 class="mb-0">Application
+                        <t t-esc="application.name"/>
+                    </h3>
                     <span t-attf-class="badge rounded-pill fs-6 #{
                         'bg-info' if application.state == 'draft' else
                         'bg-warning text-dark' if application.state == 'need_info' else
@@ -193,7 +211,9 @@
                             <i class="fa fa-exclamation-triangle fa-lg me-3 mt-1"/>
                             <div>
                                 <strong>Information Requested by Officer:</strong>
-                                <p class="mb-0 mt-1"><t t-esc="application.officer_notes"/></p>
+                                <p class="mb-0 mt-1">
+                                    <t t-esc="application.officer_notes"/>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -203,24 +223,57 @@
                 <div class="row mb-4">
                     <div class="col-md-6">
                         <div class="card h-100">
-                            <div class="card-header"><h6 class="mb-0">Application Info</h6></div>
+                            <div class="card-header">
+                                <h6 class="mb-0">Application Info</h6>
+                            </div>
                             <div class="card-body">
                                 <table class="table table-borderless table-sm mb-0">
-                                    <tr><td class="text-muted w-50">Submitted</td><td><t t-esc="application.create_date" t-options="{'widget': 'date'}"/></td></tr>
-                                    <tr><td class="text-muted">Doctor</td><td><t t-esc="application.partner_id.name"/></td></tr>
-                                    <tr><td class="text-muted">Specialty</td><td><t t-if="application.partner_id.medical_specialty_id"><t t-esc="application.partner_id.medical_specialty_id.name"/></t></td></tr>
+                                    <tr>
+                                        <td class="text-muted w-50">Submitted</td>
+                                        <td>
+                                            <t t-esc="application.create_date" t-options="{'widget': 'date'}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted">Doctor</td>
+                                        <td>
+                                            <t t-esc="application.partner_id.name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted">Specialty</td>
+                                        <td>
+                                            <t t-if="application.partner_id.medical_specialty_id">
+                                                <t t-esc="dict(application.partner_id.medical_specialty_id.name"/>
+                                            </t>
+                                        </td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="card h-100">
-                            <div class="card-header"><h6 class="mb-0">Invoice</h6></div>
+                            <div class="card-header">
+                                <h6 class="mb-0">Invoice</h6>
+                            </div>
                             <div class="card-body">
                                 <t t-if="application.invoice_id">
                                     <table class="table table-borderless table-sm mb-0">
-                                        <tr><td class="text-muted w-50">Invoice</td><td><a t-attf-href="/my/invoices/#{application.invoice_id.id}"><t t-esc="application.invoice_id.name"/></a></td></tr>
-                                        <tr><td class="text-muted">Payment</td><td><t t-esc="application.invoice_payment_state"/></td></tr>
+                                        <tr>
+                                            <td class="text-muted w-50">Invoice</td>
+                                            <td>
+                                                <a t-attf-href="/my/invoices/#{application.invoice_id.id}">
+                                                    <t t-esc="application.invoice_id.name"/>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted">Payment</td>
+                                            <td>
+                                                <t t-esc="application.invoice_payment_state"/>
+                                            </td>
+                                        </tr>
                                     </table>
                                 </t>
                                 <t t-else="">
@@ -235,7 +288,8 @@
                 <t t-if="application.state == 'need_info'">
                     <div class="card mb-4 border-warning">
                         <div class="card-header bg-warning bg-opacity-10">
-                            <h6 class="mb-0"><i class="fa fa-reply me-2"/>Submit Your Response</h6>
+                            <h6 class="mb-0"><i class="fa fa-reply me-2"/>Submit Your Response
+                            </h6>
                         </div>
                         <div class="card-body">
                             <form t-attf-action="/my/membership/application/#{application.id}/respond"
@@ -251,7 +305,8 @@
                                     <input type="file" name="attachment" class="form-control"/>
                                 </div>
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-paper-plane me-1"/> Submit Response
+                                    <i class="fa fa-paper-plane me-1"/>
+                                    Submit Response
                                 </button>
                             </form>
                         </div>
@@ -261,15 +316,21 @@
                 <!-- Notes -->
                 <t t-if="application.notes">
                     <div class="card mb-4">
-                        <div class="card-header"><h6 class="mb-0"><i class="fa fa-comment me-2"/>Notes</h6></div>
+                        <div class="card-header">
+                            <h6 class="mb-0"><i class="fa fa-comment me-2"/>Notes
+                            </h6>
+                        </div>
                         <div class="card-body">
-                            <pre class="mb-0" style="white-space: pre-wrap; font-family: inherit;"><t t-esc="application.notes"/></pre>
+                            <pre class="mb-0" style="white-space: pre-wrap; font-family: inherit;">
+                                <t t-esc="application.notes"/>
+                            </pre>
                         </div>
                     </div>
                 </t>
 
                 <a href="/my/membership" class="btn btn-secondary">
-                    <i class="fa fa-arrow-left me-1"/> Back to Membership
+                    <i class="fa fa-arrow-left me-1"/>
+                    Back to Membership
                 </a>
             </div>
         </t>
@@ -284,7 +345,9 @@
 
                 <div class="text-center mb-4">
                     <h3>Membership Application</h3>
-                    <p class="text-muted">Please fill in all required fields marked with <span class="text-danger">*</span></p>
+                    <p class="text-muted">Please fill in all required fields marked with
+                        <span class="text-danger">*</span>
+                    </p>
                 </div>
 
                 <form action="/my/membership/application/submit" method="post"
@@ -294,12 +357,15 @@
                     <!-- ─── Section 1: Personal Information ─── -->
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header bg-primary bg-opacity-10 border-primary">
-                            <h5 class="mb-0 text-primary"><i class="fa fa-user me-2"/>Personal Information</h5>
+                            <h5 class="mb-0 text-white"><i class="fa fa-user me-2"/>Personal Information
+                            </h5>
                         </div>
                         <div class="card-body">
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <label class="form-label fw-semibold">Full Name (English) <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">Full Name (English)
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <input type="text" name="full_name" class="form-control"
                                            t-att-value="partner.name" required="required"/>
                                 </div>
@@ -309,25 +375,36 @@
                                            t-att-value="partner.arabic_name or ''"/>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="form-label fw-semibold">National ID / Iqama <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">National ID / Iqama
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <input type="text" name="national_id" class="form-control"
                                            t-att-value="partner.national_id or ''" required="required"/>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="form-label fw-semibold">Date of Birth <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">Date of Birth
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <input type="date" name="birth_date" class="form-control"
                                            t-att-value="partner.birth_date or ''" required="required"/>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="form-label fw-semibold">Gender <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">Gender
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <select name="gender" class="form-select" required="required">
                                         <option value="">-- Select --</option>
-                                        <option value="male" t-att-selected="partner.gender == 'male' or None">Male</option>
-                                        <option value="female" t-att-selected="partner.gender == 'female' or None">Female</option>
+                                        <option value="male" t-att-selected="partner.gender == 'male' or None">Male
+                                        </option>
+                                        <option value="female" t-att-selected="partner.gender == 'female' or None">
+                                            Female
+                                        </option>
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="form-label fw-semibold">Nationality <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">Nationality
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <select name="nationality_id" class="form-select" required="required">
                                         <option value="">-- Select --</option>
                                         <t t-foreach="countries" t-as="country">
@@ -339,14 +416,60 @@
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="form-label fw-semibold">Email <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">Email
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <input type="email" name="email" class="form-control"
                                            t-att-value="partner.email or ''" required="required"/>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="form-label fw-semibold">Mobile Number <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">Mobile Number
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <input type="tel" name="phone" class="form-control"
                                            t-att-value="partner.phone or partner.mobile or ''" required="required"/>
+                                </div>
+
+                                <!-- ─── New fields ─── -->
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Father Name</label>
+                                    <input type="text" name="father_name" class="form-control"
+                                           t-att-value="partner.father_name or ''"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Mother Name</label>
+                                    <input type="text" name="mother_name" class="form-control"
+                                           t-att-value="partner.mother_name or ''"/>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Social Status</label>
+                                    <select name="social_status" class="form-select">
+                                        <option value="">-- Select --</option>
+                                        <option value="single"
+                                                t-att-selected="partner.social_status == 'single' or None">Single
+                                        </option>
+                                        <option value="married"
+                                                t-att-selected="partner.social_status == 'married' or None">Married
+                                        </option>
+                                        <option value="engaged"
+                                                t-att-selected="partner.social_status == 'engaged' or None">Engaged
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Number of Wives</label>
+                                    <input type="number" name="wives_count" class="form-control" min="0"
+                                           t-att-value="partner.wives_count or 0"/>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Number of Children</label>
+                                    <input type="number" name="children_count" class="form-control" min="0"
+                                           t-att-value="partner.children_count or 0"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Registry Place And Number</label>
+                                    <input type="text" name="registry_place_number" class="form-control"
+                                           t-att-value="partner.registry_place_number or ''"/>
                                 </div>
                             </div>
                         </div>
@@ -355,15 +478,18 @@
                     <!-- ─── Section 2: Medical Qualifications ─── -->
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header bg-primary bg-opacity-10 border-primary">
-                            <h5 class="mb-0 text-primary"><i class="fa fa-stethoscope me-2"/>Medical Qualifications</h5>
+                            <h5 class="mb-0 text-white"><i class="fa fa-stethoscope me-2"/>Medical Qualifications
+                            </h5>
                         </div>
                         <div class="card-body">
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <label class="form-label fw-semibold">Medical Specialty <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">Medical Specialty
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <select name="medical_specialty" class="form-select" required="required">
                                         <option value="">-- Select Specialty --</option>
-                                       <t t-foreach="specialties" t-as="spec">
+                                        <t t-foreach="specialties" t-as="spec">
                                             <option t-att-value="spec.id"
                                                     t-att-selected="partner.medical_specialty_id.id == spec.id or None">
                                                 <t t-esc="spec.name"/>
@@ -372,7 +498,9 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label fw-semibold">Highest Qualification <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">Highest Qualification
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <select name="qualification" class="form-select" required="required">
                                         <option value="">-- Select --</option>
                                         <t t-foreach="qualifications" t-as="qual">
@@ -384,15 +512,79 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label fw-semibold">University / Institution <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">University / Institution
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <input type="text" name="university" class="form-control"
                                            t-att-value="partner.university or ''" required="required"/>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label fw-semibold">Graduation Year <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">Graduation Year
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <input type="text" name="graduation_year" class="form-control"
                                            placeholder="e.g. 2015"
                                            t-att-value="partner.graduation_year or ''" required="required"/>
+                                </div>
+                                <!-- ─── New Fields ─── -->
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Ministry of Health Registration Number</label>
+                                    <input type="text" name="ministry_registration_number" class="form-control"
+                                           t-att-value="partner.ministry_registration_number or ''"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Membership Number</label>
+                                    <input type="text" name="membership_number" class="form-control" readonly="1"
+                                           t-att-value="partner.membership_number or ''"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Practice Location</label>
+                                    <select name="practice_location" class="form-select">
+                                        <option value="">-- Select --</option>
+                                        <option value="city"
+                                                t-att-selected="partner.practice_location == 'city' or None">City
+                                        </option>
+                                        <option value="rural"
+                                                t-att-selected="partner.practice_location == 'rural' or None">Rural
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Specialty Classification</label>
+                                    <select name="specialty_classification" class="form-select">
+                                        <option value="">-- Select --</option>
+                                        <option value="specialist"
+                                                t-att-selected="partner.specialty_classification == 'specialist' or None">
+                                            Specialist
+                                        </option>
+                                        <option value="practitioner"
+                                                t-att-selected="partner.specialty_classification == 'practitioner' or None">
+                                            Practitioner
+                                        </option>
+                                        <option value="rare"
+                                                t-att-selected="partner.specialty_classification == 'rare' or None">Rare
+                                            Specialty
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Specialization Certificate Number</label>
+                                    <input type="text" name="specialization_certificate_number" class="form-control"
+                                           t-att-value="partner.specialization_certificate_number or ''"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Certificate Issue Place</label>
+                                    <select name="certificate_issue_place" class="form-select">
+                                        <option value="">-- Select --</option>
+                                        <option value="inside"
+                                                t-att-selected="partner.certificate_issue_place == 'inside' or None">
+                                            Inside Country
+                                        </option>
+                                        <option value="outside"
+                                                t-att-selected="partner.certificate_issue_place == 'outside' or None">
+                                            Outside Country
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -401,22 +593,29 @@
                     <!-- ─── Section 3: Medical License ─── -->
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header bg-primary bg-opacity-10 border-primary">
-                            <h5 class="mb-0 text-primary"><i class="fa fa-id-card me-2"/>Medical License</h5>
+                            <h5 class="mb-0 text-white"><i class="fa fa-id-card me-2"/>Medical License
+                            </h5>
                         </div>
                         <div class="card-body">
                             <div class="row g-3">
                                 <div class="col-md-4">
-                                    <label class="form-label fw-semibold">License Number <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">License Number
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <input type="text" name="medical_license_no" class="form-control"
                                            t-att-value="partner.medical_license_no or ''" required="required"/>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="form-label fw-semibold">Issue Date <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">Issue Date
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <input type="date" name="license_issue_date" class="form-control"
                                            t-att-value="partner.license_issue_date or ''" required="required"/>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="form-label fw-semibold">Expiry Date <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">Expiry Date
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <input type="date" name="license_expiry_date" class="form-control"
                                            t-att-value="partner.license_expiry_date or ''" required="required"/>
                                 </div>
@@ -427,17 +626,22 @@
                     <!-- ─── Section 4: Current Employment ─── -->
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header bg-primary bg-opacity-10 border-primary">
-                            <h5 class="mb-0 text-primary"><i class="fa fa-hospital-o me-2"/>Current Employment</h5>
+                            <h5 class="mb-0 text-white"><i class="fa fa-hospital-o me-2"/>Current Employment
+                            </h5>
                         </div>
                         <div class="card-body">
                             <div class="row g-3">
                                 <div class="col-md-4">
-                                    <label class="form-label fw-semibold">Workplace Name <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">Workplace Name
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <input type="text" name="workplace_name" class="form-control"
                                            t-att-value="partner.workplace_name or ''" required="required"/>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="form-label fw-semibold">Workplace Type <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">Workplace Type
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <select name="workplace_type" class="form-select" required="required">
                                         <option value="">-- Select --</option>
                                         <t t-foreach="workplace_types" t-as="wt">
@@ -449,10 +653,41 @@
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="form-label fw-semibold">Years of Experience <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">Years of Experience
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <input type="number" name="years_of_experience" class="form-control"
                                            min="0" max="60"
                                            t-att-value="partner.years_of_experience or ''" required="required"/>
+                                </div>
+                                <!-- ─── Additional Fields ─── -->
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label fw-semibold">Is Employee</label>
+                                        <input type="checkbox" name="is_employee" class="form-check-input"
+                                               t-att-checked="partner.is_employee or None"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label fw-semibold">Outside Country</label>
+                                        <input type="checkbox" name="outside_country" class="form-check-input"
+                                               t-att-checked="partner.outside_country or None"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Bank Account Number</label>
+                                        <input type="text" name="bank_account_number" class="form-control"
+                                               t-att-value="partner.bank_account_number or ''"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Bank Name</label>
+                                        <input type="text" name="bank_name" class="form-control"
+                                               t-att-value="partner.bank_name or ''"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Registered in Social Security</label>
+                                        <input type="checkbox" name="social_security_registered"
+                                               class="form-check-input"
+                                               t-att-checked="partner.social_security_registered or None"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -461,7 +696,8 @@
                     <!-- ─── Section 5: Required Documents ─── -->
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header bg-primary bg-opacity-10 border-primary">
-                            <h5 class="mb-0 text-primary"><i class="fa fa-paperclip me-2"/>Required Documents</h5>
+                            <h5 class="mb-0 text-white"><i class="fa fa-paperclip me-2"/>Required Documents
+                            </h5>
                         </div>
                         <div class="card-body">
                             <div class="alert alert-info mb-3 d-flex align-items-center">
@@ -470,17 +706,23 @@
                             </div>
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <label class="form-label fw-semibold">National ID / Iqama Copy <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">National ID / Iqama Copy
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <input type="file" name="doc_national_id" class="form-control"
                                            accept=".pdf,.jpg,.jpeg,.png" required="required"/>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label fw-semibold">Medical License Copy <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">Medical License Copy
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <input type="file" name="doc_license" class="form-control"
                                            accept=".pdf,.jpg,.jpeg,.png" required="required"/>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="form-label fw-semibold">Degree Certificate <span class="text-danger">*</span></label>
+                                    <label class="form-label fw-semibold">Degree Certificate
+                                        <span class="text-danger">*</span>
+                                    </label>
                                     <input type="file" name="doc_degree" class="form-control"
                                            accept=".pdf,.jpg,.jpeg,.png" required="required"/>
                                 </div>
@@ -500,7 +742,8 @@
                     <!-- ─── Section 6: Additional Notes ─── -->
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header bg-primary bg-opacity-10 border-primary">
-                            <h5 class="mb-0 text-primary"><i class="fa fa-comment-o me-2"/>Additional Notes</h5>
+                            <h5 class="mb-0 text-white"><i class="fa fa-comment-o me-2"/>Additional Notes
+                            </h5>
                         </div>
                         <div class="card-body">
                             <textarea name="notes" class="form-control" rows="3"
@@ -516,7 +759,8 @@
                                        id="terms_accepted" required="required"/>
                                 <label class="form-check-label" for="terms_accepted">
                                     I confirm that all information provided is accurate and I agree to the
-                                    membership terms and conditions. <span class="text-danger">*</span>
+                                    membership terms and conditions.
+                                    <span class="text-danger">*</span>
                                 </label>
                             </div>
                         </div>
@@ -525,7 +769,8 @@
                     <!-- ─── Buttons ─── -->
                     <div class="d-flex gap-3 mb-4">
                         <button type="submit" class="btn btn-primary btn-lg px-5">
-                            <i class="fa fa-paper-plane me-2"/> Submit Application
+                            <i class="fa fa-paper-plane me-2"/>
+                            Submit Application
                         </button>
                         <a href="/my/membership" class="btn btn-outline-secondary btn-lg px-4">Cancel</a>
                     </div>

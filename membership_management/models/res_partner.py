@@ -150,9 +150,9 @@ class ResPartner(models.Model):
     ], string='Certificate Issue Place')
     certificate_modify_date = fields.Date(string='Certificate Modify Date')
     certificate_modify_number = fields.Char(string='Certificate Modify Number')
-    specialization_authority_1 = fields.Char(string='Specialization Authority 1')
-    specialization_authority_2 = fields.Char(string='Specialization Authority 2')
-    specialization_authority_3 = fields.Char(string='Specialization Authority 3')
+    specialization_authority_1 = fields.Many2one('medical.specialty', string='Specialization Authority 1')
+    specialization_authority_2 = fields.Many2one('medical.specialty', string='Specialization Authority 2')
+    specialization_authority_3 = fields.Many2one('medical.specialty', string='Specialization Authority 3')
     practice_location = fields.Selection([
         ('city', 'City'),
         ('rural', 'Rural'),

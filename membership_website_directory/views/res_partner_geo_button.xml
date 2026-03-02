@@ -1,0 +1,18 @@
+<odoo>
+  <record id="view_partner_form_geo_locate_button" model="ir.ui.view">
+    <field name="name">res.partner.form.geo.locate.button</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+      <!-- Put button in the header so it is always visible -->
+      <xpath expr="//header" position="inside">
+        <button name="action_geo_locate_member"
+                type="object"
+                string="📍 تحديد الموقع"
+                class="btn btn-secondary"
+                help="يحدّد الإحداثيات الجغرافية لهذا الطبيب اعتماداً على العنوان الحالي."
+                attrs="{'invisible': [('country_id', '=', False)]}"/>
+      </xpath>
+    </field>
+  </record>
+</odoo>

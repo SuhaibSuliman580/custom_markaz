@@ -47,7 +47,6 @@ class MembershipPortal(CustomerPortal):
             'specialties': request.env['medical.specialty'].sudo().search([]),
             'qualifications': qualification_field.selection,
             'workplace_types': workplace_type_field.selection,
-            'universities': request.env['medical.unv'].sudo().search([('active', '=', True)], order='name'),
             'page_name': 'membership_application_new',
         }
         return request.render('membership_management.portal_membership_application_new', values)

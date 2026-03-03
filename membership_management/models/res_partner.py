@@ -83,44 +83,7 @@ class ResPartner(models.Model):
         ('board', 'Board Certified'),
     ], string='Highest Qualification')
     university = fields.Char(string='University / Institution')
-
-    # Dropdown (computed) linked to Universities table, without requiring DB column migration
-    university_id = fields.Many2one(
-        'medical.unv',
-        string='University / Institution',
-        compute='_compute_university_id',
-        inverse='_inverse_university_id',
-        search='_search_university_id',
-        store=False,
-    )
-
     graduation_year = fields.Char(string='Graduation Year')
-
-    @api.depends('university')
-    def _compute_university_id(self):
-        Univ = self.env['medical.unv'].sudo()
-        for rec in self:
-            if rec.university:
-                unv = Univ.search([('name', '=', rec.university)], limit=1)
-                rec.university_id = unv
-            else:
-                rec.university_id = False
-
-    def _inverse_university_id(self):
-        for rec in self:
-            rec.university = rec.university_id.name if rec.university_id else False
-
-    def _search_university_id(self, operator, value):
-        """Map searching on university_id to searching by the stored Char field "university"."""
-        Univ = self.env['medical.unv'].sudo()
-        # value can be an ID, list of IDs, or a name depending on domain
-        if isinstance(value, int):
-            name = Univ.browse(value).name or ''
-            return [('university', operator, name)]
-        if isinstance(value, (list, tuple)) and value and isinstance(value[0], int):
-            names = Univ.browse(value).mapped('name')
-            return [('university', 'in', names)]
-        return [('university', operator, value or '')]
 
     # ── Medical License ──
     medical_license_no = fields.Char(string='Medical License Number')

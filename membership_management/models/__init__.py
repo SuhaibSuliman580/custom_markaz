@@ -4,3 +4,4 @@ from . import membership_period
 from . import account_move
 from . import medical_specialty
 from . import res_config_settings
+from . import medical_unv

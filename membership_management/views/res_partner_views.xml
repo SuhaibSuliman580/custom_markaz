@@ -55,7 +55,7 @@
                         <group string="Medical Qualifications">
                             <field name="medical_specialty_id"/>
                             <field name="qualification"/>
-                            <field name="university"/>
+                            <field name="university_id"/>
                             <field name="graduation_year"/>
 
                             <!-- Added -->

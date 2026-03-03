@@ -41,4 +41,10 @@
               action="action_medical_specialty"
               sequence="10"/>
 
+    <menuitem id="menu_medical_unv"
+              name="Universities"
+              parent="menu_membership_config"
+              action="membership_management.action_medical_unv"
+              sequence="11"/>
+
 </odoo>

@@ -515,8 +515,15 @@
                                     <label class="form-label fw-semibold">University / Institution
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <input type="text" name="university" class="form-control"
-                                           t-att-value="partner.university or ''" required="required"/>
+                                    <select name="university" class="form-select" required="required">
+                                            <option value="">-- اختر الجامعة --</option>
+                                            <t t-foreach="universities" t-as="unv">
+                                                <option t-att-value="unv.name"
+                                                        t-att-selected="unv.name == (partner.university or '')">
+                                                    <t t-esc="unv.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-semibold">Graduation Year

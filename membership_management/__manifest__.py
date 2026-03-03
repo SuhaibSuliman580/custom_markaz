@@ -38,6 +38,7 @@ Manage the full lifecycle of doctor memberships:
         'views/medical_specialty_views.xml',
         'views/res_config_settings_views.xml',
         'views/membership_renewal_wizard_views.xml',
+        'views/medical_unv_views.xml',
         'views/menu_views.xml',
         'views/portal_templates.xml',
 
@@ -48,4 +49,6 @@ Manage the full lifecycle of doctor memberships:
     'installable': True,
     'application': True,
     'auto_install': False,
+
+    'post_init_hook': 'post_init_hook',
 }

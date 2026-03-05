@@ -32,14 +32,6 @@ class ResPartner(models.Model):
 
     # ── Doctor Personal Info ──
     arabic_name = fields.Char(string='Name (Arabic)')
-    union_situation = fields.Selection([
-        ('effective', 'Effective'),
-        ('retired', 'Retired'),
-        ('deceased', 'Deceased'),
-        ('crossed_out', 'Crossed out'),
-        ('transferred', 'Transferred'),
-        ('stopped_working', 'Stopped working'),
-    ], string='Union Situation')
     national_id = fields.Char(string='National ID / Iqama')
     birth_date = fields.Date(string='Date of Birth')
     gender = fields.Selection([

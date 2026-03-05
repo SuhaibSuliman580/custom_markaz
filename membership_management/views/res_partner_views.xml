@@ -37,6 +37,7 @@
                         </group>
                         <group string="Personal Info">
                             <field name="arabic_name"/>
+                            <field name="union_situation"/>
                             <field name="national_id"/>
                             <field name="birth_date"/>
                             <field name="gender"/>

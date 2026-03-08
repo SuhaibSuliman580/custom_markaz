@@ -2,6 +2,8 @@ from dateutil.relativedelta import relativedelta
 
 from odoo import api, fields, models, _
 import logging
+from datetime import date
+
 
 _logger = logging.getLogger(__name__)
 
@@ -60,12 +62,15 @@ class AccountMove(models.Model):
 
         if application:
             today = fields.Date.today()
+            year = today.year
+            start_date = date(year, 1, 1)
+            end_date = date(year, 12, 31)
             membership_number = self.env['ir.sequence'].next_by_code('membership.number')
             period = Period.create({
                 'name': membership_number,
                 'partner_id': application.partner_id.id,
-                'start_date': today,
-                'end_date': today + relativedelta(years=1),
+                'start_date': start_date,
+                'end_date': end_date,
                 'state': 'active',
                 'invoice_id': self.id,
                 'application_id': application.id,
@@ -99,18 +104,21 @@ class AccountMove(models.Model):
 
         if renewal_period:
             today = fields.Date.today()
-            if renewal_period.state == 'active' and renewal_period.end_date >= today:
-                new_start = renewal_period.end_date
-            else:
-                new_start = today
 
-            new_end = new_start + relativedelta(years=1)
+            if renewal_period.state == 'active' and renewal_period.end_date >= today:
+                year = renewal_period.end_date.year + 1
+            else:
+                year = today.year
+
+            new_start = date(year, 1, 1)
+            new_end = date(year, 12, 31)
 
             renewal_period.write({
-                'start_date': new_start if renewal_period.state == 'expired' else renewal_period.start_date,
+                'start_date': new_start,
                 'end_date': new_end,
                 'state': 'active',
             })
+
             renewal_period._generate_qr_code()
 
             renewal_period.partner_id.write({

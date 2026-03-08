@@ -76,17 +76,17 @@ class MembershipPortal(CustomerPortal):
             # ── New personal fields ──
             'father_name': kwargs.get('father_name') or '',
             'mother_name': kwargs.get('mother_name') or '',
-            'social_status': kwargs.get('social_status') or False,
-            'wives_count': int(kwargs.get('wives_count', 0) or 0),
-            'children_count': int(kwargs.get('children_count', 0) or 0),
+            # 'social_status': kwargs.get('social_status') or False,
+            # 'wives_count': int(kwargs.get('wives_count', 0) or 0),
+            # 'children_count': int(kwargs.get('children_count', 0) or 0),
             'registry_place_number': kwargs.get('registry_place_number') or '',
             # ── New medical registration fields ──
             'ministry_registration_number': kwargs.get('ministry_registration_number') or '',
             'membership_number': kwargs.get('membership_number') or partner.membership_number or '',
             # ── New medical practice fields ──
-            'practice_location': kwargs.get('practice_location') or False,
+            # 'practice_location': kwargs.get('practice_location') or False,
             'specialty_classification': kwargs.get('specialty_classification') or False,
-            'specialization_certificate_number': kwargs.get('specialization_certificate_number') or '',
+            # 'specialization_certificate_number': kwargs.get('specialization_certificate_number') or '',
             'certificate_issue_place': kwargs.get('certificate_issue_place') or False,
             'is_employee': kwargs.get('is_employee') == 'on',
             'outside_country': kwargs.get('outside_country') == 'on',

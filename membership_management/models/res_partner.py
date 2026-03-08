@@ -6,7 +6,7 @@ class ResPartner(models.Model):
 
     # ── MEMBERSHIP INFORMATION ──
     is_doctor = fields.Boolean(string='Is Doctor', default=False)
-    membership_number = fields.Char(string='Membership Number', readonly=True, copy=False)
+    membership_number = fields.Char(string='Membership Number', copy=False)
     doctor_membership_state = fields.Selection([
         ('none', 'No Membership'),
         ('active', 'Active'),
@@ -32,6 +32,10 @@ class ResPartner(models.Model):
 
     # ── Doctor Personal Info ──
     arabic_name = fields.Char(string='Name (Arabic)')
+    nickname = fields.Char(string='Nickname')
+    current_residence = fields.Char(string='Current Residence')
+    military_service_start_date = fields.Date(string='Military Service Start Date')
+    military_service_end_date = fields.Date(string='Military Service End Date')
     national_id = fields.Char(string='National ID / Iqama')
     birth_date = fields.Date(string='Date of Birth')
     gender = fields.Selection([
@@ -42,13 +46,13 @@ class ResPartner(models.Model):
     medical_specialty_id = fields.Many2one('medical.specialty', string='Medical Specialty')
     father_name = fields.Char(string='Father Name')
     mother_name = fields.Char(string='Mother Name')
-    social_status = fields.Selection([
-        ('single', 'Single'),
-        ('married', 'Married'),
-        ('engaged', 'Engaged'),
-    ], string='Social Status')
-    wives_count = fields.Integer(string='Number of Wives')
-    children_count = fields.Integer(string='Number of Children')
+    # social_status = fields.Selection([
+    #     ('single', 'Single'),
+    #     ('married', 'Married'),
+    #     ('engaged', 'Engaged'),
+    # ], string='Social Status')
+    # wives_count = fields.Integer(string='Number of Wives')
+    # children_count = fields.Integer(string='Number of Children')
     registry_place_number = fields.Char(string='Registry Place & Number')
 
     # ── Medical Qualifications ──
@@ -138,6 +142,25 @@ class ResPartner(models.Model):
     ministry_registration_number = fields.Char(
         string='Ministry of Health Registration Number'
     )
+    ministry_registration_date = fields.Date(
+        string='Ministry of Health Registration Date')
+    permanent_specialty_date = fields.Date(string='Permanent Specialty Date')
+    temporary_specialty_date_2 = fields.Date(string='Temporary Specialty Date 2')
+    permanent_specialty_date_2 = fields.Date(string='Permanent Specialty Date 2')
+    specialty_date_2 = fields.Date(string='Specialty Date 2')
+    specialty_date_3 = fields.Date(string='Specialty Date 3')
+    permanent_license_date_3 = fields.Date(string='Permanent License Date 3')
+    temporary_specialty_date = fields.Date(string='Temporary Specialty Date')
+    deletion_date = fields.Date(string='Deletion Date')
+    union_status = fields.Selection([
+        ('active', 'Active'),
+        ('retired', 'Retired'),
+        ('deceased', 'Deceased'),
+        ('deleted', 'Deleted'),
+        ('transferred', 'Transferred'),
+        ('inactive', 'Inactive'),
+    ], string='Fund / Union Status')
+    fees_paid_until_year = fields.Char(string='Fees Paid Until Year')
 
     # ── Employment ──
     workplace_name = fields.Char(string='Current Workplace')
@@ -171,6 +194,8 @@ class ResPartner(models.Model):
     social_security_registered = fields.Boolean(
         string='Registered in Social Security'
     )
+    clinic_address = fields.Char(string='Clinic Address')
+    clinic_phone = fields.Char(string='Clinic Phone Number')
 
     # SPECIALTY & DEGREE
     specialty_classification = fields.Selection([
@@ -178,20 +203,20 @@ class ResPartner(models.Model):
         ('practitioner', 'Practitioner'),
         ('rare', 'Rare Specialty'),
     ], string='Classification')
-    specialization_certificate_number = fields.Char(
-        string='Specialization Certificate Number'
-    )
+    # specialization_certificate_number = fields.Char(
+    #     string='Specialization Certificate Number'
+    # )
     certificate_issue_place = fields.Selection([
         ('inside', 'Inside Country'),
         ('outside', 'Outside Country'),
     ], string='Certificate Issue Place')
     certificate_modify_date = fields.Date(string='Certificate Modify Date')
     certificate_modify_number = fields.Char(string='Certificate Modify Number')
-    specialization_authority_1 = fields.Many2one('medical.specialty', string='Specialization Authority 1')
+    specialization_authority_1 = fields.Char(string='Specialization Authority')
     specialization_authority_2 = fields.Many2one('medical.specialty', string='Specialization Authority 2')
     specialization_authority_3 = fields.Many2one('medical.specialty', string='Specialization Authority 3')
-    practice_location = fields.Selection([
-        ('city', 'City'),
-        ('rural', 'Rural'),
-    ], string='Practice Location')
+    # practice_location = fields.Selection([
+    #     ('city', 'City'),
+    #     ('rural', 'Rural'),
+    # ], string='Practice Location')
 

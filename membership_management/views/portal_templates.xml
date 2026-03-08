@@ -441,31 +441,31 @@
                                     <input type="text" name="mother_name" class="form-control"
                                            t-att-value="partner.mother_name or ''"/>
                                 </div>
-                                <div class="col-md-4">
-                                    <label class="form-label fw-semibold">Social Status</label>
-                                    <select name="social_status" class="form-select">
-                                        <option value="">-- Select --</option>
-                                        <option value="single"
-                                                t-att-selected="partner.social_status == 'single' or None">Single
-                                        </option>
-                                        <option value="married"
-                                                t-att-selected="partner.social_status == 'married' or None">Married
-                                        </option>
-                                        <option value="engaged"
-                                                t-att-selected="partner.social_status == 'engaged' or None">Engaged
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <label class="form-label fw-semibold">Number of Wives</label>
-                                    <input type="number" name="wives_count" class="form-control" min="0"
-                                           t-att-value="partner.wives_count or 0"/>
-                                </div>
-                                <div class="col-md-4">
-                                    <label class="form-label fw-semibold">Number of Children</label>
-                                    <input type="number" name="children_count" class="form-control" min="0"
-                                           t-att-value="partner.children_count or 0"/>
-                                </div>
+<!--                                <div class="col-md-4">-->
+<!--                                    <label class="form-label fw-semibold">Social Status</label>-->
+<!--                                    <select name="social_status" class="form-select">-->
+<!--                                        <option value="">&#45;&#45; Select &#45;&#45;</option>-->
+<!--                                        <option value="single"-->
+<!--                                                t-att-selected="partner.social_status == 'single' or None">Single-->
+<!--                                        </option>-->
+<!--                                        <option value="married"-->
+<!--                                                t-att-selected="partner.social_status == 'married' or None">Married-->
+<!--                                        </option>-->
+<!--                                        <option value="engaged"-->
+<!--                                                t-att-selected="partner.social_status == 'engaged' or None">Engaged-->
+<!--                                        </option>-->
+<!--                                    </select>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-4">-->
+<!--                                    <label class="form-label fw-semibold">Number of Wives</label>-->
+<!--                                    <input type="number" name="wives_count" class="form-control" min="0"-->
+<!--                                           t-att-value="partner.wives_count or 0"/>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-4">-->
+<!--                                    <label class="form-label fw-semibold">Number of Children</label>-->
+<!--                                    <input type="number" name="children_count" class="form-control" min="0"-->
+<!--                                           t-att-value="partner.children_count or 0"/>-->
+<!--                                </div>-->
                                 <div class="col-md-6">
                                     <label class="form-label fw-semibold">Registry Place And Number</label>
                                     <input type="text" name="registry_place_number" class="form-control"
@@ -544,18 +544,18 @@
                                     <input type="text" name="membership_number" class="form-control" readonly="1"
                                            t-att-value="partner.membership_number or ''"/>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="form-label fw-semibold">Practice Location</label>
-                                    <select name="practice_location" class="form-select">
-                                        <option value="">-- Select --</option>
-                                        <option value="city"
-                                                t-att-selected="partner.practice_location == 'city' or None">City
-                                        </option>
-                                        <option value="rural"
-                                                t-att-selected="partner.practice_location == 'rural' or None">Rural
-                                        </option>
-                                    </select>
-                                </div>
+<!--                                <div class="col-md-6">-->
+<!--                                    <label class="form-label fw-semibold">Practice Location</label>-->
+<!--                                    <select name="practice_location" class="form-select">-->
+<!--                                        <option value="">&#45;&#45; Select &#45;&#45;</option>-->
+<!--                                        <option value="city"-->
+<!--                                                t-att-selected="partner.practice_location == 'city' or None">City-->
+<!--                                        </option>-->
+<!--                                        <option value="rural"-->
+<!--                                                t-att-selected="partner.practice_location == 'rural' or None">Rural-->
+<!--                                        </option>-->
+<!--                                    </select>-->
+<!--                                </div>-->
                                 <div class="col-md-6">
                                     <label class="form-label fw-semibold">Specialty Classification</label>
                                     <select name="specialty_classification" class="form-select">
@@ -574,11 +574,11 @@
                                         </option>
                                     </select>
                                 </div>
-                                <div class="col-md-6">
-                                    <label class="form-label fw-semibold">Specialization Certificate Number</label>
-                                    <input type="text" name="specialization_certificate_number" class="form-control"
-                                           t-att-value="partner.specialization_certificate_number or ''"/>
-                                </div>
+<!--                                <div class="col-md-6">-->
+<!--                                    <label class="form-label fw-semibold">Specialization Certificate Number</label>-->
+<!--                                    <input type="text" name="specialization_certificate_number" class="form-control"-->
+<!--                                           t-att-value="partner.specialization_certificate_number or ''"/>-->
+<!--                                </div>-->
                                 <div class="col-md-6">
                                     <label class="form-label fw-semibold">Certificate Issue Place</label>
                                     <select name="certificate_issue_place" class="form-select">

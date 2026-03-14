@@ -9,20 +9,28 @@
                 <div class="app_settings_block" data-string="Doctor Membership" string="Doctor Membership">
                     <h2>Doctor Membership</h2>
                     <div class="row mt16 o_settings_container">
-                        <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="col-12 col-lg-4 o_setting_box">
                             <div class="o_setting_left_pane"/>
                             <div class="o_setting_right_pane">
-                                <label for="membership_initial_product_id"/>
-                                <div class="text-muted">Product used for the initial membership (application / first subscription).</div>
-                                <field name="membership_initial_product_id" options="{'no_create': True}"/>
+                                <label for="membership_initial_template_ids"/>
+                                <div class="text-muted">Templates available for initial membership invoices.</div>
+                                <field name="membership_initial_template_ids" widget="many2many_tags" options="{'no_create': True}"/>
                             </div>
                         </div>
-                        <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="col-12 col-lg-4 o_setting_box">
                             <div class="o_setting_left_pane"/>
                             <div class="o_setting_right_pane">
-                                <label for="membership_renewal_product_ids"/>
-                                <div class="text-muted">Products available to employees when creating renewal invoices.</div>
-                                <field name="membership_renewal_product_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                                <label for="membership_default_initial_template_id"/>
+                                <div class="text-muted">Default template used when approving a new membership application.</div>
+                                <field name="membership_default_initial_template_id" options="{'no_create': True}"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-4 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="membership_renewal_template_ids"/>
+                                <div class="text-muted">Templates available to employees when creating renewal invoices.</div>
+                                <field name="membership_renewal_template_ids" widget="many2many_tags" options="{'no_create': True}"/>
                             </div>
                         </div>
                     </div>

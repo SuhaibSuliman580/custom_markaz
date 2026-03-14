@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <!-- Doctor-specific list view -->
+    <record id="view_partner_tree_doctors" model="ir.ui.view">
+        <field name="name">res.partner.tree.doctors</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree string="Doctors"
+                  decoration-success="doctor_membership_state == 'active'"
+                  decoration-danger="doctor_membership_state == 'expired'"
+                  decoration-warning="doctor_membership_state == 'suspended'">
+                <field name="name" string="الاسم"/>
+                <field name="mother_name" string="اسم الام" optional="show"/>
+                <field name="membership_number" string="رقم العضوية" optional="show"/>
+                <field name="doctor_membership_state" string="حالة العضوية" widget="badge" optional="show"/>
+                <field name="medical_specialty_id" string="الاختصاص" optional="show"/>
+                <field name="national_id" string="الرقم الوطني" optional="show"/>
+                <field name="membership_start_date" string="تاريخ الانتساب" optional="show"/>
+                <field name="membership_end_date" string="تاريخ انتهاء العضوية" optional="show"/>
+                <field name="phone" string="رقم الهاتف" optional="show"/>
+                <field name="email" string="البريد الإلكتروني" optional="show"/>
+                <field name="city" string="المدينة" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Doctor-specific search view -->
+    <record id="view_partner_search_doctors" model="ir.ui.view">
+        <field name="name">res.partner.search.doctors</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <search string="بحث الأطباء">
+                <field name="name" string="الاسم"/>
+                <field name="mother_name" string="اسم الام"/>
+                <field name="membership_number" string="رقم العضوية"/>
+                <field name="national_id" string="الرقم الوطني"/>
+                <field name="phone" string="رقم الهاتف"/>
+                <field name="medical_specialty_id" string="الاختصاص"/>
+                <field name="city" string="المدينة"/>
+
+                <filter name="filter_active_members" string="الأعضاء النشطين" domain="[('doctor_membership_state', '=', 'active')]"/>
+                <filter name="filter_no_membership" string="بلا عضوية" domain="[('doctor_membership_state', '=', 'none')]"/>
+                <filter name="filter_expired_members" string="العضوية منتهية" domain="[('doctor_membership_state', '=', 'expired')]"/>
+                <filter name="filter_suspended_members" string="العضوية الموقوفة" domain="[('doctor_membership_state', '=', 'suspended')]"/>
+                <separator/>
+                <filter name="filter_has_membership_number" string="لديه رقم عضوية" domain="[('membership_number', '!=', False)]"/>
+
+                <group expand="0" string="تجميع حسب">
+                    <filter name="group_by_membership_state" string="حالة العضوية" context="{'group_by': 'doctor_membership_state'}"/>
+                    <filter name="group_by_specialty" string="الاختصاص" context="{'group_by': 'medical_specialty_id'}"/>
+                    <filter name="group_by_city" string="المدينة" context="{'group_by': 'city'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <!-- Extend Partner Form View -->
     <record id="view_partner_form_membership" model="ir.ui.view">
         <field name="name">res.partner.form.membership</field>
@@ -19,116 +73,153 @@
             </xpath>
 
             <xpath expr="//page[1]" position="before">
-                <page string="Membership" invisible="not is_doctor">
+                <page string="Doctor Profile" invisible="not is_doctor">
                     <group>
-                        <group string="Membership Status">
+                        <group>
+                            <field name="arabic_name"/>
+                            <field name="medical_specialty_id"/>
                             <field name="membership_number"/>
                             <field name="doctor_membership_state" widget="badge"/>
+                        </group>
+                        <group>
+                            <field name="national_id"/>
+                            <field name="workplace_name"/>
                             <field name="membership_start_date"/>
                             <field name="membership_end_date"/>
-                            <field name="active_membership_id"/>
-
-                            <!-- Added -->
-                            <field name="membership_join_date"/>
-                            <field name="membership_rejoin_date"/>
-                            <field name="membership_rejoin_decision"/>
-                            <field name="deletion_number"/>
-                            <field name="branch_return_date"/>
-                        </group>
-                        <group string="Personal Info">
-                            <field name="arabic_name"/>
-                            <field name="national_id"/>
-                            <field name="birth_date"/>
-                            <field name="gender"/>
-                            <field name="nationality_id"/>
-                            <!-- Added -->
-                            <field name="nickname"/>
-                            <field name="current_residence"/>
-                            <field name="military_service_start_date"/>
-                            <field name="military_service_end_date"/>
-                            <field name="father_name"/>
-                            <field name="mother_name"/>
-                            <!--                            <field name="social_status"/>-->
-                            <!--                            <field name="wives_count"/>-->
-                            <!--                            <field name="children_count"/>-->
-                            <field name="registry_place_number"/>
                         </group>
                     </group>
-                    <group>
-                        <group string="Medical Qualifications">
-                            <field name="medical_specialty_id"/>
-                            <field name="qualification"/>
-                            <field name="university_id"/>
-                            <field name="graduation_year"/>
 
-                            <!-- Added -->
-                            <field name="specialty_classification"/>
-                            <!--                            <field name="specialization_certificate_number"/>-->
-                            <field name="certificate_issue_place"/>
-                            <field name="certificate_modify_date"/>
-                            <field name="certificate_modify_number"/>
-                            <field name="specialization_authority_1"/>
-                            <field name="specialization_authority_2"/>
-                            <field name="specialization_authority_3"/>
-                            <!--                            <field name="practice_location"/>-->
-                        </group>
-                        <group string="Medical License">
-                            <field name="medical_license_no"/>
-                            <field name="license_issue_date"/>
-                            <field name="license_expiry_date"/>
-
-                            <!-- Added -->
-                            <field name="license_type"/>
-                            <field name="ministry_registration_number"/>
-                            <field name="permanent_license_date_1"/>
-                            <field name="permanent_license_date_2"/>
-                            <field name="temporary_license_date_1"/>
-                            <field name="temporary_license_date_2"/>
-                            <field name="temporary_license_date_3"/>
-                            <field name="ministry_registration_date"/>
-                            <field name="permanent_specialty_date"/>
-                            <field name="temporary_specialty_date_2"/>
-                            <field name="permanent_specialty_date_2"/>
-                            <field name="specialty_date_2"/>
-                            <field name="specialty_date_3"/>
-                            <field name="permanent_license_date_3"/>
-                            <field name="temporary_specialty_date"/>
-                            <field name="deletion_date"/>
-
-                            <!-- Union / Fund Status -->
-                            <field name="union_status"/>
-
-                            <!-- Fees -->
-                            <field name="fees_paid_until_year"/>
-                        </group>
-                    </group>
-                    <group>
-                        <group string="Employment">
-                            <field name="workplace_name"/>
-                            <field name="workplace_type"/>
-                            <field name="years_of_experience"/>
-
-                            <!-- Added -->
-                            <field name="is_employee"/>
-                            <field name="fund_status"/>
-                            <field name="transfer_from_entity"/>
-                            <field name="transfer_from_date"/>
-                            <field name="transfer_to_entity"/>
-                            <field name="transfer_to_date"/>
-                            <field name="outside_country"/>
-                            <field name="clinic_address"/>
-                            <field name="clinic_phone"/>
-                            <field name="bank_account_number"/>
-                            <field name="bank_name"/>
-                            <field name="social_security_registered"/>
-                            <field name="retirement_date"/>
-                            <field name="retirement_decision_number"/>
-                            <field name="retirement_salary"/>
-                            <field name="death_date"/>
-                            <field name="death_decision_number"/>
-                        </group>
-                    </group>
                     <notebook>
+                        <page string="Membership Overview">
+                            <group>
+                                <group string="Membership Status">
+                                    <field name="membership_number"/>
+                                    <field name="doctor_membership_state" widget="badge"/>
+                                    <field name="membership_start_date"/>
+                                    <field name="membership_end_date"/>
+                                    <field name="active_membership_id"/>
+                                    <field name="fees_paid_until_year"/>
+                                </group>
+                                <group string="Membership Dates &amp; Decisions">
+                                    <field name="membership_join_date"/>
+                                    <field name="membership_rejoin_date"/>
+                                    <field name="membership_rejoin_decision"/>
+                                    <field name="deletion_number"/>
+                                    <field name="branch_return_date"/>
+                                    <field name="deletion_date"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group string="Union / Financial Status">
+                                    <field name="union_status"/>
+                                    <field name="fund_status"/>
+                                    <field name="bank_name"/>
+                                    <field name="bank_account_number"/>
+                                </group>
+                                <group string="Special Cases">
+                                    <field name="outside_country"/>
+                                    <field name="social_security_registered"/>
+                                    <field name="retirement_date"/>
+                                    <field name="retirement_decision_number"/>
+                                    <field name="retirement_salary"/>
+                                    <field name="death_date"/>
+                                    <field name="death_decision_number"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Personal Info">
+                            <group>
+                                <group string="Identity">
+                                    <field name="arabic_name"/>
+                                    <field name="nickname"/>
+                                    <field name="national_id"/>
+                                    <field name="birth_date"/>
+                                    <field name="gender"/>
+                                    <field name="nationality_id"/>
+                                </group>
+                                <group string="Family &amp; Residence">
+                                    <field name="father_name"/>
+                                    <field name="mother_name"/>
+                                    <field name="current_residence"/>
+                                    <field name="registry_place_number"/>
+                                    <field name="military_service_start_date"/>
+                                    <field name="military_service_end_date"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Medical Qualifications">
+                            <group>
+                                <group string="Academic Information">
+                                    <field name="medical_specialty_id"/>
+                                    <field name="qualification"/>
+                                    <field name="university_id"/>
+                                    <field name="graduation_year"/>
+                                    <field name="specialty_classification"/>
+                                </group>
+                                <group string="Certificates &amp; Authorities">
+                                    <field name="certificate_issue_place"/>
+                                    <field name="certificate_modify_date"/>
+                                    <field name="certificate_modify_number"/>
+                                    <field name="specialization_authority_1"/>
+                                    <field name="specialization_authority_2"/>
+                                    <field name="specialization_authority_3"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Medical License">
+                            <group>
+                                <group string="License Details">
+                                    <field name="medical_license_no"/>
+                                    <field name="license_type"/>
+                                    <field name="license_issue_date"/>
+                                    <field name="license_expiry_date"/>
+                                    <field name="ministry_registration_number"/>
+                                    <field name="ministry_registration_date"/>
+                                </group>
+                                <group string="Permanent / Temporary Dates">
+                                    <field name="permanent_license_date_1"/>
+                                    <field name="permanent_license_date_2"/>
+                                    <field name="permanent_license_date_3"/>
+                                    <field name="temporary_license_date_1"/>
+                                    <field name="temporary_license_date_2"/>
+                                    <field name="temporary_license_date_3"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group string="Specialty Dates">
+                                    <field name="permanent_specialty_date"/>
+                                    <field name="permanent_specialty_date_2"/>
+                                    <field name="temporary_specialty_date"/>
+                                    <field name="temporary_specialty_date_2"/>
+                                    <field name="specialty_date_2"/>
+                                    <field name="specialty_date_3"/>
+                                </group>
+                                <group/>
+                            </group>
+                        </page>
+
+                        <page string="Employment">
+                            <group>
+                                <group string="Current Employment">
+                                    <field name="workplace_name"/>
+                                    <field name="workplace_type"/>
+                                    <field name="years_of_experience"/>
+                                    <field name="is_employee"/>
+                                    <field name="clinic_address"/>
+                                    <field name="clinic_phone"/>
+                                </group>
+                                <group string="Transfers">
+                                    <field name="transfer_from_entity"/>
+                                    <field name="transfer_from_date"/>
+                                    <field name="transfer_to_entity"/>
+                                    <field name="transfer_to_date"/>
+                                </group>
+                            </group>
+                        </page>
+
                         <page string="Applications">
                             <field name="membership_application_ids" readonly="1">
                                 <tree>
@@ -138,6 +229,7 @@
                                 </tree>
                             </field>
                         </page>
+
                         <page string="Membership Periods">
                             <field name="membership_period_ids" readonly="1">
                                 <tree>
@@ -161,11 +253,12 @@
         <field name="name">Doctors</field>
         <field name="res_model">res.partner</field>
         <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_partner_tree_doctors"/>
+        <field name="search_view_id" ref="view_partner_search_doctors"/>
         <field name="domain">[('is_doctor', '=', True)]</field>
         <field name="context">{
             'default_is_doctor': True,
-            'search_default_all_members': 1,
-            'default_free_member': True
+            'search_default_filter_active_members': 1
             }
         </field>
     </record>

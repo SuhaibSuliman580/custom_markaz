@@ -1,13 +1,12 @@
 from odoo import http
 from odoo.http import request
 
+
 class MemberDirectory(http.Controller):
 
     def _base_domain(self):
-        # Directory should show ONLY doctors with ACTIVE membership from membership_management
         return [
-            ('is_doctor', '=', True),
-            ('doctor_membership_state', '=', 'active'),
+            ('union_status', '=', 'active'),
             ('name', '!=', False),
         ]
 
@@ -17,11 +16,10 @@ class MemberDirectory(http.Controller):
         step = 24
 
         Partner = request.env['res.partner'].sudo()
-        domain = self._base_domain()
+        domain = list(self._base_domain())
 
         if q:
-            # Search both Arabic and default name
-            domain += ['|', ('arabic_name', 'ilike', q), ('name', 'ilike', q)]
+            domain += [('name', 'ilike', q)]
 
         if state_id:
             try:
@@ -36,7 +34,6 @@ class MemberDirectory(http.Controller):
             else:
                 city = None
 
-        
         if specialty_id:
             try:
                 specialty_id_int = int(specialty_id)
@@ -44,39 +41,42 @@ class MemberDirectory(http.Controller):
             except Exception:
                 specialty_id = None
 
-# Options for filters from all active doctors
         all_active_doctors = Partner.search(self._base_domain())
         states = all_active_doctors.mapped('state_id').sorted(lambda s: (s.name or '').lower())
         cities = sorted({c for c in all_active_doctors.mapped('city') if c})
         specialties = all_active_doctors.mapped('medical_specialty_id').filtered(lambda s: s).sorted(lambda s: (s.name or '').lower())
 
         total = Partner.search_count(domain)
-        members = Partner.search(domain, order="arabic_name asc, name asc", limit=step, offset=(page - 1) * step)
+        members = Partner.search(domain, order='name asc', limit=step, offset=(page - 1) * step)
 
         url_args = {}
-        if q: url_args['q'] = q
-        if state_id: url_args['state_id'] = state_id
-        if city: url_args['city'] = city
-        if specialty_id: url_args['specialty_id'] = specialty_id
+        if q:
+            url_args['q'] = q
+        if state_id:
+            url_args['state_id'] = state_id
+        if city:
+            url_args['city'] = city
+        if specialty_id:
+            url_args['specialty_id'] = specialty_id
 
         pager = request.website.pager(
-            url="/members",
+            url='/members',
             total=total,
             page=page,
             step=step,
-            url_args=url_args
+            url_args=url_args,
         )
 
-        return request.render("membership_website_directory.member_directory_list", {
-            "members": members,
-            "pager": pager,
-            "q": q or "",
-            "states": states,
-            "cities": cities,
-            "selected_state_id": int(state_id) if state_id else 0,
-            "selected_city": city or "",
-            "specialties": specialties,
-            "selected_specialty_id": int(specialty_id) if specialty_id else 0,
+        return request.render('membership_website_directory.member_directory_list', {
+            'members': members,
+            'pager': pager,
+            'q': q or '',
+            'states': states,
+            'cities': cities,
+            'selected_state_id': int(state_id) if state_id else 0,
+            'selected_city': city or '',
+            'specialties': specialties,
+            'selected_specialty_id': int(specialty_id) if specialty_id else 0,
         })
 
     @http.route(['/members/<int:partner_id>'], type='http', auth='public', website=True, sitemap=False)
@@ -86,6 +86,6 @@ class MemberDirectory(http.Controller):
         if not member:
             return request.not_found()
 
-        return request.render("membership_website_directory.member_directory_detail", {
-            "member": member
+        return request.render('membership_website_directory.member_directory_detail', {
+            'member': member
         })

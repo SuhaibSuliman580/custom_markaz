@@ -31,42 +31,10 @@ class MembershipPeriod(models.Model):
         'membership.application', string='Application', readonly=True,
     )
     qr_code = fields.Binary(string='QR Code', readonly=True, attachment=True)
-    product_id = fields.Many2one(
-        'product.product', string='Membership Product', required=False,
-        domain="[('type','=','service')]",
-        help="The product used for invoicing this membership period."
+    renewal_template_id = fields.Many2one(
+        'invoice.service.template', string='Renewal Template', required=False,
+        help='The template used for invoicing renewal of this membership period.'
     )
-
-    @api.model
-    def _get_initial_product(self):
-        """Return the configured initial product, falling back to module demo product."""
-        icp = self.env['ir.config_parameter'].sudo()
-        pid = icp.get_param('membership_management.initial_product_id')
-        if pid and str(pid).isdigit():
-            product = self.env['product.product'].browse(int(pid)).exists()
-            if product:
-                return product
-        return self.env.ref('membership_management.membership_product', raise_if_not_found=False)
-
-    @api.model
-    def default_get(self, fields_list):
-        res = super().default_get(fields_list)
-        # If period is created manually and is initial, prefill the initial product.
-        if 'period_type' in fields_list and res.get('period_type', 'initial') == 'initial':
-            if 'product_id' in fields_list and not res.get('product_id'):
-                product = self._get_initial_product()
-                if product:
-                    res['product_id'] = product.id
-        return res
-
-    @api.model_create_multi
-    def create(self, vals_list):
-        for vals in vals_list:
-            if vals.get('period_type', 'initial') == 'initial' and not vals.get('product_id'):
-                product = self._get_initial_product()
-                if product:
-                    vals['product_id'] = product.id
-        return super().create(vals_list)
 
     def _generate_qr_code(self):
         """Generate QR code containing membership number and partner ID."""

@@ -33,8 +33,7 @@
                         </group>
                     </group>
                     <group string="Billing" groups="membership_management.group_membership_officer">
-                        <field name="product_id" options="{'no_create': True}"
-                               modifiers='{"invisible": [["period_type", "=", "initial"]], "required": [["period_type", "=", "renewal"]]}'/>
+                        <field name="renewal_template_id" options="{'no_create': True}" invisible="period_type == 'initial'" required="period_type == 'renewal'"/>
                     </group>
                     <group string="QR Code">
                         <field name="qr_code" widget="image" class="oe_avatar"/>

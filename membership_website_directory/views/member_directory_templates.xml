@@ -90,7 +90,7 @@
                   <div class="card-body">
                     <div class="d-flex align-items-start justify-content-between">
                       <div class="pe-2">
-                        <h5 class="member-name mb-1" t-esc="m.arabic_name or m.name"/>
+                        <h5 class="member-name mb-1" t-esc="m.name"/>
                         <div class="small text-muted">عضوية فعّالة</div>
                       </div>
                       <div class="rounded-circle bg-light d-flex align-items-center justify-content-center"
@@ -158,7 +158,7 @@
             <div class="card-body p-4">
               <div class="d-flex align-items-start justify-content-between flex-wrap gap-3">
                 <div>
-                  <h2 class="h4 mb-1" t-esc="member.arabic_name or member.name"/>
+                  <h2 class="h4 mb-1" t-esc="member.name"/>
                   <div class="text-muted">عضوية فعّالة</div>
                 </div>
                 <div class="rounded-circle bg-light d-flex align-items-center justify-content-center"
@@ -263,7 +263,7 @@
                   <div class="p-3 bg-light rounded h-100">
                     <div class="fw-semibold mb-2">العنوان</div>
 
-                    <t t-set="addr_text" t-value="member.practice_location or ''"/>
+                    <t t-set="addr_text" t-value="''"/>
                     <t t-if="not addr_text">
                       <t t-set="addr_parts" t-value="[]"/>
                       <t t-if="member.street"><t t-set="addr_parts" t-value="addr_parts + [member.street]"/></t>
@@ -322,10 +322,30 @@
                         </div>
                       </div>
 
-                      <div class="col-12">
-                        <div class="text-muted small">عنوان الممارسة</div>
+                      <div class="col-12 col-md-6">
+                        <div class="text-muted small">عنوان العيادة</div>
                         <div>
-                          <t t-if="member.practice_location"><span t-esc="member.practice_location"/></t>
+                          <t t-if="member.clinic_address"><span t-esc="member.clinic_address"/></t>
+                          <t t-else=""><span class="text-muted">غير متوفر</span></t>
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-md-6">
+                        <div class="text-muted small">هاتف العيادة</div>
+                        <div>
+                          <t t-if="member.clinic_phone">
+                            <a class="text-decoration-none" t-att-href="'tel:%s' % member.clinic_phone">
+                              <span t-esc="member.clinic_phone"/>
+                            </a>
+                          </t>
+                          <t t-else=""><span class="text-muted">غير متوفر</span></t>
+                        </div>
+                      </div>
+
+                      <div class="col-12">
+                        <div class="text-muted small">العنوان</div>
+                        <div>
+                          <t t-if="addr_text"><span t-esc="addr_text"/></t>
                           <t t-else=""><span class="text-muted">غير متوفر</span></t>
                         </div>
                       </div>

@@ -7,10 +7,9 @@
             <form string="Create Renewal Invoice">
                 <group>
                     <field name="period_id" invisible="1"/>
-                    <!-- Odoo requires any field used in a domain (even on python fields) to be present in the view -->
-                    <field name="allowed_renewal_product_ids" invisible="1"/>
+                    <field name="allowed_renewal_template_ids" invisible="1"/>
                     <field name="partner_id"/>
-                    <field name="product_id" options="{'no_create': True}"/>
+                    <field name="renewal_template_id" options="{'no_create': True}"/>
                 </group>
                 <footer>
                     <button name="action_confirm" type="object" string="Create Invoice" class="btn-primary"/>

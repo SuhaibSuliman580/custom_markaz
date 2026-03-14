@@ -23,6 +23,7 @@ Manage the full lifecycle of doctor memberships:
         'portal',
         'mail',
         'product',
+        'odoo_invoice_service_template_17',
     ],
     'data': [
         'security/membership_security.xml',
@@ -39,6 +40,7 @@ Manage the full lifecycle of doctor memberships:
         'views/res_config_settings_views.xml',
         'views/membership_renewal_wizard_views.xml',
         'views/medical_unv_views.xml',
+        'views/membership_profile_update_views.xml',
         'views/menu_views.xml',
         'views/portal_templates.xml',
 

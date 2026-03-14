@@ -41,6 +41,8 @@
                         <group>
                             <field name="partner_id"/>
                             <field name="create_date" string="Submitted On"/>
+                            <field name="allowed_initial_template_ids" invisible="1"/>
+                            <field name="membership_template_id" options="{'no_create': True}" domain="[('id', 'in', allowed_initial_template_ids)]" groups="membership_management.group_membership_officer" readonly="state in ('approved', 'rejected')"/>
                         </group>
                         <group>
                             <field name="invoice_id" invisible="not invoice_id"/>

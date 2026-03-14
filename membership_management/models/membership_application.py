@@ -37,6 +37,24 @@ class MembershipApplication(models.Model):
         help='Upload required documents for the application.',
     )
 
+    membership_template_id = fields.Many2one(
+        'invoice.service.template',
+        string='Membership Template',
+        tracking=True,
+    )
+    allowed_initial_template_ids = fields.Many2many(
+        'invoice.service.template',
+        compute='_compute_allowed_initial_template_ids',
+        string='Allowed Initial Templates',
+    )
+
+    def _compute_allowed_initial_template_ids(self):
+        icp = self.env['ir.config_parameter'].sudo()
+        ids_list = [int(x) for x in icp.get_param('membership_management.initial_template_ids', default='').split(',') if x.strip().isdigit()]
+        templates = self.env['invoice.service.template'].browse(ids_list).exists() if ids_list else self.env['invoice.service.template'].search([])
+        for rec in self:
+            rec.allowed_initial_template_ids = templates.filtered(lambda t: not t.company_id or t.company_id == self.env.company)
+
     # ── Related fields from partner (Doctor Info) ──
     # Personal
     doctor_arabic_name = fields.Char(related='partner_id.arabic_name', string='Name (Arabic)', readonly=True)
@@ -67,11 +85,14 @@ class MembershipApplication(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
+        default_template_id = self.env['ir.config_parameter'].sudo().get_param('membership_management.default_initial_template_id')
         for vals in vals_list:
             if vals.get('name', _('New')) == _('New'):
                 vals['name'] = self.env['ir.sequence'].next_by_code(
                     'membership.application'
                 ) or _('New')
+            if not vals.get('membership_template_id') and default_template_id and str(default_template_id).isdigit():
+                vals['membership_template_id'] = int(default_template_id)
         return super().create(vals_list)
 
     def action_approve(self):
@@ -136,18 +157,21 @@ class MembershipApplication(models.Model):
         return True
 
     def _create_membership_invoice(self):
-        """Create a customer invoice for the membership product."""
+        """Create a customer invoice from the selected membership template."""
         self.ensure_one()
-        product = self.env.ref('membership_management.membership_product')
-        invoice_vals = {
+        template = self.membership_template_id
+        if not template:
+            default_template_id = self.env['ir.config_parameter'].sudo().get_param('membership_management.default_initial_template_id')
+            if default_template_id and str(default_template_id).isdigit():
+                template = self.env['invoice.service.template'].browse(int(default_template_id)).exists()
+        if not template:
+            raise UserError(_('Please select a membership template or configure a default initial membership template in Settings.'))
+        if not template.line_ids:
+            raise UserError(_('The selected membership template has no lines.'))
+
+        invoice = self.env['account.move'].sudo().create({
             'move_type': 'out_invoice',
             'partner_id': self.partner_id.id,
-            'invoice_line_ids': [(0, 0, {
-                'product_id': product.id,
-                'name': product.name,
-                'quantity': 1,
-                'price_unit': product.list_price,
-            })],
-        }
-        invoice = self.env['account.move'].sudo().create(invoice_vals)
+        })
+        template.action_apply_to_invoice(invoice, replace_existing=True)
         return invoice

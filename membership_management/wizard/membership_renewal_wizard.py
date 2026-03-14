@@ -9,47 +9,37 @@ class MembershipRenewalWizard(models.TransientModel):
     period_id = fields.Many2one('membership.period', string='Membership Period', required=True, readonly=True)
     partner_id = fields.Many2one(related='period_id.partner_id', string='Doctor', readonly=True)
 
-    product_id = fields.Many2one(
-        'product.product',
-        string='Renewal Product',
+    renewal_template_id = fields.Many2one(
+        'invoice.service.template',
+        string='Renewal Template',
         required=True,
-        domain="[('id', 'in', allowed_renewal_product_ids), ('type','=','service')]",
+        domain="[('id', 'in', allowed_renewal_template_ids)]",
     )
 
-    allowed_renewal_product_ids = fields.Many2many(
-        'product.product',
-        compute='_compute_allowed_products',
-        string='Allowed Renewal Products',
+    allowed_renewal_template_ids = fields.Many2many(
+        'invoice.service.template',
+        compute='_compute_allowed_templates',
+        string='Allowed Renewal Templates',
     )
 
     @api.depends('period_id')
-    def _compute_allowed_products(self):
+    def _compute_allowed_templates(self):
         icp = self.env['ir.config_parameter'].sudo()
-        ids_str = icp.get_param('membership_management.renewal_product_ids', default='')
-        ids_list = [int(x) for x in ids_str.split(',') if x.strip().isdigit()]
-        if ids_list:
-            products = self.env['product.product'].browse(ids_list).exists()
-        else:
-            # Fallback: allow any saleable service product if settings not configured yet.
-            products = self.env['product.product'].search([
-                ('type', '=', 'service'),
-                ('sale_ok', '=', True),
-            ])
+        ids_list = [int(x) for x in icp.get_param('membership_management.renewal_template_ids', default='').split(',') if x.strip().isdigit()]
+        templates = self.env['invoice.service.template'].browse(ids_list).exists() if ids_list else self.env['invoice.service.template'].search([])
         for wiz in self:
-            wiz.allowed_renewal_product_ids = products
+            wiz.allowed_renewal_template_ids = templates.filtered(lambda t: not t.company_id or t.company_id == wiz.env.company)
 
     @api.model
     def default_get(self, fields_list):
         res = super().default_get(fields_list)
-        period_id = res.get('period_id')
-        if not period_id and self.env.context.get('default_period_id'):
+        if not res.get('period_id') and self.env.context.get('default_period_id'):
             res['period_id'] = self.env.context['default_period_id']
-        # If only one allowed product, preselect it.
         try:
             wiz = self.new(res)
-            wiz._compute_allowed_products()
-            if not res.get('product_id') and len(wiz.allowed_renewal_product_ids) == 1:
-                res['product_id'] = wiz.allowed_renewal_product_ids.id
+            wiz._compute_allowed_templates()
+            if not res.get('renewal_template_id') and len(wiz.allowed_renewal_template_ids) == 1:
+                res['renewal_template_id'] = wiz.allowed_renewal_template_ids.id
         except Exception:
             pass
         return res
@@ -59,26 +49,21 @@ class MembershipRenewalWizard(models.TransientModel):
         period = self.period_id
         if period.state != 'active':
             raise UserError(_('You can only renew an active membership period.'))
-        if not self.product_id:
-            raise UserError(_('Please select a renewal product.'))
+        if not self.renewal_template_id:
+            raise UserError(_('Please select a renewal template.'))
+        if not self.renewal_template_id.line_ids:
+            raise UserError(_('The selected renewal template has no lines.'))
 
-        invoice_vals = {
+        invoice = self.env['account.move'].sudo().create({
             'move_type': 'out_invoice',
             'partner_id': period.partner_id.id,
-            'invoice_line_ids': [(0, 0, {
-                'product_id': self.product_id.id,
-                'name': _('Membership Renewal - %s') % (period.name or ''),
-                'quantity': 1,
-                'price_unit': self.product_id.lst_price,
-            })],
-        }
-        invoice = self.env['account.move'].sudo().create(invoice_vals)
+        })
+        self.renewal_template_id.action_apply_to_invoice(invoice, replace_existing=True)
 
-        # Link the invoice to the period (use sudo to allow membership officers to trigger renewal)
         period.sudo().write({
             'invoice_id': invoice.id,
             'period_type': 'renewal',
-            'product_id': self.product_id.id,
+            'renewal_template_id': self.renewal_template_id.id,
         })
 
         return {

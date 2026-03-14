@@ -21,11 +21,11 @@
             <form string="Profile Update Request">
                 <header>
                     <button name="action_need_info" type="object" string="Need Info" class="btn-secondary"
-                            attrs="{'invisible': [('state','in',['approved','rejected'])]}"/>
+                            invisible="state in ['approved', 'rejected']"/>
                     <button name="action_approve" type="object" string="Approve" class="btn-primary"
-                            attrs="{'invisible': [('state','=','approved')]}"/>
+                            invisible="state == 'approved'"/>
                     <button name="action_reject" type="object" string="Reject" class="btn-danger"
-                            attrs="{'invisible': [('state','=','rejected')]}"/>
+                            invisible="state == 'rejected'"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,need_info,approved,rejected"/>
                 </header>
 

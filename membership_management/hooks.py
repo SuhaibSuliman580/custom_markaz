@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
-from odoo import api, SUPERUSER_ID
-
-def post_init_hook(cr, registry):
+def post_init_hook(env):
     """Populate medical.unv from existing partner university char values (if any)."""
-    env = api.Environment(cr, SUPERUSER_ID, {})
+    cr = env.cr
     Partner = env['res.partner'].with_context(active_test=False)
     Unv = env['medical.unv'].with_context(active_test=False)
 

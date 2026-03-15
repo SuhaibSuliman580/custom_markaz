@@ -13,7 +13,7 @@ class ResBranch(models.Model):
 
     @api.model
     def _name_search(self, name, domain=None, operator='ilike', limit=100, order=None):
-        args = domain or []
+        domain = domain or []
         if self._context.get('allowed_company_ids'):
             selected_company_ids = self.env['res.company'].browse(self._context.get('allowed_company_ids'))
             if selected_company_ids:

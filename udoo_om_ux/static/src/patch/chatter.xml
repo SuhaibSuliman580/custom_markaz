@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-inherit="mail.ActivityList" t-inherit-mode="extension">
+        <xpath expr="//hr[hasclass('fs-3')]" position="attributes">
+            <attribute name="class" add="ms-3" separator=" "/>
+        </xpath>
+        <xpath expr="//hr[hasclass('fe-3')]" position="attributes">
+            <attribute name="class" add="me-3" separator=" "/>
+        </xpath>
+    </t>
+
+</templates>

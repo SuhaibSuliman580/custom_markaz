@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="uweb.CommandPalette">
+        <div class="o-dropdown dropdown o-dropdown--no-caret" t-attf-style="{{ env.isSmall ? 'margin-left: .5em ; margin-right: .5em;' : 'margin-inline: .8em;' }}">
+            <button class="dropdown-toggle" title="Command Palette" t-on-click="openMainPalette">
+                <i class="ri-lg ri-terminal-fill"/>
+            </button>
+        </div>
+    </t>
+
+</templates>

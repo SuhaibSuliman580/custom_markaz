@@ -1,0 +1,10 @@
+.o_loading_indicator {
+    top: -3px;
+    left: 50%;
+    bottom: auto;
+    width: fit-content;
+    padding-inline: 12px;
+    transform: translateX(-50%);
+    border-bottom-left-radius: $o-border-radius-xl;
+    border-bottom-right-radius: $o-border-radius-xl;
+}

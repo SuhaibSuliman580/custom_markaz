@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-inherit="web.NavBar" t-inherit-mode="extension">
+        <xpath expr="//DropdownItem[@t-esc='currentApp.name']" position="replace"/>
+        <xpath expr="//t[@t-call='web.NavBar.AppsMenu']" position="replace">
+            <t t-call="udoo.NavBar.AppsMenu"/>
+            <!-- App Brand -->
+            <DropdownItem
+                t-if="!ue.sidenav and currentApp"
+                href="getMenuItemHref(currentApp)"
+                t-esc="currentApp.name"
+                class="'o_menu_brand'"
+                dataset="{ menuXmlid: currentApp.xmlid, section: currentApp.id }"
+                onSelected="() => this.onNavBarDropdownItemSelection(currentApp)"
+            />
+            <t t-if="ue.sidenav" t-portal="'.sidenav_content'">
+                <!-- NOTE: currentApp is raw menusData, orderedApps element is processes menusData -->
+                <div t-if="currentApp and !uo.fav_menus.includes(currentApp.xmlid)" class="nav-item">
+                    <t t-call="udoo.Sidenav.Item">
+                        <t t-set="app" t-value="currentApp"/>
+                        <t t-set="appsub" t-value="getAppSections(currentApp.id)"/>
+                    </t>
+                </div>
+                <div t-foreach="uo.orderedApps" t-if="uo.fav_menus.includes(app.xmlid)" t-as="app" t-key="app.id" class="nav-item">
+                    <t t-call="udoo.Sidenav.Item">
+                        <t t-set="app" t-value="app"/>
+                        <t t-set="appsub" t-value="getAppSections(app.id)"/>
+                    </t>
+                </div>
+            </t>
+            <t t-if="ue.sidenav" t-portal="'.sidenav_footer'">
+                <ul class="nav d-block">
+                    <li t-foreach="uo.recents" t-as="action" t-key="action_index" class="nav-item">
+                        <a t-on-click.synthetic="() => this.openRecentAction(action)" class="nav-link cursor-pointer">
+                            <span t-if="action.act_class" class="text-truncate" t-attf-title="{{action.act_class}}: {{action.name}}" t-out="action.name"/>
+                            <span t-else="" class="text-truncate" t-att-title="action.name" t-out="action.name"/>
+                        </a>
+                    </li>
+                </ul>
+            </t>
+        </xpath>
+    </t>
+
+    <t t-inherit="web.NavBar.SectionsMenu" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('o_menu_sections')]" position="attributes">
+            <attribute name="class" remove="d-md-flex" separator=" "></attribute>
+            <attribute name="t-att-class">{'d-md-flex': !uo?.ps_auto_hmenu or !ue?.sidenav}</attribute>
+        </xpath>
+    </t>
+
+    <t t-name="udoo.Sidenav.Item">
+        <div t-if="appsub.length" class="subnav rolkit" role="menu">
+            <div class="subnav_wrapper">
+                <div class="subnav_section" t-foreach="appsub" t-as="section" t-key="section.id">
+                    <div class="d-flex align-items-center cursor-pointer subnav_section_header"
+                        t-att-class="{ 'mt-3': section_index > 0 }"
+                        t-attf-data-bs-target="#smm{{section.id}}"
+                        t-attf-aria-controls="smm{{section.id}}"
+                        data-bs-toggle="collapse"
+                        aria-expanded="true">
+                        <span t-out="section.name"/>
+                        <i class="ms-auto ri-st text-muted ri-indeterminate-circle-line"/>
+                        <i class="ms-auto ri-st text-dodger ri-add-circle-line"/>
+                    </div>
+
+                    <div class="collapse show" t-attf-id="smm{{section.id}}">
+                        <t t-if="!section.childrenTree.length">
+                            <DropdownItem
+                                class="'subnav_entry'"
+                                href="getMenuItemHref(section)"
+                                dataset="{ menuXmlid: section.xmlid, section: section.id }"
+                                onSelected="() => this.onSelectMenu(section)">
+
+                                <span class="indicator-pill"></span>
+                                <span><t t-out="section.name"/></span>
+                            </DropdownItem>
+                        </t>
+                        <t t-else="" t-foreach="section.childrenTree" t-as="item" t-key="item.id">
+                            <DropdownItem
+                                t-if="!item.childrenTree.length"
+                                href="getMenuItemHref(item)"
+                                class="'subnav_entry'"
+                                dataset="{ menuXmlid: item.xmlid, section: item.id }"
+                                onSelected="() => this.onSelectMenu(item)">
+
+                                <span class="indicator-pill"></span>
+                                <span><t t-out="item.name"/></span>
+                            </DropdownItem>
+                            <t t-else="">
+                                <div class="dropdown-menu_group dropdown-header" t-esc="item.name"/>
+                                <DropdownItem
+                                    t-foreach="item.childrenTree"
+                                    t-as="nsub"
+                                    t-key="nsub.id"
+                                    href="getMenuItemHref(nsub)"
+                                    class="'subnav_entry'"
+                                    dataset="{ menuXmlid: nsub.xmlid, section: nsub.id }"
+                                    onSelected="() => this.onSelectMenu(nsub)">
+
+                                    <span class="indicator-pill"></span>
+                                    <span><t t-out="nsub.name"/></span>
+                                </DropdownItem>
+                            </t>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <DropdownItem
+            href="getMenuItemHref(app)"
+            t-on-contextmenu="onShowSubnav"
+            class="{'nav-link':true, 'on': _isCurrentApp(app)}"
+            dataset="{ menuXmlid: app.xmlid, section: app.id }"
+            onSelected="() => this.onSelectMenu(app)">
+
+            <div class="icon text-center d-flex align-items-center justify-content-center">
+                <img t-if="app.webIconData" t-att-src="evaida(app.webIconData)"/>
+            </div>
+            <span class="nav-title text-truncate ms-3" t-att-title="app.label or app.name">
+                <t t-out="app.label or app.name"/>
+            </span>
+            <span t-if="appsub.length" t-on-click.stop.prevent="onShowSubnav" class="nav-arrow btn-om om-mask om-mask-blob"></span>
+        </DropdownItem>
+    </t>
+
+    <t t-name="udoo.NavBar.AppsMenu">
+        <div class="o-dropdown dropdown o-dropdown--no-caret o_navbar_apps_menu">
+            <button data-hotkey="h" class="btn btn-secondary dropdown-toggle" type="button" id="island_toggler" title="Workspace" t-on-click="toggleWorkspace" t-att-aria-expanded="uState.isopen ? 'true' : 'false'">
+                <svg xmlns="http://www.w3.org/2000/svg" class="pe-none" width="14px" height="14px" viewBox="0 0 14 14">
+                    <g xmlns="http://www.w3.org/2000/svg" fill="currentColor" id="o_menu_toggle_row_0">
+                        <rect xmlns="http://www.w3.org/2000/svg" width="3" height="3" x="0" y="0"></rect>
+                        <rect xmlns="http://www.w3.org/2000/svg" width="3" height="3" x="5" y="0"></rect>
+                        <rect xmlns="http://www.w3.org/2000/svg" width="3" height="3" x="10" y="0"></rect>
+                    </g>
+                    <g xmlns="http://www.w3.org/2000/svg" fill="currentColor" id="o_menu_toggle_row_1">
+                        <rect xmlns="http://www.w3.org/2000/svg" width="3" height="3" x="0" y="5"></rect>
+                        <rect xmlns="http://www.w3.org/2000/svg" width="3" height="3" x="5" y="5"></rect>
+                        <rect xmlns="http://www.w3.org/2000/svg" width="3" height="3" x="10" y="5"></rect>
+                    </g>
+                    <g xmlns="http://www.w3.org/2000/svg" fill="currentColor" id="o_menu_toggle_row_2">
+                        <rect xmlns="http://www.w3.org/2000/svg" width="3" height="3" x="0" y="10"></rect>
+                        <rect xmlns="http://www.w3.org/2000/svg" width="3" height="3" x="5" y="10"></rect>
+                        <rect xmlns="http://www.w3.org/2000/svg" width="3" height="3" x="10" y="10"></rect>
+                    </g>
+                </svg>
+            </button>
+            <div t-ref="island" role="menu" class="island dropdown-menu" t-att-class="{ 'show': uState.isopen }" aria-labelledby="island_toggler">
+                <div class="island_area">
+                    <div class="apps_switch border-bottom">
+                        <ul class="nav nav-segment" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" data-hotkey="a" t-att-class="{ 'active': ['app', 'all_app'].includes(uState.ui_view) }" t-on-click.self.stop.prevent="switchSpace" data-tab="app" data-bs-toggle="tab" role="tab" t-att-aria-selected="uState.ui_view == 1">
+                                    Apps
+                                </a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" data-hotkey="b" t-att-class="{ 'active': uState.ui_view == 'bookmark' }" t-on-click.self.stop.prevent="switchSpace" data-tab="bookmark" data-bs-toggle="tab" role="tab" t-att-aria-selected="uState.ui_view == 3">
+                                    Bookmarks
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="d-flex u_toolkit ms-auto gap-1">
+                            <button type="button" class="btn px-2" t-on-click="switchColorScheme" title="Switch Scheme">
+                                <i class="ri-lg ri-contrast-2-line"></i>
+                            </button>
+                            <div class="dropdown">
+                                <button type="button" class="btn px-2" title="Select Language" id="selectLanguageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="ri-lg ri-global-line"></i>
+                                </button>
+                                <div class="dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="selectLanguageDropdown">
+                                    <a t-foreach="ui.languages" t-as="lang" t-key="lang[0]"
+                                        t-on-click="() => this.switchLang(lang[0])"
+                                        t-att-class="{ 'active': lang[0] == user.context.lang }" class="dropdown-item">
+                                        <span class="text-truncate" t-att-title="lang[1]">
+                                            <t t-out="lang[1]"/>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column rolkit" t-att-class="{ 'd-none': uState.ui_view != 'app' }">
+                        <div class="apps_switch">
+                            <div class="island_fn mt-3 mb-2">
+                                <label class="fw-bold ms-2">Pinned</label>
+                                <ul class="nav nav-segment me-1" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link active" t-on-click="switchSpace" data-tab="all_app" data-bs-toggle="tab" role="tab" aria-selected="true">
+                                            All Apps <i class="ri-arrow-right-line text-dodger"/>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div t-ref="fav_drag_root" class="island_apps rolkit" role="listbox">
+                            <div t-foreach="uo.orderedApps" t-as="app" t-key="app.id" t-if="uo.fav_menus.includes(app.xmlid)" class="u_draggable">
+                                <a t-att-id="'result_app_' + app_index" role="option" class="o_app d-block" t-att-aria-selected="uState.focusix === app_index ? 'true' : 'false'" t-att-class="{o_focused: _isCurrentApp(app)}" t-att-data-menu-xmlid="app.xmlid" t-att-href="getMenuItemHref(app)" t-on-click="() => this.onSelectMenu(app)" t-on-contextmenu.stop.prevent="onIslandContext">
+                                    <div class="u_app_icon_l2">
+                                        <div class="u_app_icon_l1">
+                                            <img t-if="app.webIconData" class="u_app_icon rounded-3" t-att-src="evaida(app.webIconData)"/>
+                                            <div t-else="" class="u_app_icon position-relative d-flex justify-content-center align-items-center w-75 p-2 rounded-3 ratio ratio-1x1" t-attf-style="background-color: {{app.webIcon.backgroundColor}};">
+                                                <i t-attf-class="{{app.webIcon.iconClass}} position-relative w-auto h-auto" t-attf-style="color: {{app.webIcon.color}};"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="u_app_caption w-100 text-center text-truncate mt-2" t-att-data-tooltip="app.label or app.name" t-esc="app.label or app.name"/>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column rolkit" t-att-class="{ 'd-none': uState.ui_view != 'all_app' }">
+                        <div class="apps_switch">
+                            <div class="island_fn mt-3 mb-2">
+                                <label class="fw-bold ms-2">All Apps</label>
+                                <ul class="nav nav-segment me-1" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link active" t-on-click.stop="switchSpace" data-tab="app" data-bs-toggle="tab" role="tab" aria-selected="true">
+                                            <i class="ri-arrow-left-line text-dodger"/> Pinned
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="island_all_apps rolkit" role="listbox">
+                            <t t-foreach="originApps" t-as="app" t-key="app.id">
+                                <DropdownItem class="'nav-link py-2'" href="getMenuItemHref(app)" dataset="{ menuXmlid: app.xmlid, section: app.id }" onSelected="() => this.onSelectMenu(app)" t-on-contextmenu.prevent="onIslandContext">
+                                    <img class="ms-1 u_app_icon_sm" t-if="app.webIconData" t-att-src="evaida(app.webIconData)"/>
+                                    <span class="ps-3" t-att-title="app.label">
+                                        <t t-out="app.label"/>
+                                    </span>
+                                </DropdownItem>
+                            </t>
+                        </div>
+                    </div>
+
+                    <div t-att-class="{ 'd-none': uState.ui_view != 'bookmark' }" t-ref="bookmark_drag_root" class="island_bookmarks rolkit" role="option" aria-selected="false">
+                        <a t-foreach="ui.bookmarks" t-as="action" t-key="action_index" t-att-data-uid="action.act_uid" t-on-click.synthetic="() => this.openRecentAction(action)" class="dropdown-item nav-link d-flex align-items-center justify-content-between px-4 py-1">
+                            <span class="text-truncate" t-att-title="action.name">
+                                <i class="ri-lr text-dodger me-3" t-att-class="view_imap[action.view_type] || 'ri-airplay-line'"/>
+                                <t t-out="action.name"/>
+                            </span>
+                            <span class="text-muted ms-3" t-out="action.act_class"/>
+                        </a>
+                    </div>
+
+                    <div t-ref="island_context" class="island_context">
+                        <a t-on-click="appinNewTab" class="dropdown-item">
+                            <i class="ri-md ri-external-link-line text-dodger me-2"/>
+                            <span class="text-truncate">Open in New Tab</span>
+                        </a>
+                        <a t-if="contextPinStart()" t-on-click="unpinFromStart" class="dropdown-item">
+                            <i class="ri-md ri-pushpin-line text-dodger me-2"/>
+                            <span class="text-truncate">Unpin from Start</span>
+                        </a>
+                        <a t-else="" t-on-click="pinToStart" class="dropdown-item">
+                            <i class="ri-md ri-pushpin-2-line text-dodger me-2"/>
+                            <span class="text-truncate">Pin to Start</span>
+                        </a>
+                        <a t-on-click="setHomeAction" class="dropdown-item">
+                            <i class="ri-md ri-star-line text-dodger me-2"/>
+                            <span class="text-truncate">Set as Home Action</span>
+                        </a>
+                        <t t-if="uState.ui_view === 'all_app'">
+                            <div role="separator" class="dropdown-divider"/>
+                            <a t-on-click="pinThemAllStart" class="dropdown-item">
+                                <i class="ri-md ri-arrow-go-back-fill text-dodger me-2"/>
+                                <span class="text-truncate">Pin All to Start</span>
+                            </a>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

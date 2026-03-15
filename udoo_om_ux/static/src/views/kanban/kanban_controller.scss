@@ -1,0 +1,45 @@
+.o_action_manager>.o_kanban_view>.o_content .o_kanban_renderer {
+    --Kanban-gap: 11px;
+    --KanbanRecord-margin-h: 0;
+    --KanbanRecord-margin-v: 0;
+
+    &.o_kanban_ungrouped {
+        padding-top: var(--Kanban-ungrouped-pt, #{$u-kanban-ungrouped-pt}) !important;
+        padding-inline: 9pt !important;
+        padding-bottom: 0 !important;
+
+        .oe_kanban_card {
+            border-top: $border-width solid $border-color !important;
+        }
+    }
+
+    .o_kanban_record {
+        border-radius: $o-border-radius-xl;
+
+        .o_kanban_record_has_image_fill {
+            .o_kanban_image_fill_left {
+                margin-right: calc(var(--KanbanRecord-padding-v) * 2);
+                margin-left: unset;
+
+                >img:not(.o_kanban_image_inner_pic) {
+                    border-radius: $o-border-radius-sm;
+                }
+
+                &:not(.o_kanban_image_full) {
+                    height: 100%;
+                    margin-block: var(--KanbanRecord-padding-v);
+                }
+            }
+        }
+    }
+}
+
+.o_kanban_mobile .o_kanban_renderer .oe_kanban_card {
+    padding-inline: var(--KanbanRecord-padding-h) !important;
+}
+
+@include media-breakpoint-up(md) {
+    .o_content>.o_kanban_renderer:not(.o_kanban_grouped) {
+        padding: 16px !important;
+    }
+}

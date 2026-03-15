@@ -1,0 +1,26 @@
+// == Udoo
+// ============================================================================
+$u-island-bg: #fff !default;
+$u-app-icon: linear-gradient(315deg, #fbfbfb, #fbfbfb) !default;
+$u-app-icon-shadow: 0 .3125rem .625rem 0 #e1e1e1 !default;
+$u-app-icon-shadow-hover: 0 7px 0.625rem 0 #e1e1e1 !default;
+
+$u-sidenav: $o-gray-700 !default;
+$u-sidenav-hr: $o-black !default;
+$u-sidenav-width: 243px !default;
+$u-sidenav-bg: #fff !default;
+$u-sidenav-border: $o-border-color !default;
+$u-sidenav-muted: $o-gray-600 !default;
+$u-sidenav-accent: $o-action !default;
+
+$u-sidenav-item-active: $u-menuitem-hover !default;
+$u-sidenav-item-active-bg: $u-menuitem-hover-bg !default;
+$u-sidenav-item-arrow: $o-gray-400 !default;
+$u-sidenav-item-arrow-bg: $o-action !default;
+
+$u-sidenav-app-icon: $u-app-icon !default;
+$u-sidenav-app-icon-shadow: $u-app-icon-shadow !default;
+
+$u-subnav-bf: 37px !default;
+$u-subnav-bg: $u-island-bg !default;
+$u-subnav-header: $o-gray-500 !default;

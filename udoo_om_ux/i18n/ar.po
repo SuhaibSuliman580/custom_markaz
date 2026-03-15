@@ -1,0 +1,669 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* udoo_om_ux
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-04 05:35+0000\n"
+"PO-Revision-Date: 2024-08-04 05:35+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Action"
+msgstr "عمل"
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_ir_actions_actions
+msgid "Actions"
+msgstr "الإجراءات"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "All Apps"
+msgstr "جميع التطبيقات"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.js:0
+#: code:addons/udoo_om_ux/static/src/webclient/user_menu.js:0
+#, python-format
+msgid "Appearance"
+msgstr "المظهر"
+
+#. module: udoo_om_ux
+#: model_terms:ir.ui.view,arch_db:udoo_om_ux.res_company_form_inherit_om
+msgid "Appearance Config"
+msgstr "تكوين المظهر"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.xml:0
+#, python-format
+msgid "Apps"
+msgstr "التطبيقات"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Auto hide horizontal menu"
+msgstr "إخفاء القائمة الأفقية تلقائيًا"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Autosize Columns"
+msgstr "حجم الأعمدة تلقائيًا"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "Bookmark Manager"
+msgstr "مدير الإشارات المرجعية"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.js:0
+#, python-format
+msgid "Bookmark current tab"
+msgstr "إشارة مرجعية للعلامة التبويب الحالية"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "Bookmark current tab and pin"
+msgstr "إشارة مرجعية للعلامة التبويب الحالية وتثبيتها"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.js:0
+#, python-format
+msgid "Bookmark manager"
+msgstr "مدير الإشارات المرجعية"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/bookmark.js:0
+#, python-format
+msgid "Bookmark saved. Type ALT+K to access it!"
+msgstr "تم حفظ الإشارة المرجعية. اكتب ALT+K للوصول إليها!"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Bookmarks"
+msgstr "الإشارات المرجعية"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#: code:addons/udoo_om_ux/static/src/views/form/form_view_dialog.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Close"
+msgstr "إغلاق"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/quick_search.xml:0
+#, python-format
+msgid "Command Palette"
+msgstr "لوحة الأوامر"
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_res_company
+msgid "Companies"
+msgstr "الشركات"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Default"
+msgstr "الافتراضي"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/commands/command_palette.xml:0
+#, python-format
+msgid "Delete"
+msgstr "حذف"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#, python-format
+msgid "Discard"
+msgstr "تجاهل"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#, python-format
+msgid "Discard changes"
+msgstr "تجاهل التغييرات"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Dodger"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Emerald"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/dialog/action_dialog.xml:0
+#, python-format
+msgid "Expand"
+msgstr "توسيع"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/list/list_controller.xml:0
+#, python-format
+msgid "Fold"
+msgstr "طي"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Full-size Content"
+msgstr "المحتوى بالحجم الكامل"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 100"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 200"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 300"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 400"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 500"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 600"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 700"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 800"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 900"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Green"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model_terms:ir.ui.view,arch_db:udoo_om_ux.edit_menu_access_search_ui
+msgid "Group By"
+msgstr "گروه‌بندی برمبنای"
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_ir_http
+msgid "HTTP Routing"
+msgstr "مسار HTTP"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.js:0
+#, python-format
+msgid "Home action has been set!"
+msgstr "تم ضبط الإجراء المنزلي!"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Indigo"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Lime"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.xml:0
+#, python-format
+msgid "Logo"
+msgstr "نشان"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Look & Feel"
+msgstr "انظر و اشعر"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Magenta"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_ir_ui_menu
+msgid "Menu"
+msgstr "القائمة"
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_company__menus_preset
+msgid "Menus Preset"
+msgstr "القوائم المعدة مسبقا"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Navigation"
+msgstr "ملاحة"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/graph/graph_renderer.js:0
+#, python-format
+msgid "No data"
+msgstr "بدون داده"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/bookmark.js:0
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.js:0
+#, python-format
+msgid "Notification"
+msgstr "اعلان"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Open in New Tab"
+msgstr "فتح في علامة تبويب جديدة"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/commands/command_palette.xml:0
+#, python-format
+msgid "Open in new tab"
+msgstr "فتح في علامة تبويب جديدة"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Orange"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model_terms:ir.ui.view,arch_db:udoo_om_ux.edit_menu_access_search_ui
+msgid "Parent"
+msgstr "والد"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Pin All to Start"
+msgstr "تثبيت الكل في قائمة ابدأ"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Pin to Start"
+msgstr "تثبيت في قائمة البدء"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/commands/command_palette.xml:0
+#, python-format
+msgid "Pin to top"
+msgstr "تثبيت في الأعلى"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Pink"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/bookmark.js:0
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Pinned"
+msgstr "مثبت"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Primary"
+msgstr "أساسي"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Primary Color"
+msgstr "لون أصلي"
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_auto_hmenu
+msgid "Ps Auto Hmenu"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_data
+msgid "Ps Data"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_fav_menus
+msgid "Ps Fav Menus"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_menu_orders
+msgid "Ps Menu Orders"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_start_xmlid
+msgid "Ps Start Xmlid"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Quick Pop-up View"
+msgstr "عرض سريع منبثق"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.xml:0
+#, python-format
+msgid "Recents"
+msgstr "المشاهدات الأخيرة"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Refresh Data"
+msgstr "تحديث البيانات"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "Remove all bookmarks"
+msgstr "إزالة جميع الإشارات المرجعية"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "Remove all bookmarks (keep pinned)"
+msgstr "إزالة جميع الإشارات المرجعية (ابق مثبتة)"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Right-side Chatter"
+msgstr "الثرثرة اليمنى"
+
+#. module: udoo_om_ux
+#: model_terms:ir.ui.view,arch_db:udoo_om_ux.edit_menu_access_search_ui
+msgid "Root Menu"
+msgstr "القائمة الجذرية"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Rose"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#, python-format
+msgid "Save"
+msgstr "حفظ"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#, python-format
+msgid "Save manually"
+msgstr "حفظ يدويًا"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Select Language"
+msgstr "اختيار اللغة"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Seriousness and freshness, creating a refined, modern space"
+msgstr "الجدية والنضارة، مما يخلق مساحة عصرية راقية"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Set as Home Action"
+msgstr "تعيين كإجراء المنزل"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Sky"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gainsboro"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Split List View"
+msgstr "تقسيم عرض القائمة"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Switch Scheme"
+msgstr "تبديل النظام"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Sync your options"
+msgstr "مزامنة خياراتك"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "TIP"
+msgstr "تلميح"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Theme Preset"
+msgstr "الإعداد المسبق للموضوع"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.js:0
+#, python-format
+msgid "There is unsaved data. Do you want to discard the changes and proceed?"
+msgstr "هناك بيانات غير محفوظة. هل ترغب في تجاهل التغييرات والمتابعة؟"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/bookmark.js:0
+#, python-format
+msgid "Undefined"
+msgstr "غير معرف"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Unpin from Start"
+msgstr "إلغاء التثبيت من البداية"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/commands/command_palette.xml:0
+#, python-format
+msgid "Unpin from top"
+msgstr "إلغاء التثبيت من الأعلى"
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__up_bookmarks
+msgid "Up Bookmarks"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_res_users_settings
+msgid "User Settings"
+msgstr "إعدادات المستخدم "
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid ""
+"When the sidebar is enabled, the horizontal menu will automatically be "
+"hidden."
+msgstr "عند تمكين الشريط الجانبي، سيتم إخفاء القائمة الأفقية تلقائيًا"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Workspace"
+msgstr "مساحة العمل"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Yellow"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "{{action.act_class}}: {{action.name}}"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "— open me anywhere with"
+msgstr " - افتحني في أي مكان باستخدام"

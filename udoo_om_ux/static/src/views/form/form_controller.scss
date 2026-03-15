@@ -1,0 +1,106 @@
+.o_form_view {
+    &.o_xxl_form_view {
+        .o_form_renderer {
+            max-width: unset;
+        }
+
+        .o_form_sheet_bg {
+            max-width: unset;
+            padding-right: var(--formView-sheetBg-padding-right, var(--formView-sheetBg-padding-x));
+            scrollbar-width: none;
+        }
+    }
+
+    .o_form_renderer:has(.o_form_sheet_bg.xl_sided) {
+
+        .o_form_sheet_bg {
+            // D1
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            flex: 2 1 $o-form-sheet-min-width; // Side chatter is disabled if this has to shrink but this was added for safety
+
+            // D2
+            max-width: unset;
+            padding-right: var(--formView-sheetBg-padding-right, var(--formView-sheetBg-padding-x));
+            scrollbar-width: none;
+        }
+
+        // REF: mail/static/src/core/common/attachment_view.scss
+        .o_attachment_preview {
+            display: block;
+            flex-basis: auto;
+            overflow: hidden;
+
+            >.o-mail-Attachment {
+                position: relative;
+                width: 100%;
+                height: 100%;
+
+                .arrow {
+                    width: 5%;
+                    @include o-position-absolute(50%, 0);
+                    @include o-FileViewer-arrow;
+                    transition: width 0.3s;
+                    padding-top: 30px;
+                    height: 75px;
+
+                    &:hover {
+                        width: 7%;
+                    }
+
+                    &.o_move_previous {
+                        left: 2px;
+                        right: 0px;
+                    }
+                }
+
+                >iframe {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                >.o-mail-Attachment-imgContainer {
+                    position: absolute;
+                    overflow: auto;
+                    width: 100%;
+                    height: 100%;
+
+                    >img {
+                        margin: auto;
+                        box-shadow: 0px 0px 5px rgba(41, 41, 41, 0.43);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Reduce horizontal spacing if the next sibling is an aside chatter
+.o_form_sheet_bg:has(+ .o-mail-Form-chatter.o-aside) {
+    @include media-breakpoint-up(md) {
+        --formView-sheetBg-padding-right: 2px;
+    }
+}
+
+/***********************************************************
+        Form View : Handle for required fields
+************************************************************/
+.o_wrap_field:has(.o_required_modifier):has(.o_input) {
+    .o_wrap_label {
+        margin-right: 6px;
+
+        >label:after {
+            content: "*";
+            color: #eb9091;
+            position: absolute;
+            font-size: larger;
+            line-height: 1.2;
+            margin-left: 4px;
+        }
+
+        >label:has(sup):after {
+            margin-left: 2px;
+        }
+    }
+}

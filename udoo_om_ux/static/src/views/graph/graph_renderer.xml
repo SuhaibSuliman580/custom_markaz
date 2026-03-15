@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+
+    <t t-inherit="web.GraphRenderer" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('gap-1')]" position="attributes">
+            <attribute name="class" add="flex-shrink-0 overflow-x-auto" separator=" "/>
+        </xpath>
+        <xpath expr="//div[hasclass('o_graph_canvas_container')]" position="attributes">
+            <attribute name="class" add="px-3 pb-3" separator=" "/>
+        </xpath>
+    </t>
+
+</templates>

@@ -1,0 +1,11 @@
+.o_graph_view {
+
+    .o_graph_renderer canvas {
+        background-color: unset
+    }
+
+    // For auto resize o_graph_canvas_container
+    :not(.o-dashboard-action)>& .o_graph_canvas_container {
+        min-height: 50vh;
+    }
+}

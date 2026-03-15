@@ -1,0 +1,669 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* udoo_om_ux
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-04 05:10+0000\n"
+"PO-Revision-Date: 2024-08-04 05:10+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Action"
+msgstr "アクション"
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_ir_actions_actions
+msgid "Actions"
+msgstr "アクション"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "All Apps"
+msgstr "すべてのアプリ"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.js:0
+#: code:addons/udoo_om_ux/static/src/webclient/user_menu.js:0
+#, python-format
+msgid "Appearance"
+msgstr "外観"
+
+#. module: udoo_om_ux
+#: model_terms:ir.ui.view,arch_db:udoo_om_ux.res_company_form_inherit_om
+msgid "Appearance Config"
+msgstr "外観設定"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.xml:0
+#, python-format
+msgid "Apps"
+msgstr "アプリ"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Auto hide horizontal menu"
+msgstr "水平メニューを自動的に非表示にする"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Autosize Columns"
+msgstr "列の自動サイズ変更"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "Bookmark Manager"
+msgstr "ブックマークマネージャ"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.js:0
+#, python-format
+msgid "Bookmark current tab"
+msgstr "現在のタブをブックマーク"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "Bookmark current tab and pin"
+msgstr "現在のタブをブックマークして固定"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.js:0
+#, python-format
+msgid "Bookmark manager"
+msgstr "ブックマークマネージャ"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/bookmark.js:0
+#, python-format
+msgid "Bookmark saved. Type ALT+K to access it!"
+msgstr "ブックマークが保存されました。ALT+Kを入力してアクセスしてください！"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Bookmarks"
+msgstr "ブックマーク"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#: code:addons/udoo_om_ux/static/src/views/form/form_view_dialog.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Close"
+msgstr "閉じる"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/quick_search.xml:0
+#, python-format
+msgid "Command Palette"
+msgstr "コマンドパレット"
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_res_company
+msgid "Companies"
+msgstr "会社"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Default"
+msgstr "デフォルト"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/commands/command_palette.xml:0
+#, python-format
+msgid "Delete"
+msgstr "削除"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#, python-format
+msgid "Discard"
+msgstr "破棄"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#, python-format
+msgid "Discard changes"
+msgstr "変更を破棄"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Dodger"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Emerald"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/dialog/action_dialog.xml:0
+#, python-format
+msgid "Expand"
+msgstr "展開"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/list/list_controller.xml:0
+#, python-format
+msgid "Fold"
+msgstr "折りたたむ"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Full-size Content"
+msgstr "フルサイズのコンテンツ"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 100"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 200"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 300"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 400"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 500"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 600"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 700"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 800"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 900"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Green"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model_terms:ir.ui.view,arch_db:udoo_om_ux.edit_menu_access_search_ui
+msgid "Group By"
+msgstr "グループ化"
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_ir_http
+msgid "HTTP Routing"
+msgstr "HTTPルーティング"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.js:0
+#, python-format
+msgid "Home action has been set!"
+msgstr "ホームアクションが設定されました！"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Indigo"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Lime"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.xml:0
+#, python-format
+msgid "Logo"
+msgstr "ロゴ"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Look & Feel"
+msgstr "外観と操作感"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Magenta"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_ir_ui_menu
+msgid "Menu"
+msgstr "メニュー"
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_company__menus_preset
+msgid "Menus Preset"
+msgstr "メニュープリセット"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Navigation"
+msgstr "ナビゲーション"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/graph/graph_renderer.js:0
+#, python-format
+msgid "No data"
+msgstr "データなし"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/bookmark.js:0
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.js:0
+#, python-format
+msgid "Notification"
+msgstr "通知"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Open in New Tab"
+msgstr "新しいタブで開く"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/commands/command_palette.xml:0
+#, python-format
+msgid "Open in new tab"
+msgstr "新しいタブで開く"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Orange"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model_terms:ir.ui.view,arch_db:udoo_om_ux.edit_menu_access_search_ui
+msgid "Parent"
+msgstr "親"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Pin All to Start"
+msgstr "すべてのアプリをスタートにピン留め"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Pin to Start"
+msgstr "スタートにピン留め"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/commands/command_palette.xml:0
+#, python-format
+msgid "Pin to top"
+msgstr "上部にピン留め"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Pink"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/bookmark.js:0
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Pinned"
+msgstr "ピン留め済み"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Primary"
+msgstr "プライマリ"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Primary Color"
+msgstr "原色"
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_auto_hmenu
+msgid "Ps Auto Hmenu"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_data
+msgid "Ps Data"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_fav_menus
+msgid "Ps Fav Menus"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_menu_orders
+msgid "Ps Menu Orders"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_start_xmlid
+msgid "Ps Start Xmlid"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Quick Pop-up View"
+msgstr "クイックポップアップビュー"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.xml:0
+#, python-format
+msgid "Recents"
+msgstr "最近"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Refresh Data"
+msgstr "データを更新"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "Remove all bookmarks"
+msgstr "すべてのブックマークを削除"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "Remove all bookmarks (keep pinned)"
+msgstr "すべてのブックマークを削除（ピン留めは保持）"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Right-side Chatter"
+msgstr "右側のおしゃべり"
+
+#. module: udoo_om_ux
+#: model_terms:ir.ui.view,arch_db:udoo_om_ux.edit_menu_access_search_ui
+msgid "Root Menu"
+msgstr "ルートメニュー"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Rose"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#, python-format
+msgid "Save"
+msgstr "保存"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#, python-format
+msgid "Save manually"
+msgstr "手動保存"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Select Language"
+msgstr "言語を選択"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Seriousness and freshness, creating a refined, modern space"
+msgstr "真剣さと新鮮さを持ち、洗練されたモダンな空間の創造"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Set as Home Action"
+msgstr "ホームアクションとして設定"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Sky"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gainsboro"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Split List View"
+msgstr "リストビューを分割"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Switch Scheme"
+msgstr "スキームを切り替え"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Sync your options"
+msgstr "オプションを同期"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "TIP"
+msgstr "ヒント"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Theme Preset"
+msgstr "プリセットテーマ"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.js:0
+#, python-format
+msgid "There is unsaved data. Do you want to discard the changes and proceed?"
+msgstr "保存されていないデータがあります。変更を破棄して続行しますか？"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/bookmark.js:0
+#, python-format
+msgid "Undefined"
+msgstr "未定義"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Unpin from Start"
+msgstr "スタートからピンを外す"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/commands/command_palette.xml:0
+#, python-format
+msgid "Unpin from top"
+msgstr "トップからピンを外す"
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__up_bookmarks
+msgid "Up Bookmarks"
+msgstr "アップブックマーク"
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_res_users_settings
+msgid "User Settings"
+msgstr "ユーザ設定"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid ""
+"When the sidebar is enabled, the horizontal menu will automatically be "
+"hidden."
+msgstr "サイドバーが有効になっている場合、水平メニューは自動的に非表示になります。"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Workspace"
+msgstr "ワークスペース"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Yellow"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "{{action.act_class}}: {{action.name}}"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "— open me anywhere with"
+msgstr "— どこでも私を開く"

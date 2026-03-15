@@ -1,0 +1,679 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* udoo_om_ux
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-09-09 01:12+0000\n"
+"PO-Revision-Date: 2024-09-09 01:12+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Action"
+msgstr "Hành động"
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_ir_actions_actions
+msgid "Actions"
+msgstr "Hành động"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "All Apps"
+msgstr "Tất cả ứng dụng"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.js:0
+#: code:addons/udoo_om_ux/static/src/webclient/user_menu.js:0
+#, python-format
+msgid "Appearance"
+msgstr "Cá nhân hóa"
+
+#. module: udoo_om_ux
+#: model_terms:ir.ui.view,arch_db:udoo_om_ux.res_company_form_inherit_om
+msgid "Appearance Config"
+msgstr "Cấu hình giao diện"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.xml:0
+#, python-format
+msgid "Apps"
+msgstr "Ứng dụng"
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_web_editor_assets
+msgid "Assets Utils"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Auto hide horizontal menu"
+msgstr "Tự động ẩn thanh điều hướng ngang"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Autosize Columns"
+msgstr "Tự động căn chỉnh cột"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "Bookmark Manager"
+msgstr "Quản lý dấu trang"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.js:0
+#, python-format
+msgid "Bookmark current tab"
+msgstr "Đánh dấu trang hiện tại"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "Bookmark current tab and pin"
+msgstr "Đánh dấu trang hiện tại và ghim"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.js:0
+#, python-format
+msgid "Bookmark manager"
+msgstr "Quản lý dấu trang"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/bookmark.js:0
+#, python-format
+msgid "Bookmark saved. Type ALT+K to access it!"
+msgstr "Đã lưu dấu trang. Gõ ALT+K để truy cập lại!"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Bookmarks"
+msgstr "Dấu trang"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Bottom-side Chatter"
+msgstr "Khung Chat bên dưới"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/form/form_view_dialog.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Close"
+msgstr "Đóng"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/quick_search.xml:0
+#, python-format
+msgid "Command Palette"
+msgstr "Bảng lệnh"
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_res_company
+msgid "Companies"
+msgstr "Công ty"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Default"
+msgstr "Mặc định"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/commands/command_palette.xml:0
+#, python-format
+msgid "Delete"
+msgstr "Xóa"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#, python-format
+msgid "Discard changes"
+msgstr "Hủy thay đổi"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Dodger"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Emerald"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/dialog/action_dialog.xml:0
+#, python-format
+msgid "Expand"
+msgstr "Mở rộng"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/list/list_controller.xml:0
+#, python-format
+msgid "Fold"
+msgstr "Gấp"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 100"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 200"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 300"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 400"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 500"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 600"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 700"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 800"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 900"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Green"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model_terms:ir.ui.view,arch_db:udoo_om_ux.edit_menu_access_search_ui
+msgid "Group By"
+msgstr "Nhóm theo"
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_ir_http
+msgid "HTTP Routing"
+msgstr "Định tuyến HTTP"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.js:0
+#, python-format
+msgid "Home action has been set!"
+msgstr "Trang chủ đã được đặt!"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Indigo"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Layout"
+msgstr "Bố cục"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Lime"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.xml:0
+#, python-format
+msgid "Logo"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Look & Feel"
+msgstr "Nhìn và cảm nhận"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Magenta"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_ir_ui_menu
+msgid "Menu"
+msgstr "Menu"
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_company__menus_preset
+msgid "Menus Preset"
+msgstr "Menu cài sẵn"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Navigation"
+msgstr "Điều hướng"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/graph/graph_renderer.js:0
+#, python-format
+msgid "No data"
+msgstr "Không có dữ liệu"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/bookmark.js:0
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.js:0
+#, python-format
+msgid "Notification"
+msgstr "Thông báo"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Open in New Tab"
+msgstr "Mở trong tab mới"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/commands/command_palette.xml:0
+#, python-format
+msgid "Open in new tab"
+msgstr "Mở trong tab mới"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Orange"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model_terms:ir.ui.view,arch_db:udoo_om_ux.edit_menu_access_search_ui
+msgid "Parent"
+msgstr "Cấp cha"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Pin All to Start"
+msgstr "Ghim tất cả vào trang bắt đầu"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Pin to Start"
+msgstr "Ghim vào trang bắt đầu"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/commands/command_palette.xml:0
+#, python-format
+msgid "Pin to top"
+msgstr "Ghim lên đầu"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Pink"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/bookmark.js:0
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Pinned"
+msgstr "Đã ghim"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Primary"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Primary Color"
+msgstr "Màu chủ đạo"
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_auto_hmenu
+msgid "Ps Auto Hmenu"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_company__ps_brand
+msgid "Ps Brand"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_data
+msgid "Ps Data"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_fav_menus
+msgid "Ps Fav Menus"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_menu_orders
+msgid "Ps Menu Orders"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_start_xmlid
+msgid "Ps Start Xmlid"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Quick Pop-up View"
+msgstr "Mở nhanh bằng Popup"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.xml:0
+#, python-format
+msgid "Recents"
+msgstr "Gần đây"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Refresh Data"
+msgstr "Làm mới dữ liệu"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "Remove all bookmarks"
+msgstr "Gỡ toàn bộ dấu trang"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "Remove all bookmarks (keep pinned)"
+msgstr "Gỡ toàn bộ dấu trang (giữ đã ghim)"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Right-edge Chatter"
+msgstr "Khung Chat bên phải"
+
+#. module: udoo_om_ux
+#: model_terms:ir.ui.view,arch_db:udoo_om_ux.edit_menu_access_search_ui
+msgid "Root Menu"
+msgstr "Menu gốc"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Rose"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#, python-format
+msgid "Save manually"
+msgstr "Lưu thủ công"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Select Language"
+msgstr "Chọn ngôn ngữ"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Seriousness and freshness, creating a refined, modern space"
+msgstr "Nghiêm chỉnh và tươi mới, tái tạo không gian tinh tế, hiện đại"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Set as Home Action"
+msgstr "Đặt làm trang chủ"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Sky"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gainsboro"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Switch Scheme"
+msgstr "Chuyển chủ đề"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Sync your options"
+msgstr "Đồng bộ thiết lập"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "TIP"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Theme Preset"
+msgstr "Gói giao diện"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.js:0
+#, python-format
+msgid "There is unsaved data. Do you want to discard the changes and proceed?"
+msgstr "Có dữ liệu chưa được lưu. Bạn có muốn bỏ các thay đổi và tiếp tục?"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Toggle Chatter"
+msgstr "Bật khung Chat"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "User Interface Size"
+msgstr "Kích cỡ giao diện"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/bookmark.js:0
+#, python-format
+msgid "Undefined"
+msgstr "Không xác định"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Unpin from Start"
+msgstr "Bỏ ghim khỏi trang bắt đầu"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/commands/command_palette.xml:0
+#, python-format
+msgid "Unpin from top"
+msgstr "Bỏ ghim lên đầu"
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__up_bookmarks
+msgid "Up Bookmarks"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_res_users_settings
+msgid "User Settings"
+msgstr "Cài đặt người dùng"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid ""
+"When the sidebar is enabled, the horizontal menu will automatically be "
+"hidden."
+msgstr ""
+"Khi thanh điều hướng dọc được bật, thanh điều hướng ngang sẽ tự động ẩn đi."
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Workspace"
+msgstr "Không gian làm việc"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Yellow"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "{{action.act_class}}: {{action.name}}"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "— open me anywhere with"
+msgstr "— truy cập bất kì đâu với"

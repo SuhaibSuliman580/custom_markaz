@@ -1,0 +1,28 @@
+.modal.o_technical_modal {
+    @include media-breakpoint-up(sm) {
+        .o_command_palette {
+            border-radius: $o-border-radius-xl;
+
+            .o_app_icon {
+                height: 22px;
+                width: 22px;
+            }
+
+            .o_command_palette_footer {
+                border-bottom-right-radius: $o-border-radius-xl !important;
+                border-bottom-left-radius: $o-border-radius-xl !important;
+            }
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        &.o_modal_full {
+            .modal-dialog {
+                .modal-content {
+                    height: fit-content;
+                    align-self: baseline;
+                }
+            }
+        }
+    }
+}

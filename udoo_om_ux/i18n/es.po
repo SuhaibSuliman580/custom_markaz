@@ -1,0 +1,671 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* udoo_om_ux
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-04 05:10+0000\n"
+"PO-Revision-Date: 2024-08-04 05:10+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Action"
+msgstr "Acción"
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_ir_actions_actions
+msgid "Actions"
+msgstr "Acciones"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "All Apps"
+msgstr "Todas las aplicaciones"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.js:0
+#: code:addons/udoo_om_ux/static/src/webclient/user_menu.js:0
+#, python-format
+msgid "Appearance"
+msgstr "Apariencia"
+
+#. module: udoo_om_ux
+#: model_terms:ir.ui.view,arch_db:udoo_om_ux.res_company_form_inherit_om
+msgid "Appearance Config"
+msgstr "Configuración de Apariencia"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.xml:0
+#, python-format
+msgid "Apps"
+msgstr "Aplicaciones"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Auto hide horizontal menu"
+msgstr "Ocultar automáticamente el menú horizontal"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Autosize Columns"
+msgstr "Tamaño automático de columnas"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "Bookmark Manager"
+msgstr "Administrador de Marcadores"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.js:0
+#, python-format
+msgid "Bookmark current tab"
+msgstr "Marcar pestaña actual"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "Bookmark current tab and pin"
+msgstr "Marcar pestaña actual y fijar"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.js:0
+#, python-format
+msgid "Bookmark manager"
+msgstr "Gestor de marcadores"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/bookmark.js:0
+#, python-format
+msgid "Bookmark saved. Type ALT+K to access it!"
+msgstr "Marcador guardado. ¡Escribe ALT+K para acceder a él!"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Bookmarks"
+msgstr "Marcadores"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#: code:addons/udoo_om_ux/static/src/views/form/form_view_dialog.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/quick_search.xml:0
+#, python-format
+msgid "Command Palette"
+msgstr "Búsqueda de comandos"
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_res_company
+msgid "Companies"
+msgstr "Compañías"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Default"
+msgstr "Predeterminado"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/commands/command_palette.xml:0
+#, python-format
+msgid "Delete"
+msgstr "Eliminar"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#, python-format
+msgid "Discard"
+msgstr "Descartar"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#, python-format
+msgid "Discard changes"
+msgstr "Descartar cambios"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Dodger"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Emerald"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/dialog/action_dialog.xml:0
+#, python-format
+msgid "Expand"
+msgstr "Expandir"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/list/list_controller.xml:0
+#, python-format
+msgid "Fold"
+msgstr "Plegar"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Full-size Content"
+msgstr "Contenido de tamaño completo"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 100"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 200"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 300"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 400"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 500"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 600"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 700"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 800"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gray 900"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Green"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model_terms:ir.ui.view,arch_db:udoo_om_ux.edit_menu_access_search_ui
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_ir_http
+msgid "HTTP Routing"
+msgstr "Enrutamiento HTTP"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.js:0
+#, python-format
+msgid "Home action has been set!"
+msgstr "¡Se ha establecido la acción de inicio!"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Indigo"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Lime"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.xml:0
+#, python-format
+msgid "Logo"
+msgstr "Logotipo"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Look & Feel"
+msgstr "Apariencia"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Magenta"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_ir_ui_menu
+msgid "Menu"
+msgstr "Menú"
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_company__menus_preset
+msgid "Menus Preset"
+msgstr "Preajuste de menús"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Navigation"
+msgstr "Navegación"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/graph/graph_renderer.js:0
+#, python-format
+msgid "No data"
+msgstr "Sin datos"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/bookmark.js:0
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.js:0
+#, python-format
+msgid "Notification"
+msgstr "Notificación"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Open in New Tab"
+msgstr "Abrir en una pestaña nueva"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/commands/command_palette.xml:0
+#, python-format
+msgid "Open in new tab"
+msgstr "Abrir en una nueva pestaña"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Orange"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model_terms:ir.ui.view,arch_db:udoo_om_ux.edit_menu_access_search_ui
+msgid "Parent"
+msgstr "Padre"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Pin All to Start"
+msgstr "Fijar todo al Inicio"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Pin to Start"
+msgstr "Fijar al Inicio"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/commands/command_palette.xml:0
+#, python-format
+msgid "Pin to top"
+msgstr "Fijar en la parte superior"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Pink"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/bookmark.js:0
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Pinned"
+msgstr "Fijado"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Primary"
+msgstr "Principal"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Primary Color"
+msgstr "Color primario"
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_auto_hmenu
+msgid "Ps Auto Hmenu"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_data
+msgid "Ps Data"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_fav_menus
+msgid "Ps Fav Menus"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_menu_orders
+msgid "Ps Menu Orders"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__ps_start_xmlid
+msgid "Ps Start Xmlid"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Quick Pop-up View"
+msgstr "Vista emergente rápida"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/webclient.xml:0
+#, python-format
+msgid "Recents"
+msgstr "Recientes"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Refresh Data"
+msgstr "Actualizar datos"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "Remove all bookmarks"
+msgstr "Eliminar todos los marcadores"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "Remove all bookmarks (keep pinned)"
+msgstr "Eliminar todos los marcadores (mantener los fijados)"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Right-side Chatter"
+msgstr "Charla del lado derecho"
+
+#. module: udoo_om_ux
+#: model_terms:ir.ui.view,arch_db:udoo_om_ux.edit_menu_access_search_ui
+msgid "Root Menu"
+msgstr "Menú raíz"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Rose"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#, python-format
+msgid "Save"
+msgstr "Guardar"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#: code:addons/udoo_om_ux/static/src/views/form/form_status/indicator.xml:0
+#, python-format
+msgid "Save manually"
+msgstr "Guardar manualmente"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Select Language"
+msgstr "Seleccionar idioma"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Seriousness and freshness, creating a refined, modern space"
+msgstr "Seriedad y frescura, creando un espacio refinado y moderno"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Set as Home Action"
+msgstr "Establecer como acción de inicio"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Sky"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Gainsboro"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.xml:0
+#, python-format
+msgid "Split List View"
+msgstr "Dividir vista de lista"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Switch Scheme"
+msgstr "Cambiar esquema"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Sync your options"
+msgstr "Sincronizar tus opciones"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "TIP"
+msgstr "CONSEJO"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid "Theme Preset"
+msgstr "Tema preestablecido"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/search/control_panel.js:0
+#, python-format
+msgid "There is unsaved data. Do you want to discard the changes and proceed?"
+msgstr "Hay datos no guardados. ¿Desea descartar los cambios y continuar?"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/bookmark.js:0
+#, python-format
+msgid "Undefined"
+msgstr "Indefinido"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Unpin from Start"
+msgstr "Desanclar de Inicio"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/core/commands/command_palette.xml:0
+#, python-format
+msgid "Unpin from top"
+msgstr "Desanclar de la parte superior"
+
+#. module: udoo_om_ux
+#: model:ir.model.fields,field_description:udoo_om_ux.field_res_users_settings__up_bookmarks
+msgid "Up Bookmarks"
+msgstr ""
+
+#. module: udoo_om_ux
+#: model:ir.model,name:udoo_om_ux.model_res_users_settings
+msgid "User Settings"
+msgstr "Ajustes de usuario"
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/configs/appearance.xml:0
+#, python-format
+msgid ""
+"When the sidebar is enabled, the horizontal menu will automatically be "
+"hidden."
+msgstr ""
+"Cuando se habilita la barra lateral, el menú horizontal se oculta "
+"automáticamente."
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "Workspace"
+msgstr "Espacio de trabajo"
+
+#. module: udoo_om_ux
+#. odoo-python
+#: code:addons/udoo_om_ux/models/ir_http.py:0
+#, python-format
+msgid "Yellow"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/navbar/navbar.xml:0
+#, python-format
+msgid "{{action.act_class}}: {{action.name}}"
+msgstr ""
+
+#. module: udoo_om_ux
+#. odoo-javascript
+#: code:addons/udoo_om_ux/static/src/webclient/trays/bookmark.xml:0
+#, python-format
+msgid "— open me anywhere with"
+msgstr "— ábreme en cualquier lugar con"

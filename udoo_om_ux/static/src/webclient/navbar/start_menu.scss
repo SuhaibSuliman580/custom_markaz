@@ -1,0 +1,362 @@
+.o_touch_device {
+    &.nolside {
+        .island {
+            --island-Width: 100vw;
+        }
+    }
+
+    .island {
+        --island-Width: calc(100vw - var(--uw-sidenav, 0px));
+        border: 0 !important;
+        border-radius: $o-border-radius-lg !important;
+        box-shadow: $box-shadow-lg;
+
+        .island_apps {
+            justify-content: center;
+        }
+    }
+}
+
+.island {
+    --island-Width: 492px;
+
+    background-color: $u-island-bg;
+    border-radius: $o-border-radius-lg !important;
+    border-start-start-radius: 0 !important;
+    border-end-start-radius: 0 !important;
+    border-left-color: transparent;
+    overflow: hidden !important;
+    box-sizing: content-box;
+    padding: 0;
+
+    .island_area {
+        display: flex;
+        flex-direction: column;
+        max-height: inherit;
+        min-height: inherit;
+        height: 39.3rem;
+        width: var(--island-Width);
+
+        .u_app_icon_sm {
+            width: 22px;
+        }
+
+        .nav-link,
+        .dropdown-item {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .apps_switch {
+            margin-inline: 15px;
+            display: flex;
+
+            .island_fn {
+                width: 100%;
+                display: inline-flex;
+                justify-content: space-between;
+                align-items: baseline;
+            }
+
+            .u_toolkit {
+                padding-block: 12px;
+
+                .btn:hover {
+                    background-color: $o-gray-200;
+                }
+            }
+        }
+
+        .island_apps {
+            display: flex;
+            flex-flow: row wrap;
+            align-content: start;
+            column-gap: 1rem;
+            row-gap: 1.5rem;
+
+            padding-left: 8px;
+            padding-bottom: 17px;
+            padding-top: 10px;
+
+            .u_draggable {
+                width: 82px;
+                padding-inline: 0;
+
+                .u_app_icon_l2 {
+                    width: min-content;
+                    margin: 0 auto;
+
+                    border-radius: $o-border-radius-md;
+                    background: $u-app-icon;
+                    box-shadow: $u-app-icon-shadow;
+
+                    .u_app_icon_l1 {
+                        padding: 9px;
+
+                        .u_app_icon {
+                            height: 33px;
+                            width: 33px;
+                        }
+                    }
+                }
+
+                .u_app_caption {
+                    font-size: 10pt;
+                    max-width: 77%;
+                    margin: 0 auto;
+                    color: $o-gray-900;
+                }
+            }
+
+            .u_dragged_app {
+                .u_app_icon_l2 {
+                    transform: rotate(-12deg);
+                }
+
+                .u_app_icon {
+                    box-shadow: 0 8px 15px -10px $o-black;
+                }
+            }
+
+            .o_app:hover {
+                background-color: transparent !important;
+
+                .u_app_icon_l2 {
+                    box-shadow: $u-app-icon-shadow-hover;
+
+                    .u_app_icon {
+                        transform: translateY(-1px);
+                    }
+                }
+            }
+        }
+
+        .island_bookmarks {
+            display: flex;
+            flex-direction: column-reverse;
+        }
+    }
+}
+
+@include media-breakpoint-down(lg) {
+    .island {
+        --island-Width: 394px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 1024px),
+(min-width: 320px) and (max-width: 1024px) and (orientation: landscape) {
+    .island {
+        min-height: calc(100vh - 36px);
+    }
+}
+
+.sidenav_content {
+    .nav-item>.nav-link {
+        color: inherit;
+        padding-left: 8px;
+        padding-right: 4px;
+        padding-block: 6px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: $o-border-radius-lg;
+        border: solid 1px $u-sidenav-bg;
+        line-height: $u-lh;
+        cursor: context-menu;
+
+        &:focus,
+        &:hover {
+            background-color: $u-sidenav-item-active-bg;
+            color: $u-sidenav-item-active;
+        }
+
+        &.on {
+            background-color: $u-sidenav-item-active-bg;
+            color: $u-sidenav-item-active;
+            font-weight: 500;
+        }
+    }
+
+    .nav-link>.icon {
+        width: 27px;
+        min-width: 27px;
+        height: 27px;
+        border-radius: $o-border-radius-lg;
+        background: $u-sidenav-app-icon;
+        box-shadow: $u-sidenav-app-icon-shadow;
+
+        img {
+            width: 17px;
+        }
+    }
+
+    .nav-link>.nav-title {
+        margin-right: auto;
+    }
+
+    .nav-arrow {
+        transition: .18s;
+
+        &:after {
+            font-family: "remixicon";
+            color: $u-sidenav-item-arrow;
+            content: "\ef76";
+        }
+
+        &:hover {
+            background-color: $u-sidenav-item-arrow-bg;
+            padding-inline: 4px;
+
+            &:after {
+                color: color-contrast($u-sidenav-item-arrow-bg);
+            }
+        }
+    }
+
+    .subnav {
+        --SubNavWrapper-padding: 10px;
+        --SubNavPad: calc(var(--uw-sidenav, 0px) + 5px);
+
+        overflow: auto;
+        z-index: 1050;
+        position: absolute;
+        left: var(--SubNavPad);
+        right: auto;
+        min-width: var(--SubNavPad);
+        max-height: calc(100vh - 55px);
+        background: rgba($u-subnav-bg, 0.97);
+        backdrop-filter: blur(#{$u-subnav-bf});
+        background-clip: border-box;
+        border: solid 1px $o-border-color;
+        border-radius: $o-border-radius-lg;
+        box-shadow: $box-shadow;
+        text-align: left;
+        user-select: none;
+        display: none;
+
+        &.show {
+            display: block;
+            height: fit-content;
+        }
+
+        .subnav_wrapper {
+            padding: var(--SubNavWrapper-padding);
+
+            >.subnav_section {
+                .subnav_entry {
+                    display: flex;
+                    border-radius: $o-border-radius-sm;
+                    min-width: 100px;
+                    padding: $o-dropdown-vpadding $o-dropdown-hpadding;
+                    list-style: none;
+                    line-height: $u-lh;
+                }
+
+                i.ri-indeterminate-circle-line {
+                    display: none;
+                }
+
+                &:has(div.show) {
+                    i.ri-indeterminate-circle-line {
+                        display: block;
+                    }
+
+                    i.ri-add-circle-line {
+                        display: none;
+                    }
+                }
+
+                .subnav_section_header {
+                    padding-inline: calc(#{$o-dropdown-hpadding} / 2);
+                    margin-block: 6px;
+                    color: $u-subnav-header;
+
+                    >span {
+                        font-weight: 600;
+                        font-size: .678rem;
+                        text-transform: uppercase;
+                    }
+                }
+
+                .dropdown-header {
+                    font-weight: 600;
+                    font-size: .65rem;
+                    text-transform: uppercase;
+                    color: $u-subnav-header;
+                }
+            }
+        }
+    }
+}
+
+.sidenav_footer {
+    .nav {
+        transform: rotate(180deg);
+    }
+
+    .nav-item {
+        position: relative;
+        transform: rotate(-180deg);
+
+        &:after {
+            background-color: $o-gray-400;
+            content: "";
+            height: 0.625rem;
+            left: .7188rem;
+            opacity: .3;
+            position: absolute;
+            top: 0;
+            transform: translateY(-50%);
+            width: 0.0625rem;
+        }
+
+        .nav-link {
+            &:before {
+                background-color: $u-sidenav-muted;
+                border-radius: 0.375rem;
+                content: "";
+                height: 0.375rem;
+                left: .55rem;
+                opacity: .3;
+                position: absolute;
+                top: 0.90625rem -0.1875rem 0.03125rem;
+                width: 0.375rem;
+            }
+
+            &:hover {
+                color: $u-sidenav-accent;
+            }
+
+            color: inherit;
+            font-size: .77rem;
+            padding-bottom: 0.3625rem;
+            padding-left: 1.9rem;
+            padding-top: 0.3625rem;
+            position: relative;
+            align-items: center;
+            display: flex;
+            font-weight: 600;
+        }
+    }
+}
+
+.island_context {
+    display: none;
+    position: fixed;
+    overflow: auto;
+    background: $u-island-bg;
+    background-clip: border-box;
+    text-align: left;
+    user-select: none;
+    box-shadow: $box-shadow-lg;
+    border-radius: $o-border-radius-xl;
+    left: auto;
+    top: auto;
+    z-index: 1000;
+    padding-block: 7px;
+
+    &.show {
+        display: block;
+    }
+}

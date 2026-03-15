@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+
+    <t t-inherit="web.ListView.Buttons" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('o_list_buttons')]" position="after">
+            <span t-if="model.root.isGrouped" role="button" class="btn btn-secondary d-flex align-items-center px-2" data-hotkey="m" data-tooltip="Fold" t-on-click="expandFoldGroups">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-square-stack"><path d="M4 10c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2"/><path d="M10 16c-1.1 0-2-.9-2-2v-4c0-1.1.9-2 2-2h4c1.1 0 2 .9 2 2"/><rect width="8" height="8" x="14" y="14" rx="2"/></svg>
+            </span>
+        </xpath>
+    </t>
+
+    <t t-inherit="web.ListRenderer.RecordRow" t-inherit-mode="extension">
+        <xpath expr="//CheckBox[contains(@value,'record.selected')]" position="after">
+            <div class="d-flex">
+                <span t-att-class="{ 'px-3': !withHandleColumn, 'ps-3': withHandleColumn }" t-out="list.offset + record_index + 1"/>
+            </div>
+        </xpath>
+        <xpath expr="//span[contains(@t-out,'record_index + 1')]" position="before">
+            <xpath expr="//CheckBox[contains(@value,'record.selected')]" position="move"/>
+        </xpath>
+    </t>
+
+</templates>

@@ -1,0 +1,50 @@
+.o_kanban_renderer.o_kanban_grouped {
+
+    .o_kanban_record {
+        margin-top: 12px;
+
+        >div:not(.o_dropdown_kanban),
+        .o_kanban_quick_create {
+            border-radius: $o-border-radius-xl;
+        }
+
+        >div::after {
+            top: calc(var(--KanbanRecord-padding-v) + 4px);
+            height: 36px;
+        }
+    }
+}
+
+.o_kanban_renderer.o_kanban_ungrouped {
+
+    .o_kanban_record {
+
+        >div:not(.o_dropdown_kanban),
+        .o_kanban_quick_create {
+            border-radius: $o-border-radius-xl;
+        }
+
+        >div::after {
+            top: var(--KanbanRecord-padding-v);
+            left: -1px;
+            width: 3px;
+            height: 16%;
+            min-height: 18px;
+            max-height: 27px;
+        }
+
+        .o_kanban_primary_bottom {
+            border-bottom-left-radius: $o-border-radius-xl;
+            border-bottom-right-radius: $o-border-radius-xl;
+        }
+    }
+}
+
+.o_kanban_renderer:has(.o_kanban_record > .o_kanban_record_has_image_fill) {
+    --KanbanRecord-width: 349px;
+}
+
+// Patch for `Events Kanban`
+.oe_kanban_card>.o_kanban_content div.col-4.text-bg-primary {
+    border-radius: $o-border-radius-xl;
+}

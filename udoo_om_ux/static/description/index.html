@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Odoo Omux</title>
+</head>
+
+<body>
+
+    <div class="alert text-white pt-3 pb-3 mt-4" style="background-color: #264875;font-weight: 400;">
+        <p class="fs-5 mb-2"><span class="fa fa-bullhorn me-2"></span>Purchase Note</p>
+        <ul>
+            <li>
+                When you purchase Omux or its distro, you will receive:
+                <ul>
+                    <li>Comprehensive 30-day customer support to ensure a smooth experience</li>
+                    <li>Personalized feature consultations tailored to your unique needs or ideas</li>
+                    <li>Support designing a custom login screen according to your company's suggestions</li>
+                    <li>Guiding some branding customization tricks</li>
+                    <li>Guiding color property adjustment</li>
+                </ul>
+            </li>
+            <li>We're constantly developing distro versions with on-trend styling and offering significantly expanded
+                color customization options, check out the first one at:
+                <a target="_blank" style="color:lemonchiffon"
+                    href="https://apps.odoo.com/apps/themes/browse?search=Lavend+Backend">
+                    Lavend Backend Theme
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="alert text-white border pt-3 pb-1 mt-4" style="font-weight:400;background-color: #567397;">
+        <p class="fs-5 mb-2" style="color:#fff"><span class="fa fa-bullhorn me-2"></span>Latest Update</p>
+        <p>Friday, 01 November 2024 05:35:00</p>
+        <p class="fs-5 mb-2 mt-3" style="color:#fff"><span class="fa fa-bullhorn me-2"></span>Module Suite</p>
+        <ul>
+            <li>
+                <a target="_blank" href="https://apps.odoo.com/apps/modules/17.0/website_om_login/"
+                    style="color:lightgoldenrodyellow">
+                    Website Login Page
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="https://apps.odoo.com/apps/modules/17.0/udoo_web_split_view/"
+                    style="color:lightgoldenrodyellow">
+                    Adaptive Split View
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="https://apps.odoo.com/apps/modules/17.0/web_om_data_auto/"
+                    style="color:lightgoldenrodyellow">
+                    Auto Refresher
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="https://apps.odoo.com/apps/modules/17.0/udoo_om_ux_filter_bar/"
+                    style="color:lightgoldenrodyellow">
+                    Adaptive Filter
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="https://apps.odoo.com/apps/modules/17.0/udoo_om_ux_designer/"
+                    style="color:lightgoldenrodyellow">
+                    Theme Editor
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="https://apps.odoo.com/apps/themes/17.0/udoo_om_ux_metronic/"
+                    style="color:lightgoldenrodyellow">
+                    Metronic Background Shade
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="https://apps.odoo.com/apps/themes/17.0/udoo_om_ux_neutral/"
+                    style="color:lightgoldenrodyellow">
+                    Neutral Background Shade
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="https://apps.odoo.com/apps/themes/17.0/udoo_om_ux_zinc/"
+                    style="color:lightgoldenrodyellow">
+                    Zinc Background Shade
+                </a>
+            </li>
+            <li>
+                <a target="_blank" href="https://apps.odoo.com/apps/themes/17.0/ocoo_om_ux/"
+                    style="color:lightgoldenrodyellow">
+                    Omux Enterprise
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- INTRO -->
+    <!-- ============================================================================================================= -->
+    <main style="color: #353e57; font-size: 1.25rem; font-weight: 400;">
+
+        <section class="s_wd_hero_banner pt-4 pt-lg-5 pb-3 pb-lg-4 text-center">
+            <div class="container">
+                <p class="display-3 fs-1">
+                    <u style="color:#34C28E;">Top #1 Performance</u>
+                    <span style="color: #5c67f7;">Backend Theme</span>
+                </p>
+                <p>Fastest and Ultimate Odoo Themes for your company 2024.</p>
+                <div class="row justify-content-center mt-5">
+                    <div class="col-lg-10 col-xl-8 pb-4">
+                        <p>
+                            Step into the future with our sleek and user-focused Odoo backend theme. Designed to
+                            prioritize usability, our theme offers a seamless experience for all users. From effortless
+                            navigation to advanced customization options, we strike the perfect balance between
+                            simplicity and flexibility. Say goodbye to overwhelming interfaces and embrace a streamlined
+                            and intuitive workflow.
+                        </p>
+                    </div>
+                </div>
+                <div class="media_iframe_video col-lg-10 rounded"
+                    data-oe-expression="//www.youtube.com/embed/zEYkMgWV_WI?autoplay=1&amp;rel=0">
+                    <div class="css_editable_mode_display" />
+                    <div class="media_iframe_video_size" contenteditable="false" />
+                    <iframe src="//www.youtube.com/embed/zEYkMgWV_WI?autoplay=1&amp;rel=0" frameborder="0"
+                        contenteditable="false"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="s_faq_collapse bg-200 mt56 pt40 pb56">
+            <div class="container px-6">
+                <p class="display-3">Frequently Asked Questions?</p>
+                <p class="mb-3">If the answer to your question is not on this page, please contact our customer
+                    <a target="_blank" href="mailto:jupetern24@gmail.com">Support Team</a>
+                </p>
+                <div class="col-lg-12 pt24 pb20">
+                    <div class="accordion" id="feature_faq" role="tablist">
+                        <div class="card bg-white mb-2" data-name="Item">
+                            <a href="#" role="tab" data-bs-target="#faq_whofor" data-bs-toggle="collapse"
+                                style="color: unset;" class="card-header collapsed" aria-expanded="false">
+                                Who is this module suitable for?
+                            </a>
+                            <div id="faq_whofor" class="collapse" role="tabpanel" data-bs-parent="#feature_faq">
+                                <div class="card-body py-4">
+                                    <p class="card-text">↳ This module focuses primarily on UX, making it especially
+                                        suitable for businesses that prioritize user experience. We don't create custom
+                                        styles just for preference; everything is elegantly combined, from colors,
+                                        distance to the smallest interactions.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-white mb-2" data-name="Item">
+                            <a href="#" role="tab" data-bs-target="#faq_purchase" data-bs-toggle="collapse"
+                                style="color: unset;" class="card-header collapsed" aria-expanded="false">
+                                How does the purchasing process work?
+                            </a>
+                            <div id="faq_purchase" class="collapse" role="tabpanel" data-bs-parent="#feature_faq">
+                                <div class="card-body py-4">
+                                    <p class="card-text">↳ You can contact us directly for advice. Additionally, we
+                                        provide useful information below:
+                                    <ul>
+                                        <li><b>How to purchase?</b> Add the module to your cart, proceed with payment,
+                                            and wait for Odoo to validate your transaction. Once completed, you'll be
+                                            able to download the ZIP file of the module.<br />
+                                            (*) Note: Purchases on weekends might take longer, especially in developing
+                                            countries. If urgent, contact us with your invoice to receive the ZIP file
+                                            earlier.
+                                        </li>
+                                        <li><b>Can I try before buying?</b> We provide a live demo with caution, please
+                                            make sure you have carefully reviewed the feature descriptions, once you
+                                            confirm that the requirements are met, consider reaching out to us to test
+                                            before purchasing.</li>
+                                        <li><b>Can I return after purchase?</b> Returns are complex. Ensure the product
+                                            meets your needs before buying. Our software is high quality, and we provide
+                                            strong support for any module-related issues. See terms here: <a
+                                                href="https://apps.odoo.com/apps/sales-conditions" target="_blank">Sales
+                                                Conditions</a></li>
+                                    </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-white mb-2" data-name="Item">
+                            <a href="#" role="tab" data-bs-target="#faq_install" data-bs-toggle="collapse"
+                                style="color: unset;" class="card-header collapsed" aria-expanded="false">
+                                How to install or upgrade a module?
+                            </a>
+                            <div id="faq_install" class="collapse" role="tabpanel" data-bs-parent="#feature_faq">
+                                <div class="card-body py-4">
+                                    <p class="card-text">↳ After downloading the ZIP file, extract its contents to the
+                                        corresponding addons path in your Odoo system. Restart Odoo, go to the Apps
+                                        menu, select Update Apps List, find the module, and proceed with installation.
+                                    </p>
+                                    <p class="card-text">↳ Whenever you upgrade a module purchased from the store,
+                                        ensure you also upgrade any dependent modules included in the downloaded ZIP
+                                        file (if any).
+                                    </p>
+                                    <p class="card-text">↳ Some modules require additional libraries to function. Please
+                                        review this carefully in the product description page.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-white mb-2" data-name="Item">
+                            <a href="#" role="tab" data-bs-target="#faq_build" data-bs-toggle="collapse"
+                                style="color: unset;" class="card-header collapsed" aria-expanded="false">
+                                How was this module developed and built?
+                            </a>
+                            <div id="faq_build" class="collapse" role="tabpanel" data-bs-parent="#feature_faq">
+                                <div class="card-body py-4">
+                                    <p class="card-text">↳ This module is developed and built with two main objectives
+                                        in mind. Firstly, we aim to enhance the user experience of Odoo by not only
+                                        developing new functionalities but also creating a unique user experience.
+                                        Secondly, the module enables customers to apply their own brand identity to the
+                                        user interface using the UI theme designer.
+                                    </p>
+                                    <p class="card-text">↳ From a technical standpoint, the module is built on the OWL
+                                        Framework and follows the Odoo standards. It is meticulously designed and ready
+                                        for expansion, ensuring stability and flexibility in development and feature
+                                        extension.
+                                    </p>
+                                    <p class="card-text">↳ In terms of module organization, this solution is structured
+                                        into multiple modules, with Om Theme as the core, and additional modules
+                                        providing extended options, specifically:
+                                    <ul>
+                                        <li>
+                                            <p>For the core, we have 2 modules for each version of Odoo:</p>
+                                            <ul>
+                                                <li><a target="_blank"
+                                                        href="https://apps.odoo.com/apps/themes/17.0/udoo_om_ux/">
+                                                        Omux Community Backend</a></li>
+                                                <li><a target="_blank"
+                                                        href="https://apps.odoo.com/apps/themes/17.0/ocoo_om_ux/">
+                                                        Omux Enterprise Backend</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <p>The core theme comes with a default color scheme called Gainsboro Theme
+                                                Preset. Additionally, we provide additional pre-designed color schemes
+                                                for you to choose from:</p>
+                                            <ul>
+                                                <li><a target="_blank"
+                                                        href="https://apps.odoo.com/apps/themes/17.0/udoo_om_ux_zinc/">Metronic
+                                                        Background Shade</a></li>
+                                                <li><a target="_blank"
+                                                        href="https://apps.odoo.com/apps/themes/17.0/udoo_om_ux_zinc/">Neutral
+                                                        Background Shade</a></li>
+                                                <li><a target="_blank"
+                                                        href="https://apps.odoo.com/apps/themes/17.0/udoo_om_ux_zinc/">Zinc
+                                                        Background Shade</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <p>For advanced theming needs, we offer a powerful tool that allows users to
+                                                design and select colors for their system:</p>
+                                            <ul>
+                                                <li><a target="_blank"
+                                                        href="https://apps.odoo.com/apps/modules/17.0/udoo_om_ux_designer/">
+                                                        Theme Editor</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <p>Empowers users to effortlessly filter lists with an integrated search bar
+                                                and filter bar:</p>
+                                            <ul>
+                                                <li><a target="_blank"
+                                                        href="https://apps.odoo.com/apps/modules/17.0/udoo_om_ux_filter_bar/">
+                                                        Adaptive Filter</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-white mb-2" data-name="Item">
+                            <a href="#" role="tab" data-bs-target="#faq_theming" data-bs-toggle="collapse"
+                                style="color: unset;" class="card-header collapsed" aria-expanded="false">
+                                How far does the theming capability of this module go?
+                            </a>
+                            <div id="faq_theming" class="collapse" role="tabpanel" data-bs-parent="#feature_faq">
+                                <div class="card-body py-4">
+                                    <p class="card-text">↳ Theming variables come in the form of SCSS variables and
+                                        JSON. This enables customers to apply their own brand identity to the user
+                                        interface using the UI theme designer, which works across all Odoo UI
+                                        technologies. It allows customers to easily change a few basic colors (quick
+                                        theming) as well as individual control colors (detailed theming).
+                                    </p>
+                                    <p>↳ Some customers will simply replace the logo or change the main branding colors
+                                        of the UI by replacing the default brand and base colors of the theme. Other
+                                        customers want more control to change the colors of the UI controls. Theming is
+                                        driven by customer requirements and works using a top down approach, from quick
+                                        to detailed UI control adaptations:
+                                    <ul>
+                                        <li><b>Quick theming</b>: replacing&nbsp;logo and main brand colors</li>
+                                        <li><strong>Detailed theming</strong>: replacing detailed color values of
+                                            specific or group UI controls</li>
+                                    </ul>
+                                    </p>
+                                    <p class="card-text">↳ For quick theming, we offers meticulously curated sets of 12
+                                        color palettes, specifically tailored to meet the diverse color selection
+                                        requirements of a wide range of businesses. Additionally, you have the option to
+                                        combine these palettes with pre-designed color packs, such as Zinc, Neutral, and
+                                        Metronic. These packs introduce notable variations in the overall warmth,
+                                        coolness, brightness, and darkness of the background, enhancing the overall
+                                        aesthetic appeal and visual experience.</p>
+                                    <p class="card-text">↳ For detailed theming, we have developed a dedicated tool that
+                                        allows customers to directly modify the theming variables on their system
+                                        without the need for programming. This tool is accompanied by a powerful color
+                                        picker commonly used by designers. This opens up almost limitless customization
+                                        possibilities.</p>
+                                    <p class="card-text">↳ As an expert, you have the ability to customize various
+                                        aspects of the web interface. Here is a summary of the customization
+                                        capabilities:
+                                    <ul>
+                                        <li>You have the ability to customize the colors of sidebar, topbar, start menu,
+                                            graph color palettes and various web components, such as buttons, labels,
+                                            inputs, cards, etc. This customization extends to creating distinct versions
+                                            for both the light and dark themes of the interface. By doing so, you ensure
+                                            clarity and differentiation between these two color modes. Tailoring the
+                                            colors, contrast, and other design elements allows you to create a unique
+                                            and personalized experience for both the light and dark modes, aligning with
+                                            your preferences and usage purposes.</li>
+                                        <li>You can adjust the size of the sidebar, topbar, and the spacing of items in
+                                            the list view, customization offers even more possibilities</li>
+                                        <li>You can customize the web page prefix (which is typically set to "Odoo" by
+                                            default) and replace the company logo on the sidebar.</li>
+                                    </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-white mb-2" data-name="Item">
+                            <a href="#" role="tab" data-bs-target="#faq_multilang" data-bs-toggle="collapse"
+                                style="color: unset;" class="card-header collapsed" aria-expanded="false">
+                                Does this module support multilingual language?
+                            </a>
+                            <div id="faq_multilang" class="collapse" role="tabpanel" data-bs-parent="#feature_faq">
+                                <div class="card-body py-4">
+                                    <p class="card-text">↳ Yes, this module supports multiple languages. It has been
+                                        programmed according to Odoo's i18n standard. Currently, the supported languages
+                                        include:
+                                    <ul>
+                                        <li>Arabic</li>
+                                        <li>English</li>
+                                        <li>Japanese</li>
+                                        <li>Simplified Chinese</li>
+                                        <li>Spanish</li>
+                                        <li>Ukrainian</li>
+                                        <li>Vietnamese</li>
+                                    </ul>
+                                    </p>
+                                    <p class="card-text">↳ If your language is not on the list, we are ready to update
+                                        the translation for you. We are also ready to collaborate in improving the
+                                        translation in case there are any areas that need improvement.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-white mb-2" data-name="Item">
+                            <a href="#" role="tab" data-bs-target="#faq_startmenu" data-bs-toggle="collapse"
+                                style="color: unset;" class="card-header collapsed" aria-expanded="false">
+                                How does the Start Menu work?
+                            </a>
+                            <div id="faq_startmenu" class="collapse" role="tabpanel" data-bs-parent="#feature_faq">
+                                <div class="card-body py-4">
+                                    <p class="card-text">↳ You can toggle the Start Menu using one of two methods: by
+                                        clicking the square button located in the left area of the topbar or by pressing
+                                        the keyboard shortcut <code>alt+h</code>.
+                                    </p>
+                                    <p class="card-text">↳ Here, you can customize the light and dark themes, language
+                                        settings, manage bookmarks, all apps, and pinned apps. Pinned apps and bookmarks
+                                        can be reorganized by long-pressing the app icon and dragging it to the desired
+                                        position. The order of pinned apps corresponds directly to the app list on the
+                                        sidebar. However, you also have the option to display all apps on the sidebar.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-white mb-2" data-name="Item">
+                            <a href="#" role="tab" data-bs-target="#faq_bookmark" data-bs-toggle="collapse"
+                                style="color: unset;" class="card-header collapsed" aria-expanded="false">
+                                How does the Bookmark Manager work?
+                            </a>
+                            <div id="faq_bookmark" class="collapse" role="tabpanel" data-bs-parent="#feature_faq">
+                                <div class="card-body py-4">
+                                    <p class="card-text">↳ You have several ways to save bookmarks. Here are the
+                                        options:
+                                    <ul>
+                                        <li>Through the "Bookmark current tab" command in the Command Palette popup
+                                            (click the Command Palette button on the top bar to open it)</li>
+                                        <li>Through the "Bookmark current tab" or "Bookmark current tab and pin"
+                                            commands in the Bookmark Manager popup (click the Bookmark Manager button on
+                                            the top bar or press <code>alt+k</code> to open it)</li>
+                                        <li>Using the shortcut <code>ctrl+k+enter</code></li>
+                                    </ul>
+                                    </p>
+                                    <p class="card-text">↳ You can manage bookmarks through the Bookmark Manager popup
+                                        or directly in the Start Menu. In the Start Menu, you can also arrange their
+                                        order by drag and drop. Each bookmark item is equipped with actions such as
+                                        delete, pin to top, and open in a new tab.</p>
+                                    <p class="card-text">↳ >The bookmark search capability is also very powerful. You
+                                        can search for bookmarks using keywords and it supports fuzzy search, which
+                                        allows you to find bookmarks based on similar keywords. This makes it easier to
+                                        quickly locate specific bookmarks even if you don't remember the exact keyword
+                                        or phrase.</p>
+                                    <p class="card-text">↳ You can save bookmarks for almost all types of screens in
+                                        Odoo, and the opening speed is very fast, almost instant, without the need to
+                                        reload any pages. You have two available commands to delete all bookmarks or
+                                        delete unpinned bookmarks.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-white mb-2" data-name="Item">
+                            <a href="#" role="tab" data-bs-target="#faq_sidenav" data-bs-toggle="collapse"
+                                style="color: unset;" class="card-header collapsed" aria-expanded="false">
+                                How does the Dual-tier Sidebar work?
+                            </a>
+                            <div id="faq_sidenav" class="collapse" role="tabpanel" data-bs-parent="#feature_faq">
+                                <div class="card-body py-4">
+                                    <p class="card-text">↳ You can hide the sidebar using one of two methods: by
+                                        clicking the interactive button located in the middle-left area of the sidebar
+                                        or by pressing the keyboard shortcut <code>ctrl+shift+left</code>.
+                                    </p>
+                                    <p class="card-text">↳ To access the submenus, you can either click the interactive
+                                        button (represented by three dots) on the respective menu item or right-click on
+                                        the menu item itself.</p>
+                                    <p class="card-text">↳ By default, the sidebar and horizontal menu will work
+                                        together. However, if you wish to hide the horizontal menu while using the
+                                        sidebar, you can customize this setting in the personalization options found in
+                                        the user menu.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-white mb-2" data-name="Item">
+                            <a href="#" role="tab" data-bs-target="#faq_quick_kanban" data-bs-toggle="collapse"
+                                style="color: unset;" class="card-header collapsed" aria-expanded="false">
+                                How does the Quick Pop-up view mode work?
+                            </a>
+                            <div id="faq_quick_kanban" class="collapse" role="tabpanel" data-bs-parent="#feature_faq">
+                                <div class="card-body py-4">
+                                    <p class="card-text">↳ There are two ways to access this feature: by holding the
+                                        <code>shift</code> key and clicking on an item on the Kanban board or by
+                                        enabling it through the smart button located in the top right corner.
+                                    </p>
+                                    <p class="card-text">↳ To close the pop-up, you can either click the close button or
+                                        use the <code>esc</code> key. To quickly save and close the pop-up, press
+                                        <code>ctrl+enter</code>.
+                                    </p>
+                                    <p class="card-text">↳ The lifecycle of this feature will end when you exit the
+                                        current Kanban board or disable it using the smart button.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-white mb-2" data-name="Item">
+                            <a href="#" role="tab" data-bs-target="#faq_sidepage" data-bs-toggle="collapse"
+                                style="color: unset;" class="card-header collapsed" aria-expanded="false">
+                                How to control the position of the content side page?
+                            </a>
+                            <div id="faq_sidepage" class="collapse" role="tabpanel" data-bs-parent="#feature_faq">
+                                <div class="card-body py-4">
+                                    <p class="card-text">↳ There are two ways to hide/show the chatter: through the
+                                        interactive button located in the top right corner of the form view or by using
+                                        the shortcut key <code>ctrl+shift+right</code>.
+                                    </p>
+                                    <p class="card-text">↳ On any form view, using the functions in the smart button,
+                                        you can instantly change the position of the side page / chatter or even hide it
+                                        globally.
+                                    </p>
+                                    <p class="card-text">↳ Press and drag the separator to adjust the proportion between
+                                        the left anf right panels. The proportion will be reset to its initial state
+                                        when you reload the page or end the session.
+                                    </p>
+                                    <p class="card-text">↳ For certain tablets with limited screen space, you may need
+                                        to change the default position of the chatter. You can try changing it through
+                                        the User Interface Size option in Appearance.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-white mb-2" data-name="Item">
+                            <a href="#" role="tab" data-bs-target="#faq_recent" data-bs-toggle="collapse"
+                                style="color: unset;" class="card-header collapsed" aria-expanded="false">
+                                How are recently records processed automatically?
+                            </a>
+                            <div id="faq_recent" class="collapse" role="tabpanel" data-bs-parent="#feature_faq">
+                                <div class="card-body py-4">
+                                    <p class="card-text">↳ This feature now only saves the access history of records in
+                                        the detail view. To ensure system performance, the record history is
+                                        synchronized only when you end your session (close the tab or browser).
+                                    </p>
+                                    <p class="card-text">↳ Duplicate records are automatically deleted at the end of
+                                        each session, ensuring a clean and efficient record history.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-white mb-2" data-name="Item">
+                            <a href="#" role="tab" data-bs-target="#faq_rtl" data-bs-toggle="collapse"
+                                style="color: unset;" class="card-header collapsed" aria-expanded="false">
+                                Does this theme support RTL layout?
+                            </a>
+                            <div id="faq_rtl" class="collapse" role="tabpanel" data-bs-parent="#feature_faq">
+                                <div class="card-body py-4">
+                                    <p class="card-text">↳ Absolutely, every detail, from individual characters to
+                                        dynamic features like layout sizing and switching side page position, has been
+                                        designed to work seamlessly in both RTL and LTR (Left-to-Right) directions.
+                                    </p>
+                                    <p class="card-text">↳ For additional information, if you are using the Odoo
+                                        Community version, please ensure that the server has the RTLCSS library
+                                        installed, refer to the official Odoo documentation:
+                                        <a target="_blank"
+                                            href="https://www.odoo.com/documentation/17.0/administration/on_premise/source.html#dependencies">
+                                            Note for languages using a right-to-left interface</a>.
+                                        <br />
+                                        In case you encounter any issues, please follow these steps:
+                                    <ul>
+                                        <li>Step 1: Make sure RTLCSS is installed globally. Also, Node.js and NPM
+                                        </li>
+                                        <li>Step 2: Restart Odoo and enable developer mode</li>
+                                        <li>Step 3: Click on the bug icon in the top bar, and select "Regenerate Assets
+                                            Bundles"</li>
+                                        <li>Step 4: Switch to an RTL language (such as Arabic or Hebrew) and experience
+                                            the change.
+                                        </li>
+                                    </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 my-4 rounded-3" style="background-color: #F7F6F9;">
+            <div class="container px-4">
+                <p class="display-3 fw-light text-lg-center mb-4 pb-2"><span class="text-white px-3 rounded"
+                        style="background-color:#71ab43">Adaptive Navigation</span> Space</p>
+                <p class="mb-5 text-center">
+                    Our theme draws inspiration from modern operating systems, providing a smooth and user-friendly
+                    navigation menu. Its intuitive interface allows users to easily access their favorite apps, manage
+                    bookmarks, recent views, and explore the wide range of available applications. Integrated keyboard
+                    shortcuts further enhance user productivity, enabling quick actions to be performed with ease.
+                </p>
+                <div class="row justify-content-center">
+                    <div class="col-md-10 col-lg-4">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/fav.webp"
+                            class="img-thumbnail mb-4">
+                        <p class="fw-bold">Instantly access frequently used tasks</p>
+                        <p>Effortlessly customize and organize your favorite apps. Pin for quick access, arrange to your
+                            liking, and set as startup apps. Streamline your workflow with personalized efficiency.
+                        </p>
+                    </div>
+                    <div class="col-md-10 col-lg-4">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/bmk.webp"
+                            class="img-thumbnail mb-4">
+                        <p class="fw-bold">Store and organize critical pages</p>
+                        <p>
+                            You can store and manage important bookmarks, such as orders, documents, or specific
+                            features, for easy access and seamless continuation of work without wasting time searching.
+                        </p>
+                    </div>
+                    <div class="col-md-10 col-lg-4">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/apps.webp"
+                            class="img-thumbnail mb-4">
+                        <p class="fw-bold">Explore all available applications</p>
+                        <p>Discover a comprehensive list of existing applications. The flexible interface allows you to
+                            browse through all available applications, search, and explore what your system has to
+                            offer.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 my-4 rounded-3" style="background-color: #F1F6F0;">
+            <div class="container px-4">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-lg-6 order-2 order-lg-1">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/sidenav.webp"
+                            class="img-thumbnail">
+                    </div>
+                    <div class="col-lg-6 col-xl-5 order-1 order-lg-2">
+                        <p class="fw-bold fs-4">Dual-tier Sidebar Navigation</p>
+                        <p>
+                            Embrace a fresh approach to organizing navigation items with our innovative sidebar design.
+                            We introduce a second-tier sidebar that optimizes accessibility and efficiency, eliminating
+                            the need for vertical stacking. This design seamlessly accommodates extensive menus and
+                            allows for future expansion. Users have the freedom to personalize their navigation
+                            experience and easily toggle between options using interactive button or shortcut keys.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 my-4 rounded-3" style="background-color: #F7F6F9;">
+            <div class="container px-4">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <p class="fw-bold fs-4">The Classic and Modern Menu</p>
+                        <p>A perfect blend of classic and modern design. Unlike other themes, it offers you the
+                            flexibility to have both the side menu and top menu simultaneously. This unique feature
+                            greatly enhances the user experience, particularly for those accustomed to the original Odoo
+                            menu.
+                        </p>
+                        <p>Experience the best of both worlds with our theme, combining the familiarity of the
+                            traditional Odoo interface with a touch of contemporary aesthetics.
+                        </p>
+                    </div>
+                    <div class="col-lg-6 offset-lg-1">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/hmenu.webp"
+                            class="img-thumbnail">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 my-4 rounded-3" style="background-color: #F1F6F0;">
+            <div class="container px-4">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <p class="fw-bold fs-4">Personalize the Start Screen</p>
+                        <p>Original Odoo limits the ability to set the start screen (the first screen displayed when
+                            logged in) at the system level. With Omux, you can do this according to each user's
+                            settings.
+                        </p>
+                        <p>
+                            Moreover, the Home Action is linked to the Company Logo, allowing you to easily navigate to
+                            your home view with just a single click on the Logo. Combined with the ability to customize
+                            menu items on the sidenav and start menu, you have full control to create your own unique
+                            workspace.
+                        </p>
+                    </div>
+                    <div class="col-lg-6 offset-lg-1">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/haction.png"
+                            class="img-thumbnail">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 my-4 rounded-3" style="background-color: #F7F6F9;">
+            <div class="container px-4">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-lg-6 order-2 order-lg-1">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/fuzzy_menus.webp"
+                            class="img-thumbnail">
+                    </div>
+                    <div class="col-lg-6 col-xl-5 order-1 order-lg-2">
+                        <p class="fw-bold fs-4">Global Menu Search</p>
+                        <p>
+                            Unlock the power to effortlessly search across a broad spectrum of menus, ranging from main
+                            menus to intricate submenus. With our intelligent fuzzy search algorithm, users can enjoy
+                            unparalleled flexibility, making it easier than ever to find the exact functions they are
+                            looking for.
+                        </p>
+                        <p>
+                            Additionally, our enhanced search capability extends to bookmarks, allowing users to search
+                            for their saved bookmarks using the same intuitive approach.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 my-4 rounded-3" style="background-color: #F1F6F0;">
+            <div class="container px-4">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <p class="fw-bold fs-4">Recent Views</p>
+                        <p>Recent Views" feature aims to ensure the continuity of a user's workflow. The idea is to keep
+                            track of the user's actions when opening records and allow easy access to these actions
+                            through the "Recents" section in the sidebar. This enables users to quickly navigate
+                            back to previously opened records.
+                        </p>
+                        <p>Users can conveniently access their recently visited pages with just a few clicks. This
+                            functionality eliminates the hassle of manually searching or bookmarking pages.
+                        </p>
+                    </div>
+                    <div class="col-lg-6 offset-lg-1">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/recents.webp"
+                            class="img-thumbnail">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pb-5">
+            <div class="container">
+                <p class="fs-2 fw-bold text-center mb-4">Quick Theming</p>
+                <p class="text-center mb-5">
+                    We offers meticulously curated sets of 12 color palettes, specifically tailored to meet the diverse
+                    color selection requirements of a wide range of businesses. Additionally, you have the option to
+                    combine these palettes with pre-designed color packs, such as Zinc, Neutral, and Metronic. These
+                    packs introduce notable variations in the overall warmth, coolness, brightness, and darkness of the
+                    background, enhancing the overall aesthetic appeal and visual experience.
+                </p>
+                <div class="col-lg-12 mx-auto">
+                    <div id="quick_theming" class="carousel slide position-sticky img-thumbnail mb-3 overflow-hidden"
+                        data-bs-ride="carousel" data-bs-interval="5000" style="border-radius:17px">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/palletes/_1.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/palletes/_2.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/palletes/_3.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/palletes/_4.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/palletes/_5.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/palletes/_6.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/palletes/_7.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/palletes/_8.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/palletes/_9.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/palletes/_10.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/palletes/_11.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/palletes/_12.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/palletes/_13.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/palletes/_14.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#quick_theming" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"
+                                style="background-color:black; border-radius:5px; padding:15px"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#quick_theming" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"
+                                style="background-color:black; border-radius:5px; padding:15px"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pb-5">
+            <div class="container">
+                <p class="fs-2 fw-bold text-center mb-4">Detailed Theming</p>
+                <p class="text-center mb-5">
+                    When combined with the <a target="_blank"
+                        href="https://apps.odoo.com/apps/modules/17.0/udoo_om_ux_designer/">
+                        Om Theme Editor </a> extension module, you will gain the ability to customize every detail of
+                    the interface. Our user-friendly interface and robust color picker put the power of customization in
+                    your hands. By simply editing the SCSS and JSON parameters, you can easily transform the look and
+                    feel of your UI, bringing your vision to life. The tool is targeted at different user groups,
+                    including developers, visual designers, and administrators.</p>
+                <div class="col-lg-12 mx-auto">
+                    <div id="detailed_theming" class="carousel slide position-sticky img-thumbnail mb-3 overflow-hidden"
+                        data-bs-ride="carousel" data-bs-interval="4000" style="border-radius:17px">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_designer/demo/_1.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_designer/demo/_2.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_designer/demo/_3.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_designer/demo/_4.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_designer/demo/_5.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_designer/demo/_6.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_designer/demo/_7.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_designer/demo/_8.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_designer/demo/_9.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_designer/demo/_10.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_designer/demo/_11.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_designer/demo/_12.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_designer/demo/_13.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_designer/demo/_14.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_designer/demo/_15.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_designer/demo/_16.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_designer/demo/_17.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_designer/demo/_18.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                            <div class="carousel-item" style="min-height: 0px;">
+                                <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_designer/demo/_19.png"
+                                    class="d-block w-100" style="border-radius:10px">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#detailed_theming" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"
+                                style="background-color:black; border-radius:5px; padding:15px"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#detailed_theming" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"
+                                style="background-color:black; border-radius:5px; padding:15px"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container">
+                <p class="display-2 text-center mb-5">Seamless Viewing Approaches</p>
+                <p class="text-center mb-5">
+                    Our theme allows you to seamlessly browse Kanban boards with the quick pop-up view.
+                    Instead of navigating to a separate screen, you can conveniently open records in a pop-up window,
+                    enabling a smoother and more streamlined workflow. This feature saves you time and effort, ensuring
+                    a seamless user experience while managing your Kanban tasks.
+                </p>
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 pb-5">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/kpop.webp"
+                            class="img-thumbnail">
+                        <p class="fw-bold mt-3">Seamlessly browse Kanban using quick pop-up view</p>
+                        <p class="small">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-lg-6 pb40 order-2 order-lg-1">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/ntab.webp"
+                            class="img-thumbnail">
+                    </div>
+                    <div class="col-lg-6 col-xl-5 pb40 order-1 order-lg-2">
+                        <p class="fw-bold fs-3">Open in New Tab</p>
+                        <p>In Odoo, as a web app, traditional web-like navigation is not available, particularly in tree
+                            view or kanban view screens. This limitation prevents users from opening records in new tabs
+                            within the browser. However, I have found a solution to address this fundamental issue while
+                            maintaining the familiar browser user experience.
+                        </p>
+                        <p>
+                            By simply holding down the <code>CTRL</code> key before clicking on a record, you can
+                            seamlessly open it in a new tab.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-lg-6 pb40 order-2 order-lg-1">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/fold.webp"
+                            class="img-thumbnail">
+                    </div>
+                    <div class="col-lg-6 col-xl-5 pb40 order-1 order-lg-2">
+                        <p class="fw-bold fs-3">Folding group items in list views</p>
+                        <p>This feature provides users with the flexibility to view all the records within a folded
+                            group when necessary. By expanding the folded groups, users can easily access and review the
+                            complete set of records, ensuring a comprehensive understanding of the data presented in the
+                            list view.
+                        </p>
+                        <p>This enhances user experience and facilitates efficient data analysis and decision-making
+                            within Odoo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 my-4 rounded-3" style="background-color: #F1F6F0;">
+            <div class="container px-4">
+                <div class="row justify-content-center">
+                    <p class="display-3 fw-light text-lg-center mb-4"><span class="text-white px-3 rounded"
+                            style="background-color:#71ab43">Accessible</span> Navigation Back</p>
+                    <div class="col-lg-8 text-lg-center pb-2">
+                        <p>
+                            No more struggling to position your cursor on a tiny breadcrumb. We've created a large,
+                            real, and centered back button just for you. Your back navigation experience will improve
+                            instantly!
+                        </p>
+                    </div>
+                    <div class="col-lg-10 position-relative">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/back.png"
+                            class="img-thumbnail">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 my-4 rounded-3" style="background-color: #F7F6F9;">
+            <div class="container px-4">
+                <div class="row justify-content-center">
+                    <p class="display-3 fw-light text-lg-center mb-4"><span class="text-white px-3 rounded"
+                            style="background-color:#71ab43">Smart</span> Refresh Button</p>
+                    <div class="col-lg-8 text-lg-center pb-2">
+                        <p>
+                            With a single click, the content is instantly refreshed, eliminating the need to refresh the
+                            entire web page. Rest assured, if you have any unsaved changes, the system provides a
+                            warning to ensure the safety of your work.
+                        </p>
+                    </div>
+                    <div class="row g-5 my-0">
+                        <div class="col-lg-4 my-0">
+                            <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/reform.webp"
+                                class="img-thumbnail mb-4">
+                            <p class="fw-bold">Refresh Form View</p>
+                            <p class="small">Keep your information up to date with a simple refresh of the form view.
+                            </p>
+                        </div>
+                        <div class="col-lg-4 my-0">
+                            <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/reflist.webp"
+                                class="img-thumbnail mb-4">
+                            <p class="fw-bold">Refresh List View</p>
+                            <p class="small">Keep your information up to date with a simple refresh of the list or
+                                kanban view.
+                            </p>
+                        </div>
+                        <div class="col-lg-4 my-0">
+                            <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/refset.webp"
+                                class="img-thumbnail mb-4">
+                            <p class="fw-bold">Refresh Setting View</p>
+                            <p class="small">Make sure your settings are always current by refreshing the setting view.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 my-4 rounded-3" style="background-color: #F7F6F9;">
+            <div class="container px-4">
+                <div class="row justify-content-center">
+                    <p class="display-3 fw-light text-lg-center mb-4"><span class="text-white px-3 rounded"
+                            style="background-color:#71ab43">Intuitive Search</span> Experience</p>
+                    <div class="col-lg-8 text-lg-center pb-2">
+                        <p>
+                            When combined with the <a target="_blank"
+                                href="https://apps.odoo.com/apps/modules/17.0/ocoo_om_ux_filter_bar/">
+                                Advanced Adaptive Filter</a> extension, your data search experience is
+                            instantly improved. With our lean design, we've minimized extra steps to give you a faster,
+                            smoother experience. Every feature is designed to work together effortlessly.
+                        </p>
+                    </div>
+                    <div class="col-lg-10 position-relative">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux_filter_bar/screens/intuitive.webp"
+                            class="img-thumbnail">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container">
+                <p class="display-2 text-center mb-5">Eye-friendly Dark-Light Mode</p>
+                <p class="text-center mb-5">
+                    Effortlessly switch between two modes with a simple click, providing a seamless user experience. Our
+                    team has thoughtfully handpicked trending colors that are widely favored, ensuring a visually
+                    appealing interface.
+                </p>
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 pb-5">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/light.webp"
+                            class="img-thumbnail">
+                    </div>
+                    <div class="col-lg-6 pb-5">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/dark.webp"
+                            class="img-thumbnail">
+                    </div>
+                </div>
+                <p class="text-center">
+                    We offer the ability to customize colors for your system through high-quality preset themes. Both us
+                    and our customers can create their own unique experiences. This approach sets us apart from
+                    traditional themes that simply add a few color options directly into their interface, which proves
+                    to be limited in meeting the diverse needs of individuals. With our method, we provide maximum
+                    freedom for users to create personalized and unique experiences that truly cater to their
+                    preferences.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <p class="display-2 text-lg-center mb-5">Stunning Graph View</p>
+                    <div class="col-lg-8 text-lg-center pb-6">
+                        <p>
+                            Beautiful colors that accurately reflect your data, with an improved layout. The graph view
+                            can now automatically adjust sizes on all devices. You can even personalize the colors
+                            according to your business with the <a target="_blank"
+                                href="https://apps.odoo.com/apps/modules/17.0/ocoo_om_ux_designer/">Om Theme
+                                Editor</a>
+                            extension tool.
+                        </p>
+                    </div>
+                    <div class="col-lg-10 position-relative pb-5">
+                        <div class="position-absolute mt-n5 ms-n8 d-none d-lg-block">
+                            <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/graphm.png" width="260"
+                                class="img-thumbnail" alt="">
+                            <img src="https://odoocdn.com/openerp_website/static/src/img/arrows/arrow_lg_03.svg"
+                                height="90" class="ms-auto mt-3 me-7 rotate-320" alt="">
+                        </div>
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/graphd.png"
+                            class="img-thumbnail">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pb-5">
+            <div class="container">
+                <p class="display-4 text-center mb-4"><a target="_blank" style="color: blueviolet;"
+                        href="https://apps.odoo.com/apps/themes/17.0/udoo_om_ux_metronic/"># Metronic Background
+                        Shade</a>
+                </p>
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/metronic_light.png"
+                            class="img-thumbnail mb-4">
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/metronic_dark.png"
+                            class="img-thumbnail mb-4">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pb-5">
+            <div class="container">
+                <p class="display-4 text-center mb-4"><a target="_blank" style="color: coral;"
+                        href="https://apps.odoo.com/apps/themes/17.0/udoo_om_ux_neutral/"># Neutral Background Shade</a>
+                </p>
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/neutral_light.png"
+                            class="img-thumbnail mb-4">
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/neutral_dark.png"
+                            class="img-thumbnail mb-4">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pb-5">
+            <div class="container">
+                <p class="display-4 text-center mb-4"><a target="_blank" style="color: salmon;"
+                        href="https://apps.odoo.com/apps/themes/17.0/udoo_om_ux_zinc/"># Zinc Background Shade</a></p>
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/zinc_light.png"
+                            class="img-thumbnail mb-4">
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/zinc_dark.png"
+                            class="img-thumbnail mb-4">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-8 text-lg-center">
+                        <p class="display-2 mb-5">Flexible layout, for every <span>situation</span></p>
+                        <p>
+                            Our interface solves the problem of dealing with additional content, such as chat boxes or
+                            document viewers, on a page. Unlike the original Odoo interface, our interface allows you to
+                            choose and adjust the width between two content sections flexibly. This customization
+                            capability enhances user experience, providing convenience and ease of use. Furthermore, you
+                            have the option to hide the page when necessary, and we provide shortcut keys for quick
+                            operations.
+                        </p>
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center py-5">
+                    <div class="col-lg-10">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/waside.png"
+                            class="img-thumbnail">
+                        <img src="https://odoocdn.com/openerp_website/static/src/img/arrows/arrow_lg_03.svg"
+                            class="mx-auto my-3">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/naside.png"
+                            class="img-thumbnail">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 my-4 rounded-3" style="background-color: #F7F6F9;">
+            <div class="container px-4">
+                <div class="row justify-content-center">
+                    <p class="display-3 fw-light text-lg-center mb-4"><span class="text-white px-3 rounded"
+                            style="background-color:#71ab43">Flexible Dynamic</span> Interface</p>
+                    <div class="col-lg-8 text-lg-center pb-2">
+                        <p>
+                            Unlock complete control over your workspace with our dynamic UI size configuration! Easily
+                            customize the default layout to match your preferences. For instance, choose XL to place the
+                            Chatter at the bottom or go for XXL to move it to the right side of the form view. Want a
+                            fresh perspective? Switch list views inside forms to Kanban by default with SM UI size.
+                            Best of all, your changes apply instantly—no page refresh needed!
+                        </p>
+                        <p>
+                            Custom functions are built with the ability to remember actions. For example, if you hide
+                            the sidenav, the configuration will be remembered for the corresponding device and will
+                            persist even when you reload the page. Similarly, the customizations can be applied across
+                            device, user, or system scopes, depending on the configuration scenario.
+                        </p>
+                    </div>
+                    <div class="col-lg-10 position-relative">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/uisize.png"
+                            class="img-thumbnail">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pb-5">
+            <div class="container">
+                <p class="display-3 text-center mb-4">Interactive Sidenav</p>
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/sidenav_fold.webp"
+                            class="img-thumbnail mb-4">
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/sidenav_subnav.webp"
+                            class="img-thumbnail mb-4">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pb-5">
+            <div class="container">
+                <p class="display-3 text-center mb-4">Interactive Form View</p>
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/aside_fold.webp"
+                            class="img-thumbnail mb-4">
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/aside_sizing.webp"
+                            class="img-thumbnail mb-4">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pb-5">
+            <div class="container">
+                <p class="display-3 text-center mb-4">Switch Chatter Position</p>
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/aside_right.png"
+                            class="img-thumbnail mb-4">
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/aside_bottom.png"
+                            class="img-thumbnail mb-4">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <p class="display-2 text-lg-center mb-5">Seamless Language Switching</p>
+                    <div class="col-lg-8 text-lg-center pb-6">
+                        <p>
+                            Compared to the original Odoo interface, switching to a new language often requires multiple
+                            steps and can be time-consuming. However, with our interface, you can achieve this with just
+                            a single selection. This saves time and simplifies the language switching process for users,
+                            making it more efficient and user-friendly.
+                        </p>
+                    </div>
+                    <div class="col-lg-10 position-relative pb-5">
+                        <div class="position-absolute mt-n5 ms-n8 d-none d-lg-block">
+                            <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/lang.png" width="340"
+                                class="img-thumbnail" alt="">
+                            <img src="https://odoocdn.com/openerp_website/static/src/img/arrows/arrow_lg_03.svg"
+                                height="90" class="ms-auto mt-3 me-7 rotate-320" alt="">
+                        </div>
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/langv.png"
+                            class="img-thumbnail">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-lg-6 pb40 order-2 order-lg-1">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/rtl.webp"
+                            class="img-thumbnail">
+                    </div>
+                    <div class="col-lg-6 col-xl-5 pb40 order-1 order-lg-2">
+                        <p class="fw-bold fs-3">RTL Layout Direction</p>
+                        <p>The entire functionality is well compatible with RTL (Right-to-Left) layout direction. Even
+                            the resizing panel feature in Split View Mode works perfectly, which is a common issue faced
+                            by modules that focus on marketing but offer superficial products.
+                        </p>
+                        <p>Furthermore, you can easily configure RTL for languages that are typically displayed in LTR
+                            (Left-to-Right) and vice versa, catering to all display orientation requirements.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 text-lg-center col-xl-8 pb-5">
+                        <p class="display-2 mb-5">
+                            Fully Responsive
+                        </p>
+                        <p>Our interface is fully responsive, providing a seamless experience across different devices
+                            and screen sizes. Whether you're using a desktop computer, laptop, tablet, or mobile phone,
+                            our interface automatically adjusts and adapts to ensure optimal usability. Enjoy the
+                            convenience of accessing and using our interface anytime, anywhere, without compromising on
+                            functionality or user experience.
+                        </p>
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center gx-5">
+                    <div class="col-lg-6 text-center text-lg-end">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/mhlight.gif"
+                            class="img-thumbnail mb-5" style="width: 609px;">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/mlight.gif"
+                            class="img-thumbnail mb-5 mb-lg-0" style="width: 609px;">
+                    </div>
+                    <div class="col-lg-6 text-center text-lg-start">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/mdark.gif"
+                            class="img-thumbnail mb-5" style="width: 609px;">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/mhdark.gif"
+                            class="img-thumbnail" style="width: 609px;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 pb-5">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/ipadl.webp"
+                            class="img-thumbnail mb-4">
+                        <p class="fw-bold">Light Mode on Ipad Air</p>
+                        <p class="small">
+                        </p>
+                    </div>
+                    <div class="col-lg-6 pb-5">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/ipadd.webp"
+                            class="img-thumbnail mb-4">
+                        <p class="fw-bold">Dark Mode on Ipad Air</p>
+                        <p class="small">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 pb-5">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/chrome.png"
+                            class="img-thumbnail mb-4">
+                        <p class="fw-bold">Browse on Chrome</p>
+                        <p class="small">
+                        </p>
+                    </div>
+                    <div class="col-lg-6 pb-5">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/firefox.webp"
+                            class="img-thumbnail mb-4">
+                        <p class="fw-bold">Browse on Firefox</p>
+                        <p class="small">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 pb-5">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/web_editor.webp"
+                            class="img-thumbnail mb-4">
+                        <p class="fw-bold">Compatible with Website Editor</p>
+                        <p class="small">
+                        </p>
+                    </div>
+                    <div class="col-lg-6 pb-5">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/neutral_db.png"
+                            class="img-thumbnail mb-4">
+                        <p class="fw-bold">Compatible with Neutralized Database</p>
+                        <p class="small">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 pb-5">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/requiredf.png"
+                            class="img-thumbnail mb-4">
+                        <p class="fw-bold">Friendly Required Fields Visibility</p>
+                        <p class="small">
+                        </p>
+                    </div>
+                    <div class="col-lg-6 pb-5">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/mininav.png"
+                            class="img-thumbnail mb-4">
+                        <p class="fw-bold">Mini Sidenav Mode</p>
+                        <p class="small">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 pb-5">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/stickylh.webp"
+                            class="img-thumbnail mb-4">
+                        <p class="fw-bold">Sticky List View Header</p>
+                        <p class="small">
+                        </p>
+                    </div>
+                    <div class="col-lg-6 pb-5">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/multicl.webp"
+                            class="img-thumbnail mb-4">
+                        <p class="fw-bold">Optimized Multi-Line Table Cell</p>
+                        <p class="small">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 pb-5">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/kanban.webp"
+                            class="img-thumbnail mb-4">
+                        <p class="fw-bold">Streamlined Kanban View</p>
+                        <p class="small">
+                        </p>
+                    </div>
+                    <div class="col-lg-6 pb-5">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/modal.webp"
+                            class="img-thumbnail mb-4">
+                        <p class="fw-bold">Flexible Modal View</p>
+                        <p class="small">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 pb-5">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/loading.png"
+                            class="img-thumbnail mb-4">
+                        <p class="fw-bold">Streamlined Loading Indicator</p>
+                        <p class="small">
+                        </p>
+                    </div>
+                    <div class="col-lg-6 pb-5">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/report_icon.png"
+                            class="img-thumbnail mb-4">
+                        <p class="fw-bold">Friendly Report Action Icon</p>
+                        <p class="small">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 pb-5">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/bsearch.png"
+                            class="img-thumbnail mb-4">
+                        <p class="fw-bold">Streamlined Search Box</p>
+                        <p class="small">
+                        </p>
+                    </div>
+                    <div class="col-lg-6 pb-5">
+                        <img src="//apps.odoocdn.com/apps/assets/17.0/ocoo_om_ux/screens/saved.png"
+                            class="img-thumbnail mb-4">
+                        <p class="fw-bold">Friendly Save Discard Button</p>
+                        <p class="small">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACCESSORIES -->
+        <!-- ============================================================================================================= -->
+
+        <div class="text-center pt-5">
+            <p class="display-2 mb-5 pt-3">Community Theme Presets</p>
+        </div>
+        <div class="row mb-5">
+            <div class="col-lg-4 my-3">
+                <div class="shadow-sm card">
+                    <div>
+                        <a target="_blank" href="https://apps.odoo.com/apps/themes/17.0/udoo_om_ux_metronic/">
+                            <img class="card-img-top img-fluid"
+                                src="//apps.odoocdn.com/apps/assets/17.0/udoo_om_ux_metronic/banner.png">
+                        </a>
+                    </div>
+                    <div class="pb-3 text-center">
+                        <h5 class="m-0"><a target="_blank" class="text-dark"
+                                href="https://apps.odoo.com/apps/themes/17.0/udoo_om_ux_metronic/">
+                                Metronic Background Shade</a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 my-3">
+                <div class="shadow-sm card">
+                    <div>
+                        <a target="_blank" href="https://apps.odoo.com/apps/themes/17.0/udoo_om_ux_neutral/">
+                            <img class="card-img-top img-fluid"
+                                src="//apps.odoocdn.com/apps/assets/17.0/udoo_om_ux_neutral/banner.png">
+                        </a>
+                    </div>
+                    <div class="pb-3 text-center">
+                        <h5 class="m-0"><a target="_blank" class="text-dark"
+                                href="https://apps.odoo.com/apps/themes/17.0/udoo_om_ux_neutral/">
+                                Neutral Background Shade</a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 my-3">
+                <div class="shadow-sm card">
+                    <div>
+                        <a target="_blank" href="https://apps.odoo.com/apps/themes/17.0/udoo_om_ux_zinc/">
+                            <img class="card-img-top img-fluid"
+                                src="//apps.odoocdn.com/apps/assets/17.0/udoo_om_ux_zinc/banner.png">
+                        </a>
+                    </div>
+                    <div class="pb-3 text-center">
+                        <h5 class="m-0"><a target="_blank" class="text-dark"
+                                href="https://apps.odoo.com/apps/themes/17.0/udoo_om_ux_zinc/">
+                                Zinc Background Shade</a>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SUPPORTS -->
+        <!-- ============================================================================================================= -->
+
+        <div class="overflow-hidden mb-5 px-4 py-2 shadow-sm bg-white">
+            <div class="row align-items-center">
+                <div class="col-md-8 text-center text-md-left my-3">
+                    <p class="display-4 mb-2">Technical Help, Queries &amp; Support</p>
+                    <p class="m-0" style="color:#5a5d6b">Please feel free to contact for any suggestion, issue &amp;
+                        queries
+                    </p>
+                </div>
+                <div class="col-md-4 text-center text-md-right my-3">
+                    <a class="small px-3 py-2 my-1" target="_blank" href="mailto:jupetern24@gmail.com"
+                        style="display:inline-block; width: 146px; background-color:#00c4b4; color:#fff; border-radius:3px;">
+                        <i class="fa fa-envelope me-2"></i> Support</a>
+                    <a class="small px-3 py-2 my-1" target="_blank" href="skype:live:.cid.900001f0badbcc22?chat"
+                        style="display:inline-block; width: 146px; background-color:#00AFF0; color:#fff; border-radius:3px;">
+                        <i Class="fa fa-lg fa-skype me-2"></i> Skype Us</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</body>
+
+</html>

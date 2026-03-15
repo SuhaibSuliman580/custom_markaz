@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="uweb.BookmarkManager">
+        <div class="o-dropdown dropdown o-dropdown--no-caret" style="margin-right: .9em">
+            <button class="dropdown-toggle" title="Bookmark Manager" t-on-click="openBookmarkPalette">
+                <i style="transform: rotate(90deg) translateX(-1px); font-size: 1.2rem;" class="ri-book-2-line"/>
+            </button>
+        </div>
+    </t>
+    <t t-name="uweb.BookmarkManager.Footer">
+        <div class="d-flex flex-row justify-content-around">
+            <div><span class='fw-bolder text-primary'>TIP</span> — open me anywhere with <span t-esc="altKey" class='fw-bolder text-primary'/> + <span class='fw-bolder text-primary'>K</span></div>
+            <Dropdown position="'bottom-end'" class="'d-flex ms-auto'" menuClass="'flex-column'" menuDisplay="'d-flex'" togglerClass="'btn btn-sm lh-1 px-1 py-0'">
+                <t t-set-slot="toggler">
+                    <i class="ri-lr ri-list-settings-line"/>
+                </t>
+                <t t-set-slot="default">
+                    <li><a role="menuitem" t-if="action.currentController" t-on-click="bookmarkThis" type="object" class="dropdown-item">Bookmark current tab</a></li>
+                    <li><a role="menuitem" t-if="action.currentController" t-on-click="bookmarkPinThis" type="object" class="dropdown-item">Bookmark current tab and pin</a></li>
+                    <div role="separator" t-if="action.currentController" class="dropdown-divider"/>
+                    <li><a role="menuitem" t-on-click="removeAllUnpinBookmark" type="delete" class="dropdown-item">Remove all bookmarks (keep pinned)</a></li>
+                    <li><a role="menuitem" t-on-click="removeAllBookmark" type="delete" class="dropdown-item">Remove all bookmarks</a></li>
+                </t>
+            </Dropdown>
+        </div>
+    </t>
+
+</templates>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_product_template_form_revenue_distribution" model="ir.ui.view">
+        <field name="name">product.template.form.revenue.distribution</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='general_information']" position="after">
+                <page string="Revenue Distribution">
+                    <group>
+                        <group>
+                            <field name="enable_revenue_distribution"/>
+                            <field name="distribution_total" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <field name="distribution_line_ids"
+                           invisible="not enable_revenue_distribution">
+                        <tree editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="fund_box_id"/>
+                            <field name="account_id"/>
+                            <field name="analytic_account_id"/>
+                            <field name="percentage"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_move_form_distribution_inherit" model="ir.ui.view">
+        <field name="name">account.move.form.distribution.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='price_subtotal']" position="after">
+                <button name="action_generate_distribution_lines"
+                        type="object"
+                        string="توزيع"
+                        class="btn-link"
+                        invisible="hide_distribution_button"/>
+
+                <button name="action_clear_distribution_lines"
+                        type="object"
+                        string="حذف التوزيع"
+                        class="btn-link"
+                        invisible="not has_distribution_generated_lines"/>
+
+                <field name="distribution_generated_line_ids" invisible="1"/>
+                <field name="has_distribution_generated_lines" invisible="1"/>
+                <field name="is_distribution_source" invisible="1"/>
+                <field name="is_distribution_generated" invisible="1"/>
+                <field name="distribution_source_line_id" invisible="1"/>
+                <field name="hide_distribution_button" invisible="1"/>
+                <field name="hide_in_invoice_lines" invisible="1"/>
+                <field name="hide_in_journal_items" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='invoice_line_ids']" position="attributes">
+                <attribute name="domain">[('hide_in_invoice_lines', '=', False)]</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='line_ids']" position="attributes">
+                <attribute name="domain">[('hide_in_journal_items', '=', False)]</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

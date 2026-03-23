@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_syndicate_revenue_distribution_report_tree" model="ir.ui.view">
+        <field name="name">syndicate.revenue.distribution.report.tree</field>
+        <field name="model">syndicate.revenue.distribution.report</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date"/>
+                <field name="move_name"/>
+                <field name="partner_id"/>
+                <field name="product_id"/>
+                <field name="product_tmpl_id"/>
+                <field name="fund_box_id"/>
+                <field name="account_id"/>
+                <field name="amount" sum="Total"/>
+                <field name="company_id" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_syndicate_revenue_distribution_report_search" model="ir.ui.view">
+        <field name="name">syndicate.revenue.distribution.report.search</field>
+        <field name="model">syndicate.revenue.distribution.report</field>
+        <field name="arch" type="xml">
+            <search string="Revenue Distribution">
+                <field name="move_name"/>
+                <field name="partner_id"/>
+                <field name="product_id"/>
+                <field name="product_tmpl_id"/>
+                <field name="fund_box_id"/>
+                <field name="account_id"/>
+                <field name="date"/>
+
+                <filter name="filter_today"
+                        string="Today"
+                        domain="[('date', '=', context_today())]"/>
+
+                <filter name="filter_this_month"
+                        string="This Month"
+                        domain="[('date', '&gt;=', context_today().strftime('%%Y-%%m-01'))]"/>
+
+                <group expand="0" string="Group By">
+                    <filter name="group_by_date"
+                            string="Date"
+                            context="{'group_by': 'date'}"/>
+                    <filter name="group_by_customer"
+                            string="Customer"
+                            context="{'group_by': 'partner_id'}"/>
+                    <filter name="group_by_product"
+                            string="Product"
+                            context="{'group_by': 'product_id'}"/>
+                    <filter name="group_by_product_tmpl"
+                            string="Product Template"
+                            context="{'group_by': 'product_tmpl_id'}"/>
+                    <filter name="group_by_fund_box"
+                            string="Fund Box"
+                            context="{'group_by': 'fund_box_id'}"/>
+                    <filter name="group_by_account"
+                            string="Account"
+                            context="{'group_by': 'account_id'}"/>
+                    <filter name="group_by_company"
+                            string="Company"
+                            context="{'group_by': 'company_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_syndicate_revenue_distribution_report_pivot" model="ir.ui.view">
+        <field name="name">syndicate.revenue.distribution.report.pivot</field>
+        <field name="model">syndicate.revenue.distribution.report</field>
+        <field name="arch" type="xml">
+            <pivot string="Revenue Distribution Analysis">
+                <field name="amount" type="measure"/>
+                <field name="date" type="row"/>
+                <field name="fund_box_id" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_syndicate_revenue_distribution_report" model="ir.actions.act_window">
+        <field name="name">Revenue Distribution</field>
+        <field name="res_model">syndicate.revenue.distribution.report</field>
+        <field name="view_mode">tree,pivot</field>
+        <field name="search_view_id" ref="view_syndicate_revenue_distribution_report_search"/>
+    </record>
+
+    <menuitem id="menu_syndicate_reports_root"
+              name="Reports"
+              parent="syndicate_revenue_distribution.menu_syndicate_root"
+              sequence="50"/>
+
+    <menuitem id="menu_syndicate_revenue_distribution_report"
+              name="Revenue Distribution"
+              parent="menu_syndicate_reports_root"
+              action="action_syndicate_revenue_distribution_report"
+              sequence="10"/>
+
+</odoo>

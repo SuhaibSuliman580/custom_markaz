@@ -23,10 +23,7 @@
                     <group>
                         <group>
                             <field name="partner_id"/>
-                <field name="branch_id"/>
-                <field name="branch_id" optional="show"/>
                             <field name="application_id"/>
-                            <field name="branch_id"/>
                         </group>
                         <group>
                             <field name="period_type"/>
@@ -81,7 +78,6 @@
                 <group expand="0" string="Group By">
                     <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
                     <filter string="Doctor" name="group_partner" context="{'group_by': 'partner_id'}"/>
-                    <filter string="Branch" name="group_branch" context="{'group_by': 'branch_id'}"/>
                 </group>
             </search>
         </field>

@@ -31,8 +31,6 @@ class MembershipPeriod(models.Model):
         'membership.application', string='Application', readonly=True,
     )
     qr_code = fields.Binary(string='QR Code', readonly=True, attachment=True)
-    branch_id = fields.Many2one('res.branch', string='Branch', default=lambda self: self.env.user.branch_id)
-
     renewal_template_id = fields.Many2one(
         'invoice.service.template', string='Renewal Template', required=False,
         help='The template used for invoicing renewal of this membership period.'

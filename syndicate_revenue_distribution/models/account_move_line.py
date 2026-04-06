@@ -79,21 +79,6 @@ class AccountMoveLine(models.Model):
             return self.env['product.revenue.distribution.line']
         return product_tmpl.distribution_line_ids.sorted(key=lambda l: (l.sequence, l.id))
 
-
-    def _check_distribution_branch_consistency(self):
-        self.ensure_one()
-        move_branch = self.move_id.branch_id
-        if not move_branch:
-            return
-        for dist in self._get_distribution_lines():
-            if dist.fund_box_id and dist.fund_box_id.branch_id and dist.fund_box_id.branch_id != move_branch:
-                raise UserError(
-                    "لا يمكن استخدام صندوق تابع لفرع مختلف عن فرع الفاتورة.\n\n"
-                    f"فرع الفاتورة: {move_branch.display_name}\n"
-                    f"فرع الصندوق: {dist.fund_box_id.branch_id.display_name}\n"
-                    f"الصندوق: {dist.fund_box_id.display_name}"
-                )
-
     def _check_can_generate_distribution(self):
         self.ensure_one()
 
@@ -122,8 +107,6 @@ class AccountMoveLine(models.Model):
         total = sum(product_tmpl.distribution_line_ids.mapped('percentage'))
         if abs(total - 100.0) > 0.0001:
             raise UserError("مجموع نسب التوزيع على المنتج يجب أن يساوي 100%.")
-
-        self._check_distribution_branch_consistency()
 
     def action_generate_distribution_lines(self):
         for line in self:

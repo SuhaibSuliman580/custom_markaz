@@ -12,7 +12,6 @@
                         <group>
                             <field name="enable_revenue_distribution"/>
                             <field name="distribution_total" readonly="1"/>
-                            <field name="branch_id" readonly="1"/>
                         </group>
                     </group>
 
@@ -20,9 +19,7 @@
                            invisible="not enable_revenue_distribution">
                         <tree editable="bottom">
                             <field name="sequence" widget="handle"/>
-                            <field name="product_branch_id" invisible="1"/>
-                            <field name="branch_id" invisible="1"/>
-                            <field name="fund_box_id" domain="['&amp;', ('active', '=', True), '|', ('branch_id', '=', False), ('branch_id', '=', product_branch_id)]"/>
+                            <field name="fund_box_id"/>
                             <field name="account_id"/>
                             <field name="analytic_account_id"/>
                             <field name="percentage"/>

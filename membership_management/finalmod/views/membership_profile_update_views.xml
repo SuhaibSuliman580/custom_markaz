@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_membership_profile_update_tree" model="ir.ui.view">
+        <field name="name">membership.profile.update.tree</field>
+        <field name="model">membership.profile.update</field>
+        <field name="arch" type="xml">
+            <tree string="Profile Update Requests" default_order="create_date desc">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="state"/>
+                <field name="create_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_membership_profile_update_form" model="ir.ui.view">
+        <field name="name">membership.profile.update.form</field>
+        <field name="model">membership.profile.update</field>
+        <field name="arch" type="xml">
+            <form string="Profile Update Request">
+                <header>
+                    <button name="action_need_info" type="object" string="Need Info" class="btn-secondary"
+                            attrs="{'invisible': [('state','in',['approved','rejected'])]}"/>
+                    <button name="action_approve" type="object" string="Approve" class="btn-primary"
+                            attrs="{'invisible': [('state','=','approved')]}"/>
+                    <button name="action_reject" type="object" string="Reject" class="btn-danger"
+                            attrs="{'invisible': [('state','=','rejected')]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,need_info,approved,rejected"/>
+                </header>
+
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                            <field name="previous_membership_state" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="officer_notes" placeholder="Notes for the doctor..."/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Requested Data">
+                            <group>
+                                <group string="Identity &amp; Contact">
+                                    <field name="full_name"/>
+                                    <field name="national_id"/>
+                                    <field name="phone"/>
+                                    <field name="email"/>
+                                </group>
+                                <group string="Professional">
+                                    <field name="medical_license_no"/>
+                                    <field name="medical_specialty_id"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Chatter">
+                            <field name="message_follower_ids" widget="mail_followers"/>
+                            <field name="activity_ids" widget="mail_activity"/>
+                            <field name="message_ids" widget="mail_thread"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_membership_profile_update" model="ir.actions.act_window">
+        <field name="name">Profile Update Requests</field>
+        <field name="res_model">membership.profile.update</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create and review doctors' profile update requests.
+            </p>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_membership_card">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="period">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align: center; margin-top: 40px;">
+                            <h1 style="color: #2c3e50;">Membership Card</h1>
+                        </div>
+
+                        <div style="border: 2px solid #2c3e50; border-radius: 12px; padding: 30px;
+                                    max-width: 500px; margin: 30px auto; background-color: #f8f9fa;">
+
+                            <!-- Doctor Name -->
+                            <div style="text-align: center; margin-bottom: 20px;">
+                                <h2 style="margin: 0; color: #2c3e50;">
+                                    <t t-esc="period.partner_id.name"/>
+                                </h2>
+                                <p style="color: #7f8c8d; margin: 5px 0;">Doctor</p>
+                            </div>
+
+                            <hr style="border-color: #2c3e50;"/>
+
+                            <!-- Membership Details -->
+                            <table style="width: 100%; margin: 15px 0;">
+                                <tr>
+                                    <td style="padding: 5px 0;">
+                                        <strong>Membership Number:</strong>
+                                    </td>
+                                    <td style="padding: 5px 0; text-align: right;">
+                                        <t t-esc="period.name"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 5px 0;">
+                                        <strong>Start Date:</strong>
+                                    </td>
+                                    <td style="padding: 5px 0; text-align: right;">
+                                        <t t-esc="period.start_date" t-options="{'widget': 'date'}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 5px 0;">
+                                        <strong>End Date:</strong>
+                                    </td>
+                                    <td style="padding: 5px 0; text-align: right;">
+                                        <t t-esc="period.end_date" t-options="{'widget': 'date'}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 5px 0;">
+                                        <strong>Status:</strong>
+                                    </td>
+                                    <td style="padding: 5px 0; text-align: right;">
+                                        <span t-if="period.state == 'active'"
+                                              style="color: #27ae60; font-weight: bold;">
+                                            Active
+                                        </span>
+                                        <span t-else="" style="color: #e74c3c; font-weight: bold;">
+                                            Expired
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- QR Code -->
+                            <div style="text-align: center; margin-top: 20px;">
+                                <t t-if="period.qr_code">
+                                    <img t-att-src="image_data_uri(period.qr_code)"
+                                         style="width: 150px; height: 150px;"
+                                         alt="QR Code"/>
+                                </t>
+                                <t t-else="">
+                                    <p style="color: #999;">QR Code not available</p>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

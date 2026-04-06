@@ -21,7 +21,7 @@
         </record>
 
         <record id="base.default_user" model="res.users">
-            <field name="groups_id" eval="[(4,ref('branch.group_branch_user_manager'))]"/>
+            <field name="groups_id" eval="[(4,ref('branch.group_branch_user'))]"/>
         </record>
 
         <record id="res_branch_manager_rule" model="ir.rule">
@@ -227,6 +227,24 @@
             <field name="groups" eval="[(4, ref('branch.group_branch_user'))]"/>
         </record>
 
+
+    
+
+        <record id="res_partner_branch_manager_rule" model="ir.rule">
+            <field name="name">Partner Branch Manager</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('branch.group_branch_user_manager'))]"/>
+        </record>
+
+        <record id="res_partner_branch_rule" model="ir.rule">
+            <field name="name">Partner Branch User</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',branch_ids)]</field>
+            <field name="groups" eval="[(4, ref('branch.group_branch_user'))]"/>
+        </record>
 
     </data>
 

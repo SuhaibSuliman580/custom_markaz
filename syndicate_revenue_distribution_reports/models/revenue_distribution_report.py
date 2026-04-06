@@ -16,6 +16,7 @@ class RevenueDistributionReport(models.Model):
     product_tmpl_id = fields.Many2one('product.template', string='Product Template', readonly=True)
     fund_box_id = fields.Many2one('syndicate.fund.box', string='Fund Box', readonly=True)
     account_id = fields.Many2one('account.account', string='Account', readonly=True)
+    branch_id = fields.Many2one('res.branch', string='Branch', readonly=True)
     amount = fields.Float(string='Amount', readonly=True)
     company_id = fields.Many2one('res.company', string='Company', readonly=True)
 
@@ -33,6 +34,7 @@ class RevenueDistributionReport(models.Model):
                     pp.product_tmpl_id AS product_tmpl_id,
                     fb.id AS fund_box_id,
                     aml.account_id AS account_id,
+                    am.branch_id AS branch_id,
                     ABS(aml.balance) AS amount,
                     aml.company_id AS company_id
                 FROM account_move_line aml

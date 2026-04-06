@@ -8,9 +8,11 @@
     'depends': [
         'account',
         'product',
+        'branch',
     ],
     'data': [
         'security/ir.model.access.csv',
+        'security/branch_security.xml',
         'data/sequence.xml',
         'views/fund_box_views.xml',
         'views/product_template_views.xml',

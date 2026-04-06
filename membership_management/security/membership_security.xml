@@ -23,7 +23,6 @@
     </data>
 
     <data noupdate="1">
-        <!-- Application: Portal users can read their own applications -->
         <record id="rule_application_portal_user" model="ir.rule">
             <field name="name">Membership Application: Portal User Own</field>
             <field name="model_id" ref="model_membership_application"/>
@@ -35,7 +34,6 @@
             <field name="perm_unlink" eval="False"/>
         </record>
 
-        <!-- Period: Portal users can read their own periods -->
         <record id="rule_period_portal_user" model="ir.rule">
             <field name="name">Membership Period: Portal User Own</field>
             <field name="model_id" ref="model_membership_period"/>
@@ -47,19 +45,32 @@
             <field name="perm_unlink" eval="False"/>
         </record>
 
-        <!-- Officer: Full access to applications and read on periods -->
         <record id="rule_application_officer" model="ir.rule">
             <field name="name">Membership Application: Officer</field>
             <field name="model_id" ref="model_membership_application"/>
-            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',branch_ids)]</field>
             <field name="groups" eval="[(4, ref('group_membership_officer'))]"/>
         </record>
 
         <record id="rule_period_officer" model="ir.rule">
             <field name="name">Membership Period: Officer</field>
             <field name="model_id" ref="model_membership_period"/>
-            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',branch_ids)]</field>
             <field name="groups" eval="[(4, ref('group_membership_officer'))]"/>
+        </record>
+
+        <record id="rule_application_admin" model="ir.rule">
+            <field name="name">Membership Application: Admin</field>
+            <field name="model_id" ref="model_membership_application"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_membership_admin'))]"/>
+        </record>
+
+        <record id="rule_period_admin" model="ir.rule">
+            <field name="name">Membership Period: Admin</field>
+            <field name="model_id" ref="model_membership_period"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('group_membership_admin'))]"/>
         </record>
 
     </data>

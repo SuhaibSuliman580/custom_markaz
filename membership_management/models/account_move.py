@@ -69,6 +69,7 @@ class AccountMove(models.Model):
             period = Period.create({
                 'name': membership_number,
                 'partner_id': application.partner_id.id,
+                'branch_id': application.branch_id.id or application.partner_id.branch_id.id or self.branch_id.id,
                 'start_date': start_date,
                 'end_date': end_date,
                 'state': 'active',
@@ -155,3 +156,16 @@ class AccountPaymentRegister(models.TransientModel):
                         _logger.warning("Membership activation after payment error: %s", e)
 
         return res
+
+
+class MembershipBranchAwareMixin(models.Model):
+    _inherit = 'account.move'
+
+    @api.onchange('partner_id')
+    def _onchange_membership_partner_branch(self):
+        for move in self:
+            if move.partner_id and getattr(move.partner_id, 'branch_id', False):
+                move.branch_id = move.partner_id.branch_id
+
+    def _activate_membership_if_applicable(self):
+        return super()._activate_membership_if_applicable()

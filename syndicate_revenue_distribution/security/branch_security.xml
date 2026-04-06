@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="syndicate_fund_box_branch_manager_rule" model="ir.rule">
+            <field name="name">Syndicate Fund Box Branch Manager</field>
+            <field name="model_id" ref="model_syndicate_fund_box"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('branch.group_branch_user_manager'))]"/>
+        </record>
+
+        <record id="syndicate_fund_box_branch_user_rule" model="ir.rule">
+            <field name="name">Syndicate Fund Box Branch User</field>
+            <field name="model_id" ref="model_syndicate_fund_box"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',branch_ids)]</field>
+            <field name="groups" eval="[(4, ref('branch.group_branch_user'))]"/>
+        </record>
+
+        <record id="product_revenue_distribution_line_branch_manager_rule" model="ir.rule">
+            <field name="name">Product Revenue Distribution Line Branch Manager</field>
+            <field name="model_id" ref="model_product_revenue_distribution_line"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('branch.group_branch_user_manager'))]"/>
+        </record>
+
+        <record id="product_revenue_distribution_line_branch_user_rule" model="ir.rule">
+            <field name="name">Product Revenue Distribution Line Branch User</field>
+            <field name="model_id" ref="model_product_revenue_distribution_line"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',branch_ids)]</field>
+            <field name="groups" eval="[(4, ref('branch.group_branch_user'))]"/>
+        </record>
+    </data>
+</odoo>

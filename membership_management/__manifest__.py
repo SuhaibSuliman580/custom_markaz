@@ -1,6 +1,6 @@
 {
     'name': 'Membership Management',
-    'version': '17.0.1.0.0',
+    'version': '17.0.1.1.0',
     'category': 'Membership',
     'summary': 'Manage doctor membership lifecycle with applications, invoicing, and portal.',
     'description': """
@@ -17,7 +17,7 @@ Manage the full lifecycle of doctor memberships:
     'author': 'Custom',
     'website': '',
     'license': 'LGPL-3',
-    'depends': [
+    'depends': ['branch', 
         'base',
         'account',
         'portal',

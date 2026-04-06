@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
+    <record id="view_syndicate_fund_box_search" model="ir.ui.view">
+        <field name="name">syndicate.fund.box.search</field>
+        <field name="model">syndicate.fund.box</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="branch_id"/>
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Branch" name="group_by_branch" context="{'group_by': 'branch_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <record id="view_syndicate_fund_box_tree" model="ir.ui.view">
         <field name="name">syndicate.fund.box.tree</field>
         <field name="model">syndicate.fund.box</field>
@@ -9,6 +25,7 @@
                 <field name="sequence" widget="handle"/>
                 <field name="code"/>
                 <field name="name"/>
+                <field name="branch_id"/>
                 <field name="income_account_id"/>
                 <field name="analytic_account_id"/>
                 <field name="active"/>
@@ -27,6 +44,7 @@
                             <field name="sequence"/>
                             <field name="code"/>
                             <field name="name"/>
+                            <field name="branch_id"/>
                             <field name="active"/>
                         </group>
                         <group>
@@ -46,6 +64,7 @@
         <field name="name">Fund Boxes</field>
         <field name="res_model">syndicate.fund.box</field>
         <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_syndicate_fund_box_search"/>
     </record>
 
     <menuitem id="menu_syndicate_root"

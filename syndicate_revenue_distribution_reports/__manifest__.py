@@ -1,6 +1,6 @@
 {
     'name': 'Syndicate Revenue Distribution Reports',
-    'version': '17.0.1.0.0',
+    'version': '17.0.1.1.0',
     'summary': 'Reports for syndicate revenue distribution',
     'category': 'Accounting',
     'author': 'Custom',
@@ -8,6 +8,7 @@
     'depends': [
         'account',
         'product',
+        'branch',
         'syndicate_revenue_distribution',
     ],
     'data': [

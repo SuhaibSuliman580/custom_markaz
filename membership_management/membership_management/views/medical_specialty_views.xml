@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_medical_specialty_tree" model="ir.ui.view">
+        <field name="name">medical.specialty.tree</field>
+        <field name="model">medical.specialty</field>
+        <field name="arch" type="xml">
+            <tree string="Medical Specialties" editable="bottom">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_medical_specialty" model="ir.actions.act_window">
+        <field name="name">Medical Specialties</field>
+        <field name="res_model">medical.specialty</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+</odoo>

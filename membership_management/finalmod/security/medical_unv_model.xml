@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Ensure an external id exists for the medical.unv model, so it can be referenced in access CSV -->
+    <record id="model_medical_unv" model="ir.model">
+        <field name="name">Universities</field>
+        <field name="model">medical.unv</field>
+        <field name="state">manual</field>
+    </record>
+</odoo>

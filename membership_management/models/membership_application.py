@@ -37,6 +37,19 @@ class MembershipApplication(models.Model):
         help='Upload required documents for the application.',
     )
 
+    branch_id = fields.Many2one(
+        'res.branch',
+        string='Branch',
+        compute='_compute_branch_id',
+        store=True,
+        readonly=False,
+    )
+
+    @api.depends('partner_id')
+    def _compute_branch_id(self):
+        for rec in self:
+            rec.branch_id = rec.partner_id.branch_id or rec.branch_id or rec.env.user.branch_id
+
     membership_template_id = fields.Many2one(
         'invoice.service.template',
         string='Membership Template',
@@ -169,9 +182,19 @@ class MembershipApplication(models.Model):
         if not template.line_ids:
             raise UserError(_('The selected membership template has no lines.'))
 
+        branch_id = self.partner_id.branch_id.id or self.branch_id.id or self.env.user.branch_id.id or False
         invoice = self.env['account.move'].sudo().create({
             'move_type': 'out_invoice',
             'partner_id': self.partner_id.id,
+            'branch_id': branch_id,
         })
         template.action_apply_to_invoice(invoice, replace_existing=True)
         return invoice
+
+
+    @api.constrains('partner_id', 'branch_id')
+    def _check_branch_consistency(self):
+        for rec in self:
+            partner_branch = rec.partner_id.branch_id
+            if rec.branch_id and partner_branch and rec.branch_id != partner_branch:
+                raise UserError(_('Application branch must match the doctor branch.'))

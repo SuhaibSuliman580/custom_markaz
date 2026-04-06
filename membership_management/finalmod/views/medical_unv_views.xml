@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_medical_unv_tree" model="ir.ui.view">
+        <field name="name">medical.unv.tree</field>
+        <field name="model">medical.unv</field>
+        <field name="arch" type="xml">
+            <tree string="Universities">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_medical_unv_form" model="ir.ui.view">
+        <field name="name">medical.unv.form</field>
+        <field name="model">medical.unv</field>
+        <field name="arch" type="xml">
+            <form string="University">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_medical_unv" model="ir.actions.act_window">
+        <field name="name">Universities</field>
+        <field name="res_model">medical.unv</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

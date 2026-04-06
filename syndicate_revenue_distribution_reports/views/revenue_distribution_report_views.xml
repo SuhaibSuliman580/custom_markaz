@@ -10,9 +10,10 @@
                 <field name="move_name"/>
                 <field name="partner_id"/>
                 <field name="product_id"/>
-                <field name="product_tmpl_id"/>
+                <field name="product_tmpl_id" optional="hide"/>
                 <field name="fund_box_id"/>
                 <field name="account_id"/>
+                <field name="branch_id" optional="show"/>
                 <field name="amount" sum="Total"/>
                 <field name="company_id" optional="hide"/>
             </tree>
@@ -30,6 +31,7 @@
                 <field name="product_tmpl_id"/>
                 <field name="fund_box_id"/>
                 <field name="account_id"/>
+                <field name="branch_id"/>
                 <field name="date"/>
 
                 <filter name="filter_today"
@@ -59,6 +61,9 @@
                     <filter name="group_by_account"
                             string="Account"
                             context="{'group_by': 'account_id'}"/>
+                    <filter name="group_by_branch"
+                            string="Branch"
+                            context="{'group_by': 'branch_id'}"/>
                     <filter name="group_by_company"
                             string="Company"
                             context="{'group_by': 'company_id'}"/>
@@ -73,8 +78,9 @@
         <field name="arch" type="xml">
             <pivot string="Revenue Distribution Analysis">
                 <field name="amount" type="measure"/>
-                <field name="date" type="row"/>
+                <field name="date" type="row" interval="month"/>
                 <field name="fund_box_id" type="col"/>
+                <field name="branch_id" type="row"/>
             </pivot>
         </field>
     </record>

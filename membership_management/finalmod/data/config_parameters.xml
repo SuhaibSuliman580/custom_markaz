@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Default initial product to the module's Membership Package -->
+        <record id="param_initial_product" model="ir.config_parameter">
+            <field name="key">membership_management.initial_product_id</field>
+            <field name="value" eval="str(ref('membership_management.membership_product'))"/>
+        </record>
+        <!-- Default renewal products: start with the same product until configured in settings -->
+        <record id="param_renewal_products" model="ir.config_parameter">
+            <field name="key">membership_management.renewal_product_ids</field>
+            <field name="value" eval="str(ref('membership_management.membership_product'))"/>
+        </record>
+    </data>
+</odoo>

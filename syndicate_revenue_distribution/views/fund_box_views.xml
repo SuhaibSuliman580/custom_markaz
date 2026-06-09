@@ -9,6 +9,7 @@
                 <field name="sequence" widget="handle"/>
                 <field name="code"/>
                 <field name="name"/>
+                <field name="company_id"/>
                 <field name="income_account_id"/>
                 <field name="analytic_account_id"/>
                 <field name="active"/>
@@ -28,6 +29,7 @@
                             <field name="code"/>
                             <field name="name"/>
                             <field name="active"/>
+                            <field name="company_id"/>
                         </group>
                         <group>
                             <field name="income_account_id"/>

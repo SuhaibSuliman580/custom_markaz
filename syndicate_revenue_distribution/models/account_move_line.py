@@ -77,7 +77,11 @@ class AccountMoveLine(models.Model):
         product_tmpl = self.product_id.product_tmpl_id
         if not product_tmpl.enable_revenue_distribution:
             return self.env['product.revenue.distribution.line']
-        return product_tmpl.distribution_line_ids.sorted(key=lambda l: (l.sequence, l.id))
+
+        company = self.move_id.company_id
+        return product_tmpl.distribution_line_ids.filtered(
+            lambda l: l.company_id == company
+        ).sorted(key=lambda l: (l.sequence, l.id))
 
     def _check_can_generate_distribution(self):
         self.ensure_one()
@@ -104,9 +108,13 @@ class AccountMoveLine(models.Model):
         if not product_tmpl.distribution_line_ids:
             raise UserError("لا توجد أسطر توزيع معرفة على المنتج.")
 
-        total = sum(product_tmpl.distribution_line_ids.mapped('percentage'))
+        distribution_lines = self._get_distribution_lines()
+        if not distribution_lines:
+            raise UserError("لا توجد أسطر توزيع معرفة على المنتج لشركة الفاتورة.")
+
+        total = sum(distribution_lines.mapped('percentage'))
         if abs(total - 100.0) > 0.0001:
-            raise UserError("مجموع نسب التوزيع على المنتج يجب أن يساوي 100%.")
+            raise UserError("مجموع نسب التوزيع على المنتج لشركة الفاتورة يجب أن يساوي 100%.")
 
     def action_generate_distribution_lines(self):
         for line in self:

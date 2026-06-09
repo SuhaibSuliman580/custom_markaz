@@ -1,6 +1,6 @@
 {
     'name': 'Syndicate Revenue Distribution',
-    'version': '17.0.1.0.0',
+    'version': '17.0.1.0.3',
     'summary': 'Revenue distribution by percentages for syndicates',
     'category': 'Accounting',
     'author': 'Custom',
@@ -11,6 +11,7 @@
     ],
     'data': [
         'security/ir.model.access.csv',
+        'security/company_security.xml',
         'data/sequence.xml',
         'views/fund_box_views.xml',
         'views/product_template_views.xml',

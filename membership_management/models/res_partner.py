@@ -1,10 +1,81 @@
-from odoo import api, fields, models
+from odoo import api, fields, models, _
+from odoo.exceptions import AccessError
 
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
+    def _is_doctor_creation_context(self):
+        if self.env.context.get('default_is_doctor'):
+            return True
+
+        params = self.env.context.get('params') or {}
+        action_id = params.get('action')
+        try:
+            action_id = int(action_id)
+        except (TypeError, ValueError):
+            return False
+
+        doctor_actions = [
+            self.env.ref('membership_management.action_doctor_partners', raise_if_not_found=False),
+            self.env.ref('finalmod.action_doctor_partners', raise_if_not_found=False),
+        ]
+        doctor_action_ids = [action.id for action in doctor_actions if action]
+
+        return action_id in doctor_action_ids
+
+    @api.model
+    def default_get(self, fields_list):
+        res = super().default_get(fields_list)
+        if self._is_doctor_creation_context():
+            res['is_doctor'] = True
+            res['company_id'] = self.env.company.id
+        return res
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        company_id = self.env.company.id
+        vals_list = [
+            dict(vals, company_id=company_id)
+            if vals.get('is_doctor') or self._is_doctor_creation_context()
+            else vals
+            for vals in vals_list
+        ]
+        return super().create(vals_list)
+
+    def _sync_related_users_company(self, company_id):
+        if not company_id:
+            return
+        Users = self.env['res.users'].sudo().with_context(active_test=False)
+        users = self.sudo().mapped('user_ids') | Users.search([('partner_id', 'in', self.ids)])
+        for user in users:
+            company_ids = set(user.company_ids.ids)
+            if user.company_id:
+                company_ids.add(user.company_id.id)
+            company_ids.add(company_id)
+            user_vals = {'company_ids': [(6, 0, sorted(company_ids))]}
+            if user.company_id.id != company_id:
+                user_vals['company_id'] = company_id
+            user.sudo().write(user_vals)
+
+    def write(self, vals):
+        user_company_change = 'company_id' in vals
+        if vals.get('is_doctor') and 'company_id' not in vals:
+            vals = dict(vals, company_id=self.env.company.id)
+        if user_company_change and not self.env.user.has_group('base.group_system'):
+            doctors = self.filtered(lambda partner: partner.is_doctor or vals.get('is_doctor'))
+            if doctors:
+                raise AccessError(_("Only administrators can change the company of a doctor."))
+        if vals.get('company_id'):
+            self._sync_related_users_company(vals['company_id'])
+        return super().write(vals)
+
     # ── MEMBERSHIP INFORMATION ──
+    @api.onchange('name', 'is_doctor')
+    def _onchange_is_doctor_default_company(self):
+        if (self.is_doctor or self._is_doctor_creation_context()) and not self.company_id:
+            self.company_id = self.env.company
+
     is_doctor = fields.Boolean(string='Is Doctor', default=False)
     membership_number = fields.Char(string='Membership Number', copy=False)
     doctor_membership_state = fields.Selection([

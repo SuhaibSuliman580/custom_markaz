@@ -40,6 +40,7 @@
                     <group>
                         <group>
                             <field name="partner_id"/>
+                            <field name="company_id" readonly="1"/>
                             <field name="create_date" string="Submitted On"/>
                             <field name="allowed_initial_template_ids" invisible="1"/>
                             <field name="membership_template_id" options="{'no_create': True}" domain="[('id', 'in', allowed_initial_template_ids)]" groups="membership_management.group_membership_officer" readonly="state in ('approved', 'rejected')"/>
@@ -135,6 +136,7 @@
                   decoration-danger="state == 'rejected'">
                 <field name="name"/>
                 <field name="partner_id"/>
+                <field name="company_id" optional="hide"/>
                 <field name="doctor_specialty_id" optional="show"/>
                 <field name="doctor_license_no" optional="show"/>
                 <field name="doctor_workplace" optional="hide"/>
@@ -153,6 +155,7 @@
             <search string="Search Applications">
                 <field name="name"/>
                 <field name="partner_id"/>
+                <field name="company_id"/>
                 <field name="doctor_specialty_id"/>
                 <field name="doctor_license_no"/>
                 <filter string="Under Review" name="draft" domain="[('state', '=', 'draft')]"/>
@@ -164,6 +167,7 @@
                     <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
                     <filter string="Doctor" name="group_partner" context="{'group_by': 'partner_id'}"/>
                     <filter string="Specialty" name="group_specialty" context="{'group_by': 'doctor_specialty_id'}"/>
+                    <filter string="Company" name="group_company" context="{'group_by': 'company_id'}"/>
                 </group>
             </search>
         </field>

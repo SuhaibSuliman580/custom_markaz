@@ -62,13 +62,6 @@
                                                         <t t-esc="partner.membership_end_date"/>
                                                     </strong>
                                                 </div>
-                                                <div class="col-sm-4 mt-3">
-                                                    <small class="text-muted">Branch</small>
-                                                    <br/>
-                                                    <strong>
-                                                        <t t-esc="partner_branch.name if partner_branch else '—'"/>
-                                                    </strong>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-4 text-end mt-3 mt-md-0">
@@ -123,7 +116,6 @@
                                     <tr>
                                         <th>Reference</th>
                                         <th>Submitted</th>
-                                        <th>Branch</th>
                                         <th>Specialty</th>
                                         <th>Status</th>
                                         <th>Invoice</th>
@@ -140,9 +132,6 @@
                                             </td>
                                             <td>
                                                 <t t-esc="app.create_date" t-options="{'widget': 'date'}"/>
-                                            </td>
-                                            <td>
-                                                <t t-esc="app.branch_id.name or '—'"/>
                                             </td>
                                             <td>
                                                 <t t-if="app.partner_id.medical_specialty_id">
@@ -249,12 +238,6 @@
                                         <td class="text-muted">Doctor</td>
                                         <td>
                                             <t t-esc="application.partner_id.name"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-muted">Branch</td>
-                                        <td>
-                                            <t t-esc="application.branch_id.name or '—'"/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -371,6 +354,12 @@
                       enctype="multipart/form-data">
                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 
+                    <t t-if="error">
+                        <div class="alert alert-danger" role="alert">
+                            <t t-esc="error"/>
+                        </div>
+                    </t>
+
                     <!-- ─── Section 1: Personal Information ─── -->
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header bg-primary bg-opacity-10 border-primary">
@@ -433,15 +422,17 @@
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="form-label fw-semibold">Branch
+                                    <label class="form-label fw-semibold">النقابة الفرعية
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <select name="branch_id" class="form-select" required="required">
+                                    <select name="company_id" class="form-select" required="required"
+                                            t-att-oninvalid="&quot;this.setCustomValidity('%s')&quot; % validation_message"
+                                            oninput="this.setCustomValidity('')">
                                         <option value="">-- Select --</option>
-                                        <t t-foreach="branches" t-as="branch">
-                                            <option t-att-value="branch.id"
-                                                    t-att-selected="('branch_id' in partner._fields and partner.branch_id.id == branch.id) or None">
-                                                <t t-esc="branch.name"/>
+                                        <t t-foreach="companies" t-as="company">
+                                            <option t-att-value="company.id"
+                                                    t-att-selected="str(company.id) == (post.get('company_id') or '') or (not post.get('company_id') and partner.company_id.id == company.id) or None">
+                                                <t t-esc="company.name"/>
                                             </option>
                                         </t>
                                     </select>

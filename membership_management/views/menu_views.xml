@@ -24,7 +24,7 @@
     <menuitem id="menu_doctor_partners"
           name="Doctor"
           parent="menu_membership_root"
-          action="action_doctor_partners"
+          action="action_doctor_partners_server"
           sequence="10"
           groups="membership_management.group_membership_officer"/>
 

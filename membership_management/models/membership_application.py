@@ -37,6 +37,15 @@ class MembershipApplication(models.Model):
         help='Upload required documents for the application.',
     )
 
+    company_id = fields.Many2one(
+        'res.company',
+        string='Company',
+        related='partner_id.company_id',
+        store=True,
+        readonly=True,
+        index=True,
+    )
+
     membership_template_id = fields.Many2one(
         'invoice.service.template',
         string='Membership Template',
@@ -91,6 +100,7 @@ class MembershipApplication(models.Model):
                 vals['name'] = self.env['ir.sequence'].next_by_code(
                     'membership.application'
                 ) or _('New')
+            vals.pop('company_id', None)
             if not vals.get('membership_template_id') and default_template_id and str(default_template_id).isdigit():
                 vals['membership_template_id'] = int(default_template_id)
         return super().create(vals_list)
@@ -172,6 +182,7 @@ class MembershipApplication(models.Model):
         invoice = self.env['account.move'].sudo().create({
             'move_type': 'out_invoice',
             'partner_id': self.partner_id.id,
+            'company_id': self.company_id.id or self.env.company.id,
         })
         template.action_apply_to_invoice(invoice, replace_existing=True)
         return invoice

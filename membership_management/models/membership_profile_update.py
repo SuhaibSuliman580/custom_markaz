@@ -16,6 +16,13 @@ class MembershipProfileUpdate(models.Model):
         domain=[('is_doctor', '=', True)],
         tracking=True,
     )
+    company_id = fields.Many2one(
+        'res.company',
+        related='partner_id.company_id',
+        store=True,
+        readonly=True,
+        index=True,
+    )
 
     state = fields.Selection([
         ('draft', 'Under Review'),
@@ -50,6 +57,7 @@ class MembershipProfileUpdate(models.Model):
         for vals in vals_list:
             if vals.get('name', _('New')) == _('New'):
                 vals['name'] = seq.next_by_code('membership.profile.update') or _('New')
+            vals.pop('company_id', None)
         return super().create(vals_list)
 
     def action_need_info(self):

@@ -8,6 +8,7 @@
             <tree string="Universities">
                 <field name="name"/>
                 <field name="code"/>
+                <field name="company_id" readonly="1"/>
                 <field name="active"/>
             </tree>
         </field>
@@ -22,6 +23,7 @@
                     <group>
                         <field name="name"/>
                         <field name="code"/>
+                        <field name="company_id" readonly="1"/>
                         <field name="active"/>
                     </group>
                 </sheet>

@@ -17,9 +17,6 @@ class MembershipApplication(models.Model):
         domain=[('is_doctor', '=', True)],
         tracking=True,
     )
-    branch_id = fields.Many2one(
-        'res.branch', string='Branch', tracking=True,
-    )
     state = fields.Selection([
         ('draft', 'Under Review'),
         ('need_info', 'Need More Information'),
@@ -38,6 +35,15 @@ class MembershipApplication(models.Model):
     attachment_ids = fields.Many2many(
         'ir.attachment', string='Attachments',
         help='Upload required documents for the application.',
+    )
+
+    company_id = fields.Many2one(
+        'res.company',
+        string='Company',
+        related='partner_id.company_id',
+        store=True,
+        readonly=True,
+        index=True,
     )
 
     # ── Related fields from partner (Doctor Info) ──
@@ -75,10 +81,7 @@ class MembershipApplication(models.Model):
                 vals['name'] = self.env['ir.sequence'].next_by_code(
                     'membership.application'
                 ) or _('New')
-            if not vals.get('branch_id') and vals.get('partner_id'):
-                partner = self.env['res.partner'].browse(vals['partner_id'])
-                if 'branch_id' in partner._fields and partner.branch_id:
-                    vals['branch_id'] = partner.branch_id.id
+            vals.pop('company_id', None)
         return super().create(vals_list)
 
     def action_approve(self):
@@ -149,6 +152,7 @@ class MembershipApplication(models.Model):
         invoice_vals = {
             'move_type': 'out_invoice',
             'partner_id': self.partner_id.id,
+            'company_id': self.company_id.id or self.env.company.id,
             'invoice_line_ids': [(0, 0, {
                 'product_id': product.id,
                 'name': product.name,
@@ -156,7 +160,5 @@ class MembershipApplication(models.Model):
                 'price_unit': product.list_price,
             })],
         }
-        if 'branch_id' in self.env['account.move']._fields and self.branch_id:
-            invoice_vals['branch_id'] = self.branch_id.id
         invoice = self.env['account.move'].sudo().create(invoice_vals)
         return invoice

@@ -8,6 +8,7 @@
                 <group>
                     <field name="period_id" invisible="1"/>
                     <field name="allowed_renewal_template_ids" invisible="1"/>
+                    <field name="company_id" invisible="1"/>
                     <field name="partner_id"/>
                     <field name="renewal_template_id" options="{'no_create': True}"/>
                 </group>

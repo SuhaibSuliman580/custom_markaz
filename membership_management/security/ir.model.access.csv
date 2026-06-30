@@ -5,9 +5,12 @@ access_membership_application_portal,membership.application.portal,model_members
 access_membership_period_admin,membership.period.admin,model_membership_period,group_membership_admin,1,1,1,1
 access_membership_period_officer,membership.period.officer,model_membership_period,group_membership_officer,1,0,0,0
 access_membership_period_portal,membership.period.portal,model_membership_period,base.group_portal,1,0,0,0
+access_membership_profile_update_admin,membership.profile.update.admin,model_membership_profile_update,group_membership_admin,1,1,1,1
+access_membership_profile_update_officer,membership.profile.update.officer,model_membership_profile_update,group_membership_officer,1,1,1,0
 access_medical_specialty_admin,medical.specialty.admin,model_medical_specialty,group_membership_admin,1,1,1,1
 access_medical_specialty_officer,medical.specialty.officer,model_medical_specialty,group_membership_officer,1,1,1,0
 access_medical_specialty_portal,medical.specialty.portal,model_medical_specialty,base.group_portal,1,0,0,0
 access_membership_renewal_wizard_officer,membership.renewal.wizard.officer,model_membership_renewal_wizard,group_membership_officer,1,1,1,0
 access_membership_renewal_wizard_admin,membership.renewal.wizard.admin,model_membership_renewal_wizard,group_membership_admin,1,1,1,1
 access_medical_unv_admin,medical.unv.admin,model_medical_unv,group_membership_admin,1,1,1,1
+access_medical_unv_portal,medical.unv.portal,model_medical_unv,base.group_portal,1,0,0,0

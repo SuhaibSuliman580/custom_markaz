@@ -8,6 +8,7 @@ class MembershipRenewalWizard(models.TransientModel):
 
     period_id = fields.Many2one('membership.period', string='Membership Period', required=True, readonly=True)
     partner_id = fields.Many2one(related='period_id.partner_id', string='Doctor', readonly=True)
+    company_id = fields.Many2one(related='period_id.company_id', readonly=True)
 
     renewal_template_id = fields.Many2one(
         'invoice.service.template',
@@ -57,6 +58,7 @@ class MembershipRenewalWizard(models.TransientModel):
         invoice = self.env['account.move'].sudo().create({
             'move_type': 'out_invoice',
             'partner_id': period.partner_id.id,
+            'company_id': period.company_id.id or self.env.company.id,
         })
         self.renewal_template_id.action_apply_to_invoice(invoice, replace_existing=True)
 

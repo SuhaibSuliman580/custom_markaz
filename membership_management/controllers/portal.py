@@ -7,6 +7,29 @@ from odoo.addons.portal.controllers.portal import CustomerPortal
 
 class MembershipPortal(CustomerPortal):
 
+    def _get_subsidiary_syndicate_error(self):
+        if (request.env.lang or '').startswith('ar'):
+            return 'يرجى اختيار النقابة الفرعية.'
+        return 'Please select Subsidiary Syndicate.'
+
+    def _get_application_form_values(self, partner, error=None, post=None):
+        Partner = request.env['res.partner']
+        qualification_field = Partner._fields['qualification']
+        workplace_type_field = Partner._fields['workplace_type']
+        return {
+            'partner': partner,
+            'countries': request.env['res.country'].sudo().search([], order='name'),
+            'companies': request.env['res.company'].sudo().search([('active', '=', True)], order='name'),
+            'specialties': request.env['medical.specialty'].search([]),
+            'qualifications': qualification_field.selection,
+            'workplace_types': workplace_type_field.selection,
+            'universities': request.env['medical.unv'].search([('active', '=', True)], order='name'),
+            'error': error,
+            'validation_message': self._get_subsidiary_syndicate_error(),
+            'post': post or {},
+            'page_name': 'membership_application_new',
+        }
+
     def _prepare_home_portal_values(self, counters):
         values = super()._prepare_home_portal_values(counters)
         if 'membership_count' in counters:
@@ -34,22 +57,7 @@ class MembershipPortal(CustomerPortal):
     @http.route('/my/membership/application/new', type='http', auth='user', website=True)
     def portal_membership_application_new(self, **kwargs):
         partner = request.env.user.partner_id
-        Partner = request.env['res.partner']
-
-        # Get selection field options dynamically from the model
-        # specialty_field = Partner._fields['medical_specialty']
-        qualification_field = Partner._fields['qualification']
-        workplace_type_field = Partner._fields['workplace_type']
-
-        values = {
-            'partner': partner,
-            'countries': request.env['res.country'].sudo().search([], order='name'),
-            'specialties': request.env['medical.specialty'].sudo().search([]),
-            'qualifications': qualification_field.selection,
-            'workplace_types': workplace_type_field.selection,
-            'universities': request.env['medical.unv'].sudo().search([('active', '=', True)], order='name'),
-            'page_name': 'membership_application_new',
-        }
+        values = self._get_application_form_values(partner)
         return request.render('membership_management.portal_membership_application_new', values)
 
     # ── Submit Application ──
@@ -57,10 +65,28 @@ class MembershipPortal(CustomerPortal):
                 website=True, methods=['POST'], csrf=True)
     def portal_membership_application_submit(self, **kwargs):
         partner = request.env.user.partner_id
+        company_id = False
+        try:
+            company_id = int(kwargs.get('company_id') or 0)
+        except (ValueError, TypeError):
+            company_id = False
+
+        company = request.env['res.company'].sudo().search([
+            ('id', '=', company_id),
+            ('active', '=', True),
+        ], limit=1)
+        if not company:
+            values = self._get_application_form_values(
+                partner,
+                error=self._get_subsidiary_syndicate_error(),
+                post=kwargs,
+            )
+            return request.render('membership_management.portal_membership_application_new', values)
 
         # Build partner update values
         partner_vals = {
             'is_doctor': True,
+            'company_id': company.id,
             'name': kwargs.get('full_name') or partner.name,
             'arabic_name': kwargs.get('arabic_name') or '',
             'national_id': kwargs.get('national_id') or '',
@@ -123,6 +149,8 @@ class MembershipPortal(CustomerPortal):
                 partner_vals['medical_specialty_id'] = int(spec)
             except (ValueError, TypeError):
                 pass
+
+        partner.sudo()._sync_related_users_company(company.id)
         partner.sudo().write(partner_vals)
 
         # Create application

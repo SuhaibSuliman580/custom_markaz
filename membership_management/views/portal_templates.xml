@@ -354,6 +354,12 @@
                       enctype="multipart/form-data">
                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 
+                    <t t-if="error">
+                        <div class="alert alert-danger" role="alert">
+                            <t t-esc="error"/>
+                        </div>
+                    </t>
+
                     <!-- ─── Section 1: Personal Information ─── -->
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header bg-primary bg-opacity-10 border-primary">
@@ -362,6 +368,22 @@
                         </div>
                         <div class="card-body">
                             <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">النقابة الفرعية
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <select name="company_id" class="form-select" required="required"
+                                            t-att-oninvalid="&quot;this.setCustomValidity('%s')&quot; % validation_message"
+                                            oninput="this.setCustomValidity('')">
+                                        <option value="">-- Select --</option>
+                                        <t t-foreach="companies" t-as="company">
+                                            <option t-att-value="company.id"
+                                                    t-att-selected="str(company.id) == (post.get('company_id') or '') or (not post.get('company_id') and partner.company_id.id == company.id) or None">
+                                                <t t-esc="company.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
                                 <div class="col-md-6">
                                     <label class="form-label fw-semibold">Full Name (English)
                                         <span class="text-danger">*</span>

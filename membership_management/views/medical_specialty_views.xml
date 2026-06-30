@@ -8,6 +8,7 @@
             <tree string="Medical Specialties" editable="bottom">
                 <field name="name"/>
                 <field name="code"/>
+                <field name="company_id" readonly="1"/>
                 <field name="active"/>
             </tree>
         </field>

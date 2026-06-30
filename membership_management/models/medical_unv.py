@@ -8,3 +8,9 @@ class MedicalUnv(models.Model):
     name = fields.Char(string='University Name', required=True)
     code = fields.Char(string='Code')
     active = fields.Boolean(default=True)
+    company_id = fields.Many2one(
+        'res.company',
+        default=lambda self: self.env.company,
+        required=True,
+        index=True,
+    )

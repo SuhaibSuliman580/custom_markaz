@@ -244,7 +244,7 @@
                                         <td class="text-muted">Specialty</td>
                                         <td>
                                             <t t-if="application.partner_id.medical_specialty_id">
-                                                <t t-esc="dict(application.partner_id.medical_specialty_id.name"/>
+                                                <t t-esc="application.partner_id.medical_specialty_id.name"/>
                                             </t>
                                         </td>
                                     </tr>

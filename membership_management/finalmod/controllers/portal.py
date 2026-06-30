@@ -150,8 +150,9 @@ class MembershipPortal(CustomerPortal):
             except (ValueError, TypeError):
                 pass
 
-        partner.sudo()._sync_related_users_company(company.id)
-        partner.sudo().write(partner_vals)
+        partner_sudo = partner.sudo().with_context(allow_doctor_company_change=True)
+        partner_sudo._sync_related_users_company(company.id)
+        partner_sudo.write(partner_vals)
 
         # Create application
         application_vals = {

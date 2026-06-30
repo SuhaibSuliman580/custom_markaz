@@ -62,7 +62,8 @@ class ResPartner(models.Model):
         user_company_change = 'company_id' in vals
         if vals.get('is_doctor') and 'company_id' not in vals:
             vals = dict(vals, company_id=self.env.company.id)
-        if user_company_change and not self.env.user.has_group('base.group_system'):
+        allow_doctor_company_change = self.env.context.get('allow_doctor_company_change')
+        if user_company_change and not allow_doctor_company_change and not self.env.user.has_group('base.group_system'):
             doctors = self.filtered(lambda partner: partner.is_doctor or vals.get('is_doctor'))
             if doctors:
                 raise AccessError(_("Only administrators can change the company of a doctor."))

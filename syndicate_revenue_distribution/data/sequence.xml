@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data noupdate="1">
+        <record id="seq_revenue_distribution_ledger_line" model="ir.sequence">
+            <field name="name">Revenue Distribution Ledger</field>
+            <field name="code">syndicate.revenue.distribution.ledger.line</field>
+            <field name="prefix">RDL/%(year)s/</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
     </data>
 </odoo>

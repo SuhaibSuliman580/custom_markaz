@@ -13,4 +13,25 @@
         <field name="global" eval="True"/>
         <field name="domain_force">[('company_id', 'in', company_ids)]</field>
     </record>
+
+    <record id="revenue_distribution_template_company_rule" model="ir.rule">
+        <field name="name">Revenue Distribution Template: multi-company</field>
+        <field name="model_id" ref="model_syndicate_revenue_distribution_template"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+
+    <record id="revenue_distribution_template_line_company_rule" model="ir.rule">
+        <field name="name">Revenue Distribution Template Line: multi-company</field>
+        <field name="model_id" ref="model_syndicate_revenue_distribution_template_line"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+
+    <record id="revenue_distribution_ledger_line_company_rule" model="ir.rule">
+        <field name="name">Revenue Distribution Ledger Line: multi-company</field>
+        <field name="model_id" ref="model_syndicate_revenue_distribution_ledger_line"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
 </odoo>

@@ -29,23 +29,25 @@ class ProductRevenueDistributionLine(models.Model):
     fund_box_id = fields.Many2one(
         'syndicate.fund.box',
         string='Fund Box',
+        required=True,
         check_company=True,
-        domain="[('company_id', '=', company_id)]",
+        domain="[('active', '=', True), ('company_id', '=', company_id)]",
     )
 
     account_id = fields.Many2one(
         'account.account',
         string='Income Account',
-        required=True,
-        check_company=True,
-        domain="[('deprecated', '=', False)]",
+        related='fund_box_id.income_account_id',
+        store=True,
+        readonly=True,
     )
 
     analytic_account_id = fields.Many2one(
         'account.analytic.account',
         string='Analytic Account',
-        check_company=True,
-        domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
+        related='fund_box_id.analytic_account_id',
+        store=True,
+        readonly=True,
     )
 
     percentage = fields.Float(
@@ -60,16 +62,6 @@ class ProductRevenueDistributionLine(models.Model):
         for rec in self:
             if rec.fund_box_id and rec.fund_box_id.company_id != rec.company_id:
                 rec.fund_box_id = False
-            if rec.analytic_account_id.company_id and rec.analytic_account_id.company_id != rec.company_id:
-                rec.analytic_account_id = False
-
-    @api.onchange('fund_box_id')
-    def _onchange_fund_box_id(self):
-        for rec in self:
-            if rec.fund_box_id:
-                rec.company_id = rec.fund_box_id.company_id
-                rec.account_id = rec.fund_box_id.income_account_id
-                rec.analytic_account_id = rec.fund_box_id.analytic_account_id
 
     @api.constrains('percentage')
     def _check_percentage(self):
@@ -79,10 +71,12 @@ class ProductRevenueDistributionLine(models.Model):
             if rec.percentage > 100:
                 raise ValidationError("النسبة لا يمكن أن تتجاوز 100%.")
 
-    @api.constrains('company_id', 'fund_box_id', 'analytic_account_id')
-    def _check_company_consistency(self):
+    @api.constrains('company_id', 'fund_box_id')
+    def _check_fund_box_consistency(self):
         for rec in self:
-            if rec.fund_box_id and rec.fund_box_id.company_id != rec.company_id:
-                raise ValidationError("صندوق الإيراد يجب أن يكون لنفس شركة سطر التوزيع.")
+            if rec.fund_box_id and not rec.fund_box_id.active:
+                raise ValidationError("لا يمكن استخدام صندوق غير فعال في توزيع الإيرادات.")
+            if rec.fund_box_id and rec.company_id and rec.fund_box_id.company_id != rec.company_id:
+                raise ValidationError("لا يمكن استخدام صندوق تابع لشركة مختلفة عن شركة سطر التوزيع.")
             if rec.analytic_account_id.company_id and rec.analytic_account_id.company_id != rec.company_id:
                 raise ValidationError("الحساب التحليلي يجب أن يكون لنفس شركة سطر التوزيع أو بدون شركة.")

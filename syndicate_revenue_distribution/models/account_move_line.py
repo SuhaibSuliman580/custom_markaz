@@ -18,6 +18,27 @@ class AccountMoveLine(models.Model):
         copy=False
     )
 
+    fund_box_id = fields.Many2one(
+        'syndicate.fund.box',
+        string='Fund Box',
+        readonly=True,
+        copy=False,
+    )
+
+    distribution_percentage = fields.Float(
+        string='Distribution Percentage',
+        readonly=True,
+        copy=False,
+        digits=(16, 4),
+    )
+
+    distribution_source_product_id = fields.Many2one(
+        'product.product',
+        string='Distribution Source Product',
+        readonly=True,
+        copy=False,
+    )
+
     distribution_source_line_id = fields.Many2one(
         'account.move.line',
         string='Source Line',
@@ -162,6 +183,9 @@ class AccountMoveLine(models.Model):
                     } if dist.analytic_account_id else False,
                     'is_distribution_generated': True,
                     'distribution_source_line_id': line.id,
+                    'fund_box_id': dist.fund_box_id.id,
+                    'distribution_percentage': dist.percentage,
+                    'distribution_source_product_id': line.product_id.id,
                 }
                 created_lines_vals.append(vals)
 

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_syndicate_revenue_analytics_wizard_form" model="ir.ui.view">
+        <field name="name">syndicate.revenue.analytics.wizard.form</field>
+        <field name="model">syndicate.revenue.analytics.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Revenue Analytics">
+                <sheet>
+                    <group string="Filters">
+                        <group>
+                            <field name="company_id"/>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="fund_box_id"/>
+                            <field name="product_id"/>
+                            <field name="partner_id"/>
+                        </group>
+                    </group>
+
+                    <separator string="Executive KPIs"/>
+                    <div class="row g-3 mb-4">
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <div class="text-muted fw-bold mb-2">Total Distributed Amount</div>
+                                    <field name="total_distributed_amount"
+                                           readonly="1"
+                                           nolabel="1"
+                                           widget="monetary"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <div class="text-muted fw-bold mb-2">Total Revenue</div>
+                                    <field name="total_revenue"
+                                           readonly="1"
+                                           nolabel="1"
+                                           widget="monetary"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <div class="text-muted fw-bold mb-2">Total Invoices</div>
+                                    <field name="total_invoice_count" readonly="1" nolabel="1"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <div class="text-muted fw-bold mb-2">Total Ledger Lines</div>
+                                    <field name="total_ledger_line_count" readonly="1" nolabel="1"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <div class="text-muted fw-bold mb-2">Average Distribution Per Invoice</div>
+                                    <field name="average_distribution_per_invoice"
+                                           readonly="1"
+                                           nolabel="1"
+                                           widget="monetary"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-lg-4">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <div class="text-muted fw-bold mb-2">Average Distribution Per Product</div>
+                                    <field name="average_distribution_per_product"
+                                           readonly="1"
+                                           nolabel="1"
+                                           widget="monetary"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <notebook>
+                        <page string="Top 10 Fund Boxes">
+                            <field name="fund_box_line_ids" readonly="1">
+                                <tree create="0" edit="0" delete="0">
+                                    <field name="currency_id" column_invisible="1"/>
+                                    <field name="fund_box_id" column_invisible="1"/>
+                                    <field name="rank" string="Rank" width="70px"/>
+                                    <field name="fund_box_name" string="Fund Box" width="320px"/>
+                                    <field name="distributed_amount"
+                                           string="Distributed Amount"
+                                           widget="monetary"
+                                           width="170px"/>
+                                    <field name="percentage_of_total"
+                                           string="Percentage of Total"
+                                           width="150px"/>
+                                </tree>
+                                <form string="Fund Box Analytics" create="0" edit="0" delete="0">
+                                    <header>
+                                        <button name="action_open_ledger"
+                                                type="object"
+                                                string="Open Ledger / فتح السجلات"
+                                                class="btn-primary"/>
+                                    </header>
+                                    <sheet>
+                                        <group>
+                                            <field name="rank" readonly="1"/>
+                                            <field name="fund_box_name" readonly="1"/>
+                                            <field name="distributed_amount" readonly="1" widget="monetary"/>
+                                            <field name="percentage_of_total" readonly="1"/>
+                                            <field name="currency_id" invisible="1"/>
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+
+                        <page string="Top 10 Products">
+                            <field name="product_line_ids" readonly="1">
+                                <tree create="0" edit="0" delete="0">
+                                    <field name="currency_id" column_invisible="1"/>
+                                    <field name="product_id" column_invisible="1"/>
+                                    <field name="rank" string="Rank" width="70px"/>
+                                    <field name="product_name" string="Product" width="360px"/>
+                                    <field name="distributed_amount"
+                                           string="Distributed Amount"
+                                           widget="monetary"
+                                           width="170px"/>
+                                    <field name="percentage_of_total"
+                                           string="Percentage of Total"
+                                           width="150px"/>
+                                </tree>
+                                <form string="Product Analytics" create="0" edit="0" delete="0">
+                                    <header>
+                                        <button name="action_open_ledger"
+                                                type="object"
+                                                string="Open Ledger / فتح السجلات"
+                                                class="btn-primary"/>
+                                    </header>
+                                    <sheet>
+                                        <group>
+                                            <field name="rank" readonly="1"/>
+                                            <field name="product_name" readonly="1"/>
+                                            <field name="distributed_amount" readonly="1" widget="monetary"/>
+                                            <field name="percentage_of_total" readonly="1"/>
+                                            <field name="currency_id" invisible="1"/>
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+
+                        <page string="Top 10 Partners">
+                            <field name="partner_line_ids" readonly="1">
+                                <tree create="0" edit="0" delete="0">
+                                    <field name="currency_id" column_invisible="1"/>
+                                    <field name="partner_id" column_invisible="1"/>
+                                    <field name="rank" string="Rank" width="70px"/>
+                                    <field name="partner_name" string="Partner" width="320px"/>
+                                    <field name="distributed_amount"
+                                           string="Distributed Amount"
+                                           widget="monetary"
+                                           width="170px"/>
+                                    <field name="percentage_of_total"
+                                           string="Percentage of Total"
+                                           width="150px"/>
+                                </tree>
+                                <form string="Partner Analytics" create="0" edit="0" delete="0">
+                                    <header>
+                                        <button name="action_open_ledger"
+                                                type="object"
+                                                string="Open Ledger / فتح السجلات"
+                                                class="btn-primary"/>
+                                    </header>
+                                    <sheet>
+                                        <group>
+                                            <field name="rank" readonly="1"/>
+                                            <field name="partner_name" readonly="1"/>
+                                            <field name="distributed_amount" readonly="1" widget="monetary"/>
+                                            <field name="percentage_of_total" readonly="1"/>
+                                            <field name="currency_id" invisible="1"/>
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+
+                        <page string="Monthly Revenue Trend">
+                            <field name="month_line_ids" readonly="1">
+                                <tree create="0" edit="0" delete="0">
+                                    <field name="currency_id" column_invisible="1"/>
+                                    <field name="month_key" column_invisible="1"/>
+                                    <field name="month" string="Month" width="120px"/>
+                                    <field name="revenue"
+                                           string="Revenue"
+                                           widget="monetary"
+                                           width="160px"/>
+                                    <field name="distributed_amount"
+                                           string="Distributed Amount"
+                                           widget="monetary"
+                                           width="170px"/>
+                                    <field name="invoice_count" string="Invoice Count" width="130px"/>
+                                </tree>
+                                <form string="Monthly Revenue Trend" create="0" edit="0" delete="0">
+                                    <header>
+                                        <button name="action_open_ledger"
+                                                type="object"
+                                                string="Open Ledger / فتح السجلات"
+                                                class="btn-primary"/>
+                                    </header>
+                                    <sheet>
+                                        <group>
+                                            <field name="month" readonly="1"/>
+                                            <field name="revenue" readonly="1" widget="monetary"/>
+                                            <field name="distributed_amount" readonly="1" widget="monetary"/>
+                                            <field name="invoice_count" readonly="1"/>
+                                            <field name="currency_id" invisible="1"/>
+                                            <field name="month_key" invisible="1"/>
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <footer>
+                    <button name="action_generate_analytics"
+                            type="object"
+                            string="Generate Analytics"
+                            class="btn-primary"/>
+                    <button name="action_export_excel"
+                            type="object"
+                            string="Export Excel"
+                            class="btn-secondary"/>
+                    <button name="action_export_pdf"
+                            type="object"
+                            string="Export PDF"
+                            class="btn-secondary"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_syndicate_revenue_analytics_wizard" model="ir.actions.act_window">
+        <field name="name">Revenue Analytics</field>
+        <field name="res_model">syndicate.revenue.analytics.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_revenue_analytics"
+              name="Revenue Analytics"
+              parent="menu_syndicate_reporting"
+              action="action_syndicate_revenue_analytics_wizard"
+              sequence="18"/>
+
+</odoo>

@@ -46,7 +46,7 @@ class ProductRevenueDistributionLineCompanyPatch(models.Model):
     company_id = fields.Many2one(
         'res.company',
         string='Company',
-        related='fund_box_id.company_id',
-        store=True,
-        readonly=True,
+        required=True,
+        default=lambda self: self.env.company,
+        index=True,
     )

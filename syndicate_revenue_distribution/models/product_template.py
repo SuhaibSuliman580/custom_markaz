@@ -1,5 +1,5 @@
 from odoo import models, fields, api
-from odoo.exceptions import ValidationError
+from odoo.exceptions import UserError, ValidationError
 
 
 class ProductTemplate(models.Model):
@@ -13,6 +13,12 @@ class ProductTemplate(models.Model):
         'product.revenue.distribution.line',
         'product_tmpl_id',
         string='Revenue Distribution Lines'
+    )
+
+    revenue_distribution_template_id = fields.Many2one(
+        'syndicate.revenue.distribution.template',
+        string='Revenue Distribution Template',
+        domain="[('active', '=', True)]",
     )
 
     distribution_total = fields.Float(
@@ -44,3 +50,26 @@ class ProductTemplate(models.Model):
                         "مجموع نسب التوزيع للمنتج في الشركة %s يجب أن يساوي 100%%."
                         % company.display_name
                     )
+
+    def action_apply_revenue_distribution_template(self):
+        for rec in self:
+            template = rec.revenue_distribution_template_id
+            if not template:
+                raise UserError("يجب اختيار قالب توزيع الإيرادات أولاً.")
+            if not template.active:
+                raise UserError("لا يمكن تطبيق قالب غير فعال.")
+            if abs(template.total_percentage - 100.0) > 0.0001:
+                raise UserError("يجب أن يكون مجموع نسب القالب 100%.")
+            if rec.distribution_line_ids:
+                raise UserError("يوجد توزيع حالي، يرجى حذف السطور قبل تطبيق القالب.")
+
+            rec.distribution_line_ids = [
+                (0, 0, {
+                    'sequence': line.sequence,
+                    'company_id': line.company_id.id,
+                    'fund_box_id': line.fund_box_id.id,
+                    'percentage': line.percentage,
+                })
+                for line in template.line_ids.sorted(key=lambda l: (l.sequence, l.id))
+            ]
+            rec.enable_revenue_distribution = True

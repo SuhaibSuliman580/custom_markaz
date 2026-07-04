@@ -36,11 +36,34 @@ class SyndicateFundBox(models.Model):
         domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
     )
 
+    used_product_count = fields.Integer(
+        string='Used In',
+        compute='_compute_used_product_count',
+    )
+
     note = fields.Text(string='Notes')
 
     _sql_constraints = [
         ('fund_box_code_company_unique', 'unique(code, company_id)', 'Fund code must be unique per company.')
     ]
+
+    def _compute_used_product_count(self):
+        DistributionLine = self.env['product.revenue.distribution.line']
+        for rec in self:
+            rec.used_product_count = DistributionLine.search_count([
+                ('fund_box_id', '=', rec.id),
+            ])
+
+    def action_view_used_products(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'مستخدم في',
+            'res_model': 'product.revenue.distribution.line',
+            'view_mode': 'tree',
+            'views': [(self.env.ref('syndicate_revenue_distribution.view_product_revenue_distribution_line_used_in_tree').id, 'tree')],
+            'domain': [('fund_box_id', '=', self.id)],
+        }
 
     @api.constrains('income_account_id', 'analytic_account_id', 'company_id')
     def _check_company_consistency(self):

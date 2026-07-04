@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_revenue_distribution_ledger_line_tree" model="ir.ui.view">
+        <field name="name">syndicate.revenue.distribution.ledger.line.tree</field>
+        <field name="model">syndicate.revenue.distribution.ledger.line</field>
+        <field name="arch" type="xml">
+            <tree create="0" edit="0" delete="0">
+                <field name="name"/>
+                <field name="invoice_date"/>
+                <field name="move_id"/>
+                <field name="journal_entry_id"/>
+                <field name="partner_id"/>
+                <field name="product_id"/>
+                <field name="fund_box_id"/>
+                <field name="percentage"/>
+                <field name="original_amount" widget="monetary"/>
+                <field name="distributed_amount" widget="monetary"/>
+                <field name="account_id"/>
+                <field name="analytic_account_id"/>
+                <field name="state"/>
+                <field name="ledger_source"/>
+                <field name="distribution_source"/>
+                <field name="company_id"/>
+                <field name="created_by_id"/>
+                <field name="created_on"/>
+                <field name="currency_id" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_revenue_distribution_ledger_line_form" model="ir.ui.view">
+        <field name="name">syndicate.revenue.distribution.ledger.line.form</field>
+        <field name="model">syndicate.revenue.distribution.ledger.line</field>
+        <field name="arch" type="xml">
+            <form create="0" edit="0" delete="0">
+                <sheet>
+                    <notebook>
+                        <page string="Main">
+                            <group>
+                                <group>
+                                    <field name="name" readonly="1"/>
+                                    <field name="move_id" readonly="1"/>
+                                    <field name="journal_entry_id" readonly="1"/>
+                                    <field name="invoice_date" readonly="1"/>
+                                    <field name="partner_id" readonly="1"/>
+                                </group>
+                                <group>
+                                    <field name="state" readonly="1"/>
+                                    <field name="ledger_source" readonly="1"/>
+                                    <field name="distribution_source" readonly="1"/>
+                                    <field name="company_id" readonly="1"/>
+                                    <field name="currency_id" readonly="1"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Accounting">
+                            <group>
+                                <group>
+                                    <field name="move_line_id" readonly="1"/>
+                                    <field name="source_move_line_id" readonly="1"/>
+                                    <field name="product_id" readonly="1"/>
+                                    <field name="product_tmpl_id" readonly="1"/>
+                                    <field name="fund_box_id" readonly="1"/>
+                                    <field name="percentage" readonly="1"/>
+                                </group>
+                                <group>
+                                    <field name="account_id" readonly="1"/>
+                                    <field name="analytic_account_id" readonly="1"/>
+                                    <field name="original_amount" readonly="1" widget="monetary"/>
+                                    <field name="distributed_amount" readonly="1" widget="monetary"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Snapshot">
+                            <group string="Invoice">
+                                <field name="invoice_number_snapshot" readonly="1"/>
+                            </group>
+                            <group string="Partner">
+                                <field name="partner_name_snapshot" readonly="1"/>
+                                <field name="partner_ref_snapshot" readonly="1"/>
+                            </group>
+                            <group string="Product">
+                                <field name="product_name_snapshot" readonly="1"/>
+                                <field name="product_default_code_snapshot" readonly="1"/>
+                                <field name="product_type_snapshot" readonly="1"/>
+                            </group>
+                            <group string="Fund Box">
+                                <field name="fund_box_code_snapshot" readonly="1"/>
+                                <field name="fund_box_name_snapshot" readonly="1"/>
+                            </group>
+                            <group string="Accounts">
+                                <field name="account_code_snapshot" readonly="1"/>
+                                <field name="account_name_snapshot" readonly="1"/>
+                                <field name="analytic_account_name_snapshot" readonly="1"/>
+                            </group>
+                            <group string="Company">
+                                <field name="company_name_snapshot" readonly="1"/>
+                            </group>
+                            <group string="Currency">
+                                <field name="currency_name_snapshot" readonly="1"/>
+                                <field name="currency_symbol_snapshot" readonly="1"/>
+                            </group>
+                        </page>
+                        <page string="Audit">
+                            <group>
+                                <group>
+                                    <field name="created_by_id" readonly="1"/>
+                                    <field name="created_on" readonly="1"/>
+                                    <field name="ledger_source" readonly="1"/>
+                                    <field name="distribution_source" readonly="1"/>
+                                </group>
+                                <group>
+                                    <field name="reversal_move_id" readonly="1"/>
+                                    <field name="reversed_ledger_id" readonly="1"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_revenue_distribution_ledger_line_search" model="ir.ui.view">
+        <field name="name">syndicate.revenue.distribution.ledger.line.search</field>
+        <field name="model">syndicate.revenue.distribution.ledger.line</field>
+        <field name="arch" type="xml">
+            <search string="Revenue Distribution Ledger">
+                <field name="name"/>
+                <field name="move_id"/>
+                <field name="partner_id"/>
+                <field name="product_id"/>
+                <field name="fund_box_id"/>
+                <field name="company_id"/>
+                <filter name="filter_posted"
+                        string="Posted"
+                        domain="[('state', '=', 'posted')]"/>
+                <filter name="filter_invoice_post"
+                        string="Invoice Post"
+                        domain="[('ledger_source', '=', 'invoice_post')]"/>
+                <filter name="filter_reversal"
+                        string="Reversal"
+                        domain="[('ledger_source', '=', 'reversal')]"/>
+                <separator/>
+                <filter name="filter_today"
+                        string="Today"
+                        domain="[('invoice_date', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter name="filter_this_month"
+                        string="This Month"
+                        domain="[('invoice_date', '&gt;=', context_today().replace(day=1).strftime('%Y-%m-%d')), ('invoice_date', '&lt;=', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter name="filter_this_year"
+                        string="This Year"
+                        domain="[('invoice_date', '&gt;=', context_today().replace(month=1, day=1).strftime('%Y-%m-%d')), ('invoice_date', '&lt;=', context_today().strftime('%Y-%m-%d'))]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="group_fund_box"
+                            string="Fund Box"
+                            context="{'group_by': 'fund_box_id'}"/>
+                    <filter name="group_product"
+                            string="Product"
+                            context="{'group_by': 'product_id'}"/>
+                    <filter name="group_partner"
+                            string="Partner"
+                            context="{'group_by': 'partner_id'}"/>
+                    <filter name="group_company"
+                            string="Company"
+                            context="{'group_by': 'company_id'}"/>
+                    <filter name="group_invoice_month"
+                            string="Invoice Month"
+                            context="{'group_by': 'invoice_date:month'}"/>
+                    <filter name="group_ledger_source"
+                            string="Ledger Source"
+                            context="{'group_by': 'ledger_source'}"/>
+                    <filter name="group_state"
+                            string="State"
+                            context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_revenue_distribution_ledger_line_pivot" model="ir.ui.view">
+        <field name="name">syndicate.revenue.distribution.ledger.line.pivot</field>
+        <field name="model">syndicate.revenue.distribution.ledger.line</field>
+        <field name="arch" type="xml">
+            <pivot string="Revenue Distribution Ledger">
+                <field name="fund_box_id" type="row"/>
+                <field name="product_id" type="row"/>
+                <field name="partner_id" type="row"/>
+                <field name="company_id" type="row"/>
+                <field name="invoice_date" interval="month" type="col"/>
+                <field name="distributed_amount" type="measure"/>
+                <field name="original_amount" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_revenue_distribution_ledger_line_graph" model="ir.ui.view">
+        <field name="name">syndicate.revenue.distribution.ledger.line.graph</field>
+        <field name="model">syndicate.revenue.distribution.ledger.line</field>
+        <field name="arch" type="xml">
+            <graph string="Revenue Distribution by Fund Box" type="bar">
+                <field name="fund_box_id"/>
+                <field name="distributed_amount" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_revenue_distribution_ledger_line" model="ir.actions.act_window">
+        <field name="name">Revenue Distribution Ledger</field>
+        <field name="res_model">syndicate.revenue.distribution.ledger.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_revenue_distribution_ledger_line_search"/>
+    </record>
+
+    <record id="action_revenue_distribution_dashboard" model="ir.actions.act_window">
+        <field name="name">Revenue Dashboard</field>
+        <field name="res_model">syndicate.revenue.distribution.ledger.line</field>
+        <field name="view_mode">graph,pivot,tree</field>
+        <field name="domain">[('state', '=', 'posted')]</field>
+        <field name="context">{'search_default_filter_posted': 1, 'search_default_group_fund_box': 1}</field>
+        <field name="search_view_id" ref="view_revenue_distribution_ledger_line_search"/>
+    </record>
+
+    <record id="action_revenue_distribution_ledger_pivot" model="ir.actions.act_window">
+        <field name="name">Ledger Pivot</field>
+        <field name="res_model">syndicate.revenue.distribution.ledger.line</field>
+        <field name="view_mode">pivot,tree</field>
+        <field name="domain">[('state', '=', 'posted')]</field>
+        <field name="context">{'search_default_filter_posted': 1}</field>
+        <field name="search_view_id" ref="view_revenue_distribution_ledger_line_search"/>
+    </record>
+
+    <record id="action_revenue_distribution_ledger_graph" model="ir.actions.act_window">
+        <field name="name">Ledger Graph</field>
+        <field name="res_model">syndicate.revenue.distribution.ledger.line</field>
+        <field name="view_mode">graph,pivot,tree</field>
+        <field name="domain">[('state', '=', 'posted')]</field>
+        <field name="context">{'search_default_filter_posted': 1, 'search_default_group_fund_box': 1}</field>
+        <field name="search_view_id" ref="view_revenue_distribution_ledger_line_search"/>
+    </record>
+
+    <menuitem id="menu_revenue_distribution_dashboard"
+              name="Revenue Dashboard"
+              parent="menu_syndicate_reporting"
+              action="action_revenue_distribution_dashboard"
+              sequence="12"/>
+
+    <menuitem id="menu_revenue_distribution_ledger_pivot"
+              name="Ledger Pivot"
+              parent="menu_syndicate_reporting"
+              action="action_revenue_distribution_ledger_pivot"
+              sequence="14"/>
+
+    <menuitem id="menu_revenue_distribution_ledger_graph"
+              name="Ledger Graph"
+              parent="menu_syndicate_reporting"
+              action="action_revenue_distribution_ledger_graph"
+              sequence="16"/>
+
+    <menuitem id="menu_revenue_distribution_ledger"
+              name="Revenue Distribution Ledger"
+              parent="menu_syndicate_reporting"
+              action="action_revenue_distribution_ledger_line"
+              sequence="20"/>
+
+</odoo>

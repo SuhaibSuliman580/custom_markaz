@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_revenue_distribution_analysis_wizard_form" model="ir.ui.view">
+        <field name="name">revenue.distribution.analysis.wizard.form</field>
+        <field name="model">revenue.distribution.analysis.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Revenue Distribution Analysis" create="0" edit="0">
+                <sheet>
+                    <group>
+                        <field name="move_id" readonly="1"/>
+                        <field name="currency_id" invisible="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Details">
+                            <field name="detail_line_ids" readonly="1">
+                                <tree create="0" edit="0" delete="0">
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="move_id"/>
+                                    <field name="partner_id"/>
+                                    <field name="product_id"/>
+                                    <field name="invoice_line_description"/>
+                                    <field name="line_subtotal"/>
+                                    <field name="fund_box_id"/>
+                                    <field name="percentage"/>
+                                    <field name="distributed_amount"/>
+                                    <field name="account_id"/>
+                                    <field name="analytic_account_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Summary by Fund Box">
+                            <field name="summary_line_ids" readonly="1">
+                                <tree create="0" edit="0" delete="0">
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="fund_box_id"/>
+                                    <field name="total_distributed_amount"/>
+                                    <field name="account_id"/>
+                                    <field name="analytic_account_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <footer>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

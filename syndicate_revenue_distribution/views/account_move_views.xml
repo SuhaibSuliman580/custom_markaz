@@ -7,6 +7,14 @@
         <field name="inherit_id" ref="account.view_move_form"/>
         <field name="arch" type="xml">
 
+            <xpath expr="//header" position="inside">
+                <button name="action_open_revenue_distribution_analysis"
+                        type="object"
+                        string="تحليل توزيع الإيرادات"
+                        class="btn-secondary"
+                        invisible="move_type not in ('out_invoice', 'out_refund')"/>
+            </xpath>
+
             <xpath expr="//field[@name='invoice_line_ids']/tree//field[@name='price_subtotal']" position="after">
                 <button name="action_generate_distribution_lines"
                         type="object"

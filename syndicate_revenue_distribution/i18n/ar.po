@@ -1,0 +1,641 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* syndicate_revenue_distribution
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-07 00:00+0000\n"
+"PO-Revision-Date: 2026-07-07 00:00+0000\n"
+"Last-Translator: Custom\n"
+"Language-Team: Arabic\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+
+#. module: syndicate_revenue_distribution
+msgid "#"
+msgstr "#"
+
+#. module: syndicate_revenue_distribution
+msgid "Accounting"
+msgstr "المحاسبة"
+
+#. module: syndicate_revenue_distribution
+msgid "Accounts"
+msgstr "الحسابات"
+
+#. module: syndicate_revenue_distribution
+msgid "Analytic Account"
+msgstr "الحساب التحليلي"
+
+#. module: syndicate_revenue_distribution
+msgid "Analytic Account Name Snapshot"
+msgstr "لقطة اسم الحساب التحليلي"
+
+#. module: syndicate_revenue_distribution
+msgid "Amount"
+msgstr "المبلغ"
+
+#. module: syndicate_revenue_distribution
+msgid "Audit"
+msgstr "التدقيق"
+
+#. module: syndicate_revenue_distribution
+msgid "Average Distribution Per Invoice"
+msgstr "متوسط التوزيع لكل فاتورة"
+
+#. module: syndicate_revenue_distribution
+msgid "Average Distribution Per Product"
+msgstr "متوسط التوزيع لكل منتج"
+
+#. module: syndicate_revenue_distribution
+msgid "Cancelled"
+msgstr "ملغى"
+
+#. module: syndicate_revenue_distribution
+msgid "Close"
+msgstr "إغلاق"
+
+#. module: syndicate_revenue_distribution
+msgid "Code"
+msgstr "الكود"
+
+#. module: syndicate_revenue_distribution
+msgid "Company"
+msgstr "الشركة"
+
+#. module: syndicate_revenue_distribution
+msgid "Company Name Snapshot"
+msgstr "لقطة اسم الشركة"
+
+#. module: syndicate_revenue_distribution
+msgid "Configuration"
+msgstr "الإعدادات"
+
+#. module: syndicate_revenue_distribution
+msgid "Created By"
+msgstr "أنشئ بواسطة"
+
+#. module: syndicate_revenue_distribution
+msgid "Created On"
+msgstr "أنشئ في"
+
+#. module: syndicate_revenue_distribution
+msgid "Currency"
+msgstr "العملة"
+
+#. module: syndicate_revenue_distribution
+msgid "Currency Name Snapshot"
+msgstr "لقطة اسم العملة"
+
+#. module: syndicate_revenue_distribution
+msgid "Currency Symbol Snapshot"
+msgstr "لقطة رمز العملة"
+
+#. module: syndicate_revenue_distribution
+msgid "Custom"
+msgstr "مخصص"
+
+#. module: syndicate_revenue_distribution
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: syndicate_revenue_distribution
+msgid "Date From"
+msgstr "من تاريخ"
+
+#. module: syndicate_revenue_distribution
+msgid "Date To"
+msgstr "إلى تاريخ"
+
+#. module: syndicate_revenue_distribution
+msgid "Detail Lines"
+msgstr "سطور التفاصيل"
+
+#. module: syndicate_revenue_distribution
+msgid "Details"
+msgstr "التفاصيل"
+
+#. module: syndicate_revenue_distribution
+msgid "Distributed Amount"
+msgstr "المبلغ الموزع"
+
+#. module: syndicate_revenue_distribution
+msgid "Distribution Lines"
+msgstr "سطور التوزيع"
+
+#. module: syndicate_revenue_distribution
+msgid "Distribution Percentage"
+msgstr "نسبة التوزيع"
+
+#. module: syndicate_revenue_distribution
+msgid "Distribution Source"
+msgstr "مصدر التوزيع"
+
+#. module: syndicate_revenue_distribution
+msgid "Distribution Source Product"
+msgstr "منتج مصدر التوزيع"
+
+#. module: syndicate_revenue_distribution
+msgid "Distribution Total"
+msgstr "إجمالي التوزيع"
+
+#. module: syndicate_revenue_distribution
+msgid "Enable Revenue Distribution"
+msgstr "تفعيل توزيع الإيرادات"
+
+#. module: syndicate_revenue_distribution
+msgid "Executive KPIs"
+msgstr "مؤشرات الأداء التنفيذية"
+
+#. module: syndicate_revenue_distribution
+msgid "Export File"
+msgstr "ملف التصدير"
+
+#. module: syndicate_revenue_distribution
+msgid "Export Filename"
+msgstr "اسم ملف التصدير"
+
+#. module: syndicate_revenue_distribution
+msgid "Filters"
+msgstr "عوامل التصفية"
+
+#. module: syndicate_revenue_distribution
+msgid "Fund Box"
+msgstr "الصندوق"
+
+#. module: syndicate_revenue_distribution
+msgid "Fund Box Analytics"
+msgstr "تحليلات الصندوق"
+
+#. module: syndicate_revenue_distribution
+msgid "Fund Box Code Snapshot"
+msgstr "لقطة كود الصندوق"
+
+#. module: syndicate_revenue_distribution
+msgid "Fund Box Name Snapshot"
+msgstr "لقطة اسم الصندوق"
+
+#. module: syndicate_revenue_distribution
+msgid "Fund Boxes"
+msgstr "الصناديق"
+
+#. module: syndicate_revenue_distribution
+msgid "Fund Box must be unique per template."
+msgstr "يجب ألا يتكرر الصندوق في نفس القالب."
+
+#. module: syndicate_revenue_distribution
+msgid "Generate Dashboard / إنشاء لوحة المعلومات"
+msgstr "إنشاء لوحة المعلومات"
+
+#. module: syndicate_revenue_distribution
+msgid "Generate Report"
+msgstr "إنشاء التقرير"
+
+#. module: syndicate_revenue_distribution
+msgid "Generated Distribution Line"
+msgstr "سطر توزيع منشأ"
+
+#. module: syndicate_revenue_distribution
+msgid "Generated Distribution Lines"
+msgstr "سطور التوزيع المنشأة"
+
+#. module: syndicate_revenue_distribution
+msgid "Generated Move Line"
+msgstr "سطر القيد المنشأ"
+
+#. module: syndicate_revenue_distribution
+msgid "Group By"
+msgstr "تجميع حسب"
+
+#. module: syndicate_revenue_distribution
+msgid "Hide in Invoice Lines"
+msgstr "إخفاء في سطور الفاتورة"
+
+#. module: syndicate_revenue_distribution
+msgid "Hide in Journal Items"
+msgstr "إخفاء في عناصر اليومية"
+
+#. module: syndicate_revenue_distribution
+msgid "Income Account"
+msgstr "حساب الإيراد"
+
+#. module: syndicate_revenue_distribution
+msgid "Income Account Code Snapshot"
+msgstr "لقطة كود حساب الإيراد"
+
+#. module: syndicate_revenue_distribution
+msgid "Income Account Name Snapshot"
+msgstr "لقطة اسم حساب الإيراد"
+
+#. module: syndicate_revenue_distribution
+msgid "Invoice"
+msgstr "الفاتورة"
+
+#. module: syndicate_revenue_distribution
+msgid "Invoice Count"
+msgstr "عدد الفواتير"
+
+#. module: syndicate_revenue_distribution
+msgid "Invoice Date"
+msgstr "تاريخ الفاتورة"
+
+#. module: syndicate_revenue_distribution
+msgid "Invoice Line Description"
+msgstr "وصف سطر الفاتورة"
+
+#. module: syndicate_revenue_distribution
+msgid "Invoice Month"
+msgstr "شهر الفاتورة"
+
+#. module: syndicate_revenue_distribution
+msgid "Invoice Number Snapshot"
+msgstr "لقطة رقم الفاتورة"
+
+#. module: syndicate_revenue_distribution
+msgid "Invoice Post"
+msgstr "ترحيل الفاتورة"
+
+#. module: syndicate_revenue_distribution
+msgid "Journal Entry"
+msgstr "قيد اليومية"
+
+#. module: syndicate_revenue_distribution
+msgid "KPIs"
+msgstr "مؤشرات الأداء"
+
+#. module: syndicate_revenue_distribution
+msgid "Latest Ledger Lines"
+msgstr "أحدث سطور الدفتر"
+
+#. module: syndicate_revenue_distribution
+msgid "Ledger"
+msgstr "الدفتر"
+
+#. module: syndicate_revenue_distribution
+msgid "Ledger Graph"
+msgstr "رسم الدفتر"
+
+#. module: syndicate_revenue_distribution
+msgid "Ledger Pivot"
+msgstr "تحليل الدفتر المحوري"
+
+#. module: syndicate_revenue_distribution
+msgid "Ledger Source"
+msgstr "مصدر الدفتر"
+
+#. module: syndicate_revenue_distribution
+msgid "Ledger line already exists for this move line and source."
+msgstr "يوجد سطر دفتر لهذا السطر المحاسبي وهذا المصدر مسبقاً."
+
+#. module: syndicate_revenue_distribution
+msgid "Line Untaxed Subtotal"
+msgstr "إجمالي السطر قبل الضريبة"
+
+#. module: syndicate_revenue_distribution
+msgid "Main"
+msgstr "الرئيسية"
+
+#. module: syndicate_revenue_distribution
+msgid "Manual"
+msgstr "يدوي"
+
+#. module: syndicate_revenue_distribution
+msgid "Manual Adjustment"
+msgstr "تسوية يدوية"
+
+#. module: syndicate_revenue_distribution
+msgid "Month"
+msgstr "الشهر"
+
+#. module: syndicate_revenue_distribution
+msgid "Month Key"
+msgstr "مفتاح الشهر"
+
+#. module: syndicate_revenue_distribution
+msgid "Name"
+msgstr "الاسم"
+
+#. module: syndicate_revenue_distribution
+msgid "New"
+msgstr "جديد"
+
+#. module: syndicate_revenue_distribution
+msgid "Notes"
+msgstr "ملاحظات"
+
+#. module: syndicate_revenue_distribution
+msgid "Open Ledger / فتح السجلات"
+msgstr "فتح السجلات"
+
+#. module: syndicate_revenue_distribution
+msgid "Original Amount"
+msgstr "المبلغ الأصلي"
+
+#. module: syndicate_revenue_distribution
+msgid "Partner"
+msgstr "الشريك"
+
+#. module: syndicate_revenue_distribution
+msgid "Partner Name"
+msgstr "اسم الشريك"
+
+#. module: syndicate_revenue_distribution
+msgid "Partner Name Snapshot"
+msgstr "لقطة اسم الشريك"
+
+#. module: syndicate_revenue_distribution
+msgid "Partner Reference Snapshot"
+msgstr "لقطة مرجع الشريك"
+
+#. module: syndicate_revenue_distribution
+msgid "Percentage"
+msgstr "النسبة"
+
+#. module: syndicate_revenue_distribution
+msgid "Percentage of Total"
+msgstr "النسبة من الإجمالي"
+
+#. module: syndicate_revenue_distribution
+msgid "Period"
+msgstr "الفترة"
+
+#. module: syndicate_revenue_distribution
+msgid "Posted"
+msgstr "مرحّل"
+
+#. module: syndicate_revenue_distribution
+msgid "Product"
+msgstr "المنتج"
+
+#. module: syndicate_revenue_distribution
+msgid "Product Internal Reference Snapshot"
+msgstr "لقطة المرجع الداخلي للمنتج"
+
+#. module: syndicate_revenue_distribution
+msgid "Product Name Snapshot"
+msgstr "لقطة اسم المنتج"
+
+#. module: syndicate_revenue_distribution
+msgid "Product Revenue Distribution Line"
+msgstr "سطر توزيع إيراد المنتج"
+
+#. module: syndicate_revenue_distribution
+msgid "Product Template"
+msgstr "قالب المنتج"
+
+#. module: syndicate_revenue_distribution
+msgid "Product Type Snapshot"
+msgstr "لقطة نوع المنتج"
+
+#. module: syndicate_revenue_distribution
+msgid "Rank"
+msgstr "الترتيب"
+
+#. module: syndicate_revenue_distribution
+msgid "Reference"
+msgstr "المرجع"
+
+#. module: syndicate_revenue_distribution
+msgid "Result"
+msgstr "النتيجة"
+
+#. module: syndicate_revenue_distribution
+msgid "Revenue"
+msgstr "الإيراد"
+
+#. module: syndicate_revenue_distribution
+msgid "Revenue Analytics"
+msgstr "تحليلات الإيرادات"
+
+#. module: syndicate_revenue_distribution
+msgid "Revenue Analytics Report"
+msgstr "تقرير تحليلات الإيرادات"
+
+#. module: syndicate_revenue_distribution
+msgid "Revenue Dashboard"
+msgstr "لوحة معلومات الإيرادات"
+
+#. module: syndicate_revenue_distribution
+msgid "Revenue Distribution"
+msgstr "توزيع الإيرادات"
+
+#. module: syndicate_revenue_distribution
+msgid "Revenue Distribution Analysis"
+msgstr "تحليل توزيع الإيرادات"
+
+#. module: syndicate_revenue_distribution
+msgid "Revenue Distribution Analysis Detail Line"
+msgstr "سطر تفاصيل تحليل توزيع الإيرادات"
+
+#. module: syndicate_revenue_distribution
+msgid "Revenue Distribution Analysis Summary Line"
+msgstr "سطر ملخص تحليل توزيع الإيرادات"
+
+#. module: syndicate_revenue_distribution
+msgid "Revenue Distribution Ledger"
+msgstr "دفتر توزيع الإيرادات"
+
+#. module: syndicate_revenue_distribution
+msgid "Revenue Distribution Ledger Line"
+msgstr "سطر دفتر توزيع الإيرادات"
+
+#. module: syndicate_revenue_distribution
+msgid "Revenue Distribution Lines"
+msgstr "سطور توزيع الإيرادات"
+
+#. module: syndicate_revenue_distribution
+msgid "Revenue Distribution Report"
+msgstr "تقرير توزيع الإيرادات"
+
+#. module: syndicate_revenue_distribution
+msgid "Revenue Distribution Report Line"
+msgstr "سطر تقرير توزيع الإيرادات"
+
+#. module: syndicate_revenue_distribution
+msgid "Revenue Distribution Report Summary Line"
+msgstr "سطر ملخص تقرير توزيع الإيرادات"
+
+#. module: syndicate_revenue_distribution
+msgid "Revenue Distribution Template"
+msgstr "قالب توزيع الإيرادات"
+
+#. module: syndicate_revenue_distribution
+msgid "Revenue Distribution Template Line"
+msgstr "سطر قالب توزيع الإيرادات"
+
+#. module: syndicate_revenue_distribution
+msgid "Revenue Distribution by Fund Box"
+msgstr "توزيع الإيرادات حسب الصندوق"
+
+#. module: syndicate_revenue_distribution
+msgid "Revenue distribution by percentages for syndicates"
+msgstr "توزيع الإيرادات بالنسب للنقابات"
+
+#. module: syndicate_revenue_distribution
+msgid "Reversal"
+msgstr "عكس القيد"
+
+#. module: syndicate_revenue_distribution
+msgid "Reversal Move"
+msgstr "قيد العكس"
+
+#. module: syndicate_revenue_distribution
+msgid "Reversed"
+msgstr "معكوس"
+
+#. module: syndicate_revenue_distribution
+msgid "Reversed Ledger Line"
+msgstr "سطر الدفتر المعكوس"
+
+#. module: syndicate_revenue_distribution
+msgid "Source Line"
+msgstr "السطر المصدر"
+
+#. module: syndicate_revenue_distribution
+msgid "Source Move Line"
+msgstr "سطر القيد المصدر"
+
+#. module: syndicate_revenue_distribution
+msgid "State"
+msgstr "الحالة"
+
+#. module: syndicate_revenue_distribution
+msgid "Summary Lines"
+msgstr "سطور الملخص"
+
+#. module: syndicate_revenue_distribution
+msgid "Summary by Fund Box"
+msgstr "ملخص حسب الصندوق"
+
+#. module: syndicate_revenue_distribution
+msgid "Syndicate"
+msgstr "النقابة"
+
+#. module: syndicate_revenue_distribution
+msgid "Syndicate Fund Box"
+msgstr "صندوق النقابة"
+
+#. module: syndicate_revenue_distribution
+msgid "Syndicate Fund Box Branch Manager"
+msgstr "مدير فرع صندوق النقابة"
+
+#. module: syndicate_revenue_distribution
+msgid "Syndicate Fund Box Branch User"
+msgstr "مستخدم فرع صندوق النقابة"
+
+#. module: syndicate_revenue_distribution
+msgid "Syndicate Revenue Distribution"
+msgstr "توزيع إيرادات النقابة"
+
+#. module: syndicate_revenue_distribution
+msgid "Template"
+msgstr "القالب"
+
+#. module: syndicate_revenue_distribution
+msgid "Template Lines"
+msgstr "سطور القالب"
+
+#. module: syndicate_revenue_distribution
+msgid "Template code must be unique per company."
+msgstr "يجب أن يكون كود القالب فريداً لكل شركة."
+
+#. module: syndicate_revenue_distribution
+msgid "This Month"
+msgstr "هذا الشهر"
+
+#. module: syndicate_revenue_distribution
+msgid "This Week"
+msgstr "هذا الأسبوع"
+
+#. module: syndicate_revenue_distribution
+msgid "This Year"
+msgstr "هذه السنة"
+
+#. module: syndicate_revenue_distribution
+msgid "Today"
+msgstr "اليوم"
+
+#. module: syndicate_revenue_distribution
+msgid "Top 10 Fund Boxes"
+msgstr "أفضل 10 صناديق"
+
+#. module: syndicate_revenue_distribution
+msgid "Top 10 Partners"
+msgstr "أفضل 10 شركاء"
+
+#. module: syndicate_revenue_distribution
+msgid "Top 10 Products"
+msgstr "أفضل 10 منتجات"
+
+#. module: syndicate_revenue_distribution
+msgid "Top Fund Boxes"
+msgstr "أعلى الصناديق"
+
+#. module: syndicate_revenue_distribution
+msgid "Top Products"
+msgstr "أعلى المنتجات"
+
+#. module: syndicate_revenue_distribution
+msgid "Total Distributed Amount"
+msgstr "إجمالي المبلغ الموزع"
+
+#. module: syndicate_revenue_distribution
+msgid "Total Fund Boxes"
+msgstr "إجمالي الصناديق"
+
+#. module: syndicate_revenue_distribution
+msgid "Total Invoices"
+msgstr "إجمالي الفواتير"
+
+#. module: syndicate_revenue_distribution
+msgid "Total Ledger Lines"
+msgstr "إجمالي سطور الدفتر"
+
+#. module: syndicate_revenue_distribution
+msgid "Total Percentage"
+msgstr "إجمالي النسبة"
+
+#. module: syndicate_revenue_distribution
+msgid "Total Products"
+msgstr "إجمالي المنتجات"
+
+#. module: syndicate_revenue_distribution
+msgid "Total Revenue"
+msgstr "إجمالي الإيراد"
+
+#. module: syndicate_revenue_distribution
+msgid "Used In"
+msgstr "مستخدم في"
+
+#. module: syndicate_revenue_distribution
+msgid "تطبيق القالب"
+msgstr "تطبيق القالب"
+
+#. module: syndicate_revenue_distribution
+msgid "تحليل توزيع الإيرادات"
+msgstr "تحليل توزيع الإيرادات"
+
+#. module: syndicate_revenue_distribution
+msgid "تقرير توزيع الإيرادات"
+msgstr "تقرير توزيع الإيرادات"
+
+#. module: syndicate_revenue_distribution
+msgid "قوالب توزيع الإيرادات"
+msgstr "قوالب توزيع الإيرادات"
+
+#. module: syndicate_revenue_distribution
+msgid "مستخدم في"
+msgstr "مستخدم في"
+
+#. module: syndicate_revenue_distribution
+msgid "حذف التوزيع"
+msgstr "حذف التوزيع"
+
+#. module: syndicate_revenue_distribution
+msgid "توزيع"
+msgstr "توزيع"

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_users_form_membership_cashier_journals" model="ir.ui.view">
+        <field name="name">res.users.form.membership.cashier.journals</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="صندوق خدمات الأطباء"
+                      groups="membership_management.group_membership_service_manager,account.group_account_manager">
+                    <group string="دفاتر اليومية النقدية المسموحة">
+                        <field name="allowed_cash_journal_ids" widget="many2many_tags"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

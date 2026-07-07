@@ -6,7 +6,54 @@
               name="Doctor Membership"
               sequence="60"
               web_icon="membership_management,static/description/icon.png"
-              groups="membership_management.group_membership_officer"/>
+              groups="membership_management.group_membership_officer,membership_management.group_membership_service_registration,membership_management.group_membership_service_finance,membership_management.group_membership_service_cashier,membership_management.group_membership_service_manager"/>
+
+    <menuitem id="menu_membership_service_desk"
+              name="مكتب خدمات الأطباء"
+              parent="menu_membership_root"
+              sequence="5"
+              groups="membership_management.group_membership_service_registration,membership_management.group_membership_service_finance,membership_management.group_membership_service_cashier,membership_management.group_membership_service_manager"/>
+
+    <menuitem id="menu_membership_registration_workspace_root"
+              name="مركز عمل الذاتية"
+              parent="menu_membership_root"
+              sequence="4"
+              groups="membership_management.group_membership_service_registration,membership_management.group_membership_service_manager"/>
+
+    <menuitem id="menu_membership_registration_workspace"
+              name="لوحة الذاتية"
+              parent="menu_membership_registration_workspace_root"
+              action="action_membership_registration_workspace_server"
+              sequence="1"
+              groups="membership_management.group_membership_service_registration,membership_management.group_membership_service_manager"/>
+
+    <menuitem id="menu_membership_service_requests"
+              name="طلبات خدمات الأطباء"
+              parent="menu_membership_service_desk"
+              action="action_membership_service_request"
+              sequence="10"
+              groups="membership_management.group_membership_service_registration,membership_management.group_membership_service_finance,membership_management.group_membership_service_cashier,membership_management.group_membership_service_manager"/>
+
+    <menuitem id="menu_membership_financial_workspace"
+              name="مركز عمل المالية"
+              parent="menu_membership_service_desk"
+              action="action_membership_financial_workspace_server"
+              sequence="12"
+              groups="membership_management.group_membership_service_finance,membership_management.group_membership_service_manager"/>
+
+    <menuitem id="menu_membership_service_finance_approval"
+              name="اعتماد مطالبات خدمات الأطباء"
+              parent="menu_membership_service_desk"
+              action="action_membership_service_finance_approval"
+              sequence="15"
+              groups="membership_management.group_membership_service_finance,membership_management.group_membership_service_manager"/>
+
+    <menuitem id="menu_membership_cashier_dashboard"
+              name="قبض فواتير خدمات الأطباء"
+              parent="menu_membership_service_desk"
+              action="action_membership_cashier_dashboard_server"
+              sequence="20"
+              groups="membership_management.group_membership_service_cashier,membership_management.group_membership_service_manager"/>
 
     <!-- Applications -->
     <menuitem id="menu_membership_applications"
@@ -22,11 +69,18 @@
               action="action_membership_period"
               sequence="20"/>
     <menuitem id="menu_doctor_partners"
-          name="Doctor"
+          name="الطبيب"
           parent="menu_membership_root"
           action="action_doctor_partners_server"
           sequence="10"
           groups="membership_management.group_membership_officer"/>
+
+    <menuitem id="menu_membership_doctor_360"
+          name="الملف الموحد للطبيب"
+          parent="menu_doctor_partners"
+          action="action_membership_doctor_360_server"
+          sequence="5"
+          groups="membership_management.group_membership_officer,membership_management.group_membership_service_registration,membership_management.group_membership_service_finance,membership_management.group_membership_service_cashier,membership_management.group_membership_service_manager"/>
 
 
     <!-- Configuration Menu -->
@@ -46,5 +100,12 @@
               parent="menu_membership_config"
               action="membership_management.action_medical_unv"
               sequence="11"/>
+
+    <menuitem id="menu_membership_service_type"
+              name="أنواع خدمات الأطباء"
+              parent="menu_membership_config"
+              action="action_membership_service_type"
+              sequence="20"
+              groups="membership_management.group_membership_service_manager,membership_management.group_membership_admin"/>
 
 </odoo>

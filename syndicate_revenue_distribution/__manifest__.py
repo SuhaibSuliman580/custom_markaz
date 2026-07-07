@@ -10,6 +10,7 @@
         'product',
     ],
     'data': [
+        'security/revenue_distribution_security.xml',
         'security/ir.model.access.csv',
         'security/company_security.xml',
         'data/sequence.xml',

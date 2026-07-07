@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_membership_financial_workspace_form" model="ir.ui.view">
+        <field name="name">membership.financial.workspace.form</field>
+        <field name="model">membership.financial.workspace</field>
+        <field name="arch" type="xml">
+            <form string="مركز عمل المالية" create="0" edit="1" delete="0">
+                <header>
+                    <button name="action_refresh_workspace" type="object" string="تحديث" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <field name="name" invisible="1"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="has_alert_lines" invisible="1"/>
+                    <field name="has_inbox_lines" invisible="1"/>
+                    <field name="has_task_lines" invisible="1"/>
+                    <field name="has_activity_lines" invisible="1"/>
+                    <field name="has_pending_work" invisible="1"/>
+                    <field name="distribution_issue_count" invisible="1"/>
+
+                    <div class="oe_title mb-3">
+                        <h1>مركز عمل المالية</h1>
+                    </div>
+
+                    <div class="row g-3 mb-4">
+                        <div class="col-12 col-md-6 col-xl-2">
+                            <div class="border rounded p-3 bg-view">
+                                <button name="action_open_kpi_waiting_approval" type="object" string="بانتظار الاعتماد" class="btn-link p-0 mb-2 text-warning"/>
+                                <div class="fs-3 fw-bold text-warning"><field name="waiting_approval_count" nolabel="1" readonly="1"/></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-2">
+                            <div class="border rounded p-3 bg-view">
+                                <button name="action_open_kpi_waiting_payment" type="object" string="بانتظار الدفع" class="btn-link p-0 mb-2 text-danger"/>
+                                <div class="fs-3 fw-bold text-danger"><field name="waiting_payment_count" nolabel="1" readonly="1"/></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-2">
+                            <div class="border rounded p-3 bg-view">
+                                <button name="action_open_kpi_posted_invoices_today" type="object" string="فواتير مرحلة اليوم" class="btn-link p-0 mb-2"/>
+                                <div class="fs-3 fw-bold"><field name="posted_invoice_today_count" nolabel="1" readonly="1"/></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-2">
+                            <div class="border rounded p-3 bg-view">
+                                <button name="action_open_kpi_today_fees" type="object" string="إجمالي رسوم اليوم" class="btn-link p-0 mb-2 text-success"/>
+                                <div class="fs-4 fw-bold text-success"><field name="today_fee_total" nolabel="1" readonly="1"/></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-2">
+                            <div class="border rounded p-3 bg-view">
+                                <button name="action_open_kpi_today_revenue" type="object" string="إجمالي الإيرادات اليوم" class="btn-link p-0 mb-2 text-success"/>
+                                <div class="fs-4 fw-bold text-success"><field name="today_revenue_total" nolabel="1" readonly="1"/></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-2">
+                            <div class="border rounded p-3 bg-view">
+                                <button name="action_open_kpi_rejected_today" type="object" string="مرفوضة اليوم" class="btn-link p-0 mb-2 text-danger"/>
+                                <div class="fs-3 fw-bold text-danger"><field name="rejected_today_count" nolabel="1" readonly="1"/></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border rounded p-3 mb-4 bg-view">
+                        <h3 class="mb-3">الأعمال المطلوبة الآن</h3>
+                        <div class="alert alert-success mb-0" role="alert" invisible="has_pending_work">
+                            لا توجد أعمال مالية معلقة حالياً.
+                        </div>
+                        <field name="pending_work_summary_html" readonly="1" nolabel="1" widget="html" invisible="not has_pending_work"/>
+                    </div>
+
+                    <div class="border rounded p-3 mb-4 bg-view">
+                        <h3 class="mb-3">التنبيهات المالية</h3>
+                        <div class="alert alert-info mb-0" role="alert" invisible="has_alert_lines">
+                            لا توجد تنبيهات مالية حالياً.
+                        </div>
+                        <field name="alert_line_ids" readonly="1" nolabel="1" invisible="not has_alert_lines">
+                            <tree create="0" edit="0" delete="0"
+                                  decoration-danger="level == 'danger'"
+                                  decoration-warning="level == 'warning'"
+                                  decoration-info="level == 'info'">
+                                <field name="level" string="المستوى" widget="badge"
+                                       decoration-danger="level == 'danger'"
+                                       decoration-warning="level == 'warning'"
+                                       decoration-info="level == 'info'"/>
+                                <field name="title" string="التنبيه"/>
+                                <field name="message" string="الوصف"/>
+                                <field name="record_count" string="العدد"/>
+                                <button name="action_open_related_records" type="object" string="عرض" class="btn-secondary"/>
+                            </tree>
+                        </field>
+                    </div>
+
+                    <div class="border rounded p-3 mb-4 bg-view">
+                        <h3 class="mb-3">طلبات بانتظار الاعتماد المالي</h3>
+                        <div class="alert alert-info mb-0" role="alert" invisible="has_inbox_lines">
+                            لا توجد طلبات بانتظار الاعتماد المالي حالياً.
+                        </div>
+                        <field name="inbox_line_ids" readonly="1" nolabel="1" invisible="not has_inbox_lines">
+                            <tree create="0" edit="0" delete="0"
+                                  decoration-danger="action_status == 'overdue'"
+                                  decoration-warning="action_status == 'review'"
+                                  decoration-success="action_status == 'ready'">
+                                <field name="invoice_id" column_invisible="1"/>
+                                <field name="financial_validation_ready" column_invisible="1"/>
+                                <field name="state" column_invisible="1"/>
+                                <field name="action_status" string="الأولوية" widget="badge"
+                                       decoration-danger="action_status == 'overdue'"
+                                       decoration-warning="action_status == 'review'"
+                                       decoration-success="action_status == 'ready'"/>
+                                <field name="wait_duration" string="مدة الانتظار"/>
+                                <field name="service_request_id" string="رقم الطلب"/>
+                                <field name="partner_id" string="اسم الطبيب"/>
+                                <field name="service_type_id" string="نوع الخدمة"/>
+                                <field name="company_id" string="الشركة"/>
+                                <field name="finance_submitted_date" string="تاريخ الإرسال"/>
+                                <field name="distribution_check_result" string="نتيجة فحص التوزيع"/>
+                                <field name="invoice_payment_state" string="حالة الدفع" widget="badge"/>
+                                <button name="action_approve_request" type="object" string="اعتماد" class="btn-primary" invisible="state != 'waiting_financial_approval' or not financial_validation_ready"/>
+                                <button name="action_open_service_request" type="object" string="فتح الطلب" class="btn-secondary"/>
+                                <button name="action_open_doctor_360" type="object" string="ملف الطبيب" class="btn-secondary"/>
+                                <button name="action_open_invoice" type="object" string="عرض الفاتورة" class="btn-secondary" invisible="not invoice_id"/>
+                            </tree>
+                        </field>
+                    </div>
+
+                    <div class="border rounded p-3 mb-4 bg-view">
+                        <h3 class="mb-3">مهامي الحالية</h3>
+                        <div class="alert alert-info mb-0" role="alert" invisible="has_task_lines">
+                            لا توجد مهام مالية جاهزة للتنفيذ حالياً.
+                        </div>
+                        <field name="task_line_ids" readonly="1" nolabel="1" invisible="not has_task_lines">
+                            <tree create="0" edit="0" delete="0">
+                                <field name="service_request_id" string="رقم الطلب"/>
+                                <field name="partner_id" string="اسم الطبيب"/>
+                                <field name="service_type_id" string="نوع الخدمة"/>
+                                <field name="submitted_date" string="تاريخ الإرسال"/>
+                                <field name="wait_duration" string="مدة الانتظار"/>
+                                <button name="action_approve_request" type="object" string="اعتماد" class="btn-primary"/>
+                                <button name="action_open_service_request" type="object" string="فتح" class="btn-secondary"/>
+                            </tree>
+                        </field>
+                    </div>
+
+                    <div class="border rounded p-3 mb-4 bg-view">
+                        <h3 class="mb-3">الاختصارات السريعة</h3>
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6 col-xl">
+                                <button name="action_open_finance_approval" type="object" string="اعتماد الطلبات" class="btn-primary w-100 py-3"/>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl">
+                                <button name="action_open_service_types" type="object" string="أنواع الخدمات" class="btn-secondary w-100 py-3"/>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl">
+                                <button name="action_open_invoice_templates" type="object" string="قوالب الفواتير" class="btn-secondary w-100 py-3"/>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl">
+                                <button name="action_open_revenue_distribution" type="object" string="توزيع الإيرادات" class="btn-secondary w-100 py-3"/>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl">
+                                <button name="action_open_invoices" type="object" string="الفواتير" class="btn-secondary w-100 py-3"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border rounded p-3 mb-4 bg-view">
+                        <h3 class="mb-3">آخر النشاطات المالية</h3>
+                        <div class="alert alert-success mb-0" role="alert" invisible="has_activity_lines">
+                            لا توجد عمليات مالية اليوم، تم إنهاء جميع الأعمال.
+                        </div>
+                        <field name="activity_line_ids" readonly="1" nolabel="1" invisible="not has_activity_lines">
+                            <tree create="0" edit="0" delete="0">
+                                <field name="summary" string="نوع العملية"/>
+                                <field name="service_request_id" string="رقم الطلب"/>
+                                <field name="invoice_id" string="رقم الفاتورة"/>
+                                <field name="user_id" string="المستخدم"/>
+                                <field name="activity_date" string="التاريخ"/>
+                                <button name="action_open_service_request" type="object" string="فتح السجل" class="btn-secondary"/>
+                            </tree>
+                        </field>
+                    </div>
+
+                    <div class="border rounded p-3 bg-view">
+                        <h3 class="mb-3">التقارير</h3>
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6 col-xl-4">
+                                <button name="action_open_revenue_reports_placeholder" type="object" string="لوحة توزيع الإيرادات" class="btn-secondary w-100 py-3"/>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-4">
+                                <button name="action_open_kpi_today_revenue" type="object" string="دفتر إيرادات اليوم" class="btn-secondary w-100 py-3"/>
+                            </div>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_membership_financial_workspace_server" model="ir.actions.server">
+        <field name="name">مركز عمل المالية</field>
+        <field name="model_id" ref="model_membership_financial_workspace"/>
+        <field name="groups_id" eval="[(4, ref('membership_management.group_membership_service_finance')), (4, ref('membership_management.group_membership_service_manager'))]"/>
+        <field name="state">code</field>
+        <field name="code">action = env['membership.financial.workspace'].action_open_workspace()</field>
+    </record>
+</odoo>

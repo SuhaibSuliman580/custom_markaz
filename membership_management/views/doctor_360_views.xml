@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_membership_doctor_360_form" model="ir.ui.view">
+        <field name="name">membership.doctor.360.form</field>
+        <field name="model">membership.doctor.360</field>
+        <field name="arch" type="xml">
+            <form string="الملف الموحد للطبيب" create="0" edit="1" delete="0">
+                <header>
+                    <button name="action_reload_doctor" type="object" string="تحديث" class="btn-primary"/>
+                    <button name="action_new_membership_request" type="object" string="انتساب جديد" class="btn-primary" invisible="not has_doctor or not show_new_membership_button"/>
+                    <button name="action_renew_membership_request" type="object" string="تجديد العضوية" class="btn-primary" invisible="not has_doctor or not show_renew_membership_button"/>
+                    <button name="action_follow_current_request" type="object" string="متابعة الطلب الحالي" class="btn-primary" invisible="not has_doctor or not show_follow_request_button"/>
+                    <button name="action_open_current_unpaid_invoice" type="object" string="فتح الفاتورة" class="btn-primary" invisible="not has_doctor or not show_open_invoice_button"/>
+                    <button name="action_create_service_request" type="object" string="إنشاء طلب خدمة" class="btn-primary" invisible="not has_doctor or not show_create_service_button"/>
+                    <button name="action_open_doctor" type="object" string="فتح نموذج الطبيب" class="btn-secondary" invisible="not has_doctor"/>
+                    <button name="action_open_service_requests" type="object" string="طلبات خدمات هذا الطبيب" class="btn-secondary" invisible="not has_doctor"/>
+                    <button name="action_open_invoices" type="object" string="فواتير هذا الطبيب" class="btn-secondary" invisible="not has_doctor"/>
+                    <button name="action_open_memberships" type="object" string="العضويات" class="btn-secondary" invisible="not has_doctor"/>
+                </header>
+                <sheet>
+                    <field name="display_name" invisible="1"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="has_doctor" invisible="1"/>
+                    <field name="has_service_requests" invisible="1"/>
+                    <field name="has_periods" invisible="1"/>
+                    <field name="has_invoices" invisible="1"/>
+                    <field name="has_payments" invisible="1"/>
+                    <field name="has_activities" invisible="1"/>
+                    <field name="has_timeline" invisible="1"/>
+                    <field name="has_documents" invisible="1"/>
+                    <field name="show_new_membership_button" invisible="1"/>
+                    <field name="show_renew_membership_button" invisible="1"/>
+                    <field name="show_follow_request_button" invisible="1"/>
+                    <field name="show_open_invoice_button" invisible="1"/>
+                    <field name="show_create_service_button" invisible="1"/>
+                    <field name="current_open_request_id" invisible="1"/>
+                    <field name="current_unpaid_invoice_id" invisible="1"/>
+                    <field name="membership_expired_alert" invisible="1"/>
+                    <field name="has_unpaid_fees_alert" invisible="1"/>
+                    <field name="has_open_requests_alert" invisible="1"/>
+
+                    <div class="oe_title mb-3">
+                        <h1>الملف الموحد للطبيب</h1>
+                    </div>
+
+                    <div class="alert alert-info" role="alert" invisible="has_doctor">
+                        اختر طبيباً ثم اضغط تحديث لعرض الملف الموحد.
+                    </div>
+
+                    <group>
+                        <field name="doctor_id" options="{'no_create': True}"/>
+                    </group>
+
+                    <div class="alert alert-danger" role="alert" invisible="not has_doctor or not membership_expired_alert">
+                        العضوية منتهية. يرجى مراجعة حالة العضوية قبل متابعة الخدمات.
+                    </div>
+                    <div class="alert alert-warning" role="alert" invisible="not has_doctor or not has_unpaid_fees_alert">
+                        يوجد مستحقات مالية على الطبيب.
+                    </div>
+                    <div class="alert alert-warning" role="alert" invisible="not has_doctor or not has_open_requests_alert">
+                        يوجد <field name="open_request_count" nolabel="1" readonly="1" class="fw-bold"/> طلبات خدمات مفتوحة.
+                    </div>
+
+                    <div class="border rounded p-4 mb-4 bg-view" invisible="not has_doctor">
+                        <div class="d-flex flex-wrap gap-4 align-items-start">
+                            <div>
+                                <field name="doctor_image_1920" widget="image" class="oe_avatar" options="{'preview_image': 'doctor_image_1920'}"/>
+                            </div>
+                            <div class="flex-grow-1">
+                                <div class="d-flex flex-wrap justify-content-between gap-3">
+                                    <div>
+                                        <div class="text-muted">بطاقة هوية الطبيب</div>
+                                        <h2 class="mb-1">
+                                            <field name="doctor_id" readonly="1" nolabel="1"/>
+                                        </h2>
+                                        <div class="d-flex flex-wrap gap-2 mt-2">
+                                            <span class="badge rounded-pill text-bg-light">
+                                                رقم العضوية:
+                                                <field name="membership_number" readonly="1" nolabel="1"/>
+                                            </span>
+                                            <span class="badge rounded-pill text-bg-light">
+                                                النقابة:
+                                                <field name="company_id" readonly="1" nolabel="1"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <field name="membership_state" widget="badge" readonly="1" nolabel="1"
+                                               decoration-success="membership_state == 'active'"
+                                               decoration-danger="membership_state == 'expired'"
+                                               decoration-warning="membership_state == 'suspended'"
+                                               decoration-muted="membership_state == 'none'"/>
+                                    </div>
+                                </div>
+                                <div class="row g-3 mt-3">
+                                    <div class="col-12 col-md-4">
+                                        <div class="text-muted">العضوية النشطة</div>
+                                        <div class="fw-bold"><field name="active_membership_id" readonly="1" nolabel="1"/></div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="text-muted">تاريخ آخر تجديد</div>
+                                        <div class="fw-bold"><field name="last_renewal_date" readonly="1" nolabel="1"/></div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="text-muted">تاريخ انتهاء العضوية</div>
+                                        <div class="fw-bold"><field name="membership_end_date" readonly="1" nolabel="1"/></div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="text-muted">الهاتف</div>
+                                        <div class="fw-bold"><field name="phone" readonly="1" nolabel="1"/></div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="text-muted">البريد الإلكتروني</div>
+                                        <div class="fw-bold"><field name="email" readonly="1" nolabel="1"/></div>
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        <div class="text-muted">تاريخ بداية العضوية</div>
+                                        <div class="fw-bold"><field name="membership_start_date" readonly="1" nolabel="1"/></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-4" invisible="not has_doctor">
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div class="border border-info rounded p-3 bg-view">
+                                <button name="action_open_kpi_open_requests" type="object" string="طلبات خدمات مفتوحة" class="btn-link p-0 mb-2 text-info"/>
+                                <div class="fs-3 fw-bold text-info"><field name="open_request_count" nolabel="1"/></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div class="border border-warning rounded p-3 bg-view">
+                                <button name="action_open_kpi_waiting_finance" type="object" string="بانتظار المالية" class="btn-link p-0 mb-2 text-warning"/>
+                                <div class="fs-3 fw-bold text-warning"><field name="waiting_finance_count" nolabel="1"/></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div class="border border-danger rounded p-3 bg-view">
+                                <button name="action_open_kpi_waiting_payment" type="object" string="بانتظار الدفع" class="btn-link p-0 mb-2 text-danger"/>
+                                <div class="fs-3 fw-bold text-danger"><field name="waiting_payment_count" nolabel="1"/></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div class="border border-success rounded p-3 bg-view">
+                                <button name="action_open_kpi_paid_ready" type="object" string="مدفوعة جاهزة للتنفيذ" class="btn-link p-0 mb-2 text-success"/>
+                                <div class="fs-3 fw-bold text-success"><field name="paid_ready_count" nolabel="1"/></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div class="border border-success rounded p-3 bg-view">
+                                <button name="action_open_kpi_completed" type="object" string="طلبات منجزة" class="btn-link p-0 mb-2 text-success"/>
+                                <div class="fs-3 fw-bold text-success"><field name="completed_request_count" nolabel="1"/></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div class="border border-danger rounded p-3 bg-view">
+                                <button name="action_open_kpi_unpaid_invoices" type="object" string="فواتير غير مدفوعة" class="btn-link p-0 mb-2 text-danger"/>
+                                <div class="fs-3 fw-bold text-danger"><field name="unpaid_invoice_count" nolabel="1"/></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div class="border border-warning rounded p-3 bg-view">
+                                <button name="action_open_kpi_residual_invoices" type="object" string="إجمالي المستحقات المتبقية" class="btn-link p-0 mb-2 text-warning"/>
+                                <div class="fs-3 fw-bold text-warning"><field name="residual_total" nolabel="1"/></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <notebook invisible="not has_doctor">
+                        <page string="طلبات الخدمات">
+                            <div class="alert alert-info" role="alert" invisible="has_service_requests">لا توجد بيانات.</div>
+                            <field name="service_request_line_ids" readonly="1" invisible="not has_service_requests">
+                                <tree create="0" edit="0" delete="0"
+                                      decoration-muted="state == 'cancelled'"
+                                      decoration-success="state in ('paid', 'completed')"
+                                      decoration-warning="state in ('draft', 'waiting_financial_approval', 'waiting_payment')"
+                                      decoration-info="state == 'in_progress'">
+                                    <button name="action_open_service_request" type="object" string="فتح الطلب" class="btn-secondary"/>
+                                    <field name="service_request_id" string="رقم الطلب"/>
+                                    <field name="service_type_id" string="نوع الخدمة"/>
+                                    <field name="state" string="الحالة" widget="badge"/>
+                                    <field name="invoice_payment_state" string="حالة الدفع" widget="badge"/>
+                                    <field name="invoice_id" string="الفاتورة"/>
+                                    <field name="request_create_date" string="تاريخ الطلب"/>
+                                    <field name="last_update_date" string="آخر تحديث"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="العضوية">
+                            <div class="alert alert-info" role="alert" invisible="has_periods">لا توجد بيانات.</div>
+                            <div class="row g-3 mb-3" invisible="not has_periods">
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded p-3 bg-view">
+                                        <div class="text-muted">إجمالي سنوات الاشتراك</div>
+                                        <div class="fs-3 fw-bold text-primary">
+                                            <field name="subscription_year_count" nolabel="1" readonly="1"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="border rounded p-3 bg-view">
+                                        <div class="text-muted">عدد السنوات غير المدفوعة</div>
+                                        <div class="fs-3 fw-bold text-danger">
+                                            <field name="unpaid_subscription_year_count" nolabel="1" readonly="1"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fw-bold mb-2" invisible="not has_periods">المسار الزمني للاشتراكات</div>
+                            <field name="period_line_ids" readonly="1" invisible="not has_periods">
+                                <tree create="0" edit="0" delete="0"
+                                      decoration-success="payment_state in ('paid', 'in_payment')"
+                                      decoration-warning="payment_state == 'partial'"
+                                      decoration-danger="payment_state in ('no_invoice', 'not_paid')"
+                                      decoration-muted="state == 'expired'">
+                                    <button name="action_open_period" type="object" string="فتح" class="btn-secondary"/>
+                                    <field name="subscription_year" string="السنة"/>
+                                    <field name="state" string="الحالة" widget="badge"/>
+                                    <field name="invoice_id" string="الفاتورة"/>
+                                    <field name="payment_state" string="حالة الدفع" widget="badge"/>
+                                    <field name="payment_date" string="تاريخ الدفع"/>
+                                    <field name="end_date" string="تاريخ الانتهاء"/>
+                                    <field name="name" string="رقم العضوية"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="الفواتير">
+                            <div class="alert alert-info" role="alert" invisible="has_invoices">لا توجد بيانات.</div>
+                            <field name="invoice_line_ids" readonly="1" invisible="not has_invoices">
+                                <tree create="0" edit="0" delete="0" decoration-danger="amount_residual &gt; 0" decoration-success="payment_state == 'paid'">
+                                    <button name="action_open_invoice" type="object" string="فتح الفاتورة" class="btn-secondary"/>
+                                    <field name="invoice_id" string="رقم الفاتورة"/>
+                                    <field name="invoice_date" string="التاريخ"/>
+                                    <field name="origin" string="المصدر"/>
+                                    <field name="service_request_id" string="طلب الخدمة"/>
+                                    <field name="amount_total" string="المبلغ الإجمالي" sum="المبلغ الإجمالي"/>
+                                    <field name="amount_residual" string="المتبقي" sum="المتبقي"/>
+                                    <field name="payment_state" string="حالة الدفع" widget="badge"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="المدفوعات">
+                            <div class="alert alert-info" role="alert" invisible="has_payments">لا توجد بيانات.</div>
+                            <field name="payment_line_ids" readonly="1" invisible="not has_payments">
+                                <tree create="0" edit="0" delete="0">
+                                    <button name="action_open_payment" type="object" string="فتح الدفع" class="btn-secondary"/>
+                                    <field name="payment_id" string="رقم عملية الدفع"/>
+                                    <field name="payment_date" string="التاريخ"/>
+                                    <field name="amount" string="المبلغ" sum="المبلغ"/>
+                                    <field name="journal_id" string="دفتر اليومية"/>
+                                    <field name="invoice_names" string="الفاتورة المرتبطة"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="الوثائق">
+                            <div class="alert alert-info" role="alert" invisible="has_documents">لا توجد وثائق.</div>
+                            <field name="document_line_ids" readonly="1" invisible="not has_documents">
+                                <tree create="0" edit="0" delete="0">
+                                    <button name="action_open_attachment" type="object" string="فتح الوثيقة" class="btn-secondary" invisible="not attachment_id"/>
+                                    <button name="action_open_service_request" type="object" string="فتح الطلب" class="btn-secondary" invisible="not service_request_id"/>
+                                    <button name="action_open_period" type="object" string="فتح العضوية" class="btn-secondary" invisible="not period_id"/>
+                                    <field name="document_type" string="نوع الوثيقة"/>
+                                    <field name="name" string="الوثيقة"/>
+                                    <field name="source_model" string="المصدر"/>
+                                    <field name="issue_date" string="تاريخ الإصدار"/>
+                                    <field name="service_request_id" string="طلب الخدمة"/>
+                                    <field name="period_id" string="العضوية"/>
+                                    <field name="attachment_id" string="المرفق"/>
+                                    <field name="company_id" string="الشركة"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="المسار الزمني">
+                            <div class="alert alert-info" role="alert" invisible="has_timeline">لا توجد بيانات.</div>
+                            <field name="timeline_line_ids" readonly="1" invisible="not has_timeline">
+                                <tree create="0" edit="0" delete="0"
+                                      decoration-info="event_type in ('created', 'submitted')"
+                                      decoration-warning="event_type in ('finance_approved', 'invoice_created')"
+                                      decoration-success="event_type in ('payment_registered', 'service_started', 'service_completed')">
+                                    <button name="action_open_service_request" type="object" string="فتح الطلب" class="btn-secondary"/>
+                                    <button name="action_open_invoice" type="object" string="فتح الفاتورة" class="btn-secondary" invisible="not invoice_id"/>
+                                    <field name="event_date" string="التاريخ والوقت"/>
+                                    <field name="event_type" string="الحدث" widget="badge"
+                                           decoration-info="event_type in ('created', 'submitted')"
+                                           decoration-warning="event_type in ('finance_approved', 'invoice_created')"
+                                           decoration-success="event_type in ('payment_registered', 'service_started', 'service_completed')"/>
+                                    <field name="service_request_id" string="طلب الخدمة"/>
+                                    <field name="summary" string="الوصف"/>
+                                    <field name="invoice_id" string="الفاتورة"/>
+                                    <field name="state" string="حالة الطلب الحالية" widget="badge"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="النشاطات">
+                            <div class="alert alert-info" role="alert" invisible="has_activities">لا توجد بيانات.</div>
+                            <field name="activity_line_ids" readonly="1" invisible="not has_activities">
+                                <tree create="0" edit="0" delete="0">
+                                    <field name="activity_date" string="التاريخ"/>
+                                    <field name="source_label" string="المصدر"/>
+                                    <field name="summary" string="الوصف"/>
+                                    <field name="service_request_id" string="طلب الخدمة"/>
+                                    <field name="invoice_id" string="الفاتورة"/>
+                                    <field name="period_id" string="العضوية"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_membership_doctor_360_server" model="ir.actions.server">
+        <field name="name">الملف الموحد للطبيب</field>
+        <field name="model_id" ref="model_membership_doctor_360"/>
+        <field name="groups_id" eval="[(4, ref('membership_management.group_membership_officer')), (4, ref('membership_management.group_membership_service_registration')), (4, ref('membership_management.group_membership_service_finance')), (4, ref('membership_management.group_membership_service_cashier')), (4, ref('membership_management.group_membership_service_manager'))]"/>
+        <field name="state">code</field>
+        <field name="code">action = env['membership.doctor.360'].action_open_doctor_360()</field>
+    </record>
+</odoo>

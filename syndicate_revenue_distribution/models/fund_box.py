@@ -35,7 +35,6 @@ class SyndicateFundBox(models.Model):
         check_company=True,
         domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
     )
-
     used_product_count = fields.Integer(
         string='Used In',
         compute='_compute_used_product_count',

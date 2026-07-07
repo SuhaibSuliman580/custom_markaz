@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_membership_cashier_dashboard_form" model="ir.ui.view">
+        <field name="name">membership.cashier.dashboard.form</field>
+        <field name="model">membership.cashier.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="قبض فواتير خدمات الأطباء" create="0" edit="1" delete="0">
+                <header>
+                    <button name="action_refresh_dashboard" type="object" string="تحديث" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <field name="name" invisible="1"/>
+                    <field name="has_cash_journals" invisible="1"/>
+                    <field name="has_pending_invoices" invisible="1"/>
+                    <field name="allowed_cash_journal_count" invisible="1"/>
+                    <field name="currency_id" invisible="1"/>
+
+                    <div class="oe_title mb-3">
+                        <h1>
+                            <field name="name" readonly="1" nolabel="1"/>
+                        </h1>
+                    </div>
+
+                    <div class="alert alert-warning" role="alert" invisible="has_cash_journals">
+                        لا توجد دفاتر يومية نقدية مخصصة لهذا المستخدم.
+                    </div>
+
+                    <div class="d-flex flex-wrap gap-2 align-items-end mb-3" invisible="not has_cash_journals">
+                        <button name="action_filter_today" type="object" string="اليوم" class="btn-secondary"/>
+                        <button name="action_filter_yesterday" type="object" string="أمس" class="btn-secondary"/>
+                        <button name="action_filter_week" type="object" string="هذا الأسبوع" class="btn-secondary"/>
+                        <button name="action_filter_month" type="object" string="هذا الشهر" class="btn-secondary"/>
+                        <div class="ms-2">
+                            <field name="date_filter" readonly="1" nolabel="1"/>
+                        </div>
+                        <div class="d-flex gap-2 align-items-end">
+                            <field name="date_from" nolabel="1" placeholder="من تاريخ"/>
+                            <field name="date_to" nolabel="1" placeholder="إلى تاريخ"/>
+                            <button name="action_apply_custom_period" type="object" string="تطبيق فترة مخصصة" class="btn-secondary"/>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-4" invisible="not has_cash_journals">
+                        <div class="col-12 col-md-4">
+                            <div class="border rounded p-3 bg-view">
+                                <div class="text-muted mb-2">إجمالي المقبوضات حسب الفترة</div>
+                                <div class="fs-3 fw-bold text-success">
+                                    <field name="today_receipts" nolabel="1" readonly="1"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="border rounded p-3 bg-view">
+                                <div class="text-muted mb-2">عدد الفواتير المقبوضة حسب الفترة</div>
+                                <div class="fs-3 fw-bold">
+                                    <field name="today_paid_invoice_count" nolabel="1" readonly="1"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="border rounded p-3 bg-view">
+                                <div class="text-muted mb-2">إجمالي المتبقي بانتظار القبض حسب الفترة</div>
+                                <div class="fs-3 fw-bold text-danger">
+                                    <field name="pending_residual_total" nolabel="1" readonly="1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <group string="دفاتر اليومية النقدية المسموحة"
+                           invisible="not has_cash_journals or allowed_cash_journal_count &lt;= 1">
+                        <field name="allowed_cash_journal_ids" widget="many2many_tags" nolabel="1" readonly="1"/>
+                    </group>
+
+                    <notebook invisible="not has_cash_journals">
+                        <page string="فواتير بانتظار القبض">
+                            <div class="alert alert-info" role="alert" invisible="has_pending_invoices">
+                                لا توجد فواتير خدمات أطباء بانتظار القبض ضمن الصلاحيات الحالية.
+                            </div>
+                            <field name="invoice_line_ids" readonly="1">
+                                <tree create="0" edit="0" delete="0" decoration-danger="amount_residual &gt; 0">
+                                    <button name="action_register_payment" type="object" string="تسجيل قبض" class="btn-primary"/>
+                                    <button name="action_open_invoice" type="object" string="فتح الفاتورة" class="btn-secondary"/>
+                                    <field name="invoice_id" string="رقم الفاتورة"/>
+                                    <field name="service_request_id" string="رقم طلب الخدمة"/>
+                                    <field name="partner_id" string="الطبيب"/>
+                                    <field name="service_type_id" string="نوع الخدمة"/>
+                                    <field name="company_id" string="الشركة"/>
+                                    <field name="invoice_date" string="التاريخ"/>
+                                    <field name="amount_total" string="المبلغ" sum="المبلغ"/>
+                                    <field name="amount_residual" string="المتبقي" sum="المتبقي"/>
+                                    <field name="payment_state" string="حالة الدفع"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="الفواتير المقبوضة اليوم">
+                            <field name="paid_invoice_line_ids" readonly="1">
+                                <tree create="0" edit="0" delete="0" decoration-success="payment_state in ('paid', 'in_payment')">
+                                    <button name="action_open_invoice" type="object" string="فتح الفاتورة" class="btn-secondary"/>
+                                    <button name="action_open_payment_for_reversal" type="object" string="استرجاع/إلغاء القبض" class="btn-secondary" groups="membership_management.group_membership_service_manager,account.group_account_manager"/>
+                                    <field name="payment_id" string="عملية القبض"/>
+                                    <field name="invoice_id" string="رقم الفاتورة"/>
+                                    <field name="service_request_id" string="رقم طلب الخدمة"/>
+                                    <field name="partner_id" string="الطبيب"/>
+                                    <field name="service_type_id" string="نوع الخدمة"/>
+                                    <field name="company_id" string="الشركة"/>
+                                    <field name="payment_date" string="تاريخ القبض"/>
+                                    <field name="journal_id" string="دفتر اليومية"/>
+                                    <field name="amount" string="المقبوض" sum="المقبوض"/>
+                                    <field name="payment_state" string="حالة الدفع"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="حصيلة قبض اليوم">
+                            <field name="receipt_summary_line_ids" readonly="1">
+                                <tree create="0" edit="0" delete="0">
+                                    <field name="journal_id" string="دفتر اليومية"/>
+                                    <field name="amount" string="المقبوضات" sum="المقبوضات"/>
+                                    <field name="payment_count" string="عدد عمليات القبض" sum="عدد العمليات"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_membership_cashier_dashboard_server" model="ir.actions.server">
+        <field name="name">قبض فواتير خدمات الأطباء</field>
+        <field name="model_id" ref="model_membership_cashier_dashboard"/>
+        <field name="state">code</field>
+        <field name="code">action = env['membership.cashier.dashboard'].action_open_dashboard()</field>
+    </record>
+</odoo>

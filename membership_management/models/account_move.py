@@ -15,6 +15,13 @@ class AccountMove(models.Model):
         string='Membership Activated', default=False, copy=False,
         help='Technical field to prevent double activation.',
     )
+    membership_service_request_id = fields.Many2one(
+        'membership.service.request',
+        string='طلب خدمة طبيب',
+        copy=False,
+        index=True,
+        check_company=True,
+    )
 
     def write(self, vals):
         res = super().write(vals)
@@ -23,7 +30,17 @@ class AccountMove(models.Model):
             for move in self:
                 if move.move_type == 'out_invoice' and not move.membership_activated:
                     move._activate_membership_if_applicable()
+        if 'payment_state' in vals:
+            self._sync_membership_service_request_payment()
         return res
+
+    def _sync_membership_service_request_payment(self):
+        for move in self.filtered(lambda m: m.move_type == 'out_invoice' and m.membership_service_request_id):
+            request = move.membership_service_request_id.sudo()
+            if move.payment_state in ('paid', 'in_payment'):
+                request._mark_paid_from_invoice()
+            elif move.payment_state in ('not_paid', 'partial', 'reversed'):
+                request._mark_waiting_payment_from_invoice()
 
     @api.model
     def _cron_activate_paid_memberships(self):
@@ -148,6 +165,8 @@ class AccountPaymentRegister(models.TransientModel):
             for invoice in invoices:
                 # Refresh to get updated payment_state
                 invoice.invalidate_recordset(['payment_state'])
+                if invoice.payment_state in ('paid', 'in_payment'):
+                    invoice._sync_membership_service_request_payment()
                 if invoice.payment_state in ('paid', 'in_payment') and not invoice.membership_activated:
                     try:
                         invoice._activate_membership_if_applicable()

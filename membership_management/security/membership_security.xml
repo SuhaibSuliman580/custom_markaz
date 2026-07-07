@@ -2,6 +2,8 @@
 <odoo>
     <data noupdate="0">
 
+        <delete model="ir.rule" search="[('domain_force', 'ilike', 'cashier_user_ids')]"/>
+
         <record id="module_category_membership" model="ir.module.category">
             <field name="name">Membership</field>
             <field name="sequence">50</field>
@@ -18,6 +20,34 @@
             <field name="category_id" ref="module_category_membership"/>
             <field name="implied_ids" eval="[(4, ref('group_membership_officer'))]"/>
             <field name="comment">Full access to all membership management features.</field>
+        </record>
+
+        <record id="group_membership_service_registration" model="res.groups">
+            <field name="name">Membership Service Registration</field>
+            <field name="category_id" ref="module_category_membership"/>
+            <field name="implied_ids" eval="[(4, ref('group_membership_officer'))]"/>
+            <field name="comment">Can create and process membership service requests without registering payments.</field>
+        </record>
+
+        <record id="group_membership_service_finance" model="res.groups">
+            <field name="name">Membership Service Finance</field>
+            <field name="category_id" ref="module_category_membership"/>
+            <field name="implied_ids" eval="[(4, ref('group_membership_officer')), (4, ref('account.group_account_invoice'))]"/>
+            <field name="comment">Can approve financial service requests and generate invoices.</field>
+        </record>
+
+        <record id="group_membership_service_cashier" model="res.groups">
+            <field name="name">Membership Service Cashier</field>
+            <field name="category_id" ref="module_category_membership"/>
+            <field name="implied_ids" eval="[(4, ref('account.group_account_invoice'))]"/>
+            <field name="comment">Can view service requests and use the normal accounting payment flow.</field>
+        </record>
+
+        <record id="group_membership_service_manager" model="res.groups">
+            <field name="name">Membership Service Manager</field>
+            <field name="category_id" ref="module_category_membership"/>
+            <field name="implied_ids" eval="[(4, ref('group_membership_service_registration')), (4, ref('group_membership_service_finance')), (4, ref('group_membership_service_cashier')), (4, ref('group_membership_admin'))]"/>
+            <field name="comment">Can manage and cancel membership service requests and configure service types.</field>
         </record>
 
     </data>
@@ -120,6 +150,76 @@
             <field name="model_id" ref="model_medical_unv"/>
             <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
             <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+        </record>
+
+        <record id="rule_membership_service_type_registration" model="ir.rule">
+            <field name="name">Membership Service Type: Registration Multi Company</field>
+            <field name="model_id" ref="model_membership_service_type"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="groups" eval="[(4, ref('group_membership_service_registration'))]"/>
+        </record>
+
+        <record id="rule_membership_service_type_finance" model="ir.rule">
+            <field name="name">Membership Service Type: Finance Multi Company</field>
+            <field name="model_id" ref="model_membership_service_type"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="groups" eval="[(4, ref('group_membership_service_finance'))]"/>
+        </record>
+
+        <record id="rule_membership_service_type_cashier" model="ir.rule">
+            <field name="name">Membership Service Type: Cashier Multi Company</field>
+            <field name="model_id" ref="model_membership_service_type"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="groups" eval="[(4, ref('group_membership_service_cashier'))]"/>
+        </record>
+
+        <record id="rule_membership_service_type_manager" model="ir.rule">
+            <field name="name">Membership Service Type: Manager Multi Company</field>
+            <field name="model_id" ref="model_membership_service_type"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="groups" eval="[(4, ref('group_membership_service_manager')), (4, ref('group_membership_admin'))]"/>
+        </record>
+
+        <record id="rule_membership_service_request_registration" model="ir.rule">
+            <field name="name">Membership Service Request: Registration Multi Company</field>
+            <field name="model_id" ref="model_membership_service_request"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="groups" eval="[(4, ref('group_membership_service_registration'))]"/>
+        </record>
+
+        <record id="rule_membership_service_request_finance" model="ir.rule">
+            <field name="name">Membership Service Request: Finance Multi Company</field>
+            <field name="model_id" ref="model_membership_service_request"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="groups" eval="[(4, ref('group_membership_service_finance'))]"/>
+        </record>
+
+        <record id="rule_membership_service_request_cashier" model="ir.rule">
+            <field name="name">Membership Service Request: Cashier Multi Company</field>
+            <field name="model_id" ref="model_membership_service_request"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="groups" eval="[(4, ref('group_membership_service_cashier'))]"/>
+        </record>
+
+        <record id="rule_membership_service_request_manager" model="ir.rule">
+            <field name="name">Membership Service Request: Manager Multi Company</field>
+            <field name="model_id" ref="model_membership_service_request"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="groups" eval="[(4, ref('group_membership_service_manager')), (4, ref('group_membership_admin'))]"/>
+        </record>
+
+        <record id="rule_invoice_service_template_membership_service" model="ir.rule">
+            <field name="name">Invoice Service Template: Membership Service Multi Company</field>
+            <field name="model_id" ref="odoo_invoice_service_template_17.model_invoice_service_template"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="groups" eval="[(4, ref('group_membership_service_registration')), (4, ref('group_membership_service_finance')), (4, ref('group_membership_service_manager'))]"/>
+        </record>
+
+        <record id="rule_invoice_service_template_line_membership_service" model="ir.rule">
+            <field name="name">Invoice Service Template Line: Membership Service Multi Company</field>
+            <field name="model_id" ref="odoo_invoice_service_template_17.model_invoice_service_template_line"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="groups" eval="[(4, ref('group_membership_service_registration')), (4, ref('group_membership_service_finance')), (4, ref('group_membership_service_manager'))]"/>
         </record>
 
     </data>

@@ -96,11 +96,51 @@ class ResPartner(models.Model):
     membership_period_ids = fields.One2many(
         'membership.period', 'partner_id', string='Membership Periods',
     )
+    membership_service_request_ids = fields.One2many(
+        'membership.service.request',
+        'partner_id',
+        string='Service Requests',
+    )
+    membership_service_request_count = fields.Integer(
+        compute='_compute_membership_service_request_count',
+        string='Service Request Count',
+    )
     membership_join_date = fields.Date(string='Membership Join Date')
     membership_rejoin_date = fields.Date(string='Re-Join Date')
     membership_rejoin_decision = fields.Char(string='Re-Join Decision Number')
     deletion_number = fields.Char(string='Deletion Number')
     branch_return_date = fields.Date(string='Branch Return Date')
+
+    def _compute_membership_service_request_count(self):
+        grouped = self.env['membership.service.request'].read_group(
+            [('partner_id', 'in', self.ids)],
+            ['partner_id'],
+            ['partner_id'],
+        )
+        counts = {
+            item['partner_id'][0]: item.get('__count', item.get('partner_id_count', 0))
+            for item in grouped
+        }
+        for partner in self:
+            partner.membership_service_request_count = counts.get(partner.id, 0)
+
+    def action_view_membership_service_requests(self):
+        self.ensure_one()
+        action = self.env.ref(
+            'membership_management.action_membership_service_request'
+        ).read()[0]
+        action['domain'] = [('partner_id', '=', self.id)]
+        action['context'] = {
+            'default_partner_id': self.id,
+            'default_company_id': self.company_id.id or self.env.company.id,
+        }
+        return action
+
+    def action_open_doctor_360(self):
+        self.ensure_one()
+        if not self.is_doctor:
+            raise AccessError(_("لا يمكن فتح الملف الموحد إلا للطبيب."))
+        return self.env['membership.doctor.360'].action_open_for_doctor(self)
 
     # ── Doctor Personal Info ──
     arabic_name = fields.Char(string='Name (Arabic)')

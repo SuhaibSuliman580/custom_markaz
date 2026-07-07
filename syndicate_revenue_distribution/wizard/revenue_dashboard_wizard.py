@@ -229,7 +229,7 @@ class SyndicateRevenueDashboardWizard(models.TransientModel):
 
         return {
             'type': 'ir.actions.act_window',
-            'name': 'Revenue Dashboard',
+            'name': 'لوحة معلومات الإيرادات',
             'res_model': 'syndicate.revenue.dashboard.wizard',
             'view_mode': 'form',
             'views': [(self.env.ref(

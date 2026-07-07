@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="module_category_revenue_distribution" model="ir.module.category">
+            <field name="name">Revenue Distribution</field>
+            <field name="sequence">55</field>
+        </record>
+
+        <record id="group_revenue_distribution_readonly" model="res.groups">
+            <field name="name">قراءة توزيع الإيرادات</field>
+            <field name="category_id" ref="module_category_revenue_distribution"/>
+            <field name="comment">يمكنه قراءة إعدادات ودفتر توزيع الإيرادات فقط.</field>
+        </record>
+
+        <record id="group_revenue_distribution_manager" model="res.groups">
+            <field name="name">إدارة توزيع الإيرادات</field>
+            <field name="category_id" ref="module_category_revenue_distribution"/>
+            <field name="implied_ids" eval="[(4, ref('group_revenue_distribution_readonly'))]"/>
+            <field name="comment">يمكنه إدارة إعدادات الصناديق وقواعد وقوالب توزيع الإيرادات.</field>
+        </record>
+    </data>
+</odoo>

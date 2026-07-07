@@ -1,0 +1,305 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: membership_management\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-04 00:00+0000\n"
+"PO-Revision-Date: 2026-07-04 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Arabic\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+
+#. module: membership_management
+msgid "Doctor Services Desk"
+msgstr "مكتب خدمات الأطباء"
+
+#. module: membership_management
+msgid "Service Desk"
+msgstr "مكتب خدمات الأطباء"
+
+#. module: membership_management
+msgid "Service Requests"
+msgstr "طلبات خدمات الأطباء"
+
+#. module: membership_management
+msgid "Service Request"
+msgstr "طلب خدمة طبيب"
+
+#. module: membership_management
+msgid "Membership Service Request"
+msgstr "طلب خدمة طبيب"
+
+#. module: membership_management
+msgid "Service Types"
+msgstr "أنواع خدمات الأطباء"
+
+#. module: membership_management
+msgid "Service Type"
+msgstr "نوع خدمة طبيب"
+
+#. module: membership_management
+msgid "Membership Service Type"
+msgstr "نوع خدمة طبيب"
+
+#. module: membership_management
+msgid "Submit to Finance"
+msgstr "إرسال إلى المالية"
+
+#. module: membership_management
+msgid "Approve Financial Request"
+msgstr "تصديق المالية"
+
+#. module: membership_management
+msgid "Waiting Financial Approval"
+msgstr "بانتظار تصديق المالية"
+
+#. module: membership_management
+msgid "Waiting Payment"
+msgstr "بانتظار الدفع"
+
+#. module: membership_management
+msgid "Paid"
+msgstr "مدفوع"
+
+#. module: membership_management
+msgid "In Progress"
+msgstr "قيد التنفيذ"
+
+#. module: membership_management
+msgid "Completed"
+msgstr "منجز"
+
+#. module: membership_management
+msgid "Cancelled"
+msgstr "ملغى"
+
+#. module: membership_management
+msgid "Draft"
+msgstr "مسودة"
+
+#. module: membership_management
+msgid "Start Service"
+msgstr "بدء تنفيذ الخدمة"
+
+#. module: membership_management
+msgid "Complete Service"
+msgstr "إنهاء الخدمة"
+
+#. module: membership_management
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: membership_management
+msgid "Update Payment Status"
+msgstr "تحديث حالة الدفع"
+
+#. module: membership_management
+msgid "Registration Department"
+msgstr "قسم الذاتية"
+
+#. module: membership_management
+msgid "Financial Department"
+msgstr "المالية"
+
+#. module: membership_management
+msgid "Cashier"
+msgstr "الصندوق"
+
+#. module: membership_management
+msgid "Fee"
+msgstr "الرسم"
+
+#. module: membership_management
+msgid "Requires Active Membership"
+msgstr "يتطلب عضوية فعالة"
+
+#. module: membership_management
+msgid "Requires Attachments"
+msgstr "يتطلب مرفقات"
+
+#. module: membership_management
+msgid "Generates Accounting Invoice"
+msgstr "ينشئ فاتورة محاسبية"
+
+#. module: membership_management
+msgid "Generates Invoice"
+msgstr "ينشئ فاتورة محاسبية"
+
+#. module: membership_management
+msgid "Accounting Product"
+msgstr "المنتج المحاسبي"
+
+#. module: membership_management
+msgid "Financial Notes"
+msgstr "ملاحظات المالية"
+
+#. module: membership_management
+msgid "Finance Notes"
+msgstr "ملاحظات المالية"
+
+#. module: membership_management
+msgid "Service Notes"
+msgstr "ملاحظات الخدمة"
+
+#. module: membership_management
+msgid "Cancellation Reason"
+msgstr "سبب الإلغاء"
+
+#. module: membership_management
+msgid "Doctor"
+msgstr "الطبيب"
+
+#. module: membership_management
+msgid "Company"
+msgstr "الشركة"
+
+#. module: membership_management
+msgid "Membership Period"
+msgstr "فترة العضوية"
+
+#. module: membership_management
+msgid "Invoice"
+msgstr "الفاتورة"
+
+#. module: membership_management
+msgid "Payment Status"
+msgstr "حالة الدفع"
+
+#. module: membership_management
+msgid "Attachments"
+msgstr "المرفقات"
+
+#. module: membership_management
+msgid "Notes"
+msgstr "الملاحظات"
+
+#. module: membership_management
+msgid "Request Notes"
+msgstr "ملاحظات الطلب"
+
+#. module: membership_management
+msgid "Audit"
+msgstr "التدقيق"
+
+#. module: membership_management
+msgid "Reference"
+msgstr "المرجع"
+
+#. module: membership_management
+msgid "Active"
+msgstr "نشط"
+
+#. module: membership_management
+msgid "Archived"
+msgstr "مؤرشف"
+
+#. module: membership_management
+msgid "Search Service Requests"
+msgstr "بحث طلبات خدمات الأطباء"
+
+#. module: membership_management
+msgid "Search Service Types"
+msgstr "بحث أنواع خدمات الأطباء"
+
+#. module: membership_management
+msgid "Status"
+msgstr "الحالة"
+
+#. module: membership_management
+msgid "Group By"
+msgstr "تجميع حسب"
+
+#. module: membership_management
+msgid "No service requests yet."
+msgstr "لا توجد طلبات خدمات أطباء بعد."
+
+#. module: membership_management
+msgid "Service Request Invoice"
+msgstr "فاتورة طلب خدمة طبيب"
+
+#. module: membership_management
+msgid "Invoice Service Template"
+msgstr "قالب فاتورة الخدمة"
+
+#. module: membership_management
+msgid "Requirements"
+msgstr "المتطلبات"
+
+#. module: membership_management
+msgid "Only draft requests can be submitted to finance."
+msgstr "يمكن إرسال الطلبات المسودة فقط إلى المالية."
+
+#. module: membership_management
+msgid "Only requests waiting financial approval can be approved."
+msgstr "يمكن تصديق الطلبات المنتظرة لتصديق المالية فقط."
+
+#. module: membership_management
+msgid "Only paid requests can be started."
+msgstr "يمكن بدء تنفيذ الطلبات المدفوعة فقط."
+
+#. module: membership_management
+msgid "Only requests in progress can be completed."
+msgstr "يمكن إنهاء الطلبات قيد التنفيذ فقط."
+
+#. module: membership_management
+msgid "Completed requests cannot be cancelled."
+msgstr "لا يمكن إلغاء الطلبات المنجزة."
+
+#. module: membership_management
+msgid "No invoice is linked to this request."
+msgstr "لا توجد فاتورة مرتبطة بهذا الطلب."
+
+#. module: membership_management
+msgid "The linked invoice has not been paid yet. Current payment status: %s"
+msgstr "الفاتورة المرتبطة لم تُدفع بعد. حالة الدفع الحالية: %s"
+
+#. module: membership_management
+msgid "Unknown"
+msgstr "غير معروف"
+
+#. module: membership_management
+msgid "This service requires an active membership."
+msgstr "هذه الخدمة تتطلب عضوية فعالة."
+
+#. module: membership_management
+msgid "Please attach the required documents before submitting."
+msgstr "يرجى إرفاق المستندات المطلوبة قبل الإرسال."
+
+#. module: membership_management
+msgid "An invoice already exists for this request."
+msgstr "توجد فاتورة مسبقًا لهذا الطلب."
+
+#. module: membership_management
+msgid "Please configure an accounting product for this service type."
+msgstr "يرجى ضبط المنتج المحاسبي لهذا النوع من الخدمات."
+
+#. module: membership_management
+msgid "Please configure an accounting product or invoice template."
+msgstr "يرجى ضبط منتج محاسبي أو قالب فاتورة."
+
+#. module: membership_management
+msgid "The service fee cannot be negative."
+msgstr "لا يمكن أن يكون رسم الخدمة سالبًا."
+
+#. module: membership_management
+msgid "The doctor company must match the request company."
+msgstr "يجب أن تطابق شركة الطبيب شركة الطلب."
+
+#. module: membership_management
+msgid "The service type company must match the request company."
+msgstr "يجب أن تطابق شركة نوع الخدمة شركة الطلب."
+
+#. module: membership_management
+msgid "The membership period company must match the request company."
+msgstr "يجب أن تطابق شركة فترة العضوية شركة الطلب."
+
+#. module: membership_management
+msgid "The product company must match the service company."
+msgstr "يجب أن تطابق شركة المنتج شركة الخدمة."
+
+#. module: membership_management
+msgid "The invoice template company must match the service company."
+msgstr "يجب أن تطابق شركة قالب الفاتورة شركة الخدمة."

@@ -175,7 +175,7 @@ class AccountMove(models.Model):
                 })
 
             if ledger_vals:
-                Ledger.create(ledger_vals)
+                Ledger.sudo().create(ledger_vals)
 
     def action_post(self):
         self._auto_generate_distribution_lines()

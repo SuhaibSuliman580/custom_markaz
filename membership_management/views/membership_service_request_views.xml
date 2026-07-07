@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_membership_service_request_form" model="ir.ui.view">
+        <field name="name">membership.service.request.form</field>
+        <field name="model">membership.service.request</field>
+        <field name="arch" type="xml">
+            <form string="طلب خدمة طبيب">
+                <header>
+                    <button name="action_submit_to_finance" string="إرسال إلى المالية"
+                            type="object" class="btn-primary"
+                            invisible="state != 'draft'"
+                            groups="membership_management.group_membership_service_registration,membership_management.group_membership_service_manager"/>
+                    <button name="action_approve_financial_request" string="تصديق المالية"
+                            type="object" class="btn-primary"
+                            invisible="state != 'waiting_financial_approval'"
+                            groups="membership_management.group_membership_service_finance,membership_management.group_membership_service_manager"/>
+                    <button name="action_reject_financial_request" string="رفض الطلب"
+                            type="object" class="btn-danger"
+                            invisible="state != 'waiting_financial_approval'"
+                            groups="membership_management.group_membership_service_finance,membership_management.group_membership_service_manager"/>
+                    <button name="action_start_service" string="بدء تنفيذ الخدمة"
+                            type="object" class="btn-primary"
+                            invisible="state != 'paid'"
+                            groups="membership_management.group_membership_service_registration,membership_management.group_membership_service_manager"/>
+                    <button name="action_complete_service" string="إنهاء الخدمة"
+                            type="object" class="btn-success"
+                            invisible="state != 'in_progress'"
+                            groups="membership_management.group_membership_service_registration,membership_management.group_membership_service_manager"/>
+                    <button name="action_cancel" string="إلغاء"
+                            type="object" class="btn-secondary"
+                            invisible="state in ('completed', 'cancelled')"
+                            groups="membership_management.group_membership_service_manager"/>
+                    <button name="action_sync_payment_status" string="تحديث حالة الدفع"
+                            type="object" class="btn-secondary"
+                            invisible="state != 'waiting_payment' or not invoice_id"
+                            groups="membership_management.group_membership_service_registration,membership_management.group_membership_service_finance,membership_management.group_membership_service_manager"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,waiting_financial_approval,waiting_payment,paid,in_progress,completed"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_doctor_360" type="object" class="oe_stat_button"
+                                icon="fa-id-card">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">فتح ملف الطبيب</span>
+                            </div>
+                        </button>
+                        <button name="action_view_invoice" type="object" class="oe_stat_button"
+                                icon="fa-pencil-square-o" invisible="not invoice_id">
+                            <field name="invoice_id" string="الفاتورة" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+                    <group string="التحليل المالي"
+                           groups="membership_management.group_membership_service_finance,membership_management.group_membership_service_manager"
+                           invisible="state != 'waiting_financial_approval'">
+                        <group col="1">
+                            <field name="financial_validation_ready" invisible="1"/>
+                            <div class="alert alert-warning" role="alert"
+                                 invisible="financial_validation_ready">
+                                <strong>تنبيه:</strong>
+                                الطلب غير جاهز لاعتماد المالية. راجع أسباب المنع في التحليل أدناه.
+                            </div>
+                            <field name="financial_validation_result" readonly="1"/>
+                            <field name="financial_validation_html" readonly="1" nolabel="1" widget="html"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="partner_id" readonly="state != 'draft'"/>
+                            <field name="company_id" readonly="state != 'draft'"/>
+                            <field name="service_type_id" readonly="state != 'draft'"/>
+                            <field name="membership_period_id"/>
+                        </group>
+                        <group>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="fee"/>
+                            <field name="invoice_id" readonly="1"/>
+                            <field name="invoice_payment_state" invisible="not invoice_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="ملاحظات الذاتية">
+                            <field name="request_notes"
+                                   placeholder="ملاحظات الذاتية التي تظهر عند إرسال الطلب إلى المالية..."
+                                   readonly="state not in ('draft', 'waiting_financial_approval')"/>
+                        </page>
+                        <page string="ملاحظات المالية">
+                            <group>
+                                <field name="finance_notes"
+                                       placeholder="ملاحظات المالية أثناء تصديق أو رفض الطلب..."
+                                       readonly="state != 'waiting_financial_approval'"/>
+                                <field name="cancel_reason"
+                                       placeholder="سبب الرفض/الإلغاء..."
+                                       invisible="state == 'completed'"
+                                       required="state == 'cancelled'"/>
+                            </group>
+                        </page>
+                        <page string="ملاحظات الصندوق">
+                            <field name="cashier_notes"
+                                   placeholder="ملاحظات الصندوق عند الحاجة..."
+                                   readonly="state not in ('waiting_payment', 'paid')"/>
+                        </page>
+                        <page string="ملاحظات تنفيذ الخدمة">
+                            <field name="service_notes"
+                                   placeholder="ملاحظات تنفيذ أو إنهاء الخدمة..."
+                                   readonly="state not in ('paid', 'in_progress')"/>
+                        </page>
+                        <page string="المرفقات">
+                            <field name="attachment_ids" widget="many2many_binary"/>
+                        </page>
+                        <page string="التدقيق">
+                            <group>
+                                <group>
+                                    <field name="submitted_by_id"/>
+                                    <field name="submitted_date"/>
+                                    <field name="financial_approved_by_id"/>
+                                    <field name="financial_approved_date"/>
+                                    <field name="paid_date"/>
+                                </group>
+                                <group>
+                                    <field name="started_by_id"/>
+                                    <field name="started_date"/>
+                                    <field name="completed_by_id"/>
+                                    <field name="completed_date"/>
+                                    <field name="cancelled_by_id"/>
+                                    <field name="cancelled_date"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_membership_service_request_tree" model="ir.ui.view">
+        <field name="name">membership.service.request.tree</field>
+        <field name="model">membership.service.request</field>
+        <field name="arch" type="xml">
+            <tree string="طلبات خدمات الأطباء" decoration-info="state == 'draft'"
+                  decoration-warning="state in ('waiting_financial_approval', 'waiting_payment')"
+                  decoration-success="state in ('paid', 'completed')"
+                  decoration-muted="state == 'cancelled'">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="service_type_id"/>
+                <field name="company_id"/>
+                <field name="fee"/>
+                <field name="invoice_id" optional="show"/>
+                <field name="invoice_payment_state" string="حالة الدفع"/>
+                <field name="state" widget="badge"/>
+                <field name="create_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_membership_service_request_finance_tree" model="ir.ui.view">
+        <field name="name">membership.service.request.finance.tree</field>
+        <field name="model">membership.service.request</field>
+        <field name="arch" type="xml">
+            <tree string="اعتماد مطالبات خدمات الأطباء"
+                  decoration-danger="not financial_validation_ready"
+                  decoration-success="financial_validation_ready">
+                <field name="name" string="رقم الطلب"/>
+                <field name="partner_id" string="الطبيب"/>
+                <field name="service_type_id" string="نوع الخدمة"/>
+                <field name="company_id" string="الشركة"/>
+                <field name="fee" string="الرسم"/>
+                <field name="invoice_payment_state" string="حالة الدفع"/>
+                <field name="financial_validation_ready" column_invisible="1"/>
+                <field name="financial_validation_result" string="نتيجة التحليل المالي"/>
+                <field name="create_date" string="تاريخ الطلب"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_membership_service_request_search" model="ir.ui.view">
+        <field name="name">membership.service.request.search</field>
+        <field name="model">membership.service.request</field>
+        <field name="arch" type="xml">
+            <search string="بحث طلبات خدمات الأطباء">
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="service_type_id"/>
+                <field name="company_id"/>
+                <field name="invoice_id"/>
+                <filter string="مسودة" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="بانتظار تصديق المالية" name="waiting_financial_approval" domain="[('state', '=', 'waiting_financial_approval')]"/>
+                <filter string="بانتظار الدفع" name="waiting_payment" domain="[('state', '=', 'waiting_payment')]"/>
+                <filter string="مدفوع" name="paid" domain="[('state', '=', 'paid')]"/>
+                <filter string="قيد التنفيذ" name="in_progress" domain="[('state', '=', 'in_progress')]"/>
+                <filter string="منجز" name="completed" domain="[('state', '=', 'completed')]"/>
+                <filter string="ملغى" name="cancelled" domain="[('state', '=', 'cancelled')]"/>
+                <group expand="0" string="تجميع حسب">
+                    <filter string="الحالة" name="group_state" context="{'group_by': 'state'}"/>
+                    <filter string="الطبيب" name="group_partner" context="{'group_by': 'partner_id'}"/>
+                    <filter string="نوع الخدمة" name="group_service_type" context="{'group_by': 'service_type_id'}"/>
+                    <filter string="الشركة" name="group_company" context="{'group_by': 'company_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_membership_service_request_finance_search" model="ir.ui.view">
+        <field name="name">membership.service.request.finance.search</field>
+        <field name="model">membership.service.request</field>
+        <field name="arch" type="xml">
+            <search string="بحث اعتماد مطالبات خدمات الأطباء">
+                <field name="name" string="رقم الطلب"/>
+                <field name="partner_id" string="الطبيب"/>
+                <field name="service_type_id" string="نوع الخدمة"/>
+                <field name="company_id" string="الشركة"/>
+                <filter string="بانتظار تصديق المالية" name="waiting_financial_approval" domain="[('state', '=', 'waiting_financial_approval')]"/>
+                <filter string="جاهز لاعتماد المالية" name="financial_validation_ready" domain="[('financial_validation_ready', '=', True)]"/>
+                <filter string="غير جاهز لاعتماد المالية" name="financial_validation_not_ready" domain="[('financial_validation_ready', '=', False)]"/>
+                <filter string="جاهز توزيع الإيراد" name="revenue_distribution_ready" domain="[('revenue_distribution_ready', '=', True)]"/>
+                <filter string="توزيع الإيراد غير جاهز" name="revenue_distribution_not_ready" domain="[('revenue_distribution_required', '=', True), ('revenue_distribution_ready', '=', False)]"/>
+                <filter string="يتطلب توزيع إيراد" name="revenue_distribution_required" domain="[('revenue_distribution_required', '=', True)]"/>
+                <group expand="0" string="تجميع حسب">
+                    <filter string="الشركة" name="group_company" context="{'group_by': 'company_id'}"/>
+                    <filter string="نوع الخدمة" name="group_service_type" context="{'group_by': 'service_type_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_membership_service_request" model="ir.actions.act_window">
+        <field name="name">طلبات خدمات الأطباء</field>
+        <field name="res_model">membership.service.request</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_membership_service_request_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">لا توجد طلبات خدمات أطباء بعد.</p>
+        </field>
+    </record>
+
+    <record id="action_membership_service_finance_approval" model="ir.actions.act_window">
+        <field name="name">اعتماد مطالبات خدمات الأطباء</field>
+        <field name="res_model">membership.service.request</field>
+        <field name="view_mode">tree,form</field>
+        <field name="views" eval="[(ref('view_membership_service_request_finance_tree'), 'tree'), (ref('view_membership_service_request_form'), 'form')]"/>
+        <field name="search_view_id" ref="view_membership_service_request_finance_search"/>
+        <field name="domain">[('state', '=', 'waiting_financial_approval')]</field>
+        <field name="context">{'search_default_waiting_financial_approval': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">لا توجد مطالبات بانتظار تصديق المالية.</p>
+        </field>
+    </record>
+</odoo>

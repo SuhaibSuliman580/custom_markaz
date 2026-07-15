@@ -550,6 +550,18 @@ class MembershipFinancialWorkspace(models.TransientModel):
     def action_open_fund_boxes(self):
         return self.env.ref('syndicate_revenue_distribution.action_syndicate_fund_box').read()[0]
 
+    def action_open_revenue_products(self):
+        return self._workspace_action(
+            'product.template',
+            _('المنتجات'),
+            [],
+            context={
+                'default_sale_ok': True,
+                'default_detailed_type': 'service',
+                'default_enable_revenue_distribution': True,
+            },
+        )
+
     def action_open_revenue_distribution(self):
         return self.env.ref('syndicate_revenue_distribution.action_revenue_distribution_template').read()[0]
 

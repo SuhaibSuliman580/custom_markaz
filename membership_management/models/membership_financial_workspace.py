@@ -565,6 +565,11 @@ class MembershipFinancialWorkspace(models.TransientModel):
     def action_open_revenue_distribution(self):
         return self.env.ref('syndicate_revenue_distribution.action_revenue_distribution_template').read()[0]
 
+    def action_open_fund_box_templates(self):
+        action = self.env.ref('syndicate_revenue_distribution.action_revenue_distribution_template').read()[0]
+        action['name'] = _('قوالب الصناديق')
+        return action
+
     def action_open_invoices(self):
         return self._workspace_invoice_action(_('فواتير خدمات الأطباء'))
 

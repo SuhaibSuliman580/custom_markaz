@@ -166,10 +166,13 @@
                     <div class="border rounded p-3 mb-4 bg-view">
                         <h3 class="mb-3">إدارة الصناديق والمنتجات</h3>
                         <div class="row g-3">
-                            <div class="col-12 col-md-6">
+                            <div class="col-12 col-md-4">
                                 <button name="action_open_fund_boxes" type="object" string="إضافة / تعديل الصناديق" class="btn-secondary w-100 py-3"/>
                             </div>
-                            <div class="col-12 col-md-6">
+                            <div class="col-12 col-md-4">
+                                <button name="action_open_revenue_distribution" type="object" string="قوالب الصناديق" class="btn-secondary w-100 py-3"/>
+                            </div>
+                            <div class="col-12 col-md-4">
                                 <button name="action_open_revenue_products" type="object" string="إضافة / تعديل المنتجات" class="btn-secondary w-100 py-3"/>
                             </div>
                         </div>

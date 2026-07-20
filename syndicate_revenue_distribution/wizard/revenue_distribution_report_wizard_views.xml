@@ -5,9 +5,9 @@
         <field name="name">revenue.distribution.report.wizard.form</field>
         <field name="model">revenue.distribution.report.wizard</field>
         <field name="arch" type="xml">
-            <form string="Revenue Distribution Report">
+            <form string="تقرير توزيع الإيرادات">
                 <sheet>
-                    <group string="Report Header">
+                    <group string="رأس التقرير">
                         <group>
                             <field name="date_from" readonly="1"/>
                             <field name="date_to" readonly="1"/>
@@ -21,7 +21,7 @@
                         </group>
                     </group>
                     <notebook>
-                        <page string="Filters">
+                        <page string="عوامل التصفية">
                             <group>
                                 <group>
                                     <field name="date_from"/>
@@ -42,11 +42,11 @@
                             </group>
                             <button name="action_generate_report"
                                     type="object"
-                                    string="Generate Report"
+                                    string="إنشاء التقرير"
                                     class="btn-primary"/>
                         </page>
 
-                        <page string="Details">
+                        <page string="التفاصيل">
                             <field name="line_ids" readonly="1">
                                 <tree create="0" edit="0" delete="0">
                                     <field name="currency_id" invisible="1"/>
@@ -66,7 +66,7 @@
                             </field>
                         </page>
 
-                        <page string="Summary by Fund Box">
+                        <page string="ملخص حسب الصندوق">
                             <field name="summary_line_ids" readonly="1">
                                 <tree create="0" edit="0" delete="0">
                                     <field name="currency_id" invisible="1"/>
@@ -82,7 +82,7 @@
                     </notebook>
                 </sheet>
                 <footer>
-                    <button string="Close" class="btn-secondary" special="cancel"/>
+                    <button string="إغلاق" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>
         </field>
@@ -96,7 +96,7 @@
     </record>
 
     <menuitem id="menu_syndicate_reporting"
-              name="Reporting"
+              name="التقارير"
               parent="menu_syndicate_root"
               sequence="20"/>
 

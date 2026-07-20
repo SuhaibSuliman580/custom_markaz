@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="product.product_template_only_form_view"/>
         <field name="arch" type="xml">
             <xpath expr="//page[@name='general_information']" position="after">
-                <page string="Revenue Distribution">
+                <page string="توزيع الإيرادات">
                     <group>
                         <group>
                             <field name="enable_revenue_distribution"/>

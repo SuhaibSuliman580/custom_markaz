@@ -7,26 +7,26 @@ class AccountMoveLine(models.Model):
     _inherit = 'account.move.line'
 
     is_distribution_source = fields.Boolean(
-        string='Distribution Source',
+        string='مصدر التوزيع',
         default=False,
         copy=False
     )
 
     is_distribution_generated = fields.Boolean(
-        string='Generated Distribution Line',
+        string='سطر توزيع منشأ',
         default=False,
         copy=False
     )
 
     fund_box_id = fields.Many2one(
         'syndicate.fund.box',
-        string='Fund Box',
+        string='الصندوق',
         readonly=True,
         copy=False,
     )
 
     distribution_percentage = fields.Float(
-        string='Distribution Percentage',
+        string='نسبة التوزيع',
         readonly=True,
         copy=False,
         digits=(16, 4),
@@ -34,14 +34,14 @@ class AccountMoveLine(models.Model):
 
     distribution_source_product_id = fields.Many2one(
         'product.product',
-        string='Distribution Source Product',
+        string='منتج مصدر التوزيع',
         readonly=True,
         copy=False,
     )
 
     distribution_source_line_id = fields.Many2one(
         'account.move.line',
-        string='Source Line',
+        string='السطر المصدر',
         copy=False,
         ondelete='set null'
     )
@@ -49,7 +49,7 @@ class AccountMoveLine(models.Model):
     distribution_generated_line_ids = fields.One2many(
         'account.move.line',
         'distribution_source_line_id',
-        string='Generated Distribution Lines',
+        string='سطور التوزيع المنشأة',
         copy=False
     )
 
@@ -61,13 +61,13 @@ class AccountMoveLine(models.Model):
         compute='_compute_distribution_ui_flags'
     )
     hide_in_invoice_lines = fields.Boolean(
-        string='Hide in Invoice Lines',
+        string='إخفاء في سطور الفاتورة',
         default=False,
         copy=False
     )
 
     hide_in_journal_items = fields.Boolean(
-        string='Hide in Journal Items',
+        string='إخفاء في عناصر اليومية',
         default=False,
         copy=False
     )

@@ -5,14 +5,14 @@
         <field name="name">revenue.distribution.analysis.wizard.form</field>
         <field name="model">revenue.distribution.analysis.wizard</field>
         <field name="arch" type="xml">
-            <form string="Revenue Distribution Analysis" create="0" edit="0">
+            <form string="تحليل توزيع الإيرادات" create="0" edit="0">
                 <sheet>
                     <group>
                         <field name="move_id" readonly="1"/>
                         <field name="currency_id" invisible="1"/>
                     </group>
                     <notebook>
-                        <page string="Details">
+                        <page string="التفاصيل">
                             <field name="detail_line_ids" readonly="1">
                                 <tree create="0" edit="0" delete="0">
                                     <field name="currency_id" invisible="1"/>
@@ -29,7 +29,7 @@
                                 </tree>
                             </field>
                         </page>
-                        <page string="Summary by Fund Box">
+                        <page string="ملخص حسب الصندوق">
                             <field name="summary_line_ids" readonly="1">
                                 <tree create="0" edit="0" delete="0">
                                     <field name="currency_id" invisible="1"/>
@@ -43,7 +43,7 @@
                     </notebook>
                 </sheet>
                 <footer>
-                    <button string="Close" class="btn-secondary" special="cancel"/>
+                    <button string="إغلاق" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>
         </field>

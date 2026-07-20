@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="syndicate_fund_box_company_rule" model="ir.rule">
-        <field name="name">Syndicate Fund Box: multi-company</field>
+        <field name="name">صندوق النقابة: متعدد الشركات</field>
         <field name="model_id" ref="model_syndicate_fund_box"/>
         <field name="global" eval="True"/>
         <field name="domain_force">[('company_id', 'in', company_ids)]</field>
     </record>
 
     <record id="product_revenue_distribution_line_company_rule" model="ir.rule">
-        <field name="name">Product Revenue Distribution Line: multi-company</field>
+        <field name="name">سطر توزيع إيراد المنتج: متعدد الشركات</field>
         <field name="model_id" ref="model_product_revenue_distribution_line"/>
         <field name="global" eval="True"/>
         <field name="domain_force">[('company_id', 'in', company_ids)]</field>
     </record>
 
     <record id="revenue_distribution_template_company_rule" model="ir.rule">
-        <field name="name">Revenue Distribution Template: multi-company</field>
+        <field name="name">قالب توزيع الإيرادات: متعدد الشركات</field>
         <field name="model_id" ref="model_syndicate_revenue_distribution_template"/>
         <field name="global" eval="True"/>
         <field name="domain_force">[('company_id', 'in', company_ids)]</field>
     </record>
 
     <record id="revenue_distribution_template_line_company_rule" model="ir.rule">
-        <field name="name">Revenue Distribution Template Line: multi-company</field>
+        <field name="name">سطر قالب توزيع الإيرادات: متعدد الشركات</field>
         <field name="model_id" ref="model_syndicate_revenue_distribution_template_line"/>
         <field name="global" eval="True"/>
         <field name="domain_force">[('company_id', 'in', company_ids)]</field>
     </record>
 
     <record id="revenue_distribution_ledger_line_company_rule" model="ir.rule">
-        <field name="name">Revenue Distribution Ledger Line: multi-company</field>
+        <field name="name">سطر دفتر توزيع الإيرادات: متعدد الشركات</field>
         <field name="model_id" ref="model_syndicate_revenue_distribution_ledger_line"/>
         <field name="global" eval="True"/>
         <field name="domain_force">[('company_id', 'in', company_ids)]</field>

@@ -36,7 +36,7 @@
             <form create="0" edit="0" delete="0">
                 <sheet>
                     <notebook>
-                        <page string="Main">
+                        <page string="الرئيسية">
                             <group>
                                 <group>
                                     <field name="name" readonly="1"/>
@@ -54,7 +54,7 @@
                                 </group>
                             </group>
                         </page>
-                        <page string="Accounting">
+                        <page string="المحاسبة">
                             <group>
                                 <group>
                                     <field name="move_line_id" readonly="1"/>
@@ -72,37 +72,37 @@
                                 </group>
                             </group>
                         </page>
-                        <page string="Snapshot">
-                            <group string="Invoice">
+                        <page string="لقطة البيانات">
+                            <group string="الفاتورة">
                                 <field name="invoice_number_snapshot" readonly="1"/>
                             </group>
-                            <group string="Partner">
+                            <group string="الشريك">
                                 <field name="partner_name_snapshot" readonly="1"/>
                                 <field name="partner_ref_snapshot" readonly="1"/>
                             </group>
-                            <group string="Product">
+                            <group string="المنتج">
                                 <field name="product_name_snapshot" readonly="1"/>
                                 <field name="product_default_code_snapshot" readonly="1"/>
                                 <field name="product_type_snapshot" readonly="1"/>
                             </group>
-                            <group string="Fund Box">
+                            <group string="الصندوق">
                                 <field name="fund_box_code_snapshot" readonly="1"/>
                                 <field name="fund_box_name_snapshot" readonly="1"/>
                             </group>
-                            <group string="Accounts">
+                            <group string="الحسابات">
                                 <field name="account_code_snapshot" readonly="1"/>
                                 <field name="account_name_snapshot" readonly="1"/>
                                 <field name="analytic_account_name_snapshot" readonly="1"/>
                             </group>
-                            <group string="Company">
+                            <group string="الشركة">
                                 <field name="company_name_snapshot" readonly="1"/>
                             </group>
-                            <group string="Currency">
+                            <group string="العملة">
                                 <field name="currency_name_snapshot" readonly="1"/>
                                 <field name="currency_symbol_snapshot" readonly="1"/>
                             </group>
                         </page>
-                        <page string="Audit">
+                        <page string="التدقيق">
                             <group>
                                 <group>
                                     <field name="created_by_id" readonly="1"/>
@@ -126,7 +126,7 @@
         <field name="name">syndicate.revenue.distribution.ledger.line.search</field>
         <field name="model">syndicate.revenue.distribution.ledger.line</field>
         <field name="arch" type="xml">
-            <search string="Revenue Distribution Ledger">
+            <search string="دفتر توزيع الإيرادات">
                 <field name="name"/>
                 <field name="move_id"/>
                 <field name="partner_id"/>
@@ -134,46 +134,46 @@
                 <field name="fund_box_id"/>
                 <field name="company_id"/>
                 <filter name="filter_posted"
-                        string="Posted"
+                        string="مرحّل"
                         domain="[('state', '=', 'posted')]"/>
                 <filter name="filter_invoice_post"
-                        string="Invoice Post"
+                        string="ترحيل الفاتورة"
                         domain="[('ledger_source', '=', 'invoice_post')]"/>
                 <filter name="filter_reversal"
-                        string="Reversal"
+                        string="عكس القيد"
                         domain="[('ledger_source', '=', 'reversal')]"/>
                 <separator/>
                 <filter name="filter_today"
-                        string="Today"
+                        string="اليوم"
                         domain="[('invoice_date', '=', context_today().strftime('%Y-%m-%d'))]"/>
                 <filter name="filter_this_month"
-                        string="This Month"
+                        string="هذا الشهر"
                         domain="[('invoice_date', '&gt;=', context_today().replace(day=1).strftime('%Y-%m-%d')), ('invoice_date', '&lt;=', context_today().strftime('%Y-%m-%d'))]"/>
                 <filter name="filter_this_year"
-                        string="This Year"
+                        string="هذه السنة"
                         domain="[('invoice_date', '&gt;=', context_today().replace(month=1, day=1).strftime('%Y-%m-%d')), ('invoice_date', '&lt;=', context_today().strftime('%Y-%m-%d'))]"/>
                 <separator/>
-                <group expand="0" string="Group By">
+                <group expand="0" string="تجميع حسب">
                     <filter name="group_fund_box"
-                            string="Fund Box"
+                            string="الصندوق"
                             context="{'group_by': 'fund_box_id'}"/>
                     <filter name="group_product"
-                            string="Product"
+                            string="المنتج"
                             context="{'group_by': 'product_id'}"/>
                     <filter name="group_partner"
-                            string="Partner"
+                            string="الشريك"
                             context="{'group_by': 'partner_id'}"/>
                     <filter name="group_company"
-                            string="Company"
+                            string="الشركة"
                             context="{'group_by': 'company_id'}"/>
                     <filter name="group_invoice_month"
-                            string="Invoice Month"
+                            string="شهر الفاتورة"
                             context="{'group_by': 'invoice_date:month'}"/>
                     <filter name="group_ledger_source"
-                            string="Ledger Source"
+                            string="مصدر الدفتر"
                             context="{'group_by': 'ledger_source'}"/>
                     <filter name="group_state"
-                            string="State"
+                            string="الحالة"
                             context="{'group_by': 'state'}"/>
                 </group>
             </search>
@@ -184,7 +184,7 @@
         <field name="name">syndicate.revenue.distribution.ledger.line.pivot</field>
         <field name="model">syndicate.revenue.distribution.ledger.line</field>
         <field name="arch" type="xml">
-            <pivot string="Revenue Distribution Ledger">
+            <pivot string="دفتر توزيع الإيرادات">
                 <field name="fund_box_id" type="row"/>
                 <field name="product_id" type="row"/>
                 <field name="partner_id" type="row"/>
@@ -200,7 +200,7 @@
         <field name="name">syndicate.revenue.distribution.ledger.line.graph</field>
         <field name="model">syndicate.revenue.distribution.ledger.line</field>
         <field name="arch" type="xml">
-            <graph string="Revenue Distribution by Fund Box" type="bar">
+            <graph string="توزيع الإيرادات حسب الصندوق" type="bar">
                 <field name="fund_box_id"/>
                 <field name="distributed_amount" type="measure"/>
             </graph>
@@ -208,14 +208,14 @@
     </record>
 
     <record id="action_revenue_distribution_ledger_line" model="ir.actions.act_window">
-        <field name="name">Revenue Distribution Ledger</field>
+        <field name="name">دفتر توزيع الإيرادات</field>
         <field name="res_model">syndicate.revenue.distribution.ledger.line</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="view_revenue_distribution_ledger_line_search"/>
     </record>
 
     <record id="action_revenue_distribution_dashboard" model="ir.actions.act_window">
-        <field name="name">Revenue Dashboard</field>
+        <field name="name">لوحة معلومات الإيرادات</field>
         <field name="res_model">syndicate.revenue.distribution.ledger.line</field>
         <field name="view_mode">graph,pivot,tree</field>
         <field name="domain">[('state', '=', 'posted')]</field>
@@ -224,7 +224,7 @@
     </record>
 
     <record id="action_revenue_distribution_ledger_pivot" model="ir.actions.act_window">
-        <field name="name">Ledger Pivot</field>
+        <field name="name">تحليل الدفتر المحوري</field>
         <field name="res_model">syndicate.revenue.distribution.ledger.line</field>
         <field name="view_mode">pivot,tree</field>
         <field name="domain">[('state', '=', 'posted')]</field>
@@ -233,7 +233,7 @@
     </record>
 
     <record id="action_revenue_distribution_ledger_graph" model="ir.actions.act_window">
-        <field name="name">Ledger Graph</field>
+        <field name="name">رسم الدفتر</field>
         <field name="res_model">syndicate.revenue.distribution.ledger.line</field>
         <field name="view_mode">graph,pivot,tree</field>
         <field name="domain">[('state', '=', 'posted')]</field>
@@ -242,25 +242,25 @@
     </record>
 
     <menuitem id="menu_revenue_distribution_dashboard"
-              name="Revenue Dashboard"
+              name="لوحة معلومات الإيرادات"
               parent="menu_syndicate_reporting"
               action="action_revenue_distribution_dashboard"
               sequence="12"/>
 
     <menuitem id="menu_revenue_distribution_ledger_pivot"
-              name="Ledger Pivot"
+              name="تحليل الدفتر المحوري"
               parent="menu_syndicate_reporting"
               action="action_revenue_distribution_ledger_pivot"
               sequence="14"/>
 
     <menuitem id="menu_revenue_distribution_ledger_graph"
-              name="Ledger Graph"
+              name="رسم الدفتر"
               parent="menu_syndicate_reporting"
               action="action_revenue_distribution_ledger_graph"
               sequence="16"/>
 
     <menuitem id="menu_revenue_distribution_ledger"
-              name="Revenue Distribution Ledger"
+              name="دفتر توزيع الإيرادات"
               parent="menu_syndicate_reporting"
               action="action_revenue_distribution_ledger_line"
               sequence="20"/>

@@ -70,22 +70,22 @@
     </record>
 
     <record id="action_syndicate_fund_box" model="ir.actions.act_window">
-        <field name="name">Fund Boxes</field>
+        <field name="name">الصناديق</field>
         <field name="res_model">syndicate.fund.box</field>
         <field name="view_mode">tree,form</field>
     </record>
 
     <menuitem id="menu_syndicate_root"
-              name="Syndicate"
+              name="النقابة"
               sequence="90"/>
 
     <menuitem id="menu_syndicate_configuration"
-              name="Configuration"
+              name="الإعدادات"
               parent="menu_syndicate_root"
               sequence="10"/>
 
     <menuitem id="menu_syndicate_fund_box"
-              name="Fund Boxes"
+              name="الصناديق"
               parent="menu_syndicate_configuration"
               action="action_syndicate_fund_box"
               sequence="20"/>

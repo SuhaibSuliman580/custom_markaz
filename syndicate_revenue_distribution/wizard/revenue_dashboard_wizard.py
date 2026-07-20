@@ -6,74 +6,74 @@ from odoo.exceptions import UserError
 
 class SyndicateRevenueDashboardWizard(models.TransientModel):
     _name = 'syndicate.revenue.dashboard.wizard'
-    _description = 'Revenue Dashboard'
+    _description = 'لوحة معلومات الإيرادات'
 
     period_type = fields.Selection(
         [
-            ('today', 'Today'),
-            ('this_week', 'This Week'),
-            ('this_month', 'This Month'),
-            ('this_year', 'This Year'),
-            ('custom', 'Custom'),
+            ('today', 'اليوم'),
+            ('this_week', 'هذا الأسبوع'),
+            ('this_month', 'هذا الشهر'),
+            ('this_year', 'هذه السنة'),
+            ('custom', 'مخصص'),
         ],
-        string='Period',
+        string='الفترة',
         default='this_month',
         required=True,
     )
     date_from = fields.Date(
-        string='Date From',
+        string='من تاريخ',
         required=True,
         default=lambda self: self._get_period_dates('this_month')[0],
     )
     date_to = fields.Date(
-        string='Date To',
+        string='إلى تاريخ',
         required=True,
         default=lambda self: self._get_period_dates('this_month')[1],
     )
     company_id = fields.Many2one(
         'res.company',
-        string='Company',
+        string='الشركة',
         required=True,
         default=lambda self: self.env.company,
     )
     fund_box_id = fields.Many2one(
         'syndicate.fund.box',
-        string='Fund Box',
+        string='الصندوق',
         domain="[('company_id', '=', company_id)]",
     )
-    product_id = fields.Many2one('product.product', string='Product')
-    partner_id = fields.Many2one('res.partner', string='Partner')
+    product_id = fields.Many2one('product.product', string='المنتج')
+    partner_id = fields.Many2one('res.partner', string='الشريك')
     currency_id = fields.Many2one(
         'res.currency',
-        string='Currency',
+        string='العملة',
         related='company_id.currency_id',
         readonly=True,
     )
     total_distributed_amount = fields.Monetary(
-        string='Total Distributed Amount',
+        string='إجمالي المبلغ الموزع',
         currency_field='currency_id',
         readonly=True,
     )
-    total_invoice_count = fields.Integer(string='Total Invoices', readonly=True)
-    total_ledger_line_count = fields.Integer(string='Total Ledger Lines', readonly=True)
-    total_fund_box_count = fields.Integer(string='Total Fund Boxes', readonly=True)
-    total_product_count = fields.Integer(string='Total Products', readonly=True)
+    total_invoice_count = fields.Integer(string='إجمالي الفواتير', readonly=True)
+    total_ledger_line_count = fields.Integer(string='إجمالي سطور الدفتر', readonly=True)
+    total_fund_box_count = fields.Integer(string='إجمالي الصناديق', readonly=True)
+    total_product_count = fields.Integer(string='إجمالي المنتجات', readonly=True)
     fund_box_line_ids = fields.One2many(
         'syndicate.revenue.dashboard.fund.box.line',
         'wizard_id',
-        string='Top Fund Boxes',
+        string='أعلى الصناديق',
         readonly=True,
     )
     product_line_ids = fields.One2many(
         'syndicate.revenue.dashboard.product.line',
         'wizard_id',
-        string='Top Products',
+        string='أعلى المنتجات',
         readonly=True,
     )
     latest_line_ids = fields.One2many(
         'syndicate.revenue.dashboard.latest.line',
         'wizard_id',
-        string='Latest Ledger Lines',
+        string='أحدث سطور الدفتر',
         readonly=True,
     )
 
@@ -242,7 +242,7 @@ class SyndicateRevenueDashboardWizard(models.TransientModel):
 
 class SyndicateRevenueDashboardFundBoxLine(models.TransientModel):
     _name = 'syndicate.revenue.dashboard.fund.box.line'
-    _description = 'Revenue Dashboard Fund Box Line'
+    _description = 'سطر صندوق لوحة الإيرادات'
     _order = 'amount desc, id'
 
     wizard_id = fields.Many2one(
@@ -250,17 +250,17 @@ class SyndicateRevenueDashboardFundBoxLine(models.TransientModel):
         required=True,
         ondelete='cascade',
     )
-    fund_box_id = fields.Many2one('syndicate.fund.box', string='Fund Box', readonly=True)
-    rank = fields.Integer(string='#', readonly=True)
-    fund_box_name = fields.Char(string='Fund Box', readonly=True)
+    fund_box_id = fields.Many2one('syndicate.fund.box', string='الصندوق', readonly=True)
+    rank = fields.Integer(string='الترتيب', readonly=True)
+    fund_box_name = fields.Char(string='الصندوق', readonly=True)
     currency_id = fields.Many2one(
         'res.currency',
         related='wizard_id.currency_id',
         readonly=True,
     )
-    amount = fields.Monetary(string='Amount', currency_field='currency_id', readonly=True)
+    amount = fields.Monetary(string='المبلغ', currency_field='currency_id', readonly=True)
     percentage_of_total = fields.Float(
-        string='Percentage of Total',
+        string='النسبة من الإجمالي',
         digits=(16, 4),
         readonly=True,
     )
@@ -268,7 +268,7 @@ class SyndicateRevenueDashboardFundBoxLine(models.TransientModel):
 
 class SyndicateRevenueDashboardProductLine(models.TransientModel):
     _name = 'syndicate.revenue.dashboard.product.line'
-    _description = 'Revenue Dashboard Product Line'
+    _description = 'سطر منتج لوحة الإيرادات'
     _order = 'amount desc, id'
 
     wizard_id = fields.Many2one(
@@ -276,17 +276,17 @@ class SyndicateRevenueDashboardProductLine(models.TransientModel):
         required=True,
         ondelete='cascade',
     )
-    product_id = fields.Many2one('product.product', string='Product', readonly=True)
-    rank = fields.Integer(string='#', readonly=True)
-    product_name = fields.Char(string='Product', readonly=True)
+    product_id = fields.Many2one('product.product', string='المنتج', readonly=True)
+    rank = fields.Integer(string='الترتيب', readonly=True)
+    product_name = fields.Char(string='المنتج', readonly=True)
     currency_id = fields.Many2one(
         'res.currency',
         related='wizard_id.currency_id',
         readonly=True,
     )
-    amount = fields.Monetary(string='Amount', currency_field='currency_id', readonly=True)
+    amount = fields.Monetary(string='المبلغ', currency_field='currency_id', readonly=True)
     percentage_of_total = fields.Float(
-        string='Percentage of Total',
+        string='النسبة من الإجمالي',
         digits=(16, 4),
         readonly=True,
     )
@@ -294,7 +294,7 @@ class SyndicateRevenueDashboardProductLine(models.TransientModel):
 
 class SyndicateRevenueDashboardLatestLine(models.TransientModel):
     _name = 'syndicate.revenue.dashboard.latest.line'
-    _description = 'Revenue Dashboard Latest Ledger Line'
+    _description = 'سطر أحدث قيود لوحة الإيرادات'
     _order = 'invoice_date desc, id desc'
 
     wizard_id = fields.Many2one(
@@ -304,21 +304,21 @@ class SyndicateRevenueDashboardLatestLine(models.TransientModel):
     )
     ledger_id = fields.Many2one(
         'syndicate.revenue.distribution.ledger.line',
-        string='Ledger',
+        string='الدفتر',
         readonly=True,
     )
-    invoice_date = fields.Date(string='Invoice Date', readonly=True)
-    move_id = fields.Many2one('account.move', string='Invoice', readonly=True)
-    partner_name = fields.Char(string='Partner', readonly=True)
-    product_name = fields.Char(string='Product', readonly=True)
-    fund_box_name = fields.Char(string='Fund Box', readonly=True)
+    invoice_date = fields.Date(string='تاريخ الفاتورة', readonly=True)
+    move_id = fields.Many2one('account.move', string='الفاتورة', readonly=True)
+    partner_name = fields.Char(string='الشريك', readonly=True)
+    product_name = fields.Char(string='المنتج', readonly=True)
+    fund_box_name = fields.Char(string='الصندوق', readonly=True)
     currency_id = fields.Many2one(
         'res.currency',
         related='wizard_id.currency_id',
         readonly=True,
     )
     distributed_amount = fields.Monetary(
-        string='Distributed Amount',
+        string='المبلغ الموزع',
         currency_field='currency_id',
         readonly=True,
     )

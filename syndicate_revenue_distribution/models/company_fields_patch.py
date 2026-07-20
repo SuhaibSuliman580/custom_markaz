@@ -8,7 +8,7 @@ class SyndicateFundBoxCompanyPatch(models.Model):
 
     company_id = fields.Many2one(
         'res.company',
-        string='Company',
+        string='الشركة',
         required=True,
         default=lambda self: self.env.company,
         index=True,
@@ -16,7 +16,7 @@ class SyndicateFundBoxCompanyPatch(models.Model):
 
     income_account_id = fields.Many2one(
         'account.account',
-        string='Income Account',
+        string='حساب الإيراد',
         required=True,
         check_company=True,
         domain="[('deprecated', '=', False)]",
@@ -24,13 +24,13 @@ class SyndicateFundBoxCompanyPatch(models.Model):
 
     analytic_account_id = fields.Many2one(
         'account.analytic.account',
-        string='Analytic Account',
+        string='الحساب التحليلي',
         check_company=True,
         domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
     )
 
     _sql_constraints = [
-        ('fund_box_code_company_unique', 'unique(code, company_id)', 'Fund code must be unique per company.')
+        ('fund_box_code_company_unique', 'unique(code, company_id)', 'يجب أن يكون كود الصندوق فريداً لكل شركة.')
     ]
 
     @api.constrains('income_account_id', 'analytic_account_id', 'company_id')
@@ -45,7 +45,7 @@ class ProductRevenueDistributionLineCompanyPatch(models.Model):
 
     company_id = fields.Many2one(
         'res.company',
-        string='Company',
+        string='الشركة',
         required=True,
         default=lambda self: self.env.company,
         index=True,

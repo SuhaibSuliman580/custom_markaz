@@ -5,9 +5,9 @@
         <field name="name">syndicate.revenue.dashboard.wizard.form</field>
         <field name="model">syndicate.revenue.dashboard.wizard</field>
         <field name="arch" type="xml">
-            <form string="Revenue Dashboard">
+            <form string="لوحة معلومات الإيرادات">
                 <sheet>
-                    <group string="Filters">
+                    <group string="عوامل التصفية">
                         <group>
                             <field name="period_type"/>
                             <field name="date_from"/>
@@ -22,12 +22,12 @@
                         </group>
                     </group>
 
-                    <separator string="KPIs"/>
+                    <separator string="مؤشرات الأداء"/>
                     <div class="row g-3 mb-4">
                         <div class="col-12 col-sm-6 col-lg">
                             <div class="card h-100 shadow-sm">
                                 <div class="card-body">
-                                    <div class="text-muted fw-bold mb-2">Total Distributed Amount</div>
+                                    <div class="text-muted fw-bold mb-2">إجمالي المبلغ الموزع</div>
                                     <field name="total_distributed_amount"
                                            readonly="1"
                                            nolabel="1"
@@ -38,7 +38,7 @@
                         <div class="col-12 col-sm-6 col-lg">
                             <div class="card h-100 shadow-sm">
                                 <div class="card-body">
-                                    <div class="text-muted fw-bold mb-2">Total Invoices</div>
+                                    <div class="text-muted fw-bold mb-2">إجمالي الفواتير</div>
                                     <field name="total_invoice_count" readonly="1" nolabel="1"/>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@
                         <div class="col-12 col-sm-6 col-lg">
                             <div class="card h-100 shadow-sm">
                                 <div class="card-body">
-                                    <div class="text-muted fw-bold mb-2">Total Ledger Lines</div>
+                                    <div class="text-muted fw-bold mb-2">إجمالي سطور الدفتر</div>
                                     <field name="total_ledger_line_count" readonly="1" nolabel="1"/>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                         <div class="col-12 col-sm-6 col-lg">
                             <div class="card h-100 shadow-sm">
                                 <div class="card-body">
-                                    <div class="text-muted fw-bold mb-2">Total Fund Boxes</div>
+                                    <div class="text-muted fw-bold mb-2">إجمالي الصناديق</div>
                                     <field name="total_fund_box_count" readonly="1" nolabel="1"/>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                         <div class="col-12 col-sm-6 col-lg">
                             <div class="card h-100 shadow-sm">
                                 <div class="card-body">
-                                    <div class="text-muted fw-bold mb-2">Total Products</div>
+                                    <div class="text-muted fw-bold mb-2">إجمالي المنتجات</div>
                                     <field name="total_product_count" readonly="1" nolabel="1"/>
                                 </div>
                             </div>
@@ -70,16 +70,16 @@
                     </div>
 
                     <notebook>
-                        <page string="Top Fund Boxes">
+                        <page string="أعلى الصناديق">
                             <field name="fund_box_line_ids" readonly="1">
                                 <tree create="0" edit="0" delete="0">
                                     <field name="currency_id" column_invisible="1"/>
                                     <field name="fund_box_id" column_invisible="1"/>
                                     <field name="rank" width="48px"/>
-                                    <field name="fund_box_name" string="Fund Box" width="320px"/>
-                                    <field name="amount" string="Amount" widget="monetary" width="140px"/>
+                                    <field name="fund_box_name" string="الصندوق" width="320px"/>
+                                    <field name="amount" string="المبلغ" widget="monetary" width="140px"/>
                                     <field name="percentage_of_total"
-                                           string="Percentage"
+                                           string="النسبة من الإجمالي"
                                            widget="float"
                                            digits="[16, 2]"
                                            width="120px"/>
@@ -87,16 +87,16 @@
                             </field>
                         </page>
 
-                        <page string="Top Products">
+                        <page string="أعلى المنتجات">
                             <field name="product_line_ids" readonly="1">
                                 <tree create="0" edit="0" delete="0">
                                     <field name="currency_id" column_invisible="1"/>
                                     <field name="product_id" column_invisible="1"/>
                                     <field name="rank" width="48px"/>
-                                    <field name="product_name" string="Product" width="360px"/>
-                                    <field name="amount" string="Amount" widget="monetary" width="140px"/>
+                                    <field name="product_name" string="المنتج" width="360px"/>
+                                    <field name="amount" string="المبلغ" widget="monetary" width="140px"/>
                                     <field name="percentage_of_total"
-                                           string="Percentage"
+                                           string="النسبة من الإجمالي"
                                            widget="float"
                                            digits="[16, 2]"
                                            width="120px"/>
@@ -104,18 +104,18 @@
                             </field>
                         </page>
 
-                        <page string="Latest Ledger Lines">
+                        <page string="أحدث سطور الدفتر">
                             <field name="latest_line_ids" readonly="1">
                                 <tree create="0" edit="0" delete="0">
                                     <field name="currency_id" column_invisible="1"/>
                                     <field name="ledger_id" column_invisible="1"/>
-                                    <field name="invoice_date" string="Invoice Date" width="120px"/>
-                                    <field name="move_id" string="Invoice" width="160px"/>
+                                    <field name="invoice_date" string="تاريخ الفاتورة" width="120px"/>
+                                    <field name="move_id" string="الفاتورة" width="160px"/>
                                     <field name="partner_name" width="180px"/>
                                     <field name="product_name" width="260px"/>
                                     <field name="fund_box_name" width="220px"/>
                                     <field name="distributed_amount"
-                                           string="Distributed Amount"
+                                           string="المبلغ الموزع"
                                            widget="monetary"
                                            width="160px"/>
                                 </tree>
@@ -126,23 +126,23 @@
                 <footer>
                     <button name="action_generate_dashboard"
                             type="object"
-                            string="Generate Dashboard / إنشاء لوحة المعلومات"
+                            string="إنشاء لوحة المعلومات"
                             class="btn-primary"/>
-                    <button string="Close" class="btn-secondary" special="cancel"/>
+                    <button string="إغلاق" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>
         </field>
     </record>
 
     <record id="action_syndicate_revenue_dashboard_wizard" model="ir.actions.act_window">
-        <field name="name">Revenue Dashboard</field>
+        <field name="name">لوحة معلومات الإيرادات</field>
         <field name="res_model">syndicate.revenue.dashboard.wizard</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
     </record>
 
     <menuitem id="menu_revenue_distribution_dashboard"
-              name="Revenue Dashboard"
+              name="لوحة معلومات الإيرادات"
               parent="menu_syndicate_reporting"
               action="action_syndicate_revenue_dashboard_wizard"
               sequence="12"/>

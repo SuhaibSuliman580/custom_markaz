@@ -1,8 +1,8 @@
 {
-    'name': 'Syndicate Revenue Distribution',
+    'name': 'توزيع إيرادات النقابة',
     'version': '17.0.1.0.3',
-    'summary': 'Revenue distribution by percentages for syndicates',
-    'category': 'Accounting',
+    'summary': 'توزيع الإيرادات بالنسب للنقابات',
+    'category': 'المحاسبة',
     'author': 'Custom',
     'license': 'LGPL-3',
     'depends': [

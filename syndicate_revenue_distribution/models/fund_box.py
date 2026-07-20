@@ -4,18 +4,18 @@ from odoo.exceptions import ValidationError
 
 class SyndicateFundBox(models.Model):
     _name = 'syndicate.fund.box'
-    _description = 'Syndicate Fund Box'
+    _description = 'صندوق النقابة'
     _order = 'sequence, code, id'
     _check_company_auto = True
 
     sequence = fields.Integer(default=10)
-    name = fields.Char(string='Name', required=True)
-    code = fields.Char(string='Code', required=True)
+    name = fields.Char(string='الاسم', required=True)
+    code = fields.Char(string='الكود', required=True)
     active = fields.Boolean(default=True)
 
     company_id = fields.Many2one(
         'res.company',
-        string='Company',
+        string='الشركة',
         required=True,
         default=lambda self: self.env.company,
         index=True,
@@ -23,7 +23,7 @@ class SyndicateFundBox(models.Model):
 
     income_account_id = fields.Many2one(
         'account.account',
-        string='Income Account',
+        string='حساب الإيراد',
         required=True,
         check_company=True,
         domain="[('deprecated', '=', False)]",
@@ -31,19 +31,19 @@ class SyndicateFundBox(models.Model):
 
     analytic_account_id = fields.Many2one(
         'account.analytic.account',
-        string='Analytic Account',
+        string='الحساب التحليلي',
         check_company=True,
         domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
     )
     used_product_count = fields.Integer(
-        string='Used In',
+        string='مستخدم في',
         compute='_compute_used_product_count',
     )
 
-    note = fields.Text(string='Notes')
+    note = fields.Text(string='ملاحظات')
 
     _sql_constraints = [
-        ('fund_box_code_company_unique', 'unique(code, company_id)', 'Fund code must be unique per company.')
+        ('fund_box_code_company_unique', 'unique(code, company_id)', 'يجب أن يكون كود الصندوق فريداً لكل شركة.')
     ]
 
     def _compute_used_product_count(self):

@@ -5,24 +5,31 @@ from odoo.exceptions import UserError, ValidationError
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
+    @api.model
+    def default_get(self, fields_list):
+        defaults = super().default_get(fields_list)
+        if 'company_id' in fields_list and not defaults.get('company_id'):
+            defaults['company_id'] = self.env.company.id
+        return defaults
+
     enable_revenue_distribution = fields.Boolean(
-        string='Enable Revenue Distribution'
+        string='تفعيل توزيع الإيرادات'
     )
 
     distribution_line_ids = fields.One2many(
         'product.revenue.distribution.line',
         'product_tmpl_id',
-        string='Revenue Distribution Lines'
+        string='سطور توزيع الإيرادات'
     )
 
     revenue_distribution_template_id = fields.Many2one(
         'syndicate.revenue.distribution.template',
-        string='Revenue Distribution Template',
+        string='قالب توزيع الإيرادات',
         domain="[('active', '=', True)]",
     )
 
     distribution_total = fields.Float(
-        string='Distribution Total',
+        string='إجمالي التوزيع',
         compute='_compute_distribution_total'
     )
 

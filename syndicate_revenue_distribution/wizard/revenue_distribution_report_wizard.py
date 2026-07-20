@@ -4,58 +4,58 @@ from odoo.exceptions import UserError
 
 class RevenueDistributionReportWizard(models.TransientModel):
     _name = 'revenue.distribution.report.wizard'
-    _description = 'Revenue Distribution Report'
+    _description = 'تقرير توزيع الإيرادات'
 
-    date_from = fields.Date(string='Date From', required=True)
-    date_to = fields.Date(string='Date To', required=True)
+    date_from = fields.Date(string='من تاريخ', required=True)
+    date_to = fields.Date(string='إلى تاريخ', required=True)
     company_id = fields.Many2one(
         'res.company',
-        string='Company',
+        string='الشركة',
         required=True,
         default=lambda self: self.env.company,
     )
     fund_box_id = fields.Many2one(
         'syndicate.fund.box',
-        string='Fund Box',
+        string='الصندوق',
         domain="[('company_id', '=', company_id)]",
     )
-    product_id = fields.Many2one('product.product', string='Product')
-    partner_id = fields.Many2one('res.partner', string='Partner')
+    product_id = fields.Many2one('product.product', string='المنتج')
+    partner_id = fields.Many2one('res.partner', string='الشريك')
     currency_id = fields.Many2one(
         'res.currency',
-        string='Currency',
+        string='العملة',
         related='company_id.currency_id',
         readonly=True,
     )
     line_ids = fields.One2many(
         'revenue.distribution.report.line',
         'wizard_id',
-        string='Details',
+        string='التفاصيل',
         readonly=True,
     )
     summary_line_ids = fields.One2many(
         'revenue.distribution.report.summary.line',
         'wizard_id',
-        string='Summary by Fund Box',
+        string='ملخص حسب الصندوق',
         readonly=True,
     )
-    result_message = fields.Text(string='Result', readonly=True)
+    result_message = fields.Text(string='النتيجة', readonly=True)
     detail_count = fields.Integer(
-        string='Detail Lines',
+        string='سطور التفاصيل',
         compute='_compute_result_counts',
     )
     summary_count = fields.Integer(
-        string='Summary Lines',
+        string='سطور الملخص',
         compute='_compute_result_counts',
     )
-    total_invoice_count = fields.Integer(string='Total Invoices', readonly=True)
+    total_invoice_count = fields.Integer(string='إجمالي الفواتير', readonly=True)
     total_revenue = fields.Monetary(
-        string='Total Revenue',
+        string='إجمالي الإيراد',
         currency_field='currency_id',
         readonly=True,
     )
     total_distributed_amount = fields.Monetary(
-        string='Total Distributed Amount',
+        string='إجمالي المبلغ الموزع',
         currency_field='currency_id',
         readonly=True,
     )
@@ -160,7 +160,7 @@ class RevenueDistributionReportWizard(models.TransientModel):
             )
 
         result_message = (
-            "تم إنشاء التقرير من دفتر توزيع الإيرادات. افتح تبويب Details أو Summary by Fund Box لعرض النتائج."
+            'تم إنشاء التقرير من دفتر توزيع الإيرادات. افتح تبويب التفاصيل أو ملخص حسب الصندوق لعرض النتائج.'
             if detail_commands
             else "لا توجد سجلات دفتر توزيع الإيرادات للفترة المحددة."
         )
@@ -187,7 +187,7 @@ class RevenueDistributionReportWizard(models.TransientModel):
 
 class RevenueDistributionReportLine(models.TransientModel):
     _name = 'revenue.distribution.report.line'
-    _description = 'Revenue Distribution Report Line'
+    _description = 'سطر تقرير توزيع الإيرادات'
     _order = 'invoice_date, move_id, id'
 
     wizard_id = fields.Many2one(
@@ -195,42 +195,42 @@ class RevenueDistributionReportLine(models.TransientModel):
         required=True,
         ondelete='cascade',
     )
-    move_id = fields.Many2one('account.move', string='Invoice', readonly=True)
-    invoice_date = fields.Date(string='Date', readonly=True)
-    partner_id = fields.Many2one('res.partner', string='Partner', readonly=True)
-    partner_name = fields.Char(string='Partner Name', readonly=True)
-    product_id = fields.Many2one('product.product', string='Product', readonly=True)
-    product_display_name = fields.Char(string='Product', readonly=True)
-    fund_box_id = fields.Many2one('syndicate.fund.box', string='Fund Box', readonly=True)
-    fund_box_name = fields.Char(string='Fund Box', readonly=True)
-    percentage = fields.Float(string='Percentage', digits=(16, 4), readonly=True)
+    move_id = fields.Many2one('account.move', string='الفاتورة', readonly=True)
+    invoice_date = fields.Date(string='تاريخ الفاتورة', readonly=True)
+    partner_id = fields.Many2one('res.partner', string='الشريك', readonly=True)
+    partner_name = fields.Char(string='الشريك', readonly=True)
+    product_id = fields.Many2one('product.product', string='المنتج', readonly=True)
+    product_display_name = fields.Char(string='المنتج', readonly=True)
+    fund_box_id = fields.Many2one('syndicate.fund.box', string='الصندوق', readonly=True)
+    fund_box_name = fields.Char(string='الصندوق', readonly=True)
+    percentage = fields.Float(string='النسبة', digits=(16, 4), readonly=True)
     currency_id = fields.Many2one(
         'res.currency',
         related='wizard_id.currency_id',
         readonly=True,
     )
     original_amount = fields.Monetary(
-        string='Original Amount',
+        string='المبلغ الأصلي',
         currency_field='currency_id',
         readonly=True,
     )
     distributed_amount = fields.Monetary(
-        string='Distributed Amount',
+        string='المبلغ الموزع',
         currency_field='currency_id',
         readonly=True,
     )
-    account_id = fields.Many2one('account.account', string='Income Account', readonly=True)
+    account_id = fields.Many2one('account.account', string='حساب الإيراد', readonly=True)
     analytic_account_id = fields.Many2one(
         'account.analytic.account',
-        string='Analytic Account',
+        string='الحساب التحليلي',
         readonly=True,
     )
-    company_id = fields.Many2one('res.company', string='Company', readonly=True)
+    company_id = fields.Many2one('res.company', string='الشركة', readonly=True)
 
 
 class RevenueDistributionReportSummaryLine(models.TransientModel):
     _name = 'revenue.distribution.report.summary.line'
-    _description = 'Revenue Distribution Report Summary Line'
+    _description = 'سطر ملخص تقرير توزيع الإيرادات'
     _order = 'fund_box_id, id'
 
     wizard_id = fields.Many2one(
@@ -243,21 +243,21 @@ class RevenueDistributionReportSummaryLine(models.TransientModel):
         related='wizard_id.currency_id',
         readonly=True,
     )
-    fund_box_id = fields.Many2one('syndicate.fund.box', string='Fund Box', readonly=True)
-    fund_box_name = fields.Char(string='Fund Box', readonly=True)
+    fund_box_id = fields.Many2one('syndicate.fund.box', string='العملة', readonly=True)
+    fund_box_name = fields.Char(string='الصندوق', readonly=True)
     total_distributed_amount = fields.Monetary(
-        string='Total Distributed Amount',
+        string='إجمالي المبلغ الموزع',
         currency_field='currency_id',
         readonly=True,
     )
     percentage_of_total = fields.Float(
-        string='Percentage of Total',
+        string='النسبة من الإجمالي',
         digits=(16, 4),
         readonly=True,
     )
-    account_id = fields.Many2one('account.account', string='Income Account', readonly=True)
+    account_id = fields.Many2one('account.account', string='حساب الإيراد', readonly=True)
     analytic_account_id = fields.Many2one(
         'account.analytic.account',
-        string='Analytic Account',
+        string='الحساب التحليلي',
         readonly=True,
     )

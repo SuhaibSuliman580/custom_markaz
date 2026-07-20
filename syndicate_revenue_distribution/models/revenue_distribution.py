@@ -4,7 +4,7 @@ from odoo.exceptions import ValidationError
 
 class ProductRevenueDistributionLine(models.Model):
     _name = 'product.revenue.distribution.line'
-    _description = 'Product Revenue Distribution Line'
+    _description = 'سطر توزيع إيراد المنتج'
     _order = 'company_id, sequence, id'
     _check_company_auto = True
 
@@ -12,7 +12,7 @@ class ProductRevenueDistributionLine(models.Model):
 
     company_id = fields.Many2one(
         'res.company',
-        string='Company',
+        string='الشركة',
         required=True,
         default=lambda self: self.env.company,
         index=True,
@@ -20,7 +20,7 @@ class ProductRevenueDistributionLine(models.Model):
 
     product_tmpl_id = fields.Many2one(
         'product.template',
-        string='Product Template',
+        string='قالب المنتج',
         required=True,
         ondelete='cascade',
         check_company=True,
@@ -28,7 +28,7 @@ class ProductRevenueDistributionLine(models.Model):
 
     fund_box_id = fields.Many2one(
         'syndicate.fund.box',
-        string='Fund Box',
+        string='الصندوق',
         required=True,
         check_company=True,
         domain="[('active', '=', True), ('company_id', '=', company_id)]",
@@ -36,7 +36,7 @@ class ProductRevenueDistributionLine(models.Model):
 
     account_id = fields.Many2one(
         'account.account',
-        string='Income Account',
+        string='حساب الإيراد',
         related='fund_box_id.income_account_id',
         store=True,
         readonly=True,
@@ -44,14 +44,14 @@ class ProductRevenueDistributionLine(models.Model):
 
     analytic_account_id = fields.Many2one(
         'account.analytic.account',
-        string='Analytic Account',
+        string='الحساب التحليلي',
         related='fund_box_id.analytic_account_id',
         store=True,
         readonly=True,
     )
 
     percentage = fields.Float(
-        string='Percentage',
+        string='النسبة',
         required=True,
         digits=(16, 4),
         default=100.0

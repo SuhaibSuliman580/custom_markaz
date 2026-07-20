@@ -14,77 +14,77 @@ except ImportError:
 
 class SyndicateRevenueAnalyticsWizard(models.TransientModel):
     _name = 'syndicate.revenue.analytics.wizard'
-    _description = 'Revenue Analytics'
+    _description = 'تحليلات الإيرادات'
 
     company_id = fields.Many2one(
         'res.company',
-        string='Company',
+        string='الشركة',
         required=True,
         default=lambda self: self.env.company,
     )
-    date_from = fields.Date(string='Date From')
-    date_to = fields.Date(string='Date To')
+    date_from = fields.Date(string='من تاريخ')
+    date_to = fields.Date(string='إلى تاريخ')
     fund_box_id = fields.Many2one(
         'syndicate.fund.box',
-        string='Fund Box',
+        string='الصندوق',
         domain="[('company_id', '=', company_id)]",
     )
-    product_id = fields.Many2one('product.product', string='Product')
-    partner_id = fields.Many2one('res.partner', string='Partner')
+    product_id = fields.Many2one('product.product', string='المنتج')
+    partner_id = fields.Many2one('res.partner', string='الشريك')
     currency_id = fields.Many2one(
         'res.currency',
-        string='Currency',
+        string='العملة',
         related='company_id.currency_id',
         readonly=True,
     )
     total_distributed_amount = fields.Monetary(
-        string='Total Distributed Amount',
+        string='إجمالي المبلغ الموزع',
         currency_field='currency_id',
         readonly=True,
     )
     total_revenue = fields.Monetary(
-        string='Total Revenue',
+        string='إجمالي الإيراد',
         currency_field='currency_id',
         readonly=True,
     )
-    total_invoice_count = fields.Integer(string='Total Invoices', readonly=True)
-    total_ledger_line_count = fields.Integer(string='Total Ledger Lines', readonly=True)
+    total_invoice_count = fields.Integer(string='إجمالي الفواتير', readonly=True)
+    total_ledger_line_count = fields.Integer(string='إجمالي سطور الدفتر', readonly=True)
     average_distribution_per_invoice = fields.Monetary(
-        string='Average Distribution Per Invoice',
+        string='متوسط التوزيع لكل فاتورة',
         currency_field='currency_id',
         readonly=True,
     )
     average_distribution_per_product = fields.Monetary(
-        string='Average Distribution Per Product',
+        string='متوسط التوزيع لكل منتج',
         currency_field='currency_id',
         readonly=True,
     )
     fund_box_line_ids = fields.One2many(
         'syndicate.revenue.analytics.fund.box.line',
         'wizard_id',
-        string='Top 10 Fund Boxes',
+        string='أعلى الصناديق',
         readonly=True,
     )
     product_line_ids = fields.One2many(
         'syndicate.revenue.analytics.product.line',
         'wizard_id',
-        string='Top 10 Products',
+        string='أعلى المنتجات',
         readonly=True,
     )
     partner_line_ids = fields.One2many(
         'syndicate.revenue.analytics.partner.line',
         'wizard_id',
-        string='Top 10 Partners',
+        string='أفضل 10 شركاء',
         readonly=True,
     )
     month_line_ids = fields.One2many(
         'syndicate.revenue.analytics.month.line',
         'wizard_id',
-        string='Monthly Revenue Trend',
+        string='اتجاه الإيرادات الشهري',
         readonly=True,
     )
-    export_file = fields.Binary(string='Export File', readonly=True)
-    export_filename = fields.Char(string='Export Filename', readonly=True)
+    export_file = fields.Binary(string='ملف التصدير', readonly=True)
+    export_filename = fields.Char(string='اسم ملف التصدير', readonly=True)
 
     def _get_ledger_domain(self):
         self.ensure_one()
@@ -121,7 +121,7 @@ class SyndicateRevenueAnalyticsWizard(models.TransientModel):
             domain.append(('partner_id', '=', self.partner_id.id))
         return domain
 
-    def _get_ledger_action(self, domain, name='Revenue Distribution Ledger'):
+    def _get_ledger_action(self, domain, name='دفتر توزيع الإيرادات'):
         action = self.env.ref(
             'syndicate_revenue_distribution.action_revenue_distribution_ledger_line'
         ).read()[0]
@@ -167,13 +167,13 @@ class SyndicateRevenueAnalyticsWizard(models.TransientModel):
 
     def _get_export_company_name(self):
         self.ensure_one()
-        return self.company_id.name or 'Company'
+        return self.company_id.name or 'الشركة'
 
     def _get_export_filename_base(self):
         self.ensure_one()
         company = re.sub(r'[^A-Za-z0-9_-]+', '_', self._get_export_company_name()).strip('_')
         today = fields.Date.context_today(self).strftime('%Y%m%d')
-        return f"Revenue_Analytics_{company or 'Company'}_{today}"
+        return f"Revenue_Analytics_{company or 'الشركة'}_{today}"
 
     def _ensure_analytics_generated(self):
         self.ensure_one()
@@ -194,13 +194,13 @@ class SyndicateRevenueAnalyticsWizard(models.TransientModel):
         label_format = workbook.add_format({'bold': True, 'bg_color': '#F2F2F2', 'border': 1})
         value_format = workbook.add_format({'border': 1})
         rows = [
-            ('Generated At', self._get_generated_at_text()),
-            ('Company', self.company_id.name or ''),
-            ('Date From', str(self.date_from or '')),
-            ('Date To', str(self.date_to or '')),
-            ('Fund Box', self.fund_box_id.name or ''),
-            ('Product', self.product_id.name or ''),
-            ('Partner', self.partner_id.name or ''),
+            ('تاريخ الإنشاء', self._get_generated_at_text()),
+            ('الشركة', self.company_id.name or ''),
+            ('من تاريخ', str(self.date_from or '')),
+            ('إلى تاريخ', str(self.date_to or '')),
+            ('الصندوق', self.fund_box_id.name or ''),
+            ('المنتج', self.product_id.name or ''),
+            ('الشريك', self.partner_id.name or ''),
         ]
         for row_idx, (label, value) in enumerate(rows, start=2):
             worksheet.write(row_idx, 0, label, label_format)
@@ -253,32 +253,32 @@ class SyndicateRevenueAnalyticsWizard(models.TransientModel):
         output = BytesIO()
         workbook = xlsxwriter.Workbook(output, {'in_memory': True})
 
-        kpi_sheet = workbook.add_worksheet('Executive KPIs')
-        self._write_excel_title(kpi_sheet, 'Executive KPIs', workbook, 2)
+        kpi_sheet = workbook.add_worksheet('مؤشرات الأداء التنفيذية')
+        self._write_excel_title(kpi_sheet, 'مؤشرات الأداء التنفيذية', workbook, 2)
         self._write_excel_metadata(kpi_sheet, workbook)
         self._write_excel_table(kpi_sheet, workbook, 11, [
             ('KPI', 'kpi', 'text'),
             ('Value', 'value', 'money'),
         ], [
-            {'kpi': 'Total Distributed Amount', 'value': self.total_distributed_amount},
-            {'kpi': 'Total Revenue', 'value': self.total_revenue},
-            {'kpi': 'Average Distribution Per Invoice', 'value': self.average_distribution_per_invoice},
-            {'kpi': 'Average Distribution Per Product', 'value': self.average_distribution_per_product},
+            {'kpi': 'إجمالي المبلغ الموزع', 'value': self.total_distributed_amount},
+            {'kpi': 'إجمالي الإيراد', 'value': self.total_revenue},
+            {'kpi': 'متوسط التوزيع لكل فاتورة', 'value': self.average_distribution_per_invoice},
+            {'kpi': 'متوسط التوزيع لكل منتج', 'value': self.average_distribution_per_product},
         ])
         self._write_excel_table(kpi_sheet, workbook, 18, [
             ('KPI', 'kpi', 'text'),
             ('Value', 'value', 'integer'),
         ], [
-            {'kpi': 'Total Invoices', 'value': self.total_invoice_count},
-            {'kpi': 'Total Ledger Lines', 'value': self.total_ledger_line_count},
+            {'kpi': 'إجمالي الفواتير', 'value': self.total_invoice_count},
+            {'kpi': 'إجمالي سطور الدفتر', 'value': self.total_ledger_line_count},
         ])
 
         sheet_specs = [
-            ('Top Fund Boxes', [
-                ('Rank', 'rank', 'integer'),
-                ('Fund Box', 'name', 'text'),
-                ('Distributed Amount', 'amount', 'money'),
-                ('Percentage of Total', 'percentage', 'percent'),
+            ('أعلى المنتجات', [
+                ('الترتيب', 'rank', 'integer'),
+                ('الصندوق', 'name', 'text'),
+                ('المبلغ الموزع', 'amount', 'money'),
+                ('النسبة من الإجمالي', 'percentage', 'percent'),
             ], [
                 {
                     'rank': line.rank,
@@ -288,11 +288,11 @@ class SyndicateRevenueAnalyticsWizard(models.TransientModel):
                 }
                 for line in self.fund_box_line_ids
             ]),
-            ('Top Products', [
-                ('Rank', 'rank', 'integer'),
-                ('Product', 'name', 'text'),
-                ('Distributed Amount', 'amount', 'money'),
-                ('Percentage of Total', 'percentage', 'percent'),
+            ('أعلى المنتجات', [
+                ('الترتيب', 'rank', 'integer'),
+                ('المنتج', 'name', 'text'),
+                ('المبلغ الموزع', 'amount', 'money'),
+                ('النسبة من الإجمالي', 'percentage', 'percent'),
             ], [
                 {
                     'rank': line.rank,
@@ -302,11 +302,11 @@ class SyndicateRevenueAnalyticsWizard(models.TransientModel):
                 }
                 for line in self.product_line_ids
             ]),
-            ('Top Partners', [
-                ('Rank', 'rank', 'integer'),
-                ('Partner', 'name', 'text'),
-                ('Distributed Amount', 'amount', 'money'),
-                ('Percentage of Total', 'percentage', 'percent'),
+            ('أفضل 10 شركاء', [
+                ('الترتيب', 'rank', 'integer'),
+                ('المنتج', 'name', 'text'),
+                ('المبلغ الموزع', 'amount', 'money'),
+                ('النسبة من الإجمالي', 'percentage', 'percent'),
             ], [
                 {
                     'rank': line.rank,
@@ -316,11 +316,11 @@ class SyndicateRevenueAnalyticsWizard(models.TransientModel):
                 }
                 for line in self.partner_line_ids
             ]),
-            ('Monthly Revenue Trend', [
-                ('Month', 'month', 'text'),
-                ('Revenue', 'revenue', 'money'),
-                ('Distributed Amount', 'amount', 'money'),
-                ('Invoice Count', 'invoice_count', 'integer'),
+            ('اتجاه الإيرادات الشهري', [
+                ('الشهر', 'month', 'text'),
+                ('الإيراد', 'revenue', 'money'),
+                ('المبلغ الموزع', 'amount', 'money'),
+                ('عدد الفواتير', 'invoice_count', 'integer'),
             ], [
                 {
                     'month': line.month,
@@ -482,7 +482,7 @@ class SyndicateRevenueAnalyticsWizard(models.TransientModel):
 
         return {
             'type': 'ir.actions.act_window',
-            'name': 'Revenue Analytics',
+            'name': 'تحليلات الإيرادات',
             'res_model': 'syndicate.revenue.analytics.wizard',
             'view_mode': 'form',
             'views': [(self.env.ref(
@@ -495,7 +495,7 @@ class SyndicateRevenueAnalyticsWizard(models.TransientModel):
 
 class SyndicateRevenueAnalyticsFundBoxLine(models.TransientModel):
     _name = 'syndicate.revenue.analytics.fund.box.line'
-    _description = 'Revenue Analytics Fund Box Line'
+    _description = 'أفضل 10 صناديق'
     _order = 'rank, id'
 
     wizard_id = fields.Many2one(
@@ -503,21 +503,21 @@ class SyndicateRevenueAnalyticsFundBoxLine(models.TransientModel):
         required=True,
         ondelete='cascade',
     )
-    rank = fields.Integer(string='Rank', readonly=True)
-    fund_box_id = fields.Many2one('syndicate.fund.box', string='Fund Box', readonly=True)
-    fund_box_name = fields.Char(string='Fund Box', readonly=True)
+    rank = fields.Integer(string='الترتيب', readonly=True)
+    fund_box_id = fields.Many2one('syndicate.fund.box', string='الصندوق', readonly=True)
+    fund_box_name = fields.Char(string='الصندوق', readonly=True)
     currency_id = fields.Many2one(
         'res.currency',
         related='wizard_id.currency_id',
         readonly=True,
     )
     distributed_amount = fields.Monetary(
-        string='Distributed Amount',
+        string='المبلغ الموزع',
         currency_field='currency_id',
         readonly=True,
     )
     percentage_of_total = fields.Float(
-        string='Percentage of Total',
+        string='النسبة من الإجمالي',
         digits=(16, 2),
         readonly=True,
     )
@@ -531,13 +531,13 @@ class SyndicateRevenueAnalyticsFundBoxLine(models.TransientModel):
             domain.append(('fund_box_name_snapshot', '=', self.fund_box_name))
         return self.wizard_id._get_ledger_action(
             domain,
-            name='Revenue Distribution Ledger - Fund Box',
+            name='دفتر توزيع الإيرادات - الصندوق',
         )
 
 
 class SyndicateRevenueAnalyticsProductLine(models.TransientModel):
     _name = 'syndicate.revenue.analytics.product.line'
-    _description = 'Revenue Analytics Product Line'
+    _description = 'أفضل 10 منتجات'
     _order = 'rank, id'
 
     wizard_id = fields.Many2one(
@@ -545,21 +545,21 @@ class SyndicateRevenueAnalyticsProductLine(models.TransientModel):
         required=True,
         ondelete='cascade',
     )
-    rank = fields.Integer(string='Rank', readonly=True)
-    product_id = fields.Many2one('product.product', string='Product', readonly=True)
-    product_name = fields.Char(string='Product', readonly=True)
+    rank = fields.Integer(string='الترتيب', readonly=True)
+    product_id = fields.Many2one('product.product', string='المنتج', readonly=True)
+    product_name = fields.Char(string='المنتج', readonly=True)
     currency_id = fields.Many2one(
         'res.currency',
         related='wizard_id.currency_id',
         readonly=True,
     )
     distributed_amount = fields.Monetary(
-        string='Distributed Amount',
+        string='المبلغ الموزع',
         currency_field='currency_id',
         readonly=True,
     )
     percentage_of_total = fields.Float(
-        string='Percentage of Total',
+        string='النسبة من الإجمالي',
         digits=(16, 2),
         readonly=True,
     )
@@ -573,13 +573,13 @@ class SyndicateRevenueAnalyticsProductLine(models.TransientModel):
             domain.append(('product_name_snapshot', '=', self.product_name))
         return self.wizard_id._get_ledger_action(
             domain,
-            name='Revenue Distribution Ledger - Product',
+            name='دفتر توزيع الإيرادات - المنتج',
         )
 
 
 class SyndicateRevenueAnalyticsPartnerLine(models.TransientModel):
     _name = 'syndicate.revenue.analytics.partner.line'
-    _description = 'Revenue Analytics Partner Line'
+    _description = 'أفضل 10 شركاء'
     _order = 'rank, id'
 
     wizard_id = fields.Many2one(
@@ -587,21 +587,21 @@ class SyndicateRevenueAnalyticsPartnerLine(models.TransientModel):
         required=True,
         ondelete='cascade',
     )
-    rank = fields.Integer(string='Rank', readonly=True)
-    partner_id = fields.Many2one('res.partner', string='Partner', readonly=True)
-    partner_name = fields.Char(string='Partner', readonly=True)
+    rank = fields.Integer(string='الترتيب', readonly=True)
+    partner_id = fields.Many2one('res.partner', string='الشريك', readonly=True)
+    partner_name = fields.Char(string='الشريك', readonly=True)
     currency_id = fields.Many2one(
         'res.currency',
         related='wizard_id.currency_id',
         readonly=True,
     )
     distributed_amount = fields.Monetary(
-        string='Distributed Amount',
+        string='المبلغ الموزع',
         currency_field='currency_id',
         readonly=True,
     )
     percentage_of_total = fields.Float(
-        string='Percentage of Total',
+        string='النسبة من الإجمالي',
         digits=(16, 2),
         readonly=True,
     )
@@ -615,13 +615,13 @@ class SyndicateRevenueAnalyticsPartnerLine(models.TransientModel):
             domain.append(('partner_name_snapshot', '=', self.partner_name))
         return self.wizard_id._get_ledger_action(
             domain,
-            name='Revenue Distribution Ledger - Partner',
+            name='دفتر توزيع الإيرادات - المنتج',
         )
 
 
 class SyndicateRevenueAnalyticsMonthLine(models.TransientModel):
     _name = 'syndicate.revenue.analytics.month.line'
-    _description = 'Revenue Analytics Month Line'
+    _description = 'اتجاه الإيرادات الشهري'
     _order = 'month_key, id'
 
     wizard_id = fields.Many2one(
@@ -629,24 +629,24 @@ class SyndicateRevenueAnalyticsMonthLine(models.TransientModel):
         required=True,
         ondelete='cascade',
     )
-    month_key = fields.Char(string='Month Key', readonly=True)
-    month = fields.Char(string='Month', readonly=True)
+    month_key = fields.Char(string='مفتاح الشهر', readonly=True)
+    month = fields.Char(string='الشهر', readonly=True)
     currency_id = fields.Many2one(
         'res.currency',
         related='wizard_id.currency_id',
         readonly=True,
     )
     revenue = fields.Monetary(
-        string='Revenue',
+        string='الإيراد',
         currency_field='currency_id',
         readonly=True,
     )
     distributed_amount = fields.Monetary(
-        string='Distributed Amount',
+        string='المبلغ الموزع',
         currency_field='currency_id',
         readonly=True,
     )
-    invoice_count = fields.Integer(string='Invoice Count', readonly=True)
+    invoice_count = fields.Integer(string='عدد الفواتير', readonly=True)
 
     def action_open_ledger(self):
         self.ensure_one()
@@ -659,5 +659,5 @@ class SyndicateRevenueAnalyticsMonthLine(models.TransientModel):
         ]
         return self.wizard_id._get_ledger_action(
             domain,
-            name='Revenue Distribution Ledger - Month',
+            name='دفتر توزيع الإيرادات - الشهر',
         )

@@ -34,7 +34,7 @@
                     </group>
 
                     <notebook>
-                        <page string="Distribution Lines">
+                        <page string="سطور التوزيع">
                             <field name="line_ids">
                                 <tree editable="bottom">
                                     <field name="sequence" widget="handle"/>
@@ -46,7 +46,7 @@
                                 </tree>
                             </field>
                         </page>
-                        <page string="Notes">
+                        <page string="ملاحظات">
                             <field name="note"/>
                         </page>
                     </notebook>
@@ -56,13 +56,13 @@
     </record>
 
     <record id="action_revenue_distribution_template" model="ir.actions.act_window">
-        <field name="name">قوالب توزيع الإيرادات</field>
+        <field name="name">قالب توزيع الإيرادات</field>
         <field name="res_model">syndicate.revenue.distribution.template</field>
         <field name="view_mode">tree,form</field>
     </record>
 
     <menuitem id="menu_revenue_distribution_template"
-              name="قوالب توزيع الإيرادات"
+              name="قالب توزيع الإيرادات"
               parent="menu_syndicate_configuration"
               action="action_revenue_distribution_template"
               sequence="30"/>

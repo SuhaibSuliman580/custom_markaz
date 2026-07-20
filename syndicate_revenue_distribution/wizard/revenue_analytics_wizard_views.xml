@@ -5,9 +5,9 @@
         <field name="name">syndicate.revenue.analytics.wizard.form</field>
         <field name="model">syndicate.revenue.analytics.wizard</field>
         <field name="arch" type="xml">
-            <form string="Revenue Analytics">
+            <form string="تحليلات الإيرادات">
                 <sheet>
-                    <group string="Filters">
+                    <group string="عوامل التصفية">
                         <group>
                             <field name="company_id"/>
                             <field name="date_from"/>
@@ -21,12 +21,12 @@
                         </group>
                     </group>
 
-                    <separator string="Executive KPIs"/>
+                    <separator string="مؤشرات الأداء التنفيذية"/>
                     <div class="row g-3 mb-4">
                         <div class="col-12 col-sm-6 col-lg-4">
                             <div class="card h-100 shadow-sm">
                                 <div class="card-body">
-                                    <div class="text-muted fw-bold mb-2">Total Distributed Amount</div>
+                                    <div class="text-muted fw-bold mb-2">إجمالي المبلغ الموزع</div>
                                     <field name="total_distributed_amount"
                                            readonly="1"
                                            nolabel="1"
@@ -37,7 +37,7 @@
                         <div class="col-12 col-sm-6 col-lg-4">
                             <div class="card h-100 shadow-sm">
                                 <div class="card-body">
-                                    <div class="text-muted fw-bold mb-2">Total Revenue</div>
+                                    <div class="text-muted fw-bold mb-2">إجمالي الإيراد</div>
                                     <field name="total_revenue"
                                            readonly="1"
                                            nolabel="1"
@@ -48,7 +48,7 @@
                         <div class="col-12 col-sm-6 col-lg-4">
                             <div class="card h-100 shadow-sm">
                                 <div class="card-body">
-                                    <div class="text-muted fw-bold mb-2">Total Invoices</div>
+                                    <div class="text-muted fw-bold mb-2">إجمالي الفواتير</div>
                                     <field name="total_invoice_count" readonly="1" nolabel="1"/>
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                         <div class="col-12 col-sm-6 col-lg-4">
                             <div class="card h-100 shadow-sm">
                                 <div class="card-body">
-                                    <div class="text-muted fw-bold mb-2">Total Ledger Lines</div>
+                                    <div class="text-muted fw-bold mb-2">إجمالي سطور الدفتر</div>
                                     <field name="total_ledger_line_count" readonly="1" nolabel="1"/>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                         <div class="col-12 col-sm-6 col-lg-4">
                             <div class="card h-100 shadow-sm">
                                 <div class="card-body">
-                                    <div class="text-muted fw-bold mb-2">Average Distribution Per Invoice</div>
+                                    <div class="text-muted fw-bold mb-2">متوسط التوزيع لكل فاتورة</div>
                                     <field name="average_distribution_per_invoice"
                                            readonly="1"
                                            nolabel="1"
@@ -75,7 +75,7 @@
                         <div class="col-12 col-sm-6 col-lg-4">
                             <div class="card h-100 shadow-sm">
                                 <div class="card-body">
-                                    <div class="text-muted fw-bold mb-2">Average Distribution Per Product</div>
+                                    <div class="text-muted fw-bold mb-2">متوسط التوزيع لكل منتج</div>
                                     <field name="average_distribution_per_product"
                                            readonly="1"
                                            nolabel="1"
@@ -86,26 +86,26 @@
                     </div>
 
                     <notebook>
-                        <page string="Top 10 Fund Boxes">
+                        <page string="أفضل 10 صناديق">
                             <field name="fund_box_line_ids" readonly="1">
                                 <tree create="0" edit="0" delete="0">
                                     <field name="currency_id" column_invisible="1"/>
                                     <field name="fund_box_id" column_invisible="1"/>
-                                    <field name="rank" string="Rank" width="70px"/>
-                                    <field name="fund_box_name" string="Fund Box" width="320px"/>
+                                    <field name="rank" string="الترتيب" width="70px"/>
+                                    <field name="fund_box_name" string="الصندوق" width="320px"/>
                                     <field name="distributed_amount"
-                                           string="Distributed Amount"
+                                           string="المبلغ الموزع"
                                            widget="monetary"
                                            width="170px"/>
                                     <field name="percentage_of_total"
-                                           string="Percentage of Total"
+                                           string="النسبة من الإجمالي"
                                            width="150px"/>
                                 </tree>
-                                <form string="Fund Box Analytics" create="0" edit="0" delete="0">
+                                <form string="تحليلات الصندوق" create="0" edit="0" delete="0">
                                     <header>
                                         <button name="action_open_ledger"
                                                 type="object"
-                                                string="Open Ledger / فتح السجلات"
+                                                string="فتح السجلات"
                                                 class="btn-primary"/>
                                     </header>
                                     <sheet>
@@ -121,26 +121,26 @@
                             </field>
                         </page>
 
-                        <page string="Top 10 Products">
+                        <page string="أفضل 10 منتجات">
                             <field name="product_line_ids" readonly="1">
                                 <tree create="0" edit="0" delete="0">
                                     <field name="currency_id" column_invisible="1"/>
                                     <field name="product_id" column_invisible="1"/>
-                                    <field name="rank" string="Rank" width="70px"/>
-                                    <field name="product_name" string="Product" width="360px"/>
+                                    <field name="rank" string="الترتيب" width="70px"/>
+                                    <field name="product_name" string="المنتج" width="360px"/>
                                     <field name="distributed_amount"
-                                           string="Distributed Amount"
+                                           string="المبلغ الموزع"
                                            widget="monetary"
                                            width="170px"/>
                                     <field name="percentage_of_total"
-                                           string="Percentage of Total"
+                                           string="النسبة من الإجمالي"
                                            width="150px"/>
                                 </tree>
-                                <form string="Product Analytics" create="0" edit="0" delete="0">
+                                <form string="تحليلات المنتج" create="0" edit="0" delete="0">
                                     <header>
                                         <button name="action_open_ledger"
                                                 type="object"
-                                                string="Open Ledger / فتح السجلات"
+                                                string="فتح السجلات"
                                                 class="btn-primary"/>
                                     </header>
                                     <sheet>
@@ -156,26 +156,26 @@
                             </field>
                         </page>
 
-                        <page string="Top 10 Partners">
+                        <page string="أفضل 10 شركاء">
                             <field name="partner_line_ids" readonly="1">
                                 <tree create="0" edit="0" delete="0">
                                     <field name="currency_id" column_invisible="1"/>
                                     <field name="partner_id" column_invisible="1"/>
-                                    <field name="rank" string="Rank" width="70px"/>
-                                    <field name="partner_name" string="Partner" width="320px"/>
+                                    <field name="rank" string="الترتيب" width="70px"/>
+                                    <field name="partner_name" string="الشريك" width="320px"/>
                                     <field name="distributed_amount"
-                                           string="Distributed Amount"
+                                           string="المبلغ الموزع"
                                            widget="monetary"
                                            width="170px"/>
                                     <field name="percentage_of_total"
-                                           string="Percentage of Total"
+                                           string="النسبة من الإجمالي"
                                            width="150px"/>
                                 </tree>
-                                <form string="Partner Analytics" create="0" edit="0" delete="0">
+                                <form string="تحليلات الشريك" create="0" edit="0" delete="0">
                                     <header>
                                         <button name="action_open_ledger"
                                                 type="object"
-                                                string="Open Ledger / فتح السجلات"
+                                                string="فتح السجلات"
                                                 class="btn-primary"/>
                                     </header>
                                     <sheet>
@@ -191,27 +191,27 @@
                             </field>
                         </page>
 
-                        <page string="Monthly Revenue Trend">
+                        <page string="اتجاه الإيرادات الشهري">
                             <field name="month_line_ids" readonly="1">
                                 <tree create="0" edit="0" delete="0">
                                     <field name="currency_id" column_invisible="1"/>
                                     <field name="month_key" column_invisible="1"/>
-                                    <field name="month" string="Month" width="120px"/>
+                                    <field name="month" string="الشهر" width="120px"/>
                                     <field name="revenue"
-                                           string="Revenue"
+                                           string="الإيراد"
                                            widget="monetary"
                                            width="160px"/>
                                     <field name="distributed_amount"
-                                           string="Distributed Amount"
+                                           string="المبلغ الموزع"
                                            widget="monetary"
                                            width="170px"/>
-                                    <field name="invoice_count" string="Invoice Count" width="130px"/>
+                                    <field name="invoice_count" string="عدد الفواتير" width="130px"/>
                                 </tree>
-                                <form string="Monthly Revenue Trend" create="0" edit="0" delete="0">
+                                <form string="اتجاه الإيرادات الشهري" create="0" edit="0" delete="0">
                                     <header>
                                         <button name="action_open_ledger"
                                                 type="object"
-                                                string="Open Ledger / فتح السجلات"
+                                                string="فتح السجلات"
                                                 class="btn-primary"/>
                                     </header>
                                     <sheet>
@@ -232,31 +232,31 @@
                 <footer>
                     <button name="action_generate_analytics"
                             type="object"
-                            string="Generate Analytics"
+                            string="إنشاء التحليلات"
                             class="btn-primary"/>
                     <button name="action_export_excel"
                             type="object"
-                            string="Export Excel"
+                            string="تصدير إكسل"
                             class="btn-secondary"/>
                     <button name="action_export_pdf"
                             type="object"
-                            string="Export PDF"
+                            string="تصدير بي دي إف"
                             class="btn-secondary"/>
-                    <button string="Close" class="btn-secondary" special="cancel"/>
+                    <button string="إغلاق" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>
         </field>
     </record>
 
     <record id="action_syndicate_revenue_analytics_wizard" model="ir.actions.act_window">
-        <field name="name">Revenue Analytics</field>
+        <field name="name">تحليلات الإيرادات</field>
         <field name="res_model">syndicate.revenue.analytics.wizard</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
     </record>
 
     <menuitem id="menu_revenue_analytics"
-              name="Revenue Analytics"
+              name="تحليلات الإيرادات"
               parent="menu_syndicate_reporting"
               action="action_syndicate_revenue_analytics_wizard"
               sequence="18"/>

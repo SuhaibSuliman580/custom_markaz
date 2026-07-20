@@ -4,17 +4,17 @@ from odoo.exceptions import ValidationError
 
 class SyndicateRevenueDistributionTemplate(models.Model):
     _name = 'syndicate.revenue.distribution.template'
-    _description = 'Revenue Distribution Template'
+    _description = 'قالب توزيع الإيرادات'
     _order = 'company_id, code, name, id'
     _check_company_auto = True
 
-    name = fields.Char(string='Name', required=True)
-    code = fields.Char(string='Code', required=True)
+    name = fields.Char(string='الاسم', required=True)
+    code = fields.Char(string='الكود', required=True)
     active = fields.Boolean(default=True)
 
     company_id = fields.Many2one(
         'res.company',
-        string='Company',
+        string='الشركة',
         required=True,
         default=lambda self: self.env.company,
         index=True,
@@ -23,22 +23,22 @@ class SyndicateRevenueDistributionTemplate(models.Model):
     line_ids = fields.One2many(
         'syndicate.revenue.distribution.template.line',
         'template_id',
-        string='Template Lines',
+        string='التفاصيل',
     )
 
     total_percentage = fields.Float(
-        string='Total Percentage',
+        string='إجمالي النسبة',
         compute='_compute_total_percentage',
         digits=(16, 4),
     )
 
-    note = fields.Text(string='Notes')
+    note = fields.Text(string='ملاحظات')
 
     _sql_constraints = [
         (
             'template_code_company_unique',
             'unique(code, company_id)',
-            'Template code must be unique per company.',
+            'يجب أن يكون كود القالب فريداً لكل شركة.',
         ),
     ]
 
@@ -50,13 +50,13 @@ class SyndicateRevenueDistributionTemplate(models.Model):
 
 class SyndicateRevenueDistributionTemplateLine(models.Model):
     _name = 'syndicate.revenue.distribution.template.line'
-    _description = 'Revenue Distribution Template Line'
+    _description = 'سطر قالب توزيع الإيرادات'
     _order = 'template_id, sequence, id'
     _check_company_auto = True
 
     template_id = fields.Many2one(
         'syndicate.revenue.distribution.template',
-        string='Template',
+        string='القالب',
         required=True,
         ondelete='cascade',
         check_company=True,
@@ -66,7 +66,7 @@ class SyndicateRevenueDistributionTemplateLine(models.Model):
 
     company_id = fields.Many2one(
         'res.company',
-        string='Company',
+        string='الشركة',
         related='template_id.company_id',
         store=True,
         readonly=True,
@@ -74,7 +74,7 @@ class SyndicateRevenueDistributionTemplateLine(models.Model):
 
     fund_box_id = fields.Many2one(
         'syndicate.fund.box',
-        string='Fund Box',
+        string='الصندوق',
         required=True,
         check_company=True,
         domain="[('active', '=', True), ('company_id', '=', company_id)]",
@@ -82,7 +82,7 @@ class SyndicateRevenueDistributionTemplateLine(models.Model):
 
     account_id = fields.Many2one(
         'account.account',
-        string='Income Account',
+        string='حساب الإيراد',
         related='fund_box_id.income_account_id',
         store=True,
         readonly=True,
@@ -90,14 +90,14 @@ class SyndicateRevenueDistributionTemplateLine(models.Model):
 
     analytic_account_id = fields.Many2one(
         'account.analytic.account',
-        string='Analytic Account',
+        string='الحساب التحليلي',
         related='fund_box_id.analytic_account_id',
         store=True,
         readonly=True,
     )
 
     percentage = fields.Float(
-        string='Percentage',
+        string='النسبة',
         required=True,
         digits=(16, 4),
         default=100.0,
@@ -107,7 +107,7 @@ class SyndicateRevenueDistributionTemplateLine(models.Model):
         (
             'template_fund_box_unique',
             'unique(template_id, fund_box_id)',
-            'Fund Box must be unique per template.',
+            'يجب ألا يتكرر الصندوق في نفس القالب.',
         ),
     ]
 

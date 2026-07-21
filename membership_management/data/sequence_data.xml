@@ -20,5 +20,14 @@
             <field name="company_id" eval="False"/>
         </record>
 
+        <!-- Doctor Data Collection Request Sequence -->
+        <record id="seq_membership_profile_update" model="ir.sequence">
+            <field name="name">Doctor Data Collection Request</field>
+            <field name="code">membership.profile.update</field>
+            <field name="prefix">DCR-</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
     </data>
 </odoo>

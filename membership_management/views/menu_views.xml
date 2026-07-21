@@ -14,11 +14,18 @@
               sequence="5"
               groups="membership_management.group_membership_service_registration,membership_management.group_membership_service_finance,membership_management.group_membership_service_cashier,membership_management.group_membership_service_manager"/>
 
+    <menuitem id="menu_membership_command_center"
+              name="مركز القيادة والإدارة"
+              parent="menu_membership_root"
+              action="action_membership_command_center_server"
+              sequence="1"
+              groups="membership_management.group_membership_admin,membership_management.group_membership_service_manager"/>
+
     <menuitem id="menu_membership_registration_workspace_root"
               name="مركز عمل الذاتية"
               parent="menu_membership_root"
               sequence="4"
-              groups="membership_management.group_membership_service_registration,membership_management.group_membership_service_manager"/>
+              groups="membership_management.group_membership_service_registration,membership_management.group_membership_service_manager,membership_management.group_doctor_data_employee,membership_management.group_doctor_data_reviewer,membership_management.group_membership_admin"/>
 
     <menuitem id="menu_membership_registration_workspace"
               name="لوحة الذاتية"
@@ -26,6 +33,13 @@
               action="action_membership_registration_workspace_server"
               sequence="1"
               groups="membership_management.group_membership_service_registration,membership_management.group_membership_service_manager"/>
+
+    <menuitem id="menu_membership_profile_update"
+              name="جمع بيانات الأطباء"
+              parent="menu_membership_registration_workspace_root"
+              action="action_membership_profile_update"
+              sequence="5"
+              groups="membership_management.group_doctor_data_employee,membership_management.group_doctor_data_reviewer,membership_management.group_membership_admin"/>
 
     <menuitem id="menu_membership_service_requests"
               name="طلبات خدمات الأطباء"

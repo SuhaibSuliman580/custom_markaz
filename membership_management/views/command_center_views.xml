@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_membership_command_center_form" model="ir.ui.view">
+        <field name="name">membership.command.center.form.v2</field>
+        <field name="model">membership.command.center</field>
+        <field name="arch" type="xml">
+            <form string="مركز القيادة التنفيذي" class="o_membership_command_center o_command_center_v2" create="0" edit="1" delete="0">
+                <header>
+                    <button name="action_refresh" type="object" string="تحديث البيانات" class="btn-primary" icon="fa-refresh"/>
+                    <button name="action_reset_filters" type="object" string="إعادة ضبط" class="btn-secondary" icon="fa-undo"/>
+                </header>
+                <sheet>
+                    <field name="allowed_company_ids" invisible="1"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="is_central_view" invisible="1"/>
+                    <field name="has_average_completion" invisible="1"/>
+                    <field name="has_employee_data" invisible="1"/>
+
+                    <div class="cc_v2_heading">
+                        <h1><field name="display_title" readonly="1" nolabel="1"/></h1>
+                        <p>مركز القيادة التنفيذي – الإصدار الثاني</p>
+                    </div>
+                    <div class="cc_top_period_bar">
+                        <div class="cc_quick_filters">
+                            <button name="action_period_today" type="object" string="اليوم" class="btn-secondary"/>
+                            <button name="action_period_week" type="object" string="هذا الأسبوع" class="btn-secondary"/>
+                            <button name="action_period_month" type="object" string="هذا الشهر" class="btn-secondary"/>
+                            <button name="action_period_year" type="object" string="هذا العام" class="btn-secondary"/>
+                        </div>
+                        <strong><field name="period_label"/></strong>
+                    </div>
+
+                    <div class="cc_executive_summary">
+                        <div class="cc_health_score">
+                            <span class="cc_eyebrow">درجة الصحة العامة</span>
+                            <div class="cc_score"><field name="health_score" digits="[16, 1]"/><small>/100</small></div>
+                            <div class="cc_confidence">ثقة التقييم: <field name="evaluation_confidence_label"/></div>
+                            <div class="cc_score_components">
+                                <span>البيانات <field name="data_quality_score" digits="[16, 1]"/>/30</span>
+                                <span>المعاملات <field name="transaction_score" digits="[16, 1]"/>/25</span>
+                                <span>المالية <field name="financial_score" digits="[16, 1]"/>/20</span>
+                                <span>المهام <field name="task_score" digits="[16, 1]"/>/15</span>
+                                <span>التنبيهات <field name="alert_score" digits="[16, 1]"/>/10</span>
+                            </div>
+                            <field name="overall_status" widget="badge"
+                                decoration-success="overall_status == 'normal'"
+                                decoration-warning="overall_status in ('follow_up', 'important')"
+                                decoration-danger="overall_status == 'critical'"
+                                decoration-muted="overall_status == 'insufficient'"/>
+                        </div>
+                        <div class="cc_executive_message">
+                            <h2>الملخص التنفيذي</h2>
+                            <strong><field name="overall_status_label"/></strong>
+                            <p><field name="overall_status_message"/></p>
+                            <div class="cc_indicator_counts">
+                                <div class="cc_count cc_count_danger"><field name="critical_alert_count"/><span>مؤشرات حرجة</span></div>
+                                <div class="cc_count cc_count_warning"><field name="warning_alert_count"/><span>تحتاج متابعة</span></div>
+                                <div class="cc_count cc_count_success"><field name="normal_indicator_count"/><span>مؤشرات طبيعية</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <section class="cc_v2_section cc_priority_section">
+                        <div class="cc_section_heading">
+                            <h2><i class="fa fa-exclamation-triangle"/> أهم المشكلات التي تحتاج متابعة</h2>
+                            <span>مرتبة حسب الأولوية</span>
+                        </div>
+                        <field name="alert_line_ids" nolabel="1">
+                            <tree create="0" delete="0" edit="0"
+                                  decoration-danger="severity == 'critical'"
+                                  decoration-warning="severity == 'warning'"
+                                  decoration-info="severity == 'info'">
+                                <button name="action_open_alert" type="object" icon="fa-external-link" title="فتح التفاصيل"/>
+                                <field name="severity" widget="badge"
+                                       decoration-danger="severity == 'critical'"
+                                       decoration-warning="severity == 'warning'"
+                                       decoration-info="severity == 'info'"/>
+                                <field name="name"/>
+                                <field name="count"/>
+                                <field name="message"/>
+                                <field name="company_id" optional="hide"/>
+                                <field name="responsible_user_id" optional="hide"/>
+                            </tree>
+                        </field>
+                        <div class="cc_empty_hint" invisible="critical_alert_count or warning_alert_count">
+                            لا توجد مشكلات ذات أولوية ضمن الفترة المحددة.
+                        </div>
+                    </section>
+
+                    <section class="cc_v2_section">
+                        <div class="cc_section_heading"><h2>المؤشرات التشغيلية الأساسية</h2><span>اضغط على البطاقة لعرض التفاصيل</span></div>
+                        <div class="cc_kpi_grid cc_kpi_grid_v2">
+                            <button name="action_open_doctors" type="object" class="cc_kpi cc_info"><i class="fa fa-user-md"/><span>إجمالي الأطباء</span><field name="doctor_total"/><small>سجلات الأطباء ضمن النطاق</small></button>
+                            <button name="action_open_incomplete_doctors" type="object" class="cc_kpi cc_warning"><i class="fa fa-check-square-o"/><span>اكتمال البيانات</span><field name="doctor_completion_rate"/><small>نسبة مئوية من 100</small></button>
+                            <button name="action_open_open_requests" type="object" class="cc_kpi cc_info"><i class="fa fa-folder-open-o"/><span>الطلبات المفتوحة</span><field name="request_processing_count"/><small>تحتاج متابعة تشغيلية</small></button>
+                            <button name="action_open_delayed_requests" type="object" class="cc_kpi cc_danger"><i class="fa fa-clock-o"/><span>المعاملات المتأخرة</span><field name="request_delayed_count"/><small>تجاوزت سبعة أيام</small></button>
+                            <div class="cc_kpi cc_info"><i class="fa fa-line-chart"/><span>إيرادات الفترة</span><field name="revenue_month" widget="monetary"/><small>فواتير خدمات الأطباء</small></div>
+                            <div class="cc_kpi cc_success"><i class="fa fa-money"/><span>مقبوضات الفترة</span><field name="receipts_month" widget="monetary"/><small>دفعات واردة مرحلة</small></div>
+                            <button name="action_open_unpaid_invoices" type="object" class="cc_kpi cc_warning"><i class="fa fa-file-text-o"/><span>غير المحصل</span><field name="unpaid_invoice_total" widget="monetary"/><small>متبقي الفواتير المرحلة</small></button>
+                            <button name="action_open_overdue_tasks" type="object" class="cc_kpi cc_danger"><i class="fa fa-calendar-times-o"/><span>المهام المتأخرة</span><field name="overdue_task_count"/><small>تجاوزت الاستحقاق</small></button>
+                        </div>
+                    </section>
+
+                    <div class="cc_v2_three_columns">
+                        <section class="cc_v2_section">
+                            <div class="cc_section_heading"><h2>جودة بيانات الأطباء</h2></div>
+                            <div class="cc_progress_block">
+                                <span>نسبة اكتمال البيانات</span>
+                                <field name="doctor_completion_rate" widget="progressbar" options="{'max_value': 100}"/>
+                            </div>
+                            <div class="cc_metric_rows">
+                                <div class="cc_quality_metric"><span class="cc_metric_description">ملف مكتمل</span><span class="cc_metric_count"><field name="doctor_complete_count"/> طبيب</span><span class="cc_metric_separator">—</span><span class="cc_metric_rate"><field name="doctor_completion_rate" digits="[16, 2]"/><span class="cc_percent_sign">%</span></span></div>
+                                <div class="cc_quality_metric"><span class="cc_metric_description">ملف ناقص</span><span class="cc_metric_count"><field name="doctor_incomplete_count"/> طبيب</span><span class="cc_metric_separator">—</span><span class="cc_metric_rate"><field name="doctor_incomplete_rate" digits="[16, 2]"/><span class="cc_percent_sign">%</span></span></div>
+                                <div class="cc_quality_metric"><span class="cc_metric_description">بدون رقم وطني</span><span class="cc_metric_count"><field name="doctor_missing_national_id"/> طبيبًا</span><span class="cc_metric_separator">—</span><span class="cc_metric_rate"><field name="doctor_missing_national_rate" digits="[16, 2]"/><span class="cc_percent_sign">%</span></span></div>
+                                <div class="cc_quality_metric"><span class="cc_metric_description">بدون اختصاص</span><span class="cc_metric_count"><field name="doctor_missing_specialty"/> طبيبًا</span><span class="cc_metric_separator">—</span><span class="cc_metric_rate"><field name="doctor_missing_specialty_rate" digits="[16, 2]"/><span class="cc_percent_sign">%</span></span></div>
+                                <div class="cc_quality_metric"><span class="cc_metric_description">بدون هاتف</span><span class="cc_metric_count"><field name="doctor_missing_phone"/> طبيبًا</span><span class="cc_metric_separator">—</span><span class="cc_metric_rate"><field name="doctor_missing_phone_rate" digits="[16, 2]"/><span class="cc_percent_sign">%</span></span></div>
+                                <div class="cc_quality_metric"><span class="cc_metric_description">رقم وطني مكرر</span><span class="cc_metric_count"><field name="doctor_duplicate_national_id"/> رقمًا وطنيًا مكررًا</span><span class="cc_metric_separator">—</span><span class="cc_metric_rate"><field name="doctor_duplicate_rate" digits="[16, 2]"/><span class="cc_percent_sign">%</span></span></div>
+                                <button name="action_open_unassigned_doctors" type="object" class="cc_metric_action"
+                                        invisible="company_id">
+                                    <span>أطباء غير مرتبطين بنقابة فرعية</span>
+                                    <field name="doctor_unassigned_count"/>
+                                </button>
+                            </div>
+                        </section>
+                        <section class="cc_v2_section">
+                            <div class="cc_section_heading"><h2>العضوية والمعاملات</h2></div>
+                            <div class="cc_metric_rows">
+                                <div><span>طلبات انتساب جديدة</span><field name="new_application_count"/></div>
+                                <div><span>طلبات التجديد</span><field name="renewal_count"/></div>
+                                <div><span>تعديل البيانات</span><field name="profile_update_count"/></div>
+                                <div><span>طلبات منشأة خلال الفترة</span><field name="request_created_period_count"/></div>
+                                <div><span>طلبات مفتوحة حاليًا</span><field name="request_processing_count"/></div>
+                                <div><span>طلبات منجزة خلال الفترة</span><field name="request_completed_period_count"/></div>
+                                <div><span>طلبات مفتوحة متأخرة</span><field name="request_delayed_count"/></div>
+                                <div><span>المعادة أو المرفوضة</span><field name="request_rejected_count"/></div>
+                                <div><span>غير المسندة</span><field name="unassigned_request_count"/></div>
+                                <div><span>المنجزة اليوم</span><field name="completed_today_count"/></div>
+                                <div><span>متوسط زمن الإنجاز</span><field name="average_completion_label"/></div>
+                            </div>
+                        </section>
+                        <section class="cc_v2_section">
+                            <div class="cc_section_heading"><h2>المالية والتحصيل</h2></div>
+                            <div class="cc_progress_block">
+                                <span>نسبة التحصيل</span>
+                                <field name="collection_rate" widget="progressbar" options="{'max_value': 100}"/>
+                            </div>
+                            <div class="cc_metric_rows">
+                                <div><span>إيرادات اليوم</span><field name="revenue_today" widget="monetary"/></div>
+                                <div><span>إيرادات الفترة</span><field name="revenue_month" widget="monetary"/></div>
+                                <div><span>مقبوضات اليوم</span><field name="receipts_today" widget="monetary"/></div>
+                                <div><span>مقبوضات الفترة</span><field name="receipts_month" widget="monetary"/></div>
+                                <div><span>فواتير بانتظار الدفع</span><field name="posted_waiting_payment_count"/></div>
+                                <div><span>غير المحصل من فواتير الفترة</span><field name="unpaid_period_amount" widget="monetary"/></div>
+                                <div><span>إجمالي الرصيد غير المحصل حتى نهاية الفترة</span><field name="total_outstanding_amount" widget="monetary"/></div>
+                                <div><span>المبلغ المتجاوز لتاريخ الاستحقاق</span><field name="overdue_amount" widget="monetary"/></div>
+                                <div><span>قيود غير مرحلة</span><field name="draft_move_count"/></div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <section class="cc_v2_section cc_full">
+                        <div class="cc_section_heading"><h2><i class="fa fa-bank"/> الصناديق وتوزيع الإيرادات</h2></div>
+                        <div class="cc_mini_kpis">
+                            <div><span>الصناديق الفعالة</span><field name="active_fund_count"/></div>
+                            <div><span>إجمالي الإيراد الموزع</span><field name="distributed_revenue_total" widget="monetary"/></div>
+                            <div><span>توزيعات هذا الشهر</span><field name="fund_month_revenue" widget="monetary"/></div>
+                            <div><span>أعلى صندوق</span><field name="top_fund_name"/></div>
+                            <div><span>بدون حركة</span><field name="fund_without_movement_count"/></div>
+                            <div><span>مشكلات التوزيع</span><field name="distribution_issue_count"/></div>
+                        </div>
+                        <field name="fund_line_ids" nolabel="1">
+                            <tree create="0" delete="0" edit="0" decoration-muted="movement_state == 'no_movement'">
+                                <button name="action_open_fund" type="object" icon="fa-external-link" title="فتح حركات التوزيع"/>
+                                <field name="fund_box_id"/><field name="company_id"/>
+                                <field name="distributed_amount" sum="الإجمالي"/>
+                                <field name="percentage_of_total"/><field name="movement_count"/>
+                                <field name="last_movement_date"/><field name="movement_state" widget="badge"
+                                    decoration-success="movement_state == 'active'"
+                                    decoration-muted="movement_state == 'no_movement'"/>
+                            </tree>
+                        </field>
+                    </section>
+
+                    <section class="cc_v2_section cc_full" invisible="not is_central_view">
+                        <div class="cc_section_heading"><h2>أداء النقابات الفرعية</h2></div>
+                        <field name="branch_line_ids" nolabel="1">
+                            <tree create="0" delete="0" edit="0"
+                                  decoration-muted="performance_state == 'insufficient_data'"
+                                  decoration-success="performance_state == 'excellent'"
+                                  decoration-warning="performance_state == 'follow_up'"
+                                  decoration-danger="performance_state == 'struggling'">
+                                <button name="action_open_branch" type="object" icon="fa-external-link" title="فتح مركز الفرع"/>
+                                <button name="action_open_branch_doctors" type="object" icon="fa-users" title="عرض الأطباء"/>
+                                <field name="company_id"/><field name="doctor_count"/>
+                                <field name="completion_rate"/><field name="delayed_request_count"/>
+                                <field name="month_revenue"/><field name="branch_health_score_label"/>
+                                <field name="performance_state" widget="badge"
+                                    decoration-success="performance_state == 'excellent'"
+                                    decoration-info="performance_state == 'good'"
+                                    decoration-warning="performance_state == 'follow_up'"
+                                    decoration-danger="performance_state == 'struggling'"
+                                    decoration-muted="performance_state == 'insufficient_data'"/>
+                                <field name="branch_status_reason"/>
+                                <field name="evaluation_confidence_label" optional="hide"/>
+                                <field name="data_quality_score" optional="hide"/>
+                                <field name="transaction_score" optional="hide"/>
+                                <field name="financial_score" optional="hide"/>
+                                <field name="task_score" optional="hide"/>
+                                <field name="alert_score" optional="hide"/>
+                            </tree>
+                        </field>
+                    </section>
+
+                    <div class="cc_v2_two_columns">
+                        <section class="cc_v2_section" invisible="not has_employee_data">
+                            <div class="cc_section_heading"><h2>أداء الموظفين والأقسام</h2></div>
+                            <field name="employee_line_ids" nolabel="1">
+                                <tree create="0" delete="0" edit="0" decoration-warning="performance_state == 'follow_up'">
+                                    <field name="employee_name"/><field name="company_id"/>
+                                    <field name="assigned_count"/><field name="completed_count"/>
+                                    <field name="delayed_count"/><field name="completion_rate"/>
+                                    <field name="last_activity"/>
+                                    <field name="performance_state" widget="badge"
+                                        decoration-success="performance_state == 'good'"
+                                        decoration-warning="performance_state == 'follow_up'"/>
+                                </tree>
+                            </field>
+                        </section>
+                        <section class="cc_v2_section cc_empty_employee" invisible="has_employee_data">
+                            <div class="cc_section_heading"><h2>أداء الموظفين والأقسام</h2></div>
+                            <div class="cc_empty_hint">لا تتوفر بيانات كافية لتقييم أداء الموظفين ضمن الفترة الحالية.</div>
+                        </section>
+                        <section class="cc_v2_section">
+                            <div class="cc_section_heading"><h2>آخر الأحداث</h2><span>آخر 20 حدثًا</span></div>
+                            <field name="event_line_ids" nolabel="1" class="cc_timeline_table">
+                                <tree create="0" delete="0" edit="0">
+                                    <button name="action_open_event" type="object" icon="fa-external-link" title="فتح السجل"/>
+                                    <field name="event_type"/><field name="description"/>
+                                    <field name="employee_name"/>
+                                    <field name="event_date_display"/><field name="event_time_display"/>
+                                </tree>
+                            </field>
+                        </section>
+                    </div>
+
+                    <details class="cc_filter_details">
+                        <summary><i class="fa fa-filter"/> الفلاتر والتفاصيل الإضافية</summary>
+                        <group class="cc_filters" col="6">
+                            <field name="company_id" options="{'no_create': True}" domain="[('id', 'in', allowed_company_ids)]"/>
+                            <field name="date_from"/><field name="date_to"/>
+                            <field name="service_type_id" options="{'no_create': True}"/>
+                            <field name="request_state"/>
+                            <field name="responsible_user_id" options="{'no_create': True}"/>
+                        </group>
+                    </details>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_membership_command_center_server" model="ir.actions.server">
+        <field name="name">مركز القيادة التنفيذي</field>
+        <field name="model_id" ref="model_membership_command_center"/>
+        <field name="state">code</field>
+        <field name="code">action = model.action_open_command_center()</field>
+    </record>
+</odoo>

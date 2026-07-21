@@ -13,6 +13,11 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 
 #. module: membership_management
+#: model:ir.model.fields.selection,name:membership_management.selection__membership_profile_update__state__draft
+msgid "مسودة"
+msgstr "مسودة"
+
+#. module: membership_management
 msgid "Doctor Services Desk"
 msgstr "مكتب خدمات الأطباء"
 

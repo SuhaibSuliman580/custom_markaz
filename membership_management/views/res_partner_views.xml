@@ -11,7 +11,7 @@
                   decoration-danger="doctor_membership_state == 'expired'"
                   decoration-warning="doctor_membership_state == 'suspended'">
                 <field name="name" string="الاسم"/>
-                <field name="mother_name" string="اسم الام" optional="show"/>
+                <field name="mother_name" string="اسم الأم مع الكنية" optional="show"/>
                 <field name="membership_number" string="رقم العضوية" optional="show"/>
                 <field name="doctor_membership_state" string="حالة العضوية" widget="badge" optional="show"/>
                 <field name="medical_specialty_id" string="الاختصاص" optional="show"/>
@@ -32,7 +32,7 @@
         <field name="arch" type="xml">
             <search string="بحث الأطباء">
                 <field name="name" string="الاسم"/>
-                <field name="mother_name" string="اسم الام"/>
+                <field name="mother_name" string="اسم الأم مع الكنية"/>
                 <field name="membership_number" string="رقم العضوية"/>
                 <field name="national_id" string="الرقم الوطني"/>
                 <field name="phone" string="رقم الهاتف"/>
@@ -90,6 +90,12 @@
                         invisible="not is_doctor"
                         groups="membership_management.group_membership_service_registration,membership_management.group_membership_service_finance,membership_management.group_membership_service_cashier,membership_management.group_membership_service_manager">
                     <field name="membership_service_request_count" widget="statinfo" string="طلبات الخدمات"/>
+                </button>
+                <button name="action_view_profile_execution_requests"
+                        type="object" class="oe_stat_button" icon="fa-history"
+                        invisible="not is_doctor"
+                        groups="membership_management.group_doctor_data_executor,membership_management.group_doctor_data_reviewer,membership_management.group_membership_admin">
+                    <field name="profile_execution_request_count" widget="statinfo" string="طلبات تحديث البيانات"/>
                 </button>
             </xpath>
 
@@ -149,20 +155,25 @@
                             </group>
                         </page>
 
-                        <page string="Personal Info">
+                        <page string="البيانات الشخصية">
                             <group>
                                 <group string="Identity">
                                     <field name="arabic_name"/>
+                                    <field name="doctor_first_name"/>
+                                    <field name="father_name"/>
+                                    <field name="grandfather_name"/>
                                     <field name="nickname"/>
                                     <field name="national_id"/>
                                     <field name="birth_date"/>
+                                    <field name="birth_place"/>
                                     <field name="gender"/>
+                                    <field name="marital_status"/>
                                     <field name="nationality_id"/>
                                 </group>
                                 <group string="Family &amp; Residence">
-                                    <field name="father_name"/>
-                                    <field name="mother_name"/>
-                                    <field name="current_residence"/>
+                                    <field name="mother_name" string="اسم الأم مع الكنية"/>
+                                    <field name="national_id_unavailable"/>
+                                    <field name="national_id_unavailable_reason" invisible="not national_id_unavailable"/>
                                     <field name="registry_place_number"/>
                                     <field name="military_service_start_date"/>
                                     <field name="military_service_end_date"/>
@@ -170,13 +181,40 @@
                             </group>
                         </page>
 
-                        <page string="Medical Qualifications">
+                        <page string="التواصل والعنوان">
+                            <group>
+                                <group>
+                                    <field name="mobile" string="الهاتف الأساسي"/>
+                                    <field name="phone" string="الهاتف الإضافي"/>
+                                    <field name="email"/>
+                                    <field name="current_residence"/>
+                                </group>
+                                <group>
+                                    <field name="country_id"/>
+                                    <field name="state_id"/>
+                                    <field name="city"/>
+                                    <field name="doctor_district"/>
+                                    <field name="doctor_subdistrict"/>
+                                    <field name="doctor_village"/>
+                                    <field name="street"/>
+                                    <field name="street2"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="البيانات العلمية">
                             <group>
                                 <group string="Academic Information">
                                     <field name="medical_specialty_id"/>
+                                    <field name="medical_subspecialty_id"/>
                                     <field name="qualification"/>
                                     <field name="university_id"/>
                                     <field name="graduation_year"/>
+                                    <field name="faculty_name"/>
+                                    <field name="academic_degree"/>
+                                    <field name="certificate_country_id"/>
+                                    <field name="certificate_date"/>
+                                    <field name="certificate_title"/>
                                     <field name="specialty_classification"/>
                                 </group>
                                 <group string="Certificates &amp; Authorities">
@@ -197,6 +235,7 @@
                                     <field name="license_type"/>
                                     <field name="license_issue_date"/>
                                     <field name="license_expiry_date"/>
+                                    <field name="license_issuer"/>
                                     <field name="ministry_registration_number"/>
                                     <field name="ministry_registration_date"/>
                                 </group>
@@ -228,6 +267,10 @@
                                     <field name="workplace_name"/>
                                     <field name="workplace_type"/>
                                     <field name="years_of_experience"/>
+                                    <field name="practice_type"/>
+                                    <field name="professional_capacity"/>
+                                    <field name="doctor_job_title"/>
+                                    <field name="practice_start_date"/>
                                     <field name="is_employee"/>
                                     <field name="clinic_address"/>
                                     <field name="clinic_phone"/>
@@ -262,6 +305,38 @@
                             </field>
                         </page>
 
+                        <page string="الوثائق المعتمدة"
+                              groups="membership_management.group_doctor_data_executor,membership_management.group_doctor_data_reviewer,membership_management.group_membership_admin">
+                            <field name="doctor_document_ids" readonly="1">
+                                <tree create="0" edit="0" delete="0">
+                                    <field name="document_type"/>
+                                    <field name="document_name" optional="show"/>
+                                    <field name="document_number" optional="show"/>
+                                    <field name="issue_date" optional="show"/>
+                                    <field name="expiry_date" optional="show"/>
+                                    <field name="issuing_authority" optional="hide"/>
+                                    <field name="verification_state" widget="badge" optional="show"/>
+                                    <field name="file_data" filename="file_name"/>
+                                    <field name="company_id" optional="hide"/>
+                                    <field name="file_name" column_invisible="True"/>
+                                    <field name="source_request_id"/>
+                                    <field name="employee_note" optional="hide"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="سجل تحديثات البيانات"
+                              groups="membership_management.group_doctor_data_executor,membership_management.group_doctor_data_reviewer,membership_management.group_membership_admin">
+                            <field name="profile_execution_request_ids" readonly="1">
+                                <tree create="0" edit="0" delete="0">
+                                    <field name="name"/>
+                                    <field name="execution_type"/>
+                                    <field name="executed_by_id"/>
+                                    <field name="executed_at"/>
+                                </tree>
+                            </field>
+                        </page>
+
                         <page string="طلبات خدمات الأطباء">
                             <field name="membership_service_request_ids" readonly="1">
                                 <tree>
@@ -289,11 +364,7 @@
         <field name="view_id" ref="view_partner_tree_doctors"/>
         <field name="search_view_id" ref="view_partner_search_doctors"/>
         <field name="domain">[('is_doctor', '=', True)]</field>
-        <field name="context">{
-            'default_is_doctor': True,
-            'search_default_filter_active_members': 1
-            }
-        </field>
+        <field name="context">{'default_is_doctor': True}</field>
     </record>
 
     <record id="action_doctor_partners_server" model="ir.actions.server">

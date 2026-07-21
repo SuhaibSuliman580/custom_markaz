@@ -35,12 +35,22 @@ class ResPartner(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         company_id = self.env.company.id
-        vals_list = [
-            dict(vals, company_id=company_id)
-            if vals.get('is_doctor') or self._is_doctor_creation_context()
-            else vals
-            for vals in vals_list
-        ]
+        prepared = []
+        for incoming in vals_list:
+            vals = dict(incoming)
+            is_doctor = vals.get('is_doctor') or self._is_doctor_creation_context()
+            if is_doctor:
+                vals['company_id'] = company_id
+                if not vals.get('name'):
+                    parts = [
+                        vals.get('doctor_first_name'), vals.get('father_name'),
+                        vals.get('grandfather_name'), vals.get('nickname'),
+                    ]
+                    composed = ' '.join(part.strip() for part in parts if part and part.strip())
+                    if composed:
+                        vals['name'] = composed
+            prepared.append(vals)
+        vals_list = prepared
         return super().create(vals_list)
 
     def _sync_related_users_company(self, company_id):
@@ -155,9 +165,48 @@ class ResPartner(models.Model):
         ('female', 'Female'),
     ], string='Gender')
     nationality_id = fields.Many2one('res.country', string='Nationality')
-    medical_specialty_id = fields.Many2one('medical.specialty', string='Medical Specialty')
+    medical_specialty_id = fields.Many2one(
+        'medical.specialty', string='Medical Specialty', check_company=True,
+        domain="[('company_id', '=', company_id)]",
+    )
     father_name = fields.Char(string='Father Name')
+    grandfather_name = fields.Char(string='اسم الجد')
     mother_name = fields.Char(string='Mother Name')
+    doctor_first_name = fields.Char(string='الاسم الأول')
+    birth_place = fields.Char(string='مكان الولادة')
+    marital_status = fields.Selection([
+        ('single', 'أعزب'), ('married', 'متزوج'),
+        ('divorced', 'مطلق'), ('widowed', 'أرمل'),
+    ], string='الحالة الاجتماعية')
+    doctor_district = fields.Char(string='المنطقة')
+    doctor_subdistrict = fields.Char(string='الناحية')
+    doctor_village = fields.Char(string='القرية')
+    national_id_unavailable = fields.Boolean(string='الرقم الوطني غير متوفر')
+    national_id_unavailable_reason = fields.Text(string='سبب عدم توفر الرقم الوطني')
+    certificate_country_id = fields.Many2one('res.country', string='بلد صدور الشهادة')
+    doctor_document_ids = fields.One2many(
+        'membership.doctor.document', 'partner_id', string='وثائق الطبيب المعتمدة',
+    )
+    profile_execution_request_ids = fields.One2many(
+        'membership.profile.update', 'executed_partner_id', string='طلبات تحديث بيانات الطبيب',
+    )
+    profile_execution_request_count = fields.Integer(
+        compute='_compute_profile_execution_request_count', string='طلبات تحديث البيانات',
+    )
+
+    def _compute_profile_execution_request_count(self):
+        for partner in self:
+            partner.profile_execution_request_count = len(partner.profile_execution_request_ids)
+
+    def action_view_profile_execution_requests(self):
+        self.ensure_one()
+        action = self.env.ref('membership_management.action_membership_profile_update').read()[0]
+        action['domain'] = [
+            ('executed_partner_id', '=', self.id),
+            ('company_id', 'in', self.env.companies.ids),
+        ]
+        action['context'] = {'create': False}
+        return action
     # social_status = fields.Selection([
     #     ('single', 'Single'),
     #     ('married', 'Married'),
@@ -211,10 +260,14 @@ class ResPartner(models.Model):
     )
 
     graduation_year = fields.Char(string='Graduation Year')
+    faculty_name = fields.Char(string='الكلية')
+    academic_degree = fields.Char(string='الدرجة العلمية')
+    certificate_date = fields.Date(string='تاريخ الحصول على الشهادة')
+    certificate_title = fields.Char(string='عنوان / نوع الشهادة')
 
     @api.depends('university')
     def _compute_university_id(self):
-        Univ = self.env['medical.unv'].sudo()
+        Univ = self.env['medical.unv']
         for rec in self:
             if rec.university:
                 unv = Univ.search([('name', '=', rec.university)], limit=1)
@@ -228,7 +281,7 @@ class ResPartner(models.Model):
 
     def _search_university_id(self, operator, value):
         """Map searching on university_id to searching by the stored Char field "university"."""
-        Univ = self.env['medical.unv'].sudo()
+        Univ = self.env['medical.unv']
         # value can be an ID, list of IDs, or a name depending on domain
         if isinstance(value, int):
             name = Univ.browse(value).name or ''
@@ -246,6 +299,11 @@ class ResPartner(models.Model):
         ('permanent', 'Permanent'),
         ('temporary', 'Temporary'),
     ], string='License Type')
+    license_issuer = fields.Char(string='جهة إصدار الترخيص')
+    medical_subspecialty_id = fields.Many2one(
+        'medical.specialty', string='الاختصاص الفرعي', check_company=True,
+        domain="[('company_id', '=', company_id)]",
+    )
     permanent_license_date_1 = fields.Date(string='Permanent License Date 1')
     permanent_license_date_2 = fields.Date(string='Permanent License Date 2')
     temporary_license_date_1 = fields.Date(string='Temporary License Date 1')
@@ -285,6 +343,10 @@ class ResPartner(models.Model):
         ('other', 'Other'),
     ], string='Workplace Type')
     years_of_experience = fields.Integer(string='Years of Experience')
+    practice_type = fields.Char(string='نوع الممارسة')
+    professional_capacity = fields.Char(string='الصفة المهنية')
+    doctor_job_title = fields.Char(string='المسمى الوظيفي')
+    practice_start_date = fields.Date(string='تاريخ بدء ممارسة المهنة')
     is_employee = fields.Boolean(string='Is Employee')
     fund_status = fields.Selection([
         ('contracted', 'Contracted'),

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_membership_command_center_v3_navigation" model="ir.ui.view">
+        <field name="name">membership.command.center.v3.navigation</field>
+        <field name="model">membership.command.center</field>
+        <field name="inherit_id" ref="view_membership_command_center_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/header" position="inside">
+                <button name="action_open_decision_center" type="object" string="مركز القرارات"/>
+                <button name="action_open_daily_brief" type="object" string="تقرير اليوم"/>
+                <button name="action_open_risk_center" type="object" string="مركز المخاطر"/>
+                <button name="action_open_executive_timeline" type="object" string="الخط الزمني"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_membership_decision_center_form" model="ir.ui.view">
+        <field name="name">membership.decision.center.form</field>
+        <field name="model">membership.decision.center</field>
+        <field name="arch" type="xml">
+            <form string="مركز القرارات" class="o_executive_intelligence_v3" create="0" delete="0">
+                <header>
+                    <button name="action_refresh" type="object" string="تحديث التحليل" class="btn-primary"/>
+                    <button name="action_open_command_center" type="object" string="مركز القيادة"/>
+                    <button name="action_open_risk_center" type="object" string="مركز المخاطر"/>
+                </header>
+                <sheet>
+                    <div class="ei_v3_title"><h1>مركز القرارات</h1><p>توصيات تنفيذية قابلة للتدقيق ولا تنفذ تغييرات حساسة تلقائيًا</p></div>
+                    <div class="ei_v3_kpis">
+                        <div class="ei_kpi critical"><b><field name="critical_count"/></b><span>حرجة</span></div>
+                        <div class="ei_kpi high"><b><field name="high_count"/></b><span>مرتفعة</span></div>
+                        <div class="ei_kpi medium"><b><field name="medium_count"/></b><span>متوسطة</span></div>
+                        <div class="ei_kpi"><b><field name="proposed_count"/></b><span>مقترحة</span></div>
+                        <div class="ei_kpi"><b><field name="under_review_count"/></b><span>بانتظار المراجعة</span></div>
+                        <div class="ei_kpi"><b><field name="accepted_count"/></b><span>معتمدة</span></div>
+                        <div class="ei_kpi"><b><field name="completed_count"/></b><span>مكتملة</span></div>
+                    </div>
+                    <details class="ei_filters">
+                        <summary><i class="fa fa-filter"/> فلاتر مركز القرارات</summary>
+                        <div class="ei_filter_grid">
+                            <div class="ei_filter_item"><label for="company_id"/><field name="company_id" options="{'no_create': True}"/></div>
+                            <div class="ei_filter_item"><label for="decision_category"/><field name="decision_category"/></div>
+                            <div class="ei_filter_item"><label for="priority_filter"/><field name="priority_filter"/></div>
+                            <div class="ei_filter_item"><label for="status_filter"/><field name="status_filter"/></div>
+                            <div class="ei_filter_item"><label for="responsible_user_id"/><field name="responsible_user_id"/></div>
+                            <div class="ei_filter_item"><label for="date_from"/><field name="date_from" class="ei_numeric"/></div>
+                            <div class="ei_filter_item"><label for="date_to"/><field name="date_to" class="ei_numeric"/></div>
+                        </div>
+                    </details>
+                    <field name="line_ids" nolabel="1" mode="kanban,tree">
+                        <kanban class="ei_card_kanban">
+                            <field name="title"/><field name="company_id"/><field name="scope_type"/><field name="scope_label"/><field name="priority"/>
+                            <field name="current_value"/><field name="percentage_value"/><field name="has_percentage"/>
+                            <field name="problem_description"/><field name="impact_description"/>
+                            <field name="recommendation"/><field name="suggested_action"/>
+                            <field name="responsible_role"/><field name="responsible_user_id"/><field name="responsible_display_name"/>
+                            <field name="due_date"/><field name="due_date_display"/><field name="confidence_level"/><field name="status"/>
+                            <templates>
+                                <t t-name="kanban-box">
+                                    <article t-attf-class="ei_card decision #{record.priority.raw_value}">
+                                        <header><h3><field name="title"/></h3><field name="priority" widget="badge"/></header>
+                                        <div class="ei_card_meta"><span><i class="fa fa-sitemap"/> <field name="scope_label"/></span>
+                                            <span class="ei_numeric">القيمة: <field name="current_value"/></span>
+                                            <span t-if="record.has_percentage.raw_value" class="ei_numeric">النسبة: <field name="percentage_value"/>%</span>
+                                            <span t-else="">النسبة: غير متوفر</span></div>
+                                        <section><span class="o_form_label">المشكلة</span><field name="problem_description"/></section>
+                                        <section><span class="o_form_label">التأثير</span><field name="impact_description"/></section>
+                                        <section class="recommendation"><span class="o_form_label">التوصية الإدارية</span><field name="recommendation"/></section>
+                                        <section class="action"><span class="o_form_label">الإجراء التنفيذي المباشر</span><field name="suggested_action"/></section>
+                                        <div class="ei_card_meta"><span>المسؤول: <field name="responsible_display_name"/></span>
+                                            <span t-if="!record.responsible_user_id.raw_value">الدور المقترح: <field name="responsible_role"/></span>
+                                            <span class="ei_numeric">الاستحقاق: <field name="due_date_display"/></span>
+                                            <span>الثقة: <field name="confidence_level"/></span><span>الحالة: <field name="status"/></span></div>
+                                        <footer>
+                                            <button name="action_open_source" type="object" class="btn btn-outline-primary btn-sm">فتح السجلات</button>
+                                            <button name="action_open_details" type="object" class="btn btn-outline-primary btn-sm">فتح التفاصيل</button>
+                                            <button name="action_accept" type="object" class="btn btn-success btn-sm">اعتماد</button>
+                                            <button name="action_dismiss" type="object" class="btn btn-outline-danger btn-sm">رفض</button>
+                                            <button name="action_create_activity" type="object" class="btn btn-outline-secondary btn-sm">إنشاء مهمة</button>
+                                            <button name="action_complete" type="object" class="btn btn-outline-success btn-sm">تعليم كمكتمل</button>
+                                        </footer>
+                                    </article>
+                                </t>
+                            </templates>
+                        </kanban>
+                        <tree create="0" delete="0" editable="bottom">
+                            <button name="action_open_details" type="object" icon="fa-external-link" title="فتح التفاصيل"/>
+                            <field name="title"/><field name="scope_label"/><field name="priority" widget="badge"/>
+                            <field name="current_value"/><field name="status" widget="badge"/>
+                            <field name="responsible_display_name"/><field name="due_date_display"/>
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_membership_decision_center_line_form" model="ir.ui.view">
+        <field name="name">membership.decision.center.line.form</field>
+        <field name="model">membership.decision.center.line</field>
+        <field name="arch" type="xml">
+            <form string="تفاصيل القرار التنفيذي" class="o_executive_intelligence_v3" create="0" delete="0">
+                <header><button name="action_open_source" type="object" string="فتح السجلات" class="btn-primary"/>
+                    <button name="action_accept" type="object" string="اعتماد"/>
+                    <button name="action_dismiss" type="object" string="رفض"/>
+                    <button name="action_create_activity" type="object" string="إنشاء مهمة"/>
+                    <field name="status" widget="statusbar" statusbar_visible="proposed,under_review,accepted,completed,dismissed"/></header>
+                <sheet><group>
+                    <group><field name="title"/><field name="priority"/><field name="scope_type"/>
+                        <field name="scope_label"/><field name="company_id" invisible="scope_type == 'central'"/>
+                        <field name="responsible_user_id"/><field name="responsible_role"/>
+                        <field name="due_date" class="ei_numeric"/><field name="due_date_display" readonly="1" class="ei_numeric"/>
+                        <field name="confidence_level"/></group>
+                    <group><field name="related_model" string="نوع السجلات المرتبطة"/>
+                        <field name="related_domain" string="نطاق السجلات المرتبطة"/>
+                        <field name="related_risk_id"/></group>
+                </group>
+                <group><field name="problem_description"/><field name="impact_description"/>
+                    <field name="recommendation"/><field name="suggested_action"/></group></sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_membership_decision_center_server" model="ir.actions.server">
+        <field name="name">مركز القرارات</field><field name="model_id" ref="model_membership_decision_center"/>
+        <field name="state">code</field><field name="code">action = model.action_open_center()</field>
+    </record>
+
+    <record id="view_membership_risk_center_form" model="ir.ui.view">
+        <field name="name">membership.risk.center.form</field><field name="model">membership.risk.center</field>
+        <field name="arch" type="xml">
+            <form string="مركز المخاطر" class="o_executive_intelligence_v3" create="0" delete="0">
+                <header><button name="action_refresh" type="object" string="تحديث المخاطر" class="btn-primary"/>
+                    <button name="action_open_decision_center" type="object" string="مركز القرارات"/></header>
+                <sheet>
+                    <div class="ei_v3_title"><h1>مركز المخاطر</h1><p>درجة المخاطر أداة لترتيب الأولويات وليست حكمًا محاسبيًا نهائيًا</p></div>
+                    <div class="ei_v3_kpis">
+                        <div class="ei_kpi critical"><b><field name="critical_count"/></b><span>حرجة</span></div>
+                        <div class="ei_kpi high"><b><field name="high_count"/></b><span>مرتفعة</span></div>
+                        <div class="ei_kpi medium"><b><field name="medium_count"/></b><span>متوسطة</span></div>
+                        <div class="ei_kpi"><b><field name="low_count"/></b><span>منخفضة</span></div>
+                        <div class="ei_kpi"><b><field name="open_count"/></b><span>مفتوحة</span></div>
+                    </div>
+                    <details class="ei_filters"><summary><i class="fa fa-filter"/> فلاتر مركز المخاطر</summary>
+                        <div class="ei_filter_grid">
+                            <div class="ei_filter_item"><label for="company_id"/><field name="company_id"/></div>
+                            <div class="ei_filter_item"><label for="risk_category"/><field name="risk_category"/></div>
+                            <div class="ei_filter_item"><label for="risk_level_filter"/><field name="risk_level_filter"/></div>
+                            <div class="ei_filter_item"><label for="status_filter"/><field name="status_filter"/></div>
+                            <div class="ei_filter_item"><label for="risk_state_filter"/><field name="risk_state_filter"/></div>
+                            <div class="ei_filter_item"><label for="date_from"/><field name="date_from" class="ei_numeric"/></div>
+                            <div class="ei_filter_item"><label for="date_to"/><field name="date_to" class="ei_numeric"/></div>
+                        </div>
+                    </details>
+                    <field name="line_ids" nolabel="1" mode="kanban,tree">
+                        <kanban class="ei_card_kanban">
+                            <field name="risk_category"/><field name="risk_state"/><field name="risk_level"/>
+                            <field name="risk_score"/><field name="title"/><field name="company_id"/>
+                            <field name="scope_type"/><field name="scope_label"/>
+                            <field name="current_value"/><field name="percentage_value"/><field name="has_percentage"/><field name="description"/>
+                            <field name="probability"/><field name="probability_reason"/><field name="impact"/>
+                            <field name="impact_reason"/><field name="score_reason"/><field name="mitigation_action"/>
+                            <field name="owner_user_id"/><field name="responsible_display_name"/><field name="responsible_role"/><field name="status"/>
+                            <templates><t t-name="kanban-box">
+                                <article t-attf-class="ei_card risk #{record.risk_level.raw_value}">
+                                    <header><h3><field name="title"/></h3><field name="risk_level" widget="badge"/></header>
+                                    <div class="ei_card_meta"><span><field name="risk_category"/></span>
+                                        <span><field name="risk_state" widget="badge"/></span>
+                                        <span class="ei_numeric">الدرجة: <field name="risk_score"/></span>
+                                        <span><field name="scope_label"/></span></div>
+                                    <div class="ei_card_meta"><span class="ei_numeric">القيمة: <field name="current_value"/></span>
+                                        <span t-if="record.has_percentage.raw_value" class="ei_numeric">النسبة: <field name="percentage_value"/>%</span>
+                                        <span t-else="">النسبة: غير متوفر</span></div>
+                                    <section><span class="o_form_label">الوصف</span><field name="description"/></section>
+                                    <section><span class="o_form_label">سبب الاحتمال أو التحقق</span><field name="probability_reason"/></section>
+                                    <section><span class="o_form_label">سبب التأثير</span><field name="impact_reason"/></section>
+                                    <section><span class="o_form_label">سبب الدرجة</span><field name="score_reason"/></section>
+                                    <section class="action"><span class="o_form_label">المعالجة المقترحة</span><field name="mitigation_action"/></section>
+                                    <div class="ei_card_meta"><span>المسؤول: <field name="responsible_display_name"/></span>
+                                        <span t-if="!record.owner_user_id.raw_value">الدور المقترح: <field name="responsible_role"/></span>
+                                        <span>الحالة: <field name="status"/></span></div>
+                                    <footer><button name="action_open_source" type="object" class="btn btn-outline-primary btn-sm">فتح المصدر</button>
+                                        <button name="action_open_details" type="object" class="btn btn-outline-primary btn-sm">فتح التفاصيل</button>
+                                        <button name="action_acknowledge" type="object" class="btn btn-outline-secondary btn-sm">إقرار</button>
+                                        <button name="action_start_mitigation" type="object" class="btn btn-warning btn-sm">بدء المعالجة</button>
+                                        <button name="action_create_activity" type="object" class="btn btn-outline-secondary btn-sm">إنشاء مهمة</button>
+                                        <button name="action_create_decision" type="object" class="btn btn-outline-primary btn-sm">إنشاء قرار</button>
+                                        <button name="action_resolve" type="object" class="btn btn-success btn-sm">تعليم كمحلول</button></footer>
+                                </article>
+                            </t></templates>
+                        </kanban>
+                        <tree create="0" delete="0" editable="bottom">
+                            <button name="action_open_details" type="object" icon="fa-external-link" title="فتح التفاصيل"/>
+                            <field name="title"/><field name="scope_label"/>
+                            <field name="risk_category"/><field name="risk_state"/><field name="risk_level" widget="badge"/>
+                            <field name="current_value" string="القيمة/العدد"/><field name="risk_score"/>
+                            <field name="status" widget="badge"/><field name="responsible_display_name"/></tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_membership_risk_center_line_form" model="ir.ui.view">
+        <field name="name">membership.risk.center.line.form</field>
+        <field name="model">membership.risk.center.line</field>
+        <field name="arch" type="xml">
+            <form string="تفاصيل الخطر التنفيذي" class="o_executive_intelligence_v3" create="0" delete="0">
+                <header><button name="action_open_source" type="object" string="فتح المصدر" class="btn-primary"/>
+                    <button name="action_acknowledge" type="object" string="إقرار"/>
+                    <button name="action_start_mitigation" type="object" string="بدء المعالجة"/>
+                    <button name="action_create_activity" type="object" string="إنشاء مهمة"/>
+                    <button name="action_create_decision" type="object" string="إنشاء قرار"/>
+                    <button name="action_resolve" type="object" string="تعليم كمحلول"/>
+                    <field name="status" widget="statusbar"/></header>
+                <sheet><group>
+                    <group><field name="title"/><field name="risk_category"/><field name="risk_state"/>
+                        <field name="probability" invisible="risk_state == 'realized'"/>
+                        <field name="impact"/><field name="risk_score"/><field name="risk_level"/>
+                        <field name="scope_type"/><field name="scope_label"/>
+                        <field name="company_id" invisible="scope_type == 'central'"/></group>
+                    <group><field name="owner_user_id"/><field name="responsible_role"/>
+                        <field name="due_date" class="ei_numeric"/><field name="due_date_display" readonly="1" class="ei_numeric"/>
+                        <field name="related_decision_id"/></group>
+                </group>
+                <group><field name="description"/><field name="score_reason"/><field name="probability_reason"/>
+                    <field name="impact_reason"/><field name="mitigation_action"/></group></sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_membership_risk_center_server" model="ir.actions.server">
+        <field name="name">مركز المخاطر</field><field name="model_id" ref="model_membership_risk_center"/>
+        <field name="state">code</field><field name="code">action = model.action_open_center()</field>
+    </record>
+
+    <record id="view_membership_daily_brief_form" model="ir.ui.view">
+        <field name="name">membership.daily.brief.form</field><field name="model">membership.daily.brief</field>
+        <field name="arch" type="xml">
+            <form string="تقرير اليوم" class="o_executive_intelligence_v3" create="0" delete="0">
+                <header><button name="action_refresh" type="object" string="تحديث" class="btn-primary"/>
+                    <button name="action_open_command_center" type="object" string="مركز القيادة"/>
+                    <button name="action_open_decisions" type="object" string="القرارات"/>
+                    <button name="action_open_risks" type="object" string="المخاطر"/></header>
+                <sheet>
+                    <div class="ei_v3_title"><h1>تقرير اليوم</h1><field name="report_date" class="oe_inline"/></div>
+                    <field name="show_company_filter" invisible="1"/>
+                    <group><field name="company_id" invisible="not show_company_filter"/><field name="currency_id" invisible="1"/></group>
+                    <div class="ei_v3_kpis">
+                        <div class="ei_kpi"><b><field name="completed_today"/></b><span>منجزة اليوم</span></div>
+                        <div class="ei_kpi"><b><field name="created_today"/></b><span>منشأة اليوم</span></div>
+                        <div class="ei_kpi high"><b><field name="delayed_count"/></b><span>متأخرة</span></div>
+                        <div class="ei_kpi"><b><field name="collected_amount"/></b><span>المقبوضات المسجلة اليوم</span></div>
+                        <div class="ei_kpi" invisible="not has_recognized_revenue"><b><field name="recognized_revenue_amount"/></b><span>الإيراد المحاسبي المعترف به اليوم</span></div>
+                        <div class="ei_kpi"><b><field name="issued_service_invoice_amount"/></b><span>إجمالي فواتير الخدمات الصادرة اليوم</span></div>
+                        <div class="ei_kpi"><b><field name="new_doctors"/></b><span>أطباء جدد</span></div>
+                        <div class="ei_kpi"><b><field name="overdue_tasks"/></b><span>مهام متأخرة</span></div>
+                    </div>
+                    <field name="has_recognized_revenue" invisible="1"/>
+                    <div class="alert alert-secondary">نطاق التقرير: <field name="scope_label" class="oe_inline"/></div>
+                    <div class="alert alert-info"><field name="cash_reconciliation_message" nolabel="1"/></div>
+                    <field name="summary" nolabel="1" widget="html"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_membership_daily_brief_server" model="ir.actions.server">
+        <field name="name">تقرير اليوم</field><field name="model_id" ref="model_membership_daily_brief"/>
+        <field name="state">code</field><field name="code">action = model.action_open_brief()</field>
+    </record>
+
+    <record id="view_membership_executive_timeline_form" model="ir.ui.view">
+        <field name="name">membership.executive.timeline.form</field><field name="model">membership.executive.timeline</field>
+        <field name="arch" type="xml">
+            <form string="الخط الزمني التنفيذي" class="o_executive_intelligence_v3" create="0" delete="0">
+                <header><button name="action_refresh" type="object" string="تحديث" class="btn-primary"/></header>
+                <sheet>
+                    <div class="ei_v3_title"><h1>الخط الزمني التنفيذي</h1></div>
+                    <details class="ei_filters"><summary><i class="fa fa-filter"/> فلاتر الخط الزمني</summary>
+                        <div class="ei_filter_grid">
+                            <div class="ei_filter_item"><label for="period"/><field name="period"/></div>
+                            <div class="ei_filter_item"><label for="company_id"/><field name="company_id"/></div>
+                            <div class="ei_filter_item"><label for="event_type"/><field name="event_type"/></div>
+                            <div class="ei_filter_item"><label for="user_id"/><field name="user_id"/></div>
+                            <div class="ei_filter_item"><label for="importance"/><field name="importance"/></div>
+                        </div>
+                    </details>
+                    <field name="line_ids" nolabel="1" class="ei_timeline" mode="kanban,tree">
+                        <kanban class="ei_timeline_kanban"><field name="date_display"/><field name="time_display"/>
+                            <field name="event_type"/><field name="description"/><field name="company_id"/>
+                            <field name="employee_display_name"/><field name="importance"/>
+                            <templates><t t-name="kanban-box">
+                                <article class="ei_timeline_event">
+                                    <div class="ei_timeline_dot"><i class="fa fa-circle"/></div>
+                                    <div class="ei_timeline_date ei_numeric"><field name="date_display"/></div>
+                                    <div class="ei_timeline_time ei_numeric"><field name="time_display"/></div>
+                                    <div class="ei_timeline_body"><header><strong><field name="event_type"/></strong>
+                                        <field name="importance" widget="badge"/></header>
+                                        <p><field name="description"/></p>
+                                        <small><field name="company_id"/> — <field name="employee_display_name"/></small>
+                                        <button name="action_open_source" type="object" class="btn btn-link btn-sm">فتح السجل</button>
+                                    </div>
+                                </article>
+                            </t></templates>
+                        </kanban>
+                        <tree create="0" delete="0" edit="0"><field name="date_display"/><field name="time_display"/>
+                            <field name="event_type"/><field name="description"/><field name="company_id"/>
+                            <field name="employee_display_name"/><field name="importance" widget="badge"/></tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_membership_executive_timeline_server" model="ir.actions.server">
+        <field name="name">الخط الزمني التنفيذي</field><field name="model_id" ref="model_membership_executive_timeline"/>
+        <field name="state">code</field><field name="code">action = model.action_open_timeline()</field>
+    </record>
+</odoo>

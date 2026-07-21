@@ -5,12 +5,16 @@
         <field name="name">membership.profile.update.tree</field>
         <field name="model">membership.profile.update</field>
         <field name="arch" type="xml">
-            <tree string="Profile Update Requests" default_order="create_date desc">
+            <tree string="طلبات جمع بيانات الأطباء" default_order="create_date desc">
                 <field name="name"/>
-                <field name="partner_id"/>
-                <field name="company_id" optional="hide"/>
-                <field name="state"/>
-                <field name="create_date"/>
+                <field name="request_type"/>
+                <field name="doctor_display_name"/>
+                <field name="historical_membership_number"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="submitted_by_id"/>
+                <field name="reviewer_id"/>
+                <field name="state" widget="badge"/>
+                <field name="create_date" string="تاريخ الإنشاء"/>
             </tree>
         </field>
     </record>
@@ -19,52 +23,364 @@
         <field name="name">membership.profile.update.form</field>
         <field name="model">membership.profile.update</field>
         <field name="arch" type="xml">
-            <form string="Profile Update Request">
+            <form string="جمع بيانات الأطباء">
                 <header>
-                    <button name="action_need_info" type="object" string="Need Info" class="btn-secondary"
-                            invisible="state in ['approved', 'rejected']"/>
-                    <button name="action_approve" type="object" string="Approve" class="btn-primary"
-                            invisible="state == 'approved'"/>
-                    <button name="action_reject" type="object" string="Reject" class="btn-danger"
-                            invisible="state == 'rejected'"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,need_info,approved,rejected"/>
+                    <button name="action_submit_for_review" type="object" string="إرسال للمراجعة"
+                            class="btn-primary"
+                            groups="membership_management.group_doctor_data_employee,membership_management.group_membership_admin"
+                            invisible="state not in ['draft', 'returned', 'waiting_documents']"/>
+                    <button name="action_waiting_documents" type="object" string="بانتظار الوثائق"
+                            class="btn-secondary"
+                            groups="membership_management.group_doctor_data_employee,membership_management.group_membership_admin"
+                            invisible="state not in ['draft', 'returned']"/>
+                    <button name="action_resume" type="object" string="العودة للاستكمال"
+                            class="btn-secondary"
+                            groups="membership_management.group_doctor_data_employee,membership_management.group_membership_admin"
+                            invisible="state != 'waiting_documents'"/>
+                    <button name="action_return" type="object" string="إعادة للتصحيح"
+                            class="btn-secondary"
+                            groups="membership_management.group_doctor_data_reviewer,membership_management.group_membership_admin"
+                            invisible="state != 'waiting_review'"/>
+                    <button name="action_approve" type="object" string="اعتماد"
+                            class="btn-primary"
+                            groups="membership_management.group_doctor_data_reviewer,membership_management.group_membership_admin"
+                            invisible="state != 'waiting_review'"/>
+                    <button name="action_cancel" type="object" string="إلغاء"
+                            class="btn-danger"
+                            groups="membership_management.group_doctor_data_employee,membership_management.group_doctor_data_reviewer,membership_management.group_membership_admin"
+                            invisible="state in ['approved', 'cancelled']"/>
+                    <button name="action_execute_on_partner" type="object"
+                            string="تنفيذ على ملف الطبيب" class="btn-primary"
+                            groups="membership_management.group_doctor_data_executor,membership_management.group_membership_admin"
+                            invisible="state != 'approved' or execution_state == 'executed'"/>
+                    <button name="action_open_executed_partner" type="object"
+                            string="فتح ملف الطبيب" class="btn-secondary"
+                            groups="membership_management.group_doctor_data_executor,membership_management.group_doctor_data_reviewer,membership_management.group_membership_admin"
+                            invisible="execution_state != 'executed'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,waiting_documents,waiting_review,returned,approved,cancelled"/>
                 </header>
 
                 <sheet>
                     <group>
                         <group>
-                            <field name="name"/>
-                            <field name="partner_id"/>
-                            <field name="company_id" readonly="1"/>
-                            <field name="previous_membership_state" readonly="1"/>
+                            <field name="name" readonly="1"/>
+                            <field name="request_type" readonly="state != 'draft'"/>
+                            <field name="source" readonly="1"/>
+                            <field name="company_id"
+                                   options="{'no_create': True}"
+                                   readonly="request_type == 'update_existing' or state not in ['draft', 'returned']"/>
+                            <field name="partner_id"
+                                   options="{'no_create': True}"
+                                   domain="[('is_doctor', '=', True), ('company_id', '=', company_id)]"
+                                   invisible="request_type != 'update_existing'"
+                                   required="request_type == 'update_existing'"
+                                   readonly="state not in ['draft', 'returned']"/>
+                            <field name="previous_membership_state" readonly="1"
+                                   invisible="not previous_membership_state"/>
                         </group>
                         <group>
-                            <field name="officer_notes" placeholder="Notes for the doctor..."/>
+                            <field name="submitted_by_id" readonly="1"/>
+                            <field name="submitted_date" readonly="1"/>
+                            <field name="reviewer_id" readonly="1"/>
+                            <field name="reviewed_date" readonly="1"/>
+                            <field name="execution_state" readonly="1" widget="badge"/>
+                            <field name="execution_type" readonly="1" invisible="execution_state != 'executed'"/>
+                            <field name="executed_partner_id" readonly="1" invisible="execution_state != 'executed'"/>
+                            <field name="executed_by_id" readonly="1" invisible="execution_state != 'executed'"/>
+                            <field name="executed_at" readonly="1" invisible="execution_state != 'executed'"/>
                         </group>
                     </group>
 
                     <notebook>
-                        <page string="Requested Data">
+                        <page string="بيانات الطبيب">
+                            <div class="alert alert-info" role="alert" invisible="not partner_id">
+                                القيم الحالية مقروءة من ملف الطبيب، والقيم المقترحة هي فقط ما تدخله في الطلب.
+                            </div>
+                            <field name="comparison_line_ids" nolabel="1" invisible="not partner_id">
+                                <tree create="0" edit="0" delete="0"
+                                      decoration-info="difference_state == 'new'"
+                                      decoration-warning="difference_state in ['modified', 'review']">
+                                    <field name="field_label"/>
+                                    <field name="current_value" string="القيمة الحالية"/>
+                                    <field name="proposed_value" string="القيمة المقترحة"/>
+                                    <field name="difference_state" widget="badge"/>
+                                </tree>
+                            </field>
+                            <notebook>
+                                <page string="نظرة عامة على العضوية">
+                                    <group>
+                                        <group string="حالة العضوية">
+                                            <field name="historical_membership_number" string="رقم العضوية المقترح" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_membership_state" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_membership_start_date" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_membership_end_date" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_active_membership_id" options="{'no_create': True}" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_fees_paid_until_year" readonly="state not in ['draft', 'returned']"/>
+                                        </group>
+                                        <group string="تواريخ العضوية والقرارات">
+                                            <field name="proposed_membership_join_date" string="تاريخ الانضمام للعضوية" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_membership_rejoin_date" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_membership_rejoin_decision" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_deletion_number" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_branch_return_date" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_deletion_date" readonly="state not in ['draft', 'returned']"/>
+                                        </group>
+                                    </group>
+                                    <group>
+                                        <group string="النقابة / الوضع المالي">
+                                            <field name="proposed_union_status" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_fund_status" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_bank_name" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_bank_account_number" readonly="state not in ['draft', 'returned']"/>
+                                        </group>
+                                        <group string="حالات خاصة">
+                                            <field name="proposed_outside_country" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_social_security_registered" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_retirement_date" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_retirement_decision_number" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_retirement_salary" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_death_date" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_death_decision_number" readonly="state not in ['draft', 'returned']"/>
+                                        </group>
+                                    </group>
+                                </page>
+                                <page string="البيانات الشخصية">
+                                    <group>
+                                        <group string="هوية">
+                                            <field name="proposed_arabic_name" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_first_name" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_father_name" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_grandfather_name" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_nickname" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="full_name" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="national_id" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_birth_date" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_birth_place" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_gender" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_marital_status" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_nationality_id" options="{'no_create': True}" readonly="state not in ['draft', 'returned']"/>
+                                        </group>
+                                        <group string="FAMILY &amp; RESIDENCE">
+                                            <field name="proposed_mother_full_name" string="اسم الأم مع الكنية" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_national_id_unavailable" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="national_id_exception_reason" invisible="not proposed_national_id_unavailable" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_registry_place_number" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_military_service_start_date" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_military_service_end_date" readonly="state not in ['draft', 'returned']"/>
+                                        </group>
+                                    </group>
+                                </page>
+                                <page string="التواصل والعنوان">
+                                    <group>
+                                        <group>
+                                            <field name="phone" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_secondary_phone" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="email" readonly="state not in ['draft', 'returned']"/>
+                                        </group>
+                                        <group>
+                                            <field name="proposed_country_id" options="{'no_create': True}" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_state_id" options="{'no_create': True}" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_city" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_district" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_subdistrict" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_village" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_residence" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_street" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_street2" readonly="state not in ['draft', 'returned']"/>
+                                        </group>
+                                    </group>
+                                </page>
+                                <page string="البيانات العلمية">
+                                    <group>
+                                        <field name="medical_specialty_id" options="{'no_create': True}" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_subspecialty_id" options="{'no_create': True}" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_qualification" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_university_id" options="{'no_create': True}" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_graduation_year" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_faculty" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_academic_degree" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_certificate_country_id" options="{'no_create': True}" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_certificate_date" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_certificate_title" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_specialty_classification" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_certificate_issue_place" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_certificate_modify_date" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_certificate_modify_number" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_specialization_authority_1" options="{'no_create': True}" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_specialization_authority_2" options="{'no_create': True}" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_specialization_authority_3" options="{'no_create': True}" readonly="state not in ['draft', 'returned']"/>
+                                    </group>
+                                </page>
+                                <page string="الترخيص الطبي">
+                                    <group>
+                                        <group string="تفاصيل الترخيص">
+                                            <field name="medical_license_no" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_license_type" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_license_issue_date" string="تاريخ إصدار الشهادة" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_license_expiry_date" string="تاريخ انتهاء الشهادة" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_license_issuer" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_ministry_registration_number" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_ministry_registration_date" readonly="state not in ['draft', 'returned']"/>
+                                        </group>
+                                        <group string="تواريخ دائمة / مؤقتة">
+                                            <field name="proposed_permanent_license_date_1" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_permanent_license_date_2" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_permanent_license_date_3" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_temporary_license_date_1" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_temporary_license_date_2" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_temporary_license_date_3" readonly="state not in ['draft', 'returned']"/>
+                                        </group>
+                                    </group>
+                                    <group string="تواريخ مميزة">
+                                        <field name="proposed_specialty_date" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_permanent_specialty_date_2" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_temporary_specialty_date" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_temporary_specialty_date_2" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_specialty_date_2" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_specialty_date_3" readonly="state not in ['draft', 'returned']"/>
+                                    </group>
+                                </page>
+                                <page string="توظيف">
+                                    <group>
+                                        <group string="معلومات العمل">
+                                            <field name="proposed_workplace_name" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_workplace_type" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_years_of_experience" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_practice_type" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_professional_capacity" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_job_title" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_practice_start_date" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_is_employee" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_clinic_address" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_clinic_phone" readonly="state not in ['draft', 'returned']"/>
+                                        </group>
+                                        <group string="التنقلات">
+                                            <field name="proposed_transfer_from_entity" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_transfer_from_date" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_transfer_to_entity" readonly="state not in ['draft', 'returned']"/>
+                                            <field name="proposed_transfer_to_date" readonly="state not in ['draft', 'returned']"/>
+                                        </group>
+                                    </group>
+                                </page>
+                                <page string="الوثائق">
+                                    <field name="document_line_ids" nolabel="1" readonly="state not in ['draft', 'returned']">
+                                        <tree editable="bottom">
+                                            <field name="document_type"/>
+                                            <field name="status" widget="badge"/>
+                                            <field name="verification_state" widget="badge"/>
+                                            <field name="document_name" optional="show"/>
+                                            <field name="document_number" optional="show"/>
+                                            <field name="issue_date" optional="hide"/>
+                                            <field name="expiry_date" optional="hide"/>
+                                            <field name="issuing_authority" optional="hide"/>
+                                            <field name="file_data" filename="file_name"/>
+                                            <field name="file_name" column_invisible="True"/>
+                                            <field name="employee_note"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </page>
+
+                        <page string="إثبات العضوية السابقة"
+                              invisible="request_type != 'onboard_existing_member'">
                             <group>
-                                <group string="Identity &amp; Contact">
-                                    <field name="full_name"/>
-                                    <field name="national_id"/>
-                                    <field name="phone"/>
-                                    <field name="email"/>
+                                <group>
+                                    <field name="historical_membership_number"
+                                           readonly="state not in ['draft', 'returned']"/>
+                                    <field name="proposed_union_status"
+                                           readonly="state not in ['draft', 'returned']"/>
+                                    <field name="proposed_membership_join_date"
+                                           readonly="state not in ['draft', 'returned']"/>
+                                    <field name="proposed_fees_paid_until_year"
+                                           readonly="state not in ['draft', 'returned']"/>
                                 </group>
-                                <group string="Professional">
-                                    <field name="medical_license_no"/>
-                                    <field name="medical_specialty_id"/>
+                                <group>
+                                    <field name="membership_evidence_attachment_ids"
+                                           widget="many2many_binary"
+                                           readonly="state not in ['draft', 'returned']"/>
                                 </group>
                             </group>
                         </page>
-                        <page string="Chatter">
-                            <field name="message_follower_ids" widget="mail_followers"/>
-                            <field name="activity_ids" widget="mail_activity"/>
-                            <field name="message_ids" widget="mail_thread"/>
-                        </page>
-                    </notebook>
+
+                        <page string="المراجعة">
+                            <group>
+                                <field name="officer_notes"
+                                       readonly="state not in ['draft', 'returned']"/>
+                                <field name="return_reason"
+                                       readonly="state != 'waiting_review'"
+                                       groups="membership_management.group_doctor_data_reviewer,membership_management.group_membership_admin"/>
+                                <field name="reviewer_notes"
+                                       readonly="state != 'waiting_review'"
+                                       groups="membership_management.group_doctor_data_reviewer,membership_management.group_membership_admin"/>
+                                <field name="cancellation_reason"
+                                       readonly="state in ['approved', 'cancelled']"/>
+                            </group>
+                            </page>
+                            <page string="البحث عن طبيب مطابق">
+                                <group>
+                                    <button name="action_search_potential_matches"
+                                            type="object"
+                                            string="البحث عن تطابقات"
+                                            class="btn-primary text-nowrap"
+                                            groups="membership_management.group_doctor_data_employee,membership_management.group_membership_admin"
+                                            invisible="state not in ['draft', 'returned']"/>
+                                    <field name="match_search_state" readonly="1"/>
+                                    <field name="match_search_summary" readonly="1" nolabel="1"/>
+                                </group>
+                                <div class="alert alert-warning" role="alert"
+                                     invisible="not match_result_ids">
+                                    النتائج اقتراحات للمراجعة البشرية ولا تنفذ أي ربط تلقائي.
+                                    ظهور طبيب من نقابة أخرى هو تحذير فقط ولا يسمح باختياره.
+                                </div>
+                                <field name="match_result_ids" nolabel="1">
+                                    <tree create="0" delete="0" editable="bottom"
+                                          decoration-warning="cross_company_warning"
+                                          decoration-success="decision == 'selected'">
+                                        <field name="doctor_name" readonly="1"/>
+                                        <field name="mother_full_name" readonly="1"/>
+                                        <field name="masked_national_id" readonly="1"/>
+                                        <field name="medical_license_no" readonly="1" optional="show"/>
+                                        <field name="membership_number" readonly="1" optional="hide"/>
+                                        <field name="phone" readonly="1" optional="hide"/>
+                                        <field name="company_id" readonly="1"/>
+                                        <field name="same_company" column_invisible="True"/>
+                                        <field name="cross_company_warning" string="في نقابة أخرى" readonly="1" optional="hide"/>
+                                        <field name="reason" readonly="1"/>
+                                        <field name="level" widget="badge" readonly="1"/>
+                                        <field name="decision" readonly="1"/>
+                                        <field name="different_reason"
+                                               string="سبب أنه شخص مختلف"
+                                               readonly="decision != 'pending'"/>
+                                        <button name="action_select_partner" type="object"
+                                                string="اختيار هذا الطبيب"
+                                                class="btn-primary text-nowrap"
+                                                groups="membership_management.group_doctor_data_employee,membership_management.group_membership_admin"
+                                                invisible="not same_company or decision != 'pending' or parent.state not in ['draft', 'returned']"/>
+                                        <button name="action_mark_different" type="object"
+                                                string="ليس الطبيب نفسه"
+                                                class="btn-secondary text-nowrap"
+                                                groups="membership_management.group_doctor_data_employee,membership_management.group_doctor_data_reviewer,membership_management.group_membership_admin"
+                                                invisible="decision != 'pending'"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="أثر التنفيذ" invisible="execution_state != 'executed'">
+                                <field name="execution_audit_ids" nolabel="1">
+                                    <tree create="0" edit="0" delete="0">
+                                        <field name="field_label"/>
+                                        <field name="old_value"/>
+                                        <field name="new_value"/>
+                                        <field name="difference_state" widget="badge"/>
+                                        <field name="executed_by_id"/>
+                                        <field name="executed_at"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
                 </sheet>
+                <chatter/>
             </form>
         </field>
     </record>
@@ -73,31 +389,41 @@
         <field name="name">membership.profile.update.search</field>
         <field name="model">membership.profile.update</field>
         <field name="arch" type="xml">
-            <search string="Search Profile Update Requests">
+            <search string="البحث في طلبات جمع بيانات الأطباء">
                 <field name="name"/>
                 <field name="partner_id"/>
+                <field name="historical_membership_number"/>
                 <field name="company_id"/>
-                <filter string="Under Review" name="draft" domain="[('state', '=', 'draft')]"/>
-                <filter string="Need Info" name="need_info" domain="[('state', '=', 'need_info')]"/>
-                <filter string="Approved" name="approved" domain="[('state', '=', 'approved')]"/>
-                <filter string="Rejected" name="rejected" domain="[('state', '=', 'rejected')]"/>
-                <group expand="0" string="Group By">
-                    <filter string="Status" name="group_state" context="{'group_by': 'state'}"/>
-                    <filter string="Doctor" name="group_partner" context="{'group_by': 'partner_id'}"/>
-                    <filter string="Company" name="group_company" context="{'group_by': 'company_id'}"/>
+                <filter string="مسودة" name="draft" domain="[('state', '=', 'draft')]"/>
+                <filter string="بانتظار الوثائق" name="waiting_documents"
+                        domain="[('state', '=', 'waiting_documents')]"/>
+                <filter string="بانتظار المراجعة" name="waiting_review"
+                        domain="[('state', '=', 'waiting_review')]"/>
+                <filter string="معاد للتصحيح" name="returned" domain="[('state', '=', 'returned')]"/>
+                <filter string="تمت الموافقة" name="approved" domain="[('state', '=', 'approved')]"/>
+                <filter string="ملغى" name="cancelled" domain="[('state', '=', 'cancelled')]"/>
+                <group expand="0" string="تجميع حسب">
+                    <filter string="الحالة" name="group_state" context="{'group_by': 'state'}"/>
+                    <filter string="نوع الطلب" name="group_request_type"
+                            context="{'group_by': 'request_type'}"/>
+                    <filter string="الطبيب" name="group_partner" context="{'group_by': 'partner_id'}"/>
+                    <filter string="النقابة" name="group_company" context="{'group_by': 'company_id'}"/>
+                    <filter string="أرسله" name="group_submitted_by"
+                            context="{'group_by': 'submitted_by_id'}"/>
                 </group>
             </search>
         </field>
     </record>
 
     <record id="action_membership_profile_update" model="ir.actions.act_window">
-        <field name="name">Profile Update Requests</field>
+        <field name="name">جمع بيانات الأطباء</field>
         <field name="res_model">membership.profile.update</field>
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="view_membership_profile_update_search"/>
+        <field name="context">{'default_request_type': 'update_existing'}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Create and review doctors' profile update requests.
+                أنشئ طلبًا جديدًا لجمع بيانات طبيب أو استكمالها ومراجعتها.
             </p>
         </field>
     </record>

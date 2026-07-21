@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_executive_intelligence_v3" name="الذكاء التنفيذي V3"
+              parent="menu_membership_root" sequence="2"
+              groups="membership_management.group_membership_admin,membership_management.group_membership_service_manager"/>
+    <menuitem id="menu_decision_center" name="مركز القرارات" parent="menu_executive_intelligence_v3"
+              action="action_membership_decision_center_server" sequence="10"/>
+    <menuitem id="menu_daily_brief" name="تقرير اليوم" parent="menu_executive_intelligence_v3"
+              action="action_membership_daily_brief_server" sequence="20"/>
+    <menuitem id="menu_risk_center" name="مركز المخاطر" parent="menu_executive_intelligence_v3"
+              action="action_membership_risk_center_server" sequence="30"/>
+    <menuitem id="menu_executive_timeline" name="الخط الزمني التنفيذي" parent="menu_executive_intelligence_v3"
+              action="action_membership_executive_timeline_server" sequence="40"/>
+</odoo>

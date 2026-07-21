@@ -18,7 +18,7 @@ class MembershipProfileUpdate(models.Model):
     )
 
     state = fields.Selection([
-        ('draft', 'Under Review'),
+        ('draft', 'مسودة'),
         ('need_info', 'Need More Information'),
         ('approved', 'Approved'),
         ('rejected', 'Rejected'),

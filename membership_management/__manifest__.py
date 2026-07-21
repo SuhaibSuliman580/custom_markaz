@@ -1,6 +1,6 @@
 {
     'name': 'Membership Management',
-    'version': '17.0.1.1.0',
+    'version': '17.0.3.3.1',
     'category': 'Membership',
     'summary': 'Manage doctor membership lifecycle with applications, invoicing, and portal.',
     'description': """
@@ -50,13 +50,22 @@ Manage the full lifecycle of doctor memberships:
         'views/medical_unv_views.xml',
         'views/membership_profile_update_views.xml',
         'views/membership_cashier_dashboard_views.xml',
+        'views/command_center_views.xml',
+        'views/executive_intelligence_v3_views.xml',
         'views/menu_views.xml',
+        'views/executive_intelligence_menu.xml',
         'views/portal_templates.xml',
 
         'report/membership_card_report.xml',
         'report/membership_card_template.xml',
     ],
-    'assets': {},
+    'assets': {
+        'web.assets_backend': [
+            'membership_management/static/src/scss/command_center.scss',
+            'membership_management/static/src/scss/command_center_v2.scss',
+            'membership_management/static/src/scss/executive_intelligence_v3.scss',
+        ],
+    },
     'installable': True,
     'application': True,
     'auto_install': False,

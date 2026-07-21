@@ -8,6 +8,12 @@ from . import workspace_mixin
 from . import membership_registration_workspace
 from . import membership_financial_workspace
 from . import doctor_360
+from . import command_center
+from . import executive_metrics_service
+from . import decision_center
+from . import risk_center
+from . import daily_brief
+from . import executive_timeline
 from . import membership_cashier_dashboard
 from . import account_move
 from . import account_payment_register
@@ -16,3 +22,8 @@ from . import res_config_settings
 from . import medical_unv
 
 from . import membership_profile_update
+from . import membership_profile_match_result
+from . import membership_profile_comparison
+from . import membership_profile_document
+from . import membership_profile_execution_audit
+from . import membership_doctor_document

@@ -69,12 +69,12 @@
                             <field name="source" readonly="1"/>
                             <field name="company_id"
                                    options="{'no_create': True}"
-                                   readonly="request_type == 'update_existing' or state not in ['draft', 'returned']"/>
+                                   readonly="request_type in ['update_existing', 'membership_number_only'] or state not in ['draft', 'returned']"/>
                             <field name="partner_id"
                                    options="{'no_create': True}"
                                    domain="[('is_doctor', '=', True), ('company_id', '=', company_id)]"
-                                   invisible="request_type != 'update_existing'"
-                                   required="request_type == 'update_existing'"
+                                   invisible="request_type not in ['update_existing', 'membership_number_only']"
+                                   required="request_type in ['update_existing', 'membership_number_only']"
                                    readonly="state not in ['draft', 'returned']"/>
                             <field name="previous_membership_state" readonly="1"
                                    invisible="not previous_membership_state"/>
@@ -97,6 +97,73 @@
                             <div class="alert alert-info" role="alert" invisible="not partner_id">
                                 القيم الحالية مقروءة من ملف الطبيب، والقيم المقترحة هي فقط ما تدخله في الطلب.
                             </div>
+                            <group string="تحديث رقم العضوية"
+                                   invisible="request_type != 'membership_number_only'">
+                                <group>
+                                    <field name="current_membership_number"/>
+                                </group>
+                                <group>
+                                    <field name="historical_membership_number" string="رقم العضوية الجديد"
+                                           required="request_type == 'membership_number_only'"
+                                           readonly="state not in ['draft', 'returned']"/>
+                                </group>
+                            </group>
+                            <group string="البيانات الإلزامية" col="1"
+                                   class="o_profile_required_cards"
+                                   invisible="request_type not in ['onboard_existing_member', 'update_existing']">
+                                <div class="alert alert-info" role="status">
+                                    الحقول المميزة بالنجمة (*) مطلوبة لإرسال الطلب للمراجعة.
+                                </div>
+                                <group string="الهوية الشخصية">
+                                    <group>
+                                        <field name="full_name" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_nickname" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_mother_full_name" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_gender" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_registry_place_number" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                    </group>
+                                    <group>
+                                        <field name="proposed_english_name" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_father_name" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="national_id" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_birth_date" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                    </group>
+                                </group>
+                                <group string="البيانات العلمية">
+                                    <group>
+                                        <field name="proposed_university_id" options="{'no_create': True}" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_specialty_classification" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                    </group>
+                                    <group>
+                                        <field name="proposed_graduation_year" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="medical_specialty_id" options="{'no_create': True}" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                    </group>
+                                </group>
+                                <group string="العضوية والترخيص">
+                                    <group>
+                                        <field name="historical_membership_number" string="رقم العضوية" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_membership_state" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_membership_end_date" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_ministry_registration_date" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_license_type" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                    </group>
+                                    <group>
+                                        <field name="proposed_membership_join_date" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_membership_start_date" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_ministry_registration_number" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="medical_license_no" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                    </group>
+                                </group>
+                                <group string="الوضع الحالي">
+                                    <group>
+                                        <field name="proposed_fund_status" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                        <field name="proposed_is_employee" widget="boolean_toggle" readonly="state not in ['draft', 'returned']"/>
+                                    </group>
+                                    <group>
+                                        <field name="proposed_union_status" required="request_type in ['onboard_existing_member', 'update_existing']" readonly="state not in ['draft', 'returned']"/>
+                                    </group>
+                                </group>
+                            </group>
                             <field name="comparison_line_ids" nolabel="1" invisible="not partner_id">
                                 <tree create="0" edit="0" delete="0"
                                       decoration-info="difference_state == 'new'"
@@ -107,19 +174,14 @@
                                     <field name="difference_state" widget="badge"/>
                                 </tree>
                             </field>
-                            <notebook>
+                            <notebook invisible="request_type == 'membership_number_only'">
                                 <page string="نظرة عامة على العضوية">
                                     <group>
                                         <group string="حالة العضوية">
-                                            <field name="historical_membership_number" string="رقم العضوية المقترح" readonly="state not in ['draft', 'returned']"/>
-                                            <field name="proposed_membership_state" readonly="state not in ['draft', 'returned']"/>
-                                            <field name="proposed_membership_start_date" readonly="state not in ['draft', 'returned']"/>
-                                            <field name="proposed_membership_end_date" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_active_membership_id" options="{'no_create': True}" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_fees_paid_until_year" readonly="state not in ['draft', 'returned']"/>
                                         </group>
                                         <group string="تواريخ العضوية والقرارات">
-                                            <field name="proposed_membership_join_date" string="تاريخ الانضمام للعضوية" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_membership_rejoin_date" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_membership_rejoin_decision" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_deletion_number" readonly="state not in ['draft', 'returned']"/>
@@ -129,8 +191,6 @@
                                     </group>
                                     <group>
                                         <group string="النقابة / الوضع المالي">
-                                            <field name="proposed_union_status" readonly="state not in ['draft', 'returned']"/>
-                                            <field name="proposed_fund_status" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_bank_name" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_bank_account_number" readonly="state not in ['draft', 'returned']"/>
                                         </group>
@@ -150,22 +210,14 @@
                                         <group string="هوية">
                                             <field name="proposed_arabic_name" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_first_name" readonly="state not in ['draft', 'returned']"/>
-                                            <field name="proposed_father_name" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_grandfather_name" readonly="state not in ['draft', 'returned']"/>
-                                            <field name="proposed_nickname" readonly="state not in ['draft', 'returned']"/>
-                                            <field name="full_name" readonly="state not in ['draft', 'returned']"/>
-                                            <field name="national_id" readonly="state not in ['draft', 'returned']"/>
-                                            <field name="proposed_birth_date" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_birth_place" readonly="state not in ['draft', 'returned']"/>
-                                            <field name="proposed_gender" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_marital_status" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_nationality_id" options="{'no_create': True}" readonly="state not in ['draft', 'returned']"/>
                                         </group>
                                         <group string="FAMILY &amp; RESIDENCE">
-                                            <field name="proposed_mother_full_name" string="اسم الأم مع الكنية" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_national_id_unavailable" readonly="state not in ['draft', 'returned']"/>
                                             <field name="national_id_exception_reason" invisible="not proposed_national_id_unavailable" readonly="state not in ['draft', 'returned']"/>
-                                            <field name="proposed_registry_place_number" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_military_service_start_date" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_military_service_end_date" readonly="state not in ['draft', 'returned']"/>
                                         </group>
@@ -193,17 +245,13 @@
                                 </page>
                                 <page string="البيانات العلمية">
                                     <group>
-                                        <field name="medical_specialty_id" options="{'no_create': True}" readonly="state not in ['draft', 'returned']"/>
                                         <field name="proposed_subspecialty_id" options="{'no_create': True}" readonly="state not in ['draft', 'returned']"/>
                                         <field name="proposed_qualification" readonly="state not in ['draft', 'returned']"/>
-                                        <field name="proposed_university_id" options="{'no_create': True}" readonly="state not in ['draft', 'returned']"/>
-                                        <field name="proposed_graduation_year" readonly="state not in ['draft', 'returned']"/>
                                         <field name="proposed_faculty" readonly="state not in ['draft', 'returned']"/>
                                         <field name="proposed_academic_degree" readonly="state not in ['draft', 'returned']"/>
                                         <field name="proposed_certificate_country_id" options="{'no_create': True}" readonly="state not in ['draft', 'returned']"/>
                                         <field name="proposed_certificate_date" readonly="state not in ['draft', 'returned']"/>
                                         <field name="proposed_certificate_title" readonly="state not in ['draft', 'returned']"/>
-                                        <field name="proposed_specialty_classification" readonly="state not in ['draft', 'returned']"/>
                                         <field name="proposed_certificate_issue_place" readonly="state not in ['draft', 'returned']"/>
                                         <field name="proposed_certificate_modify_date" readonly="state not in ['draft', 'returned']"/>
                                         <field name="proposed_certificate_modify_number" readonly="state not in ['draft', 'returned']"/>
@@ -215,13 +263,9 @@
                                 <page string="الترخيص الطبي">
                                     <group>
                                         <group string="تفاصيل الترخيص">
-                                            <field name="medical_license_no" readonly="state not in ['draft', 'returned']"/>
-                                            <field name="proposed_license_type" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_license_issue_date" string="تاريخ إصدار الشهادة" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_license_expiry_date" string="تاريخ انتهاء الشهادة" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_license_issuer" readonly="state not in ['draft', 'returned']"/>
-                                            <field name="proposed_ministry_registration_number" readonly="state not in ['draft', 'returned']"/>
-                                            <field name="proposed_ministry_registration_date" readonly="state not in ['draft', 'returned']"/>
                                         </group>
                                         <group string="تواريخ دائمة / مؤقتة">
                                             <field name="proposed_permanent_license_date_1" readonly="state not in ['draft', 'returned']"/>
@@ -251,7 +295,6 @@
                                             <field name="proposed_professional_capacity" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_job_title" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_practice_start_date" readonly="state not in ['draft', 'returned']"/>
-                                            <field name="proposed_is_employee" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_clinic_address" readonly="state not in ['draft', 'returned']"/>
                                             <field name="proposed_clinic_phone" readonly="state not in ['draft', 'returned']"/>
                                         </group>
@@ -287,12 +330,6 @@
                               invisible="request_type != 'onboard_existing_member'">
                             <group>
                                 <group>
-                                    <field name="historical_membership_number"
-                                           readonly="state not in ['draft', 'returned']"/>
-                                    <field name="proposed_union_status"
-                                           readonly="state not in ['draft', 'returned']"/>
-                                    <field name="proposed_membership_join_date"
-                                           readonly="state not in ['draft', 'returned']"/>
                                     <field name="proposed_fees_paid_until_year"
                                            readonly="state not in ['draft', 'returned']"/>
                                 </group>

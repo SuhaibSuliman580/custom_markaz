@@ -24,19 +24,39 @@ class TestMembershipProfileMatchPhase2A(TransactionCase):
             'name': 'Phase 2A Specialty', 'code': 'PH2A',
             'company_id': cls.company.id,
         })
+        cls.university = cls.env['medical.unv'].create({
+            'name': 'Phase 2A University', 'code': 'PH2AU',
+            'company_id': cls.company.id,
+        })
 
     def _request(self, **overrides):
         vals = {
             'request_type': 'onboard_existing_member',
             'company_id': self.company.id,
             'full_name': 'أحمد علي الحسن',
+            'proposed_english_name': 'Ahmad Ali Alhasan',
+            'proposed_nickname': 'الحسن',
+            'proposed_father_name': 'علي',
             'proposed_mother_full_name': 'فاطمة محمود الخطيب',
             'national_id': 'N-200-100',
+            'proposed_gender': 'male', 'proposed_birth_date': '1980-01-01',
+            'proposed_registry_place_number': 'دمشق 100',
+            'proposed_university_id': self.university.id,
+            'proposed_graduation_year': '2004',
+            'proposed_specialty_classification': 'specialist',
             'phone': '+963 944 111 222',
             'medical_license_no': 'LIC-200',
             'medical_specialty_id': self.specialty.id,
             'historical_membership_number': 'MEM-200',
+            'proposed_membership_state': 'active',
+            'proposed_membership_start_date': '2005-01-01',
+            'proposed_membership_end_date': '2030-12-31',
             'proposed_union_status': 'active',
+            'proposed_membership_join_date': '2005-01-01',
+            'proposed_ministry_registration_number': 'MOH-2A',
+            'proposed_ministry_registration_date': '2005-01-02',
+            'proposed_license_type': 'permanent',
+            'proposed_fund_status': 'contracted',
         }
         vals.update(overrides)
         return self.env['membership.profile.update'].with_user(self.employee).create(vals)

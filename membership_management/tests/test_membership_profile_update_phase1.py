@@ -50,6 +50,10 @@ class TestMembershipProfileUpdatePhase1(TransactionCase):
             'code': 'PH1',
             'company_id': cls.company.id,
         })
+        cls.university = cls.env['medical.unv'].create({
+            'name': 'Phase 1 University', 'code': 'PH1U',
+            'company_id': cls.company.id,
+        })
         cls.doctor = cls.env['res.partner'].create({
             'name': 'Existing Doctor Phase 1',
             'is_doctor': True,
@@ -67,11 +71,29 @@ class TestMembershipProfileUpdatePhase1(TransactionCase):
             'partner_id': self.doctor.id,
             'company_id': self.company.id,
             'full_name': self.doctor.name,
+            'proposed_english_name': 'Existing Doctor Phase One',
+            'proposed_nickname': 'Family',
+            'proposed_father_name': 'Father',
             'proposed_mother_full_name': 'Phase 1 Mother Family',
             'national_id': self.doctor.national_id,
+            'proposed_gender': 'male', 'proposed_birth_date': '1980-01-01',
+            'proposed_registry_place_number': 'Registry 1',
+            'proposed_university_id': self.university.id,
+            'proposed_graduation_year': '2004',
+            'proposed_specialty_classification': 'specialist',
             'phone': self.doctor.phone,
             'medical_license_no': self.doctor.medical_license_no,
             'medical_specialty_id': self.specialty.id,
+            'historical_membership_number': 'PH1-OLD',
+            'proposed_membership_state': 'active',
+            'proposed_membership_start_date': '2005-01-01',
+            'proposed_membership_end_date': '2030-12-31',
+            'proposed_membership_join_date': '2005-01-01',
+            'proposed_ministry_registration_number': 'MOH-PH1',
+            'proposed_ministry_registration_date': '2005-01-02',
+            'proposed_license_type': 'permanent',
+            'proposed_fund_status': 'contracted',
+            'proposed_union_status': 'active',
         }
 
     def _onboarding_vals(self):
@@ -80,13 +102,29 @@ class TestMembershipProfileUpdatePhase1(TransactionCase):
             'request_type': 'onboard_existing_member',
             'company_id': self.company.id,
             'full_name': 'Historical Member Phase 1',
+            'proposed_english_name': 'Historical Member Phase One',
+            'proposed_nickname': 'Historical Family',
+            'proposed_father_name': 'Historical Father',
             'proposed_mother_full_name': 'Historical Mother Family',
             'national_id': '0098765432',
+            'proposed_gender': 'male', 'proposed_birth_date': '1981-01-01',
+            'proposed_registry_place_number': 'Registry 2',
+            'proposed_university_id': self.university.id,
+            'proposed_graduation_year': '2005',
+            'proposed_specialty_classification': 'rare',
             'phone': '5552000',
             'medical_license_no': 'OLD-LIC-PH1',
             'medical_specialty_id': self.specialty.id,
             'historical_membership_number': '00042',
+            'proposed_membership_state': 'active',
+            'proposed_membership_start_date': '2006-01-01',
+            'proposed_membership_end_date': '2030-12-31',
             'proposed_union_status': 'active',
+            'proposed_membership_join_date': '2006-01-01',
+            'proposed_ministry_registration_number': 'MOH-PH1-OLD',
+            'proposed_ministry_registration_date': '2006-01-02',
+            'proposed_license_type': 'temporary',
+            'proposed_fund_status': 'not_contracted',
             'officer_notes': 'Historical membership record reviewed.',
         }
 
@@ -392,7 +430,7 @@ class TestMembershipProfileUpdatePhase1(TransactionCase):
         with self.assertRaises(AccessError):
             request.with_user(self.employee).write({'phone': '5559999'})
 
-    def test_missing_national_id_requires_exception_and_support(self):
+    def test_missing_national_id_remains_mandatory_for_full_request(self):
         vals = self._onboarding_vals()
         vals.update({
             'name': 'ONB-NO-NATIONAL',
@@ -410,10 +448,9 @@ class TestMembershipProfileUpdatePhase1(TransactionCase):
             'national_id_exception_reason': 'Legacy file has no National ID.',
         })
         self._attach_evidence(request)
-        request.with_user(self.employee).action_submit()
-        self.assertEqual(request.state, 'waiting_review')
-        request.with_user(self.reviewer).action_approve()
-        self.assertEqual(request.state, 'approved')
+        with self.assertRaises(UserError):
+            request.with_user(self.employee).action_submit()
+        self.assertEqual(request.state, 'draft')
 
     def test_legacy_defaults_preserve_update_semantics(self):
         request = self.env['membership.profile.update'].with_user(

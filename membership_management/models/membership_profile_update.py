@@ -43,6 +43,7 @@ class MembershipProfileUpdate(models.Model):
     request_type = fields.Selection([
         ('update_existing', 'استكمال بيانات طبيب موجود'),
         ('onboard_existing_member', 'إدخال عضو قائم'),
+        ('membership_number_only', 'تحديث رقم العضوية فقط'),
     ], string='نوع الطلب', required=True, default='update_existing',
        tracking=True, copy=False)
     source = fields.Selection([
@@ -56,6 +57,11 @@ class MembershipProfileUpdate(models.Model):
         domain=[('is_doctor', '=', True)],
         tracking=True,
         check_company=True,
+    )
+    current_membership_number = fields.Char(
+        string='رقم العضوية الحالي',
+        related='partner_id.membership_number',
+        readonly=True,
     )
     doctor_display_name = fields.Char(
         string='الطبيب',
@@ -162,6 +168,7 @@ class MembershipProfileUpdate(models.Model):
     # Phase 1 keeps the existing proposed fields but deliberately does not
     # write any of them to res.partner.
     full_name = fields.Char(string='الاسم الكامل', tracking=True)
+    proposed_english_name = fields.Char(string='الاسم بالإنكليزية')
     proposed_arabic_name = fields.Char(string='الاسم بالعربي')
     # Personal identifier: deliberately excluded from automatic chatter tracking.
     national_id = fields.Char(string='الرقم الوطني')
@@ -319,6 +326,7 @@ class MembershipProfileUpdate(models.Model):
 
     PROFILE_FIELD_MAPPING = (
         ('full_name', 'name', 'الاسم الكامل'),
+        ('proposed_english_name', 'english_name', 'الاسم بالإنكليزية'),
         ('proposed_arabic_name', 'arabic_name', 'الاسم بالعربي'),
         ('proposed_first_name', 'doctor_first_name', 'الاسم الأول'),
         ('proposed_father_name', 'father_name', 'اسم الأب'),
@@ -445,7 +453,7 @@ class MembershipProfileUpdate(models.Model):
     @api.depends('request_type', 'partner_id', 'partner_id.name', 'full_name')
     def _compute_doctor_display_name(self):
         for rec in self:
-            if rec.request_type != 'update_existing' or not rec.partner_id:
+            if rec.request_type not in ('update_existing', 'membership_number_only') or not rec.partner_id:
                 rec.doctor_display_name = False
                 continue
             # The relation remains partner_id. The request's reviewed full-name
@@ -458,7 +466,7 @@ class MembershipProfileUpdate(models.Model):
     @api.onchange('partner_id')
     def _onchange_partner_current_data(self):
         for rec in self:
-            if rec.request_type != 'update_existing' or not rec.partner_id:
+            if rec.request_type not in ('update_existing', 'membership_number_only') or not rec.partner_id:
                 rec.comparison_line_ids = [(5, 0, 0)]
                 continue
             rec._check_allowed_company(rec.partner_id.company_id)
@@ -508,7 +516,7 @@ class MembershipProfileUpdate(models.Model):
             self._check_allowed_company(company)
             vals['company_id'] = company.id
 
-            if request_type == 'update_existing':
+            if request_type in ('update_existing', 'membership_number_only'):
                 if not partner:
                     raise ValidationError(_(
                         'An existing doctor is required for a profile completion request.'
@@ -619,7 +627,7 @@ class MembershipProfileUpdate(models.Model):
                     if vals['partner_id'] else self.env['res.partner']
                 )
             if (
-                request_type == 'update_existing'
+                request_type in ('update_existing', 'membership_number_only')
                 and partner
                 and ('partner_id' in vals or 'request_type' in vals)
             ):
@@ -629,7 +637,7 @@ class MembershipProfileUpdate(models.Model):
                         'شركة الطبيب يجب أن تطابق شركة الطلب.'
                     ))
 
-            if request_type == 'update_existing':
+            if request_type in ('update_existing', 'membership_number_only'):
                 if not partner:
                     raise ValidationError(_(
                         'An existing doctor is required for a profile completion request.'
@@ -717,7 +725,7 @@ class MembershipProfileUpdate(models.Model):
         audit = []
         for proposed_field, partner_field, label in self._EXECUTION_MAPPING:
             value = self[proposed_field]
-            if not value:
+            if not value and proposed_field != 'proposed_is_employee':
                 continue
             if partner and comparison.get(proposed_field) == 'review':
                 continue
@@ -773,7 +781,7 @@ class MembershipProfileUpdate(models.Model):
             if selected and (len(selected) != 1 or selected.partner_id != rec.partner_id):
                 raise UserError(_('نتيجة المطابقة المختارة لا تتوافق مع الطبيب المرتبط بالطلب.'))
 
-            execution_type = 'update' if rec.request_type == 'update_existing' else 'create'
+            execution_type = 'create' if rec.request_type == 'onboard_existing_member' else 'update'
             if execution_type == 'create':
                 if rec.partner_id:
                     raise UserError(_('طلب إدخال العضو القائم مرتبط بطبيب بالفعل.'))
@@ -788,7 +796,20 @@ class MembershipProfileUpdate(models.Model):
                 partner = rec.partner_id
                 if not partner or partner.company_id != rec.company_id:
                     raise UserError(_('الطبيب المرتبط لا يتبع نقابة الطلب.'))
-                values, audit_values = rec._execution_partner_values(partner)
+                if rec.request_type == 'membership_number_only':
+                    if not rec.historical_membership_number:
+                        raise UserError(_('رقم العضوية الجديد مطلوب.'))
+                    old_number = partner.membership_number or ''
+                    values = {'membership_number': rec.historical_membership_number}
+                    audit_values = [(
+                        'membership_number', 'رقم العضوية', old_number,
+                        rec.historical_membership_number,
+                        'new' if not old_number else (
+                            'unchanged' if old_number == rec.historical_membership_number else 'modified'
+                        ),
+                    )]
+                else:
+                    values, audit_values = rec._execution_partner_values(partner)
                 values.pop('company_id', None)
                 partner.write(values)
 
@@ -836,6 +857,8 @@ class MembershipProfileUpdate(models.Model):
     def _comparison_text(self, record, field_name):
         value = record[field_name]
         field = record._fields[field_name]
+        if field.type == 'boolean' and field_name in ('proposed_is_employee', 'is_employee'):
+            return _('نعم') if value else _('لا')
         if not value:
             return ''
         if field.type == 'many2one':
@@ -908,12 +931,12 @@ class MembershipProfileUpdate(models.Model):
     @api.constrains('request_type', 'partner_id', 'company_id')
     def _check_request_identity(self):
         for rec in self:
-            if rec.request_type == 'update_existing' and not rec.partner_id:
+            if rec.request_type in ('update_existing', 'membership_number_only') and not rec.partner_id:
                 raise ValidationError(_(
                     'An existing doctor is required for a profile completion request.'
                 ))
             if (
-                rec.request_type == 'update_existing'
+                rec.request_type in ('update_existing', 'membership_number_only')
                 and rec.partner_id.company_id
                 and rec.partner_id.company_id != rec.company_id
             ):
@@ -949,46 +972,55 @@ class MembershipProfileUpdate(models.Model):
     def _validate_submission(self):
         for rec in self:
             rec._check_allowed_company(rec.company_id)
+            if rec.request_type == 'membership_number_only':
+                if not rec.partner_id:
+                    raise UserError(_('الطبيب الموجود مطلوب.'))
+                if not rec.historical_membership_number:
+                    raise UserError(_('رقم العضوية الجديد مطلوب.'))
+                continue
+
             missing = []
-            for proposed_field, current_field, label in (
-                ('full_name', 'name', _('الاسم الكامل')),
-                ('proposed_mother_full_name', 'mother_name', _('اسم الأم مع الكنية')),
-                ('phone', 'mobile', _('الجوال / الهاتف')),
-                ('medical_license_no', 'medical_license_no', _('رقم الترخيص الطبي')),
-                ('medical_specialty_id', 'medical_specialty_id', _('الاختصاص الطبي')),
+            for proposed_field, label in (
+                ('full_name', _('الاسم الكامل')),
+                ('proposed_english_name', _('الاسم بالإنكليزية')),
+                ('proposed_nickname', _('الكنية')),
+                ('proposed_father_name', _('اسم الأب')),
+                ('proposed_mother_full_name', _('اسم الأم مع الكنية')),
+                ('national_id', _('الرقم الوطني')),
+                ('proposed_gender', _('الجنس')),
+                ('proposed_birth_date', _('تاريخ الميلاد')),
+                ('proposed_registry_place_number', _('مكان ورقم القيد')),
+                ('proposed_university_id', _('الجامعة / المؤسسة')),
+                ('proposed_graduation_year', _('سنة التخرج')),
+                ('proposed_specialty_classification', _('التصنيف')),
+                ('medical_specialty_id', _('الاختصاص الطبي')),
+                ('historical_membership_number', _('رقم العضوية')),
+                ('proposed_membership_state', _('حالة العضوية')),
+                ('proposed_membership_start_date', _('تاريخ بدء العضوية')),
+                ('proposed_membership_end_date', _('تاريخ نهاية العضوية')),
+                ('proposed_membership_join_date', _('تاريخ الانضمام للعضوية')),
+                ('proposed_ministry_registration_number', _('رقم تسجيل وزارة الصحة')),
+                ('proposed_ministry_registration_date', _('تاريخ التسجيل لدى وزارة الصحة')),
+                ('medical_license_no', _('رقم الترخيص الطبي')),
+                ('proposed_license_type', _('نوع الترخيص')),
+                ('proposed_fund_status', _('الوضع بالنسبة للصندوق')),
+                ('proposed_union_status', _('الوضع النقابي')),
             ):
-                current_value = (
-                    rec.partner_id[current_field]
-                    if rec.request_type == 'update_existing' and rec.partner_id
-                    else False
-                )
-                if not rec[proposed_field] and not current_value:
+                if not rec[proposed_field]:
                     missing.append(label)
-            current_national = (
-                rec.partner_id.national_id
-                if rec.request_type == 'update_existing' and rec.partner_id else False
-            )
-            current_national_exception = (
-                rec.partner_id.national_id_unavailable_reason
-                if rec.request_type == 'update_existing' and rec.partner_id else False
-            )
-            if (
-                not rec.national_id
-                and not rec.national_id_exception_reason
-                and not current_national
-                and not current_national_exception
-            ):
-                missing.append(_('الرقم الوطني أو سبب عدم توفره'))
+            # A false value is a valid, explicitly accepted answer for this Boolean.
+            # It is intentionally not included in the truthiness-based loop above.
+            if rec.proposed_graduation_year:
+                year_text = rec.proposed_graduation_year.strip()
+                current_year = fields.Date.today().year
+                if not year_text.isdigit() or not 1800 <= int(year_text) <= current_year:
+                    missing.append(_('سنة التخرج (قيمة غير صحيحة)'))
             # Validate only a newly proposed identifier. Existing legacy values
             # are displayed for review but are not rewritten by unrelated requests.
             normalized_national = normalize_identifier(rec.national_id)
             if normalized_national and len(normalized_national) >= 6 and len(set(normalized_national)) == 1:
                 raise UserError(_('الرقم الوطني المدخل قيمة وهمية عامة؛ أدخل الرقم الصحيح أو سجل سبب عدم توفره.'))
             if rec.request_type == 'onboard_existing_member':
-                if not rec.historical_membership_number:
-                    missing.append(_('رقم العضوية السابق'))
-                if not rec.proposed_union_status:
-                    missing.append(_('الوضع النقابي'))
                 if not rec.membership_evidence_attachment_ids:
                     missing.append(_('مستندات إثبات العضوية'))
             if missing:

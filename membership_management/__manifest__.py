@@ -1,6 +1,6 @@
 {
     'name': 'Membership Management',
-    'version': '17.0.3.3.1',
+    'version': '17.0.3.4.0',
     'category': 'Membership',
     'summary': 'Manage doctor membership lifecycle with applications, invoicing, and portal.',
     'description': """
@@ -64,6 +64,7 @@ Manage the full lifecycle of doctor memberships:
             'membership_management/static/src/scss/command_center.scss',
             'membership_management/static/src/scss/command_center_v2.scss',
             'membership_management/static/src/scss/executive_intelligence_v3.scss',
+            'membership_management/static/src/scss/profile_required_fields.scss',
         ],
     },
     'installable': True,

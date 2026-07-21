@@ -154,6 +154,7 @@ class ResPartner(models.Model):
 
     # ── Doctor Personal Info ──
     arabic_name = fields.Char(string='Name (Arabic)')
+    english_name = fields.Char(string='الاسم بالإنكليزية')
     nickname = fields.Char(string='Nickname')
     current_residence = fields.Char(string='Current Residence')
     military_service_start_date = fields.Date(string='Military Service Start Date')

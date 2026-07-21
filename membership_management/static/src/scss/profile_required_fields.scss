@@ -1,0 +1,43 @@
+.o_form_view .o_profile_required_cards {
+    .o_inner_group {
+        row-gap: 0.45rem;
+    }
+
+    .o_form_label {
+        align-self: center;
+        font-weight: 600;
+        line-height: 1.35;
+    }
+
+    .o_field_widget:not(.o_field_boolean) {
+        min-height: 2.9rem;
+    }
+
+    .o_field_widget:not(.o_field_boolean) .o_input,
+    .o_field_widget:not(.o_field_boolean) input,
+    .o_field_widget:not(.o_field_boolean) select,
+    .o_field_widget:not(.o_field_boolean) textarea {
+        min-height: 2.9rem;
+        padding: 0.55rem 0.75rem;
+        background-color: #fff;
+        border: 1px solid #b9c9dc;
+        border-radius: 0.5rem;
+        box-shadow: none;
+    }
+
+    .o_field_widget:not(.o_field_boolean) .o_input:focus,
+    .o_field_widget:not(.o_field_boolean) input:focus,
+    .o_field_widget:not(.o_field_boolean) select:focus,
+    .o_field_widget:not(.o_field_boolean) textarea:focus {
+        border-color: var(--o-brand-primary);
+        box-shadow: 0 0 0 0.15rem rgba(1, 126, 132, 0.12);
+        outline: 0;
+    }
+
+    .o_field_boolean {
+        align-self: center;
+        min-height: 2.9rem;
+        display: flex;
+        align-items: center;
+    }
+}
